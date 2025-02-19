@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Vscode on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/vscode/</link>
+    <description>Recent content in Vscode on DoNT - Do Not Think!!!</description>
+    <generator>Hugo -- 0.143.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 30 Apr 2022 14:02:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[Backup] Visual Studio Code Regex Replace</title>
+      <link>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</link>
+      <pubDate>Sat, 30 Apr 2022 14:02:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</guid>
+      <description>&lt;h3 id=&#34;-10개-마다-줄-바꿈-하기&#34;&gt;, 10개 마다 줄 바꿈 하기&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;((.+, ){10})
+$1\n
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

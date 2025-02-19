@@ -6,21 +6,8 @@
     <description>Recent content in Hugo on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.143.1</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Nov 2024 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jan 2024 19:10:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>IntelliJ debug variable json view</title>
-      <link>https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/</link>
-      <pubDate>Thu, 07 Nov 2024 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/</guid>
-      <description>&lt;h3 id=&#34;intellij-debug-variable-json-view&#34;&gt;IntelliJ debug variable json view&lt;/h3&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;new com.fasterxml.jackson.databind.ObjectMapper()
-.registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()) 
-.disable(com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS) 
-.writerWithDefaultPrettyPrinter() 
-.writeValueAsString();
-&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
     <item>
       <title>Hugo 태그 설정</title>
       <link>https://dont.kr/posts/2024/2024-01-12-hugo-tags/</link>
@@ -45,6 +32,39 @@
 &lt;li&gt;Hugo Taxonomies: &lt;a href=&#34;https://gohugo.io/content-management/taxonomies/&#34;&gt;https://gohugo.io/content-management/taxonomies/&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;PaperMod wiki: &lt;a href=&#34;https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#sample-configyml&#34;&gt;https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#sample-configyml&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>[re] Hello World</title>
+      <link>https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/</link>
+      <pubDate>Mon, 10 Jul 2023 19:10:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/</guid>
+      <description>&lt;h2 id=&#34;re-hello-world&#34;&gt;[re] Hello World&lt;/h2&gt;
+&lt;p&gt;[re] &lt;strong&gt;H&lt;/strong&gt;ello &lt;strong&gt;W&lt;/strong&gt;orld by &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;install-golang&#34;&gt;install golang&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install golang
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;install-hugoo&#34;&gt;install Hugoo&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://gohugo.io/installation/macos/&#34;&gt;https://gohugo.io/installation/macos/&lt;/a&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;github-저장소-생성&#34;&gt;github 저장소 생성&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;duddns.github.io: GitHub Pages 저장소&lt;/li&gt;
+&lt;li&gt;dontkr-hugo: Hogo 소스 저장소&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;create-a-site&#34;&gt;Create a site&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ hugo new site dontkr-hugo
+$ cd dontkr-hugo
+$ git init
+$ git submodule add -b master https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod
+$ git submodule add -b main https://@github.com/duddns/duddns.github.io.git public
+$ echo &amp;#34;theme = &amp;#39;PaperMod&amp;#39;&amp;#34; &amp;gt;&amp;gt; hugo.toml
+$ hugo server
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;configure&#34;&gt;configure&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;baseURL = &amp;#39;https://dont.kr&amp;#39;
+languageCode = &amp;#39;en-us&amp;#39;
+title = &amp;#39;DoNT - Do Not Think!!!&amp;#39;
+theme = &amp;#39;PaperMod&amp;#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;publish&#34;&gt;publish&lt;/h3&gt;
+&lt;p&gt;GitHub Pages 저장소와 Hogo 소스 저장소 두 번 push 해야 함&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

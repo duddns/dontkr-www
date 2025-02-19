@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Synology on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/synology/</link>
+    <description>Recent content in Synology on DoNT - Do Not Think!!!</description>
+    <generator>Hugo -- 0.143.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Jan 2024 19:10:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/synology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Synology NAS ssh 설정</title>
+      <link>https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/</link>
+      <pubDate>Fri, 05 Jan 2024 19:10:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/</guid>
+      <description>&lt;h3 id=&#34;synology-nas-ssh-설정&#34;&gt;Synology NAS ssh 설정&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;DSM 7.2.1 기준&lt;/li&gt;
+&lt;li&gt;제어판 - 터미널 및 SNMP - 터미널
+&lt;ul&gt;
+&lt;li&gt;SSH 서비스 활성화&lt;/li&gt;
+&lt;li&gt;포트 설정&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;공유기-포트포워딩&#34;&gt;공유기 포트포워딩&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Synology NAS 에서 설정한 ssh 포트로 포트포워딩 설정&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;ssh-클라이언트에서-접속&#34;&gt;ssh 클라이언트에서 접속&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;$ ssh -p [포트] [아이디]@[시놀로지주소]&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Test on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/test/</link>
+    <description>Recent content in Test on DoNT - Do Not Think!!!</description>
+    <generator>Hugo -- 0.143.1</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Jul 2023 19:10:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/test/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Legacy 테스트 - Subclass and Override Method</title>
+      <link>https://dont.kr/posts/2023/2023-07-28-legacy-testing-subclass-and-override-method/</link>
+      <pubDate>Fri, 28 Jul 2023 19:10:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2023/2023-07-28-legacy-testing-subclass-and-override-method/</guid>
+      <description>&lt;h2 id=&#34;레거시-코드-일를-테스트하기-위해-subclass-and-override-method-방법-적용&#34;&gt;레거시 코드 일를 테스트하기 위해 Subclass and Override Method 방법 적용&lt;/h2&gt;
+&lt;h3 id=&#34;subclass-and-override-method-방법&#34;&gt;Subclass and Override Method 방법&lt;/h3&gt;
+&lt;p&gt;참고 링크: &lt;a href=&#34;https://youtu.be/Dct4bGKCmI8&#34;&gt;https://youtu.be/Dct4bGKCmI8&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;테스트하기 어려운 부분이 존재할 때 다루는 기법&lt;/p&gt;
+&lt;h4 id=&#34;1-레거시-코드에서-테스트-대상을-방해하는-부분을-메소드로-분리한다&#34;&gt;1. 레거시 코드에서 테스트 대상을 방해하는 부분을 메소드로 분리한다.&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;레거시 코드의 의존성을 분리하기 위해 메소드 단위로 코드를 분리&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;2-분리한-메소드를-protected-로-변경한다&#34;&gt;2. 분리한 메소드를 protected 로 변경한다&lt;/h4&gt;
+&lt;h4 id=&#34;3-테스트하고자-하는-클래스를-상속받아-테스트용-클래스를-만들고-분리한-메소드를-재정의-한다&#34;&gt;3. 테스트하고자 하는 클래스를 상속받아 테스트용 클래스를 만들고, 분리한 메소드를 재정의 한다.&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Stubbing&lt;/li&gt;
+&lt;li&gt;실제 동작과는 다르게 테스트 코드를 쉽게 만들기 위한 작업&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;4-테스트용-클래스를-이용해서-테스트-대상을-테스트하는-코드를-작성한다&#34;&gt;4. 테스트용 클래스를 이용해서 테스트 대상을 테스트하는 코드를 작성한다.&lt;/h4&gt;</description>
+    </item>
+  </channel>
+</rss>
