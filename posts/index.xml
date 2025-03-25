@@ -6,8 +6,21 @@
     <description>Recent content in Posts on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 07 Nov 2024 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 26 Mar 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ImageMagick crop</title>
+      <link>https://dont.kr/posts/2025/2025-03-26-imagemagick-crop/</link>
+      <pubDate>Wed, 26 Mar 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-03-26-imagemagick-crop/</guid>
+      <description>&lt;h3 id=&#34;imagemagick-설치하기&#34;&gt;ImageMagick 설치하기&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install imagemagick
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;shell-script-로-이미지-자르기&#34;&gt;Shell Script 로 이미지 자르기&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ convert 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ex)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ convert a.jpg -crop 1179x1040+0+420 1.jpg
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     <item>
       <title>IntelliJ debug variable json view</title>
       <link>https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/</link>
