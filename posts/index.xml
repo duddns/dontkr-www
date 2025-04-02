@@ -16,6 +16,10 @@
       <description>&lt;h3 id=&#34;imagemagick-설치하기&#34;&gt;ImageMagick 설치하기&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install imagemagick
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;shell-script-로-이미지-자르기&#34;&gt;Shell Script 로 이미지 자르기&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ magick 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ex)&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ magick a.jpg -crop 1179x1040+0+420 1.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;old-ver-shell-script-로-이미지-자르기&#34;&gt;(Old ver) Shell Script 로 이미지 자르기&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ convert 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ex)&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ convert a.jpg -crop 1179x1040+0+420 1.jpg

@@ -10,6 +10,10 @@
 <meta name="description" content="ImageMagick 설치하기
 $ brew install imagemagick
 Shell Script 로 이미지 자르기
+$ magick 원본이미지.jpg -crop {가로}x{세로}&#43;{x좌표}&#43;{y좌표} 잘린이미지.jpg
+ex)
+$ magick a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg
+(Old ver) Shell Script 로 이미지 자르기
 $ convert 원본이미지.jpg -crop {가로}x{세로}&#43;{x좌표}&#43;{y좌표} 잘린이미지.jpg
 ex)
 $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg
@@ -64,7 +68,8 @@ $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg
 </noscript><meta property="og:url" content="https://dont.kr/posts/2025/2025-03-26-imagemagick-crop/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="ImageMagick crop">
-  <meta property="og:description" content="ImageMagick 설치하기 $ brew install imagemagick Shell Script 로 이미지 자르기 $ convert 원본이미지.jpg -crop {가로}x{세로}&#43;{x좌표}&#43;{y좌표} 잘린이미지.jpg ex)
+  <meta property="og:description" content="ImageMagick 설치하기 $ brew install imagemagick Shell Script 로 이미지 자르기 $ magick 원본이미지.jpg -crop {가로}x{세로}&#43;{x좌표}&#43;{y좌표} 잘린이미지.jpg ex)
+$ magick a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg (Old ver) Shell Script 로 이미지 자르기 $ convert 원본이미지.jpg -crop {가로}x{세로}&#43;{x좌표}&#43;{y좌표} 잘린이미지.jpg ex)
 $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg ">
   <meta property="og:locale" content="en-us">
   <meta property="og:type" content="article">
@@ -77,6 +82,10 @@ $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg ">
 <meta name="twitter:description" content="ImageMagick 설치하기
 $ brew install imagemagick
 Shell Script 로 이미지 자르기
+$ magick 원본이미지.jpg -crop {가로}x{세로}&#43;{x좌표}&#43;{y좌표} 잘린이미지.jpg
+ex)
+$ magick a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg
+(Old ver) Shell Script 로 이미지 자르기
 $ convert 원본이미지.jpg -crop {가로}x{세로}&#43;{x좌표}&#43;{y좌표} 잘린이미지.jpg
 ex)
 $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg
@@ -109,12 +118,12 @@ $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg
   "@type": "BlogPosting",
   "headline": "ImageMagick crop",
   "name": "ImageMagick crop",
-  "description": "ImageMagick 설치하기 $ brew install imagemagick Shell Script 로 이미지 자르기 $ convert 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg ex)\n$ convert a.jpg -crop 1179x1040+0+420 1.jpg ",
+  "description": "ImageMagick 설치하기 $ brew install imagemagick Shell Script 로 이미지 자르기 $ magick 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg ex)\n$ magick a.jpg -crop 1179x1040+0+420 1.jpg (Old ver) Shell Script 로 이미지 자르기 $ convert 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg ex)\n$ convert a.jpg -crop 1179x1040+0+420 1.jpg ",
   "keywords": [
     "imagemagick"
   ],
-  "articleBody": "ImageMagick 설치하기 $ brew install imagemagick Shell Script 로 이미지 자르기 $ convert 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg ex)\n$ convert a.jpg -crop 1179x1040+0+420 1.jpg ",
-  "wordCount" : "24",
+  "articleBody": "ImageMagick 설치하기 $ brew install imagemagick Shell Script 로 이미지 자르기 $ magick 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg ex)\n$ magick a.jpg -crop 1179x1040+0+420 1.jpg (Old ver) Shell Script 로 이미지 자르기 $ convert 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg ex)\n$ convert a.jpg -crop 1179x1040+0+420 1.jpg ",
+  "wordCount" : "44",
   "inLanguage": "en",
   "datePublished": "2025-03-26T00:00:00+09:00",
   "dateModified": "2025-03-26T00:00:00+09:00",
@@ -202,6 +211,10 @@ $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg
   <div class="post-content"><h3 id="imagemagick-설치하기">ImageMagick 설치하기<a hidden class="anchor" aria-hidden="true" href="#imagemagick-설치하기">#</a></h3>
 <pre tabindex="0"><code>$ brew install imagemagick
 </code></pre><h3 id="shell-script-로-이미지-자르기">Shell Script 로 이미지 자르기<a hidden class="anchor" aria-hidden="true" href="#shell-script-로-이미지-자르기">#</a></h3>
+<pre tabindex="0"><code>$ magick 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg
+</code></pre><p>ex)</p>
+<pre tabindex="0"><code>$ magick a.jpg -crop 1179x1040+0+420 1.jpg
+</code></pre><h3 id="old-ver-shell-script-로-이미지-자르기">(Old ver) Shell Script 로 이미지 자르기<a hidden class="anchor" aria-hidden="true" href="#old-ver-shell-script-로-이미지-자르기">#</a></h3>
 <pre tabindex="0"><code>$ convert 원본이미지.jpg -crop {가로}x{세로}+{x좌표}+{y좌표} 잘린이미지.jpg
 </code></pre><p>ex)</p>
 <pre tabindex="0"><code>$ convert a.jpg -crop 1179x1040+0+420 1.jpg
