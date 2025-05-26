@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Hugo on DoNT - Do Not Think!!!</title>
-    <link>https://dont.kr/tags/hugo/</link>
+    <link>http://localhost:1313/tags/hugo/</link>
     <description>Recent content in Hugo on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 12 Jan 2024 19:10:00 +0900</lastBuildDate>
-    <atom:link href="https://dont.kr/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo 태그 설정</title>
-      <link>https://dont.kr/posts/2024/2024-01-12-hugo-tags/</link>
+      <link>http://localhost:1313/posts/2024/2024-01-12-hugo-tags/</link>
       <pubDate>Fri, 12 Jan 2024 19:10:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2024/2024-01-12-hugo-tags/</guid>
+      <guid>http://localhost:1313/posts/2024/2024-01-12-hugo-tags/</guid>
       <description>&lt;h3 id=&#34;hugo-기본-설정으로-tags-사용&#34;&gt;Hugo 기본 설정으로 tags 사용&lt;/h3&gt;
 &lt;h3 id=&#34;papermod-테마-설정&#34;&gt;PaperMod 테마 설정&lt;/h3&gt;
 &lt;ul&gt;
@@ -35,9 +35,9 @@
     </item>
     <item>
       <title>[re] Hello World</title>
-      <link>https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/</link>
+      <link>http://localhost:1313/posts/2023/2023-07-10-hello-world-by-hugo/</link>
       <pubDate>Mon, 10 Jul 2023 19:10:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/</guid>
+      <guid>http://localhost:1313/posts/2023/2023-07-10-hello-world-by-hugo/</guid>
       <description>&lt;h2 id=&#34;re-hello-world&#34;&gt;[re] Hello World&lt;/h2&gt;
 &lt;p&gt;[re] &lt;strong&gt;H&lt;/strong&gt;ello &lt;strong&gt;W&lt;/strong&gt;orld by &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;install-golang&#34;&gt;install golang&lt;/h3&gt;

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Zsh on DoNT - Do Not Think!!!</title>
+    <link>http://localhost:1313/tags/zsh/</link>
+    <description>Recent content in Zsh on DoNT - Do Not Think!!!</description>
+    <generator>Hugo -- 0.147.5</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 25 Apr 2025 00:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mac zsh 설정</title>
+      <link>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</link>
+      <pubDate>Fri, 25 Apr 2025 00:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</guid>
+      <description>&lt;h3 id=&#34;zsh-설치&#34;&gt;zsh 설치&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install zsh
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;oh-my-zsh-설치&#34;&gt;oh-my-zsh 설치&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ vi .zshrc
+source $ZSH/oh-my-zsh.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;플러그인-설치&#34;&gt;플러그인 설치&lt;/h3&gt;
+&lt;h4 id=&#34;zsh-autosuggestions-설치&#34;&gt;zsh-autosuggestions 설치&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ vi .zshrc
+plugins=(... zsh-autosuggestions ...)
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;zsh-syntax-highlighting-설치&#34;&gt;zsh-syntax-highlighting 설치&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ vi .zshrc
+plugins=(... zsh-syntax-highlighting ...)
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;테마-설치&#34;&gt;테마 설치&lt;/h3&gt;
+&lt;h4 id=&#34;powerlevel10k-설치&#34;&gt;Powerlevel10k 설치&lt;/h4&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &amp;#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ vi .zshrc
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.
+원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

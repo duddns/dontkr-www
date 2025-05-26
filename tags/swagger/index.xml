@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Swagger on DoNT - Do Not Think!!!</title>
-    <link>https://dont.kr/tags/swagger/</link>
+    <link>http://localhost:1313/tags/swagger/</link>
     <description>Recent content in Swagger on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 29 Nov 2018 15:49:00 +0900</lastBuildDate>
-    <atom:link href="https://dont.kr/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/swagger/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Backup] swagger-diff swagger 문서 내용 비교</title>
-      <link>https://dont.kr/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</link>
+      <link>http://localhost:1313/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</link>
       <pubDate>Thu, 29 Nov 2018 15:49:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</guid>
+      <guid>http://localhost:1313/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</guid>
       <description>&lt;h3 id=&#34;swagger-diff&#34;&gt;swagger-diff&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;http://deepoove.com/swagger-diff/&#34;&gt;http://deepoove.com/swagger-diff/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;이전 버전의 API 와 신규 버전의 API 를 비교하여 변경 내용을 html 파일로 출력&lt;/p&gt;

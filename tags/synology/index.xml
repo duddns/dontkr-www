@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Synology on DoNT - Do Not Think!!!</title>
-    <link>https://dont.kr/tags/synology/</link>
+    <link>http://localhost:1313/tags/synology/</link>
     <description>Recent content in Synology on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo -- 0.147.5</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 05 Jan 2024 19:10:00 +0900</lastBuildDate>
-    <atom:link href="https://dont.kr/tags/synology/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/synology/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Synology NAS ssh 설정</title>
-      <link>https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/</link>
+      <link>http://localhost:1313/posts/2024/2024-01-05-synology-nas-ssh/</link>
       <pubDate>Fri, 05 Jan 2024 19:10:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/</guid>
+      <guid>http://localhost:1313/posts/2024/2024-01-05-synology-nas-ssh/</guid>
       <description>&lt;h3 id=&#34;synology-nas-ssh-설정&#34;&gt;Synology NAS ssh 설정&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;DSM 7.2.1 기준&lt;/li&gt;
