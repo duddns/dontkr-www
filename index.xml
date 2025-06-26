@@ -4,10 +4,24 @@
     <title>DoNT - Do Not Think!!!</title>
     <link>http://localhost:1313/</link>
     <description>Recent content on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.147.5</generator>
+    <generator>Hugo -- 0.147.9</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 25 Apr 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>springdoc-openapi @ApiResponse 어노테이션의 useReturnTypeSchema 속성</title>
+      <link>http://localhost:1313/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</link>
+      <pubDate>Thu, 26 Jun 2025 00:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</guid>
+      <description>&lt;h3 id=&#34;apiresponse-어노테이션의-usereturntypeschema-속성&#34;&gt;@ApiResponse 어노테이션의 useReturnTypeSchema 속성&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;컨트롤러 메서드의 반환 타입을 자동으로 추론하여 OpenAPI 스펙의 response schema 로 사용&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;@Operation(summary = &amp;#34;사용자 조회&amp;#34;, responses = {
+    @ApiResponse(responseCode = &amp;#34;200&amp;#34;, description = &amp;#34;조회 성공&amp;#34;, useReturnTypeSchema = true)
+})
+&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
     <item>
       <title>Mac zsh 설정</title>
       <link>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</link>

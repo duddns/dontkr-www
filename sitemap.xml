@@ -3,15 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-04-25T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</loc>
-    <lastmod>2025-04-25T00:00:00+09:00</lastmod>
+    <lastmod>2025-06-26T00:00:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-04-25T00:00:00+09:00</lastmod>
+    <lastmod>2025-06-26T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</loc>
+    <lastmod>2025-06-26T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/swagger/</loc>
+    <lastmod>2025-06-26T00:00:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-06-26T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</loc>
     <lastmod>2025-04-25T00:00:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/zsh/</loc>
@@ -96,9 +102,6 @@
     <lastmod>2018-11-29T15:53:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</loc>
-    <lastmod>2018-11-29T15:49:00+09:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/swagger/</loc>
     <lastmod>2018-11-29T15:49:00+09:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/2018/2018-08-08-spirng-boot-embedded-tomcat-%EB%A7%A4%EC%9A%B0-%EB%8A%A6%EA%B2%8C-%EC%8B%A4%ED%96%89%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C/</loc>
