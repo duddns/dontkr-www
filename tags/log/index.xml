@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Log on DoNT - Do Not Think!!!</title>
-    <link>http://localhost:1313/tags/log/</link>
+    <link>https://dont.kr/tags/log/</link>
     <description>Recent content in Log on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.147.9</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 28 Jan 2019 11:14:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/log/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dont.kr/tags/log/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Backup] 로그로 남기면 좋은 것들</title>
-      <link>http://localhost:1313/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</link>
+      <link>https://dont.kr/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</link>
       <pubDate>Mon, 28 Jan 2019 11:14:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</guid>
+      <guid>https://dont.kr/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</guid>
       <description>&lt;h3 id=&#34;16-log-domains&#34;&gt;1.6. Log Domains&lt;/h3&gt;
 &lt;p&gt;로그를 남기는 이유는 몇가지로 분류될수 있습니다.&lt;/p&gt;
 &lt;h4 id=&#34;161-개발-로그development-log&#34;&gt;1.6.1. 개발 로그(Development Log)&lt;/h4&gt;

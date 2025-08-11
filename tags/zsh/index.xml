@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Zsh on DoNT - Do Not Think!!!</title>
-    <link>http://localhost:1313/tags/zsh/</link>
+    <link>https://dont.kr/tags/zsh/</link>
     <description>Recent content in Zsh on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.147.9</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Apr 2025 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dont.kr/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mac zsh 설정</title>
-      <link>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</link>
+      <link>https://dont.kr/posts/2025/2025-04-25-mac-zsh/</link>
       <pubDate>Fri, 25 Apr 2025 00:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</guid>
+      <guid>https://dont.kr/posts/2025/2025-04-25-mac-zsh/</guid>
       <description>&lt;h3 id=&#34;zsh-설치&#34;&gt;zsh 설치&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install zsh
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;oh-my-zsh-설치&#34;&gt;oh-my-zsh 설치&lt;/h3&gt;

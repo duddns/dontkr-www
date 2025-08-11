@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" dir="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>[Backup] aws ec2 인스턴스 생성후 하는 작업 v3 | DoNT - Do Not Think!!!</title>
 <meta name="keywords" content="aws">
 <meta name="description" content="업데이트
@@ -35,16 +35,16 @@ ssl 설정
 badbot blocker
 https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/2020/2020-03-09-aws-ec2-initialize-v3/">
+<link rel="canonical" href="https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.1a47c7004d6ccca34dc772c6186fdb718f69efce16b6e8d9eca4f707b3a38c59.css" integrity="sha256-GkfHAE1szKNNx3LGGG/bcY9p784WtujZ7KT3B7OjjFk=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="en" href="http://localhost:1313/posts/2020/2020-03-09-aws-ec2-initialize-v3/">
+<link rel="alternate" hreflang="en" href="https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/">
 <noscript>
     <style>
         #theme-toggle,
@@ -81,7 +81,96 @@ https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2">
         }
 
     </style>
-</noscript>
+</noscript><meta property="og:url" content="https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="[Backup] aws ec2 인스턴스 생성후 하는 작업 v3">
+  <meta property="og:description" content="업데이트 $ sudo apt update ; sudo apt upgrade -y zsh $ sudo apt install zsh $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh $ sudo chsh -s $(which zsh) ubuntu vim $ sudo add-apt-repository ppa:jonathonf/vim $ sudo apt update $ sudo apt install vim java (spring boot application 실행을 위해) $ wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - $ sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ $ sudo apt update $ sudo apt install adoptopenjdk-13-hotspot nginx (웹서버 및 SSL 적용을 위해) nginx 설치 $ echo &#34;deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx&#34; | sudo tee /etc/apt/sources.list.d/nginx.list $ curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add - $ sudo apt-key fingerprint ABF5BD827BD9BF62 pub rsa2048 2011-08-19 [SC] [expires: 2024-06-14] 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62 uid [ unknown] nginx signing key &lt;signing-key@nginx.com&gt; $ sudo apt-get update $ sudo apt-get install nginx nginx 설정 ssl 설정 badbot blocker https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2">
+  <meta property="og:locale" content="en-us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2020-03-09T16:24:00+09:00">
+    <meta property="article:modified_time" content="2020-03-09T16:24:00+09:00">
+    <meta property="article:tag" content="Aws">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Backup] aws ec2 인스턴스 생성후 하는 작업 v3">
+<meta name="twitter:description" content="업데이트
+$ sudo apt update ; sudo apt upgrade -y
+zsh
+$ sudo apt install zsh
+$ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh
+$ sudo chsh -s $(which zsh) ubuntu
+vim
+$ sudo add-apt-repository ppa:jonathonf/vim
+$ sudo apt update
+$ sudo apt install vim
+java (spring boot application 실행을 위해)
+$ wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add -
+$ sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/
+$ sudo apt update
+$ sudo apt install adoptopenjdk-13-hotspot
+nginx (웹서버 및 SSL 적용을 위해)
+nginx 설치
+$ echo &#34;deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx&#34; | sudo tee /etc/apt/sources.list.d/nginx.list
+$ curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add -
+$ sudo apt-key fingerprint ABF5BD827BD9BF62
+    pub rsa2048 2011-08-19 [SC] [expires: 2024-06-14] 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62 uid [ unknown] nginx signing key &lt;signing-key@nginx.com&gt; 
+$ sudo apt-get update
+$ sudo apt-get install nginx
+nginx 설정
+ssl 설정
+badbot blocker
+https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dont.kr/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "[Backup] aws ec2 인스턴스 생성후 하는 작업 v3",
+      "item": "https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "[Backup] aws ec2 인스턴스 생성후 하는 작업 v3",
+  "name": "[Backup] aws ec2 인스턴스 생성후 하는 작업 v3",
+  "description": "업데이트 $ sudo apt update ; sudo apt upgrade -y zsh $ sudo apt install zsh $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh $ sudo chsh -s $(which zsh) ubuntu vim $ sudo add-apt-repository ppa:jonathonf/vim $ sudo apt update $ sudo apt install vim java (spring boot application 실행을 위해) $ wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - $ sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ $ sudo apt update $ sudo apt install adoptopenjdk-13-hotspot nginx (웹서버 및 SSL 적용을 위해) nginx 설치 $ echo \u0026#34;deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx\u0026#34; | sudo tee /etc/apt/sources.list.d/nginx.list $ curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add - $ sudo apt-key fingerprint ABF5BD827BD9BF62 pub rsa2048 2011-08-19 [SC] [expires: 2024-06-14] 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62 uid [ unknown] nginx signing key \u0026lt;signing-key@nginx.com\u0026gt; $ sudo apt-get update $ sudo apt-get install nginx nginx 설정 ssl 설정 badbot blocker https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2\n",
+  "keywords": [
+    "aws"
+  ],
+  "articleBody": "업데이트 $ sudo apt update ; sudo apt upgrade -y zsh $ sudo apt install zsh $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh $ sudo chsh -s $(which zsh) ubuntu vim $ sudo add-apt-repository ppa:jonathonf/vim $ sudo apt update $ sudo apt install vim java (spring boot application 실행을 위해) $ wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - $ sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ $ sudo apt update $ sudo apt install adoptopenjdk-13-hotspot nginx (웹서버 및 SSL 적용을 위해) nginx 설치 $ echo \"deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx\" | sudo tee /etc/apt/sources.list.d/nginx.list $ curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add - $ sudo apt-key fingerprint ABF5BD827BD9BF62 pub rsa2048 2011-08-19 [SC] [expires: 2024-06-14] 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62 uid [ unknown] nginx signing key $ sudo apt-get update $ sudo apt-get install nginx nginx 설정 ssl 설정 badbot blocker https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2\n",
+  "wordCount" : "145",
+  "inLanguage": "en",
+  "datePublished": "2020-03-09T16:24:00+09:00",
+  "dateModified": "2020-03-09T16:24:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoNT - Do Not Think!!!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dont.kr/favicon.ico"
+    }
+  }
+}
+</script>
 </head>
 
 <body class="" id="top">
@@ -99,7 +188,7 @@ https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2">
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -125,12 +214,12 @@ https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2">
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="Archive">
+                <a href="https://dont.kr/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://dont.kr/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -182,7 +271,7 @@ $ sudo apt-get install nginx
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/aws/">Aws</a></li>
+      <li><a href="https://dont.kr/tags/aws/">Aws</a></li>
     </ul>
 
     <script src="https://utteranc.es/client.js"
@@ -198,7 +287,7 @@ $ sudo apt-get install nginx
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">DoNT - Do Not Think!!!</a></span> · 
+        <span>&copy; 2025 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
 
     <span>
         Powered by

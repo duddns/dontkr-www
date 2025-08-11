@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on DoNT - Do Not Think!!!</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://dont.kr/posts/</link>
     <description>Recent content in Posts on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.147.9</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dont.kr/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>springdoc-openapi @ApiResponse 어노테이션의 useReturnTypeSchema 속성</title>
-      <link>http://localhost:1313/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</link>
+      <link>https://dont.kr/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</link>
       <pubDate>Thu, 26 Jun 2025 00:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</guid>
+      <guid>https://dont.kr/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</guid>
       <description>&lt;h3 id=&#34;apiresponse-어노테이션의-usereturntypeschema-속성&#34;&gt;@ApiResponse 어노테이션의 useReturnTypeSchema 속성&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;컨트롤러 메서드의 반환 타입을 자동으로 추론하여 OpenAPI 스펙의 response schema 로 사용&lt;/li&gt;
@@ -24,9 +24,9 @@
     </item>
     <item>
       <title>Mac zsh 설정</title>
-      <link>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</link>
+      <link>https://dont.kr/posts/2025/2025-04-25-mac-zsh/</link>
       <pubDate>Fri, 25 Apr 2025 00:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2025/2025-04-25-mac-zsh/</guid>
+      <guid>https://dont.kr/posts/2025/2025-04-25-mac-zsh/</guid>
       <description>&lt;h3 id=&#34;zsh-설치&#34;&gt;zsh 설치&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install zsh
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;oh-my-zsh-설치&#34;&gt;oh-my-zsh 설치&lt;/h3&gt;
@@ -52,9 +52,9 @@ plugins=(... zsh-syntax-highlighting ...)
     </item>
     <item>
       <title>ImageMagick crop</title>
-      <link>http://localhost:1313/posts/2025/2025-03-26-imagemagick-crop/</link>
+      <link>https://dont.kr/posts/2025/2025-03-26-imagemagick-crop/</link>
       <pubDate>Wed, 26 Mar 2025 00:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2025/2025-03-26-imagemagick-crop/</guid>
+      <guid>https://dont.kr/posts/2025/2025-03-26-imagemagick-crop/</guid>
       <description>&lt;h3 id=&#34;imagemagick-설치하기&#34;&gt;ImageMagick 설치하기&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install imagemagick
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;shell-script-로-이미지-자르기&#34;&gt;Shell Script 로 이미지 자르기&lt;/h3&gt;
@@ -69,9 +69,9 @@ plugins=(... zsh-syntax-highlighting ...)
     </item>
     <item>
       <title>IntelliJ debug variable json view</title>
-      <link>http://localhost:1313/posts/2024/2024-11-07-intellij-debug-variable-json-view/</link>
+      <link>https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/</link>
       <pubDate>Thu, 07 Nov 2024 00:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2024/2024-11-07-intellij-debug-variable-json-view/</guid>
+      <guid>https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/</guid>
       <description>&lt;h3 id=&#34;intellij-debug-variable-json-view&#34;&gt;IntelliJ debug variable json view&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;new com.fasterxml.jackson.databind.ObjectMapper()
 .registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()) 
@@ -82,9 +82,9 @@ plugins=(... zsh-syntax-highlighting ...)
     </item>
     <item>
       <title>Hugo 태그 설정</title>
-      <link>http://localhost:1313/posts/2024/2024-01-12-hugo-tags/</link>
+      <link>https://dont.kr/posts/2024/2024-01-12-hugo-tags/</link>
       <pubDate>Fri, 12 Jan 2024 19:10:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2024/2024-01-12-hugo-tags/</guid>
+      <guid>https://dont.kr/posts/2024/2024-01-12-hugo-tags/</guid>
       <description>&lt;h3 id=&#34;hugo-기본-설정으로-tags-사용&#34;&gt;Hugo 기본 설정으로 tags 사용&lt;/h3&gt;
 &lt;h3 id=&#34;papermod-테마-설정&#34;&gt;PaperMod 테마 설정&lt;/h3&gt;
 &lt;ul&gt;
@@ -107,9 +107,9 @@ plugins=(... zsh-syntax-highlighting ...)
     </item>
     <item>
       <title>Synology NAS ssh 설정</title>
-      <link>http://localhost:1313/posts/2024/2024-01-05-synology-nas-ssh/</link>
+      <link>https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/</link>
       <pubDate>Fri, 05 Jan 2024 19:10:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2024/2024-01-05-synology-nas-ssh/</guid>
+      <guid>https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/</guid>
       <description>&lt;h3 id=&#34;synology-nas-ssh-설정&#34;&gt;Synology NAS ssh 설정&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;DSM 7.2.1 기준&lt;/li&gt;
@@ -129,14 +129,14 @@ plugins=(... zsh-syntax-highlighting ...)
     </item>
     <item>
       <title>IntelliJ SonarLint 한글 이름 사용</title>
-      <link>http://localhost:1313/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/</link>
+      <link>https://dont.kr/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/</link>
       <pubDate>Tue, 02 Jan 2024 19:10:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/</guid>
+      <guid>https://dont.kr/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/</guid>
       <description>&lt;h3 id=&#34;intellij-sonarlint-플러그인-설치&#34;&gt;IntelliJ SonarLint 플러그인 설치&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://plugins.jetbrains.com/plugin/7973-sonarlint&#34;&gt;https://plugins.jetbrains.com/plugin/7973-sonarlint&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;sonarlint-설정&#34;&gt;SonarLint 설정&lt;/h3&gt;
 &lt;p&gt;IntelliJ - Settings - Tools - SonarLint - Rules&lt;/p&gt;
-&lt;p&gt;&lt;img alt=&#34;photo&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/images/1.jpg&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;photo&#34; loading=&#34;lazy&#34; src=&#34;https://dont.kr/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/images/1.jpg&#34;&gt;&lt;/p&gt;
 &lt;p&gt;각 룰 마다 다음 정규표현식 설정&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Class names: ^[A-Z][a-zA-Z0-9]*|[A-Z가-힣][a-zA-Z0-9가-힣_]*$
 Field names: ^[a-z][a-zA-Z0-9]*|[a-z가-힣][a-zA-Z0-9가-힣_]*$
@@ -148,9 +148,9 @@ Test class names: ^((Test|IT)[a-zA-Z0-9가-힣_]+|[A-Z][a-zA-Z0-9_]*|[A-Z가-힣
     </item>
     <item>
       <title>Legacy 테스트 - Subclass and Override Method</title>
-      <link>http://localhost:1313/posts/2023/2023-07-28-legacy-testing-subclass-and-override-method/</link>
+      <link>https://dont.kr/posts/2023/2023-07-28-legacy-testing-subclass-and-override-method/</link>
       <pubDate>Fri, 28 Jul 2023 19:10:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2023/2023-07-28-legacy-testing-subclass-and-override-method/</guid>
+      <guid>https://dont.kr/posts/2023/2023-07-28-legacy-testing-subclass-and-override-method/</guid>
       <description>&lt;h2 id=&#34;레거시-코드-일를-테스트하기-위해-subclass-and-override-method-방법-적용&#34;&gt;레거시 코드 일를 테스트하기 위해 Subclass and Override Method 방법 적용&lt;/h2&gt;
 &lt;h3 id=&#34;subclass-and-override-method-방법&#34;&gt;Subclass and Override Method 방법&lt;/h3&gt;
 &lt;p&gt;참고 링크: &lt;a href=&#34;https://youtu.be/Dct4bGKCmI8&#34;&gt;https://youtu.be/Dct4bGKCmI8&lt;/a&gt;&lt;/p&gt;
@@ -169,9 +169,9 @@ Test class names: ^((Test|IT)[a-zA-Z0-9가-힣_]+|[A-Z][a-zA-Z0-9_]*|[A-Z가-힣
     </item>
     <item>
       <title>[re] Hello World</title>
-      <link>http://localhost:1313/posts/2023/2023-07-10-hello-world-by-hugo/</link>
+      <link>https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/</link>
       <pubDate>Mon, 10 Jul 2023 19:10:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2023/2023-07-10-hello-world-by-hugo/</guid>
+      <guid>https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/</guid>
       <description>&lt;h2 id=&#34;re-hello-world&#34;&gt;[re] Hello World&lt;/h2&gt;
 &lt;p&gt;[re] &lt;strong&gt;H&lt;/strong&gt;ello &lt;strong&gt;W&lt;/strong&gt;orld by &lt;a href=&#34;https://pages.github.com/&#34;&gt;GitHub Pages&lt;/a&gt; &amp;amp; &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;install-golang&#34;&gt;install golang&lt;/h3&gt;
@@ -202,9 +202,9 @@ theme = &amp;#39;PaperMod&amp;#39;
     </item>
     <item>
       <title>[Backup] Visual Studio Code Regex Replace</title>
-      <link>http://localhost:1313/posts/2022/2022-04-30-backup-vs-code-regex-replace/</link>
+      <link>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</link>
       <pubDate>Sat, 30 Apr 2022 14:02:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2022/2022-04-30-backup-vs-code-regex-replace/</guid>
+      <guid>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</guid>
       <description>&lt;h3 id=&#34;-10개-마다-줄-바꿈-하기&#34;&gt;, 10개 마다 줄 바꿈 하기&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;((.+, ){10})
 $1\n
@@ -212,9 +212,9 @@ $1\n
     </item>
     <item>
       <title>[Backup] gradle 의존성 갱신</title>
-      <link>http://localhost:1313/posts/2021/2021-10-28-backup-gradle-refresh-dependencies/</link>
+      <link>https://dont.kr/posts/2021/2021-10-28-backup-gradle-refresh-dependencies/</link>
       <pubDate>Thu, 28 Oct 2021 09:49:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2021/2021-10-28-backup-gradle-refresh-dependencies/</guid>
+      <guid>https://dont.kr/posts/2021/2021-10-28-backup-gradle-refresh-dependencies/</guid>
       <description>&lt;h3 id=&#34;방법-1&#34;&gt;방법 1&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ rm -rf ~/.gradle/caches
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;프로젝트가 여러개 일 경우 모두 초기화&lt;/p&gt;
@@ -224,9 +224,9 @@ $1\n
     </item>
     <item>
       <title>[Backup] aws ec2 인스턴스 생성후 하는 작업 v3</title>
-      <link>http://localhost:1313/posts/2020/2020-03-09-aws-ec2-initialize-v3/</link>
+      <link>https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/</link>
       <pubDate>Mon, 09 Mar 2020 16:24:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2020/2020-03-09-aws-ec2-initialize-v3/</guid>
+      <guid>https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/</guid>
       <description>&lt;h3 id=&#34;업데이트&#34;&gt;업데이트&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sudo apt update ; sudo apt upgrade -y
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;zsh&#34;&gt;zsh&lt;/h3&gt;
@@ -257,17 +257,17 @@ $ sudo apt-get install nginx
     </item>
     <item>
       <title>[Backup] ngrok - secure introspectable tunnels to localhost</title>
-      <link>http://localhost:1313/posts/2019/2019-07-09-ngrok/</link>
+      <link>https://dont.kr/posts/2019/2019-07-09-ngrok/</link>
       <pubDate>Tue, 09 Jul 2019 10:29:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2019/2019-07-09-ngrok/</guid>
+      <guid>https://dont.kr/posts/2019/2019-07-09-ngrok/</guid>
       <description>&lt;h3 id=&#34;ngrok&#34;&gt;ngrok&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://ngrok.com/&#34;&gt;https://ngrok.com/&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     <item>
       <title>[Backup] brew - mac package manage</title>
-      <link>http://localhost:1313/posts/2019/2019-04-08-brew-mac-package-manage/</link>
+      <link>https://dont.kr/posts/2019/2019-04-08-brew-mac-package-manage/</link>
       <pubDate>Mon, 08 Apr 2019 13:36:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2019/2019-04-08-brew-mac-package-manage/</guid>
+      <guid>https://dont.kr/posts/2019/2019-04-08-brew-mac-package-manage/</guid>
       <description>&lt;h3 id=&#34;brew&#34;&gt;brew&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install {PACKAGE_NAME}
 $ brew update
@@ -276,9 +276,9 @@ $ brew upgrade
     </item>
     <item>
       <title>[Backup] 로그로 남기면 좋은 것들</title>
-      <link>http://localhost:1313/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</link>
+      <link>https://dont.kr/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</link>
       <pubDate>Mon, 28 Jan 2019 11:14:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</guid>
+      <guid>https://dont.kr/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/</guid>
       <description>&lt;h3 id=&#34;16-log-domains&#34;&gt;1.6. Log Domains&lt;/h3&gt;
 &lt;p&gt;로그를 남기는 이유는 몇가지로 분류될수 있습니다.&lt;/p&gt;
 &lt;h4 id=&#34;161-개발-로그development-log&#34;&gt;1.6.1. 개발 로그(Development Log)&lt;/h4&gt;
@@ -292,9 +292,9 @@ $ brew upgrade
     </item>
     <item>
       <title>[Backup] MySQL 대용량 sql import 시 진행상황 확인하기</title>
-      <link>http://localhost:1313/posts/2018/2018-11-29-mysql-%EB%8C%80%EC%9A%A9%EB%9F%89-sql-import-%EC%8B%9C-%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/</link>
+      <link>https://dont.kr/posts/2018/2018-11-29-mysql-%EB%8C%80%EC%9A%A9%EB%9F%89-sql-import-%EC%8B%9C-%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/</link>
       <pubDate>Thu, 29 Nov 2018 15:53:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2018/2018-11-29-mysql-%EB%8C%80%EC%9A%A9%EB%9F%89-sql-import-%EC%8B%9C-%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/</guid>
+      <guid>https://dont.kr/posts/2018/2018-11-29-mysql-%EB%8C%80%EC%9A%A9%EB%9F%89-sql-import-%EC%8B%9C-%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/</guid>
       <description>&lt;h3 id=&#34;pipe-viewer&#34;&gt;Pipe Viewer&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;https://www.ivarch.com/programs/pv.shtml&#34;&gt;https://www.ivarch.com/programs/pv.shtml&lt;/a&gt;&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ pv dump.sql | mysql -uuser -ppassword database
@@ -302,9 +302,9 @@ $ brew upgrade
     </item>
     <item>
       <title>[Backup] swagger-diff swagger 문서 내용 비교</title>
-      <link>http://localhost:1313/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</link>
+      <link>https://dont.kr/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</link>
       <pubDate>Thu, 29 Nov 2018 15:49:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</guid>
+      <guid>https://dont.kr/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/</guid>
       <description>&lt;h3 id=&#34;swagger-diff&#34;&gt;swagger-diff&lt;/h3&gt;
 &lt;p&gt;&lt;a href=&#34;http://deepoove.com/swagger-diff/&#34;&gt;http://deepoove.com/swagger-diff/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;이전 버전의 API 와 신규 버전의 API 를 비교하여 변경 내용을 html 파일로 출력&lt;/p&gt;
@@ -317,9 +317,9 @@ $ brew upgrade
     </item>
     <item>
       <title>[Backup] Spirng Boot embedded tomcat 매우 늦게 실행되는 문제</title>
-      <link>http://localhost:1313/posts/2018/2018-08-08-spirng-boot-embedded-tomcat-%EB%A7%A4%EC%9A%B0-%EB%8A%A6%EA%B2%8C-%EC%8B%A4%ED%96%89%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C/</link>
+      <link>https://dont.kr/posts/2018/2018-08-08-spirng-boot-embedded-tomcat-%EB%A7%A4%EC%9A%B0-%EB%8A%A6%EA%B2%8C-%EC%8B%A4%ED%96%89%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C/</link>
       <pubDate>Wed, 08 Aug 2018 14:32:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2018/2018-08-08-spirng-boot-embedded-tomcat-%EB%A7%A4%EC%9A%B0-%EB%8A%A6%EA%B2%8C-%EC%8B%A4%ED%96%89%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C/</guid>
+      <guid>https://dont.kr/posts/2018/2018-08-08-spirng-boot-embedded-tomcat-%EB%A7%A4%EC%9A%B0-%EB%8A%A6%EA%B2%8C-%EC%8B%A4%ED%96%89%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C/</guid>
       <description>&lt;h3 id=&#34;운영-상태&#34;&gt;운영 상태&lt;/h3&gt;
 &lt;p&gt;nginx + spring boot application&lt;/p&gt;
 &lt;h3 id=&#34;에러-증상&#34;&gt;에러 증상&lt;/h3&gt;
@@ -333,9 +333,9 @@ $ brew upgrade
     </item>
     <item>
       <title>Hello World</title>
-      <link>http://localhost:1313/posts/1979/1979-11-10-hello-world/</link>
+      <link>https://dont.kr/posts/1979/1979-11-10-hello-world/</link>
       <pubDate>Sat, 10 Nov 1979 00:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/1979/1979-11-10-hello-world/</guid>
+      <guid>https://dont.kr/posts/1979/1979-11-10-hello-world/</guid>
       <description>&lt;h2 id=&#34;hello-world&#34;&gt;Hello World&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;H&lt;/strong&gt;ello &lt;strong&gt;W&lt;/strong&gt;orld&lt;/p&gt;</description>
     </item>
