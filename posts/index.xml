@@ -6,8 +6,20 @@
     <description>Recent content in Posts on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Jun 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임</title>
+      <link>https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/</link>
+      <pubDate>Wed, 17 Sep 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/</guid>
+      <description>&lt;h2 id=&#34;바이브-코딩이란&#34;&gt;바이브 코딩이란?&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;바이브 코딩(Vibe Coding)&lt;/strong&gt; 이란 &lt;strong&gt;직관적이고 자연어에 가까운 방식&lt;/strong&gt;으로 코드를 작성하는 접근법입니다. 개발자가 원하는 기능이나 로직을 마치 동료에게 설명하듯 자연스럽게 표현하면, AI가 이를 해석해서 실제 작동하는 코드로 변환해주는 방식입니다.&lt;/p&gt;
+&lt;p&gt;기존의 프로그래밍이 &lt;strong&gt;정확한 문법과 구조&lt;/strong&gt;를 요구했다면, 바이브 코딩은 &lt;strong&gt;의도와 맥락&lt;/strong&gt;을 중시합니다. &lt;strong&gt;어떻게 구현할 것인가&lt;/strong&gt;보다 &lt;strong&gt;무엇을 하고 싶은가&lt;/strong&gt;에 초점을 맞춘 개발 방식이라고 할 수 있습니다.&lt;/p&gt;
+&lt;h2 id=&#34;바이브-코딩의-핵심-특징&#34;&gt;바이브 코딩의 핵심 특징&lt;/h2&gt;
+&lt;h3 id=&#34;1-자연어-기반-접근&#34;&gt;1. 자연어 기반 접근&lt;/h3&gt;
+&lt;p&gt;기존의 정확한 문법보다는 &lt;strong&gt;의도와 맥락&lt;/strong&gt;을 중시합니다. AI가 개발자의 의도를 파악해서 적절한 코드로 변환해주는 방식입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>springdoc-openapi @ApiResponse 어노테이션의 useReturnTypeSchema 속성</title>
       <link>https://dont.kr/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/</link>
