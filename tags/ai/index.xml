@@ -6,8 +6,22 @@
     <description>Recent content in Ai on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.150.0</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 17 Sep 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 24 Sep 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>바이브 코딩 심화편 - 실무 적용과 한계</title>
+      <link>https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/</link>
+      <pubDate>Wed, 24 Sep 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/</guid>
+      <description>&lt;p&gt;바이브 코딩은 개념적으로는 혁신적이지만, 단순한 작업에서의 높은 효율성과 달리 복잡한 비즈니스 요구사항이나 팀 협업 환경에서는 여러 제약과 한계가 드러납니다.&lt;/p&gt;
+&lt;h2 id=&#34;바이브-코딩이-효과적인-영역&#34;&gt;바이브 코딩이 효과적인 영역&lt;/h2&gt;
+&lt;h3 id=&#34;1-프로토타이핑과-초기-개발&#34;&gt;1. 프로토타이핑과 초기 개발&lt;/h3&gt;
+&lt;p&gt;기본적인 CRUD 애플리케이션이나 간단한 웹 서비스 프로토타입 개발에서 높은 효율성을 보입니다.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;React로 사용자 관리 시스템을 만들어줘. 
+추가, 수정, 삭제 기능과 로컬 스토리지 연동 포함&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2-데이터-처리-및-변환&#34;&gt;2. 데이터 처리 및 변환&lt;/h3&gt;
+&lt;p&gt;CSV 파싱, JSON 변환, 데이터 정제 등 명확한 입출력 구조를 가진 작업에서 높은 정확도를 보입니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임</title>
       <link>https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/</link>
