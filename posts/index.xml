@@ -15,15 +15,16 @@
       <guid>https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/</guid>
       <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;
 &lt;ul&gt;
-&lt;li&gt;MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다&lt;/li&gt;
-&lt;li&gt;MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식&lt;/li&gt;
-&lt;li&gt;Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치&lt;/li&gt;
-&lt;li&gt;&amp;ldquo;클라이언트 사이드 커서&amp;quot;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절&lt;/li&gt;
-&lt;li&gt;JDBC 환경에서 MySQL은 &lt;code&gt;useCursorFetch=true&lt;/code&gt; + &lt;code&gt;setFetchSize()&lt;/code&gt; 두 가지 모두 필요&lt;/li&gt;
+&lt;li&gt;MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다름&lt;/li&gt;
+&lt;li&gt;MySQL: 임시 테이블 생성하여 전체 결과 저장&lt;/li&gt;
+&lt;li&gt;Oracle: PGA 메모리에서 커서 상태만 유지하고 필요한 만큼 페치&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;클라이언트 사이드 커서&amp;quot;는 MySQL에서 공식 용어가 아님&lt;/li&gt;
+&lt;li&gt;MySQL: 클라이언트 버퍼링, 스트리밍, 서버 커서 3가지 방식 제공&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;1-커서란-무엇인가&#34;&gt;1. 커서란 무엇인가&lt;/h2&gt;
-&lt;p&gt;데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.&lt;/p&gt;</description>
+&lt;p&gt;데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.&lt;/p&gt;
+&lt;p&gt;데이터베이스에서는 결과를 처리하는 위치에 따라 &lt;strong&gt;서버 커서&lt;/strong&gt;와 &lt;strong&gt;클라이언트 커서&lt;/strong&gt;으로 구분할 수 있습니다.&lt;/p&gt;</description>
     </item>
     <item>
       <title>바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용</title>
