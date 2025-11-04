@@ -4,10 +4,27 @@
     <title>DoNT - Do Not Think!!!</title>
     <link>https://dont.kr/</link>
     <description>Recent content on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.150.1</generator>
+    <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 02 Oct 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 04 Nov 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MySQL vs Oracle: 커서(Cursor) 동작 방식 비교</title>
+      <link>https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/</link>
+      <pubDate>Tue, 04 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/</guid>
+      <description>&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다&lt;/li&gt;
+&lt;li&gt;MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식&lt;/li&gt;
+&lt;li&gt;Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;클라이언트 사이드 커서&amp;quot;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절&lt;/li&gt;
+&lt;li&gt;JDBC 환경에서 MySQL은 &lt;code&gt;useCursorFetch=true&lt;/code&gt; + &lt;code&gt;setFetchSize()&lt;/code&gt; 두 가지 모두 필요&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;1-커서란-무엇인가&#34;&gt;1. 커서란 무엇인가&lt;/h2&gt;
+&lt;p&gt;데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용</title>
       <link>https://dont.kr/posts/2025/2025-10-02-beyond-vibe-coding-planning/</link>

@@ -129,6 +129,19 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">MySQL vs Oracle: 커서(Cursor) 동작 방식 비교
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TL;DR MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다 MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식 Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치 “클라이언트 사이드 커서&#34;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절 JDBC 환경에서 MySQL은 useCursorFetch=true &#43; setFetchSize() 두 가지 모두 필요 1. 커서란 무엇인가 데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-04 00:00:00 +0900 KST'>2025년 11월 4일</span></footer>
+  <a class="entry-link" aria-label="post link to MySQL vs Oracle: 커서(Cursor) 동작 방식 비교" href="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">[Backup] MySQL 대용량 sql import 시 진행상황 확인하기
     </h2>
   </header>

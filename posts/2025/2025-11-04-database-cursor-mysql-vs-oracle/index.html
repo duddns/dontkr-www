@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>MySQL vs Oracle: 커서(Cursor) 동작 방식 비교 | DoNT - Do Not Think!!!</title>
+<meta name="keywords" content="db, cursor, mysql, oracle">
+<meta name="description" content="TL;DR
+
+MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다
+MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식
+Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치
+&ldquo;클라이언트 사이드 커서&quot;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절
+JDBC 환경에서 MySQL은 useCursorFetch=true &#43; setFetchSize() 두 가지 모두 필요
+
+
+1. 커서란 무엇인가
+데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b82bb54e773ca1a0c77d4d6f9be35e1e5b5dda2a8437e0f176570e67c8a85ffd.css" integrity="sha256-uCu1Tnc8oaDHfU1vm&#43;NeHltd2iqEN&#43;DxdlcOZ8ioX/0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="MySQL vs Oracle: 커서(Cursor) 동작 방식 비교">
+  <meta property="og:description" content="TL;DR MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다 MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식 Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치 “클라이언트 사이드 커서&#34;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절 JDBC 환경에서 MySQL은 useCursorFetch=true &#43; setFetchSize() 두 가지 모두 필요 1. 커서란 무엇인가 데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-04T00:00:00+09:00">
+    <meta property="article:modified_time" content="2025-11-04T00:00:00+09:00">
+    <meta property="article:tag" content="Db">
+    <meta property="article:tag" content="Cursor">
+    <meta property="article:tag" content="Mysql">
+    <meta property="article:tag" content="Oracle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="MySQL vs Oracle: 커서(Cursor) 동작 방식 비교">
+<meta name="twitter:description" content="TL;DR
+
+MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다
+MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식
+Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치
+&ldquo;클라이언트 사이드 커서&quot;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절
+JDBC 환경에서 MySQL은 useCursorFetch=true &#43; setFetchSize() 두 가지 모두 필요
+
+
+1. 커서란 무엇인가
+데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dont.kr/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "MySQL vs Oracle: 커서(Cursor) 동작 방식 비교",
+      "item": "https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MySQL vs Oracle: 커서(Cursor) 동작 방식 비교",
+  "name": "MySQL vs Oracle: 커서(Cursor) 동작 방식 비교",
+  "description": "TL;DR MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다 MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식 Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치 \u0026ldquo;클라이언트 사이드 커서\u0026quot;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절 JDBC 환경에서 MySQL은 useCursorFetch=true + setFetchSize() 두 가지 모두 필요 1. 커서란 무엇인가 데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.\n",
+  "keywords": [
+    "db", "cursor", "mysql", "oracle"
+  ],
+  "articleBody": "TL;DR MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다 MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식 Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치 “클라이언트 사이드 커서\"는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절 JDBC 환경에서 MySQL은 useCursorFetch=true + setFetchSize() 두 가지 모두 필요 1. 커서란 무엇인가 데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.\n커서의 필요성 -- 100만 건의 데이터를 한 번에 처리? SELECT * FROM large_table; -- 메모리 부족! -- 커서를 사용하면? -- 필요한 만큼만 순차적으로 처리 가능 일반적으로 데이터베이스에서는 결과를 처리하는 방식에 따라 다음과 같이 구분합니다:\n클라이언트 버퍼링: 전체 결과를 클라이언트 메모리로 로드 서버 커서: 서버에서 커서 상태를 유지하고 필요한 만큼만 전송 스트리밍: 서버에서 클라이언트로 결과를 연속적으로 전송 2. 용어 정리: 혼란스러운 “클라이언트 커서” 일반적인 데이터베이스 용어 SQL Server, PostgreSQL 등 많은 데이터베이스에서는 “클라이언트 사이드 커서(Client-side Cursor)“라는 용어를 공식적으로 사용합니다. 이는 전체 결과를 클라이언트 메모리로 가져와서 클라이언트 측에서 커서를 관리하는 방식을 의미합니다.\nMySQL에서는 부적절한 이유 MySQL 공식 문서는 “클라이언트 사이드 커서\"라는 용어를 사용하지 않습니다. 대신 다음과 같이 명확히 구분합니다:\nmysql_store_result(): 클라이언트 버퍼링 mysql_use_result(): 서버 스트리밍 Server-side cursor: 서버 커서 MySQL 문맥에서 “클라이언트 커서\"라고 표현하면 혼란을 줄 수 있습니다. 실제로는 단순히 전체 결과를 클라이언트 메모리에 로드하는 것일 뿐, 진짜 “커서\"가 아니기 때문입니다.\n올바른 용어 사용 환경 적절한 표현 MySQL 전문가와 대화 “클라이언트 버퍼링”, “전체 결과 로드” 일반 DB 개발자와 대화 “클라이언트 사이드 커서” (통용됨) 기술 문서 작성 “클라이언트 측 결과 버퍼링” 권장: MySQL 관련 글에서는 “클라이언트 버퍼링\"이 더 정확합니다. 3. MySQL 서버 커서 3.1 SQL 콘솔에서 MySQL 콘솔에서는 Stored Procedure 내부에서만 커서를 사용할 수 있습니다.\n-- 콘솔에서 직접 사용 불가 DECLARE cur CURSOR FOR SELECT * FROM employees; -- Error: DECLARE is allowed only inside stored programs -- Stored Procedure 안에서만 가능 DELIMITER $$ CREATE PROCEDURE process_employees() BEGIN DECLARE done INT DEFAULT FALSE; DECLARE emp_id INT; DECLARE emp_cursor CURSOR FOR SELECT id FROM employees; DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = TRUE; OPEN emp_cursor; read_loop: LOOP FETCH emp_cursor INTO emp_id; IF done THEN LEAVE read_loop; END IF; -- 처리 로직 END LOOP; CLOSE emp_cursor; END$$ DELIMITER ; 3.2 클라이언트 라이브러리에서 (JDBC) JDBC를 통해서는 일반 SELECT 쿼리에도 서버 커서를 사용할 수 있습니다.\nString url = \"jdbc:mysql://localhost:3306/db?useCursorFetch=true\"; PreparedStatement pstmt = conn.prepareStatement( \"SELECT * FROM employees\", ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY ); pstmt.setFetchSize(100); ResultSet rs = pstmt.executeQuery(); 필수 조건:\nuseCursorFetch=true (JDBC URL 파라미터) setFetchSize(n \u003e 0) 설정 3.3 내부 동작: 임시 테이블 방식 MySQL의 서버 커서는 내부 임시 테이블로 구현됩니다.\n쿼리 실행 ↓ 전체 결과를 임시 테이블에 저장 - MEMORY 테이블 (작은 경우) - MyISAM 테이블 (큰 경우, max_heap_table_size 초과 시) ↓ 클라이언트 요청 시 fetchSize만큼 전송 특징:\n전체 결과가 임시 테이블에 구체화됨 초기 구체화 시간이 필요함 대용량 결과 시 디스크 사용 가능 메모리 효율성이 상대적으로 낮음 4. Oracle 서버 커서 4.1 SQL 콘솔에서 Oracle은 SQL 콘솔에서 직접 커서를 사용할 수 있습니다.\n-- SQL*Plus나 콘솔에서 바로 사용 가능 DECLARE CURSOR emp_cursor IS SELECT id, name FROM employees; v_id NUMBER; v_name VARCHAR2(100); BEGIN OPEN emp_cursor; LOOP FETCH emp_cursor INTO v_id, v_name; EXIT WHEN emp_cursor%NOTFOUND; -- 처리 로직 END LOOP; CLOSE emp_cursor; END; / Oracle에서는 모든 SQL 문이 자동으로 암시적 커서를 사용합니다.\nBEGIN UPDATE employees SET salary = salary * 1.1; DBMS_OUTPUT.PUT_LINE('Updated: ' || SQL%ROWCOUNT); END; / 4.2 클라이언트 라이브러리에서 (JDBC) Oracle JDBC는 setFetchSize()만으로 서버 커서가 활성화됩니다.\nString url = \"jdbc:oracle:thin:@localhost:1521:orcl\"; PreparedStatement pstmt = conn.prepareStatement( \"SELECT * FROM employees\" ); pstmt.setFetchSize(100); ResultSet rs = pstmt.executeQuery(); 필수 조건:\nsetFetchSize(n \u003e 0) (이것만 필요) 4.3 내부 동작: PGA 메모리 방식 Oracle은 PGA(Program Global Area) 메모리에서 커서 상태를 유지합니다.\n쿼리 실행 ↓ 결과 집합 포인터를 PGA에 생성 (실제 데이터는 Buffer Cache에 유지) ↓ 클라이언트 요청 시 필요한 행만 전송 특징:\n임시 테이블을 생성하지 않음 전체 결과를 미리 구체화하지 않음 세션별 PGA 사용으로 격리됨 메모리 효율적 On-demand 페치로 성능 우수 5. MySQL vs Oracle 비교 커서 지원 범위 SQL 콘솔에서 커서 선언\nMySQL: Stored Procedure 내부에서만 가능 Oracle: 어디서나 가능 (PL/SQL 블록에서 직접 사용) 클라이언트 라이브러리(JDBC 등)를 통한 서버 커서\nMySQL: 가능 Oracle: 가능 암시적 커서\nMySQL: 지원하지 않음 Oracle: 모든 SQL 문에 자동으로 적용 JDBC 커서 설정 MySQL 필수 조건:\nJDBC URL에 useCursorFetch=true 추가 setFetchSize(n \u003e 0) 설정 Oracle 필수 조건:\nsetFetchSize(n \u003e 0) 설정 내부 동작 방식 저장 방식\nMySQL: 임시 테이블 생성 (MEMORY → MyISAM) Oracle: PGA 메모리에 커서 상태만 유지 데이터 구체화\nMySQL: 전체 결과를 임시 테이블에 저장 Oracle: 포인터만 유지, 필요한 만큼만 페치 메모리 위치\nMySQL: 서버 전역 (임시 테이블) Oracle: 세션별 PGA (격리됨) 디스크 사용\nMySQL: 큰 결과 시 디스크 임시 테이블 사용 Oracle: 거의 없음 (Buffer Cache 활용) 초기 오버헤드\nMySQL: 높음 (전체 결과 구체화 필요) Oracle: 낮음 (즉시 시작 가능) 성능\nMySQL: 상대적으로 느림 (초기 구체화 시간) Oracle: 상대적으로 빠름 (On-demand) 장단점 MySQL:\n장점: 단순한 구현, 결과가 확정되어 일관성 보장 단점: 초기 구체화 시간, 메모리/디스크 사용량 높음 Oracle:\n장점: 메모리 효율적, 빠른 시작, 유연한 페치 단점: 상대적으로 복잡한 구조 6. 실전 가이드 MySQL에서 서버 커서 사용하기 기본 사용 String url = \"jdbc:mysql://localhost:3306/mydb?useCursorFetch=true\"; Properties props = new Properties(); props.setProperty(\"user\", \"username\"); props.setProperty(\"password\", \"password\"); try (Connection conn = DriverManager.getConnection(url, props)) { PreparedStatement pstmt = conn.prepareStatement( \"SELECT * FROM large_table WHERE created_at \u003e ?\", ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY ); pstmt.setFetchSize(1000); pstmt.setTimestamp(1, startDate); ResultSet rs = pstmt.executeQuery(); while (rs.next()) { // 1000건씩 페치하며 처리 processRow(rs); } } 스트리밍 모드 (커서 아님) 서버 커서가 아닌 스트리밍 모드도 있습니다. 이는 임시 테이블을 생성하지 않고 서버에서 결과를 직접 스트리밍합니다.\nConnection conn = DriverManager.getConnection(url, user, password); conn.setAutoCommit(false); // 필수! Statement stmt = conn.createStatement( ResultSet.TYPE_FORWARD_ONLY, ResultSet.CONCUR_READ_ONLY ); stmt.setFetchSize(Integer.MIN_VALUE); // 특별한 값! ResultSet rs = stmt.executeQuery(\"SELECT * FROM large_table\"); while (rs.next()) { processRow(rs); } conn.commit(); 차이점:\n서버 커서: 임시 테이블 생성, 여러 번 페치 가능 스트리밍: 임시 테이블 없음, 한 방향으로만 순회, 더 빠름 Oracle에서 커서 최적화하기 기본 사용 String url = \"jdbc:oracle:thin:@localhost:1521:orcl\"; Connection conn = DriverManager.getConnection(url, \"user\", \"password\"); PreparedStatement pstmt = conn.prepareStatement( \"SELECT * FROM large_table WHERE created_at \u003e ?\" ); pstmt.setFetchSize(1000); // 이것만으로 충분! pstmt.setTimestamp(1, startDate); ResultSet rs = pstmt.executeQuery(); while (rs.next()) { processRow(rs); } FetchSize 최적화 // 너무 작으면: 네트워크 왕복 횟수 증가 pstmt.setFetchSize(10); // 비효율적 // 너무 크면: 클라이언트 메모리 부담 pstmt.setFetchSize(10000); // 과도할 수 있음 // 권장: 100-1000 사이 pstmt.setFetchSize(100); // Oracle 공식 권장 PL/SQL 커서 활용 CREATE OR REPLACE PROCEDURE process_employees IS CURSOR emp_cursor IS SELECT id, name, salary FROM employees WHERE department_id = 10; TYPE emp_table IS TABLE OF emp_cursor%ROWTYPE; emp_batch emp_table; batch_size CONSTANT PLS_INTEGER := 1000; BEGIN OPEN emp_cursor; LOOP FETCH emp_cursor BULK COLLECT INTO emp_batch LIMIT batch_size; EXIT WHEN emp_batch.COUNT = 0; FORALL i IN 1..emp_batch.COUNT UPDATE employees SET salary = salary * 1.1 WHERE id = emp_batch(i).id; COMMIT; END LOOP; CLOSE emp_cursor; END; / 7. 다른 데이터베이스는? PostgreSQL Oracle과 유사한 방식으로 서버 커서를 지원합니다.\nSQL 콘솔에서 DECLARE CURSOR 사용 가능 FETCH 방향 제어 가능 (FORWARD, BACKWARD) 트랜잭션 내에서만 유효 BEGIN; DECLARE emp_cursor CURSOR FOR SELECT * FROM employees; FETCH NEXT FROM emp_cursor; FETCH PRIOR FROM emp_cursor; -- 역방향 가능! CLOSE emp_cursor; COMMIT; SQL Server 클라이언트/서버 사이드 커서를 모두 명시적으로 구분하여 지원합니다.\nADO에서 CursorLocation 속성으로 선택 adUseClient: 클라이언트 사이드 커서 adUseServer: 서버 사이드 커서 성능상 커서보다 SET 기반 처리 권장 ",
+  "wordCount" : "1153",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-04T00:00:00+09:00",
+  "dateModified": "2025-11-04T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoNT - Do Not Think!!!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dont.kr/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dont.kr/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dont.kr/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      MySQL vs Oracle: 커서(Cursor) 동작 방식 비교
+    </h1>
+    <div class="post-meta"><span title='2025-11-04 00:00:00 +0900 KST'>2025년 11월 4일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="tldr">TL;DR<a hidden class="anchor" aria-hidden="true" href="#tldr">#</a></h2>
+<ul>
+<li>MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다릅니다</li>
+<li>MySQL은 임시 테이블을 생성하여 전체 결과를 저장하는 방식</li>
+<li>Oracle은 PGA(Program Global Area) 메모리에서 커서 상태만 유지하고 필요한 만큼만 페치</li>
+<li>&ldquo;클라이언트 사이드 커서&quot;는 일반적인 DB 용어이지만 MySQL 문맥에서는 부적절</li>
+<li>JDBC 환경에서 MySQL은 <code>useCursorFetch=true</code> + <code>setFetchSize()</code> 두 가지 모두 필요</li>
+</ul>
+<hr>
+<h2 id="1-커서란-무엇인가">1. 커서란 무엇인가<a hidden class="anchor" aria-hidden="true" href="#1-커서란-무엇인가">#</a></h2>
+<p>데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.</p>
+<h3 id="커서의-필요성">커서의 필요성<a hidden class="anchor" aria-hidden="true" href="#커서의-필요성">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 100만 건의 데이터를 한 번에 처리?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> large_table; <span style="color:#75715e">-- 메모리 부족!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- 커서를 사용하면?
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- 필요한 만큼만 순차적으로 처리 가능
+</span></span></span></code></pre></div><p>일반적으로 데이터베이스에서는 결과를 처리하는 방식에 따라 다음과 같이 구분합니다:</p>
+<ul>
+<li><strong>클라이언트 버퍼링</strong>: 전체 결과를 클라이언트 메모리로 로드</li>
+<li><strong>서버 커서</strong>: 서버에서 커서 상태를 유지하고 필요한 만큼만 전송</li>
+<li><strong>스트리밍</strong>: 서버에서 클라이언트로 결과를 연속적으로 전송</li>
+</ul>
+<hr>
+<h2 id="2-용어-정리-혼란스러운-클라이언트-커서">2. 용어 정리: 혼란스러운 &ldquo;클라이언트 커서&rdquo;<a hidden class="anchor" aria-hidden="true" href="#2-용어-정리-혼란스러운-클라이언트-커서">#</a></h2>
+<h3 id="일반적인-데이터베이스-용어">일반적인 데이터베이스 용어<a hidden class="anchor" aria-hidden="true" href="#일반적인-데이터베이스-용어">#</a></h3>
+<p>SQL Server, PostgreSQL 등 많은 데이터베이스에서는 &ldquo;클라이언트 사이드 커서(Client-side Cursor)&ldquo;라는 용어를 공식적으로 사용합니다. 이는 전체 결과를 클라이언트 메모리로 가져와서 클라이언트 측에서 커서를 관리하는 방식을 의미합니다.</p>
+<h3 id="mysql에서는-부적절한-이유">MySQL에서는 부적절한 이유<a hidden class="anchor" aria-hidden="true" href="#mysql에서는-부적절한-이유">#</a></h3>
+<p>MySQL 공식 문서는 &ldquo;클라이언트 사이드 커서&quot;라는 용어를 사용하지 않습니다. 대신 다음과 같이 명확히 구분합니다:</p>
+<ul>
+<li><code>mysql_store_result()</code>: 클라이언트 버퍼링</li>
+<li><code>mysql_use_result()</code>: 서버 스트리밍</li>
+<li>Server-side cursor: 서버 커서</li>
+</ul>
+<p>MySQL 문맥에서 &ldquo;클라이언트 커서&quot;라고 표현하면 혼란을 줄 수 있습니다. 실제로는 단순히 전체 결과를 클라이언트 메모리에 로드하는 것일 뿐, 진짜 &ldquo;커서&quot;가 아니기 때문입니다.</p>
+<h3 id="올바른-용어-사용">올바른 용어 사용<a hidden class="anchor" aria-hidden="true" href="#올바른-용어-사용">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>환경</th>
+          <th>적절한 표현</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>MySQL 전문가와 대화</td>
+          <td>&ldquo;클라이언트 버퍼링&rdquo;, &ldquo;전체 결과 로드&rdquo;</td>
+      </tr>
+      <tr>
+          <td>일반 DB 개발자와 대화</td>
+          <td>&ldquo;클라이언트 사이드 커서&rdquo; (통용됨)</td>
+      </tr>
+      <tr>
+          <td>기술 문서 작성</td>
+          <td>&ldquo;클라이언트 측 결과 버퍼링&rdquo;</td>
+      </tr>
+  </tbody>
+</table>
+<ul>
+<li><strong>권장</strong>: MySQL 관련 글에서는 &ldquo;클라이언트 버퍼링&quot;이 더 정확합니다.</li>
+</ul>
+<hr>
+<h2 id="3-mysql-서버-커서">3. MySQL 서버 커서<a hidden class="anchor" aria-hidden="true" href="#3-mysql-서버-커서">#</a></h2>
+<h3 id="31-sql-콘솔에서">3.1 SQL 콘솔에서<a hidden class="anchor" aria-hidden="true" href="#31-sql-콘솔에서">#</a></h3>
+<p>MySQL 콘솔에서는 Stored Procedure 내부에서만 커서를 사용할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- 콘솔에서 직접 사용 불가
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DECLARE</span> cur <span style="color:#66d9ef">CURSOR</span> <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> employees;
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Error: DECLARE is allowed only inside stored programs
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">-- Stored Procedure 안에서만 가능
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DELIMITER</span> <span style="color:#960050;background-color:#1e0010">$$</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">PROCEDURE</span> process_employees()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">DECLARE</span> done INT <span style="color:#66d9ef">DEFAULT</span> <span style="color:#66d9ef">FALSE</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">DECLARE</span> emp_id INT;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">DECLARE</span> emp_cursor <span style="color:#66d9ef">CURSOR</span> <span style="color:#66d9ef">FOR</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">SELECT</span> id <span style="color:#66d9ef">FROM</span> employees;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">DECLARE</span> <span style="color:#66d9ef">CONTINUE</span> <span style="color:#66d9ef">HANDLER</span> <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">NOT</span> <span style="color:#66d9ef">FOUND</span> <span style="color:#66d9ef">SET</span> done <span style="color:#f92672">=</span> <span style="color:#66d9ef">TRUE</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">OPEN</span> emp_cursor;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    read_loop: LOOP
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">FETCH</span> emp_cursor <span style="color:#66d9ef">INTO</span> emp_id;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">IF</span> done <span style="color:#66d9ef">THEN</span>
+</span></span><span style="display:flex;"><span>            LEAVE read_loop;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">END</span> <span style="color:#66d9ef">IF</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">-- 처리 로직
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">END</span> LOOP;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CLOSE</span> emp_cursor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span><span style="color:#960050;background-color:#1e0010">$$</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">DELIMITER</span> ;
+</span></span></code></pre></div><h3 id="32-클라이언트-라이브러리에서-jdbc">3.2 클라이언트 라이브러리에서 (JDBC)<a hidden class="anchor" aria-hidden="true" href="#32-클라이언트-라이브러리에서-jdbc">#</a></h3>
+<p>JDBC를 통해서는 일반 SELECT 쿼리에도 서버 커서를 사용할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/db?useCursorFetch=true&#34;</span>;
+</span></span><span style="display:flex;"><span>PreparedStatement pstmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;SELECT * FROM employees&#34;</span>,
+</span></span><span style="display:flex;"><span>    ResultSet.<span style="color:#a6e22e">TYPE_FORWARD_ONLY</span>,
+</span></span><span style="display:flex;"><span>    ResultSet.<span style="color:#a6e22e">CONCUR_READ_ONLY</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>pstmt.<span style="color:#a6e22e">setFetchSize</span>(100);
+</span></span><span style="display:flex;"><span>ResultSet rs <span style="color:#f92672">=</span> pstmt.<span style="color:#a6e22e">executeQuery</span>();
+</span></span></code></pre></div><p><strong>필수 조건</strong>:</p>
+<ol>
+<li><code>useCursorFetch=true</code> (JDBC URL 파라미터)</li>
+<li><code>setFetchSize(n &gt; 0)</code> 설정</li>
+</ol>
+<h3 id="33-내부-동작-임시-테이블-방식">3.3 내부 동작: 임시 테이블 방식<a hidden class="anchor" aria-hidden="true" href="#33-내부-동작-임시-테이블-방식">#</a></h3>
+<p>MySQL의 서버 커서는 내부 임시 테이블로 구현됩니다.</p>
+<pre tabindex="0"><code>쿼리 실행
+    ↓
+전체 결과를 임시 테이블에 저장
+- MEMORY 테이블 (작은 경우)
+- MyISAM 테이블 (큰 경우, max_heap_table_size 초과 시)
+    ↓
+클라이언트 요청 시 fetchSize만큼 전송
+</code></pre><p><strong>특징</strong>:</p>
+<ul>
+<li>전체 결과가 임시 테이블에 구체화됨</li>
+<li>초기 구체화 시간이 필요함</li>
+<li>대용량 결과 시 디스크 사용 가능</li>
+<li>메모리 효율성이 상대적으로 낮음</li>
+</ul>
+<hr>
+<h2 id="4-oracle-서버-커서">4. Oracle 서버 커서<a hidden class="anchor" aria-hidden="true" href="#4-oracle-서버-커서">#</a></h2>
+<h3 id="41-sql-콘솔에서">4.1 SQL 콘솔에서<a hidden class="anchor" aria-hidden="true" href="#41-sql-콘솔에서">#</a></h3>
+<p>Oracle은 SQL 콘솔에서 직접 커서를 사용할 수 있습니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- SQL*Plus나 콘솔에서 바로 사용 가능
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">DECLARE</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CURSOR</span> emp_cursor <span style="color:#66d9ef">IS</span> 
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">SELECT</span> id, name <span style="color:#66d9ef">FROM</span> employees;
+</span></span><span style="display:flex;"><span>    v_id NUMBER;
+</span></span><span style="display:flex;"><span>    v_name VARCHAR2(<span style="color:#ae81ff">100</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">OPEN</span> emp_cursor;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    LOOP
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">FETCH</span> emp_cursor <span style="color:#66d9ef">INTO</span> v_id, v_name;
+</span></span><span style="display:flex;"><span>        EXIT <span style="color:#66d9ef">WHEN</span> emp_cursor<span style="color:#f92672">%</span>NOTFOUND;
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">-- 처리 로직
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">END</span> LOOP;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CLOSE</span> emp_cursor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><p>Oracle에서는 모든 SQL 문이 자동으로 암시적 커서를 사용합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">UPDATE</span> employees <span style="color:#66d9ef">SET</span> salary <span style="color:#f92672">=</span> salary <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>    DBMS_OUTPUT.PUT_LINE(<span style="color:#e6db74">&#39;Updated: &#39;</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">SQL</span><span style="color:#f92672">%</span>ROWCOUNT);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><h3 id="42-클라이언트-라이브러리에서-jdbc">4.2 클라이언트 라이브러리에서 (JDBC)<a hidden class="anchor" aria-hidden="true" href="#42-클라이언트-라이브러리에서-jdbc">#</a></h3>
+<p>Oracle JDBC는 <strong><code>setFetchSize()</code>만으로</strong> 서버 커서가 활성화됩니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jdbc:oracle:thin:@localhost:1521:orcl&#34;</span>;
+</span></span><span style="display:flex;"><span>PreparedStatement pstmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;SELECT * FROM employees&#34;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>pstmt.<span style="color:#a6e22e">setFetchSize</span>(100);
+</span></span><span style="display:flex;"><span>ResultSet rs <span style="color:#f92672">=</span> pstmt.<span style="color:#a6e22e">executeQuery</span>();
+</span></span></code></pre></div><p><strong>필수 조건</strong>:</p>
+<ol>
+<li><code>setFetchSize(n &gt; 0)</code> (이것만 필요)</li>
+</ol>
+<h3 id="43-내부-동작-pga-메모리-방식">4.3 내부 동작: PGA 메모리 방식<a hidden class="anchor" aria-hidden="true" href="#43-내부-동작-pga-메모리-방식">#</a></h3>
+<p>Oracle은 PGA(Program Global Area) 메모리에서 커서 상태를 유지합니다.</p>
+<pre tabindex="0"><code>쿼리 실행
+    ↓
+결과 집합 포인터를 PGA에 생성
+(실제 데이터는 Buffer Cache에 유지)
+    ↓
+클라이언트 요청 시 필요한 행만 전송
+</code></pre><p><strong>특징</strong>:</p>
+<ul>
+<li>임시 테이블을 생성하지 않음</li>
+<li>전체 결과를 미리 구체화하지 않음</li>
+<li>세션별 PGA 사용으로 격리됨</li>
+<li>메모리 효율적</li>
+<li>On-demand 페치로 성능 우수</li>
+</ul>
+<hr>
+<h2 id="5-mysql-vs-oracle-비교">5. MySQL vs Oracle 비교<a hidden class="anchor" aria-hidden="true" href="#5-mysql-vs-oracle-비교">#</a></h2>
+<h3 id="커서-지원-범위">커서 지원 범위<a hidden class="anchor" aria-hidden="true" href="#커서-지원-범위">#</a></h3>
+<p><strong>SQL 콘솔에서 커서 선언</strong></p>
+<ul>
+<li><strong>MySQL</strong>: Stored Procedure 내부에서만 가능</li>
+<li><strong>Oracle</strong>: 어디서나 가능 (PL/SQL 블록에서 직접 사용)</li>
+</ul>
+<p><strong>클라이언트 라이브러리(JDBC 등)를 통한 서버 커서</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 가능</li>
+<li><strong>Oracle</strong>: 가능</li>
+</ul>
+<p><strong>암시적 커서</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 지원하지 않음</li>
+<li><strong>Oracle</strong>: 모든 SQL 문에 자동으로 적용</li>
+</ul>
+<h3 id="jdbc-커서-설정">JDBC 커서 설정<a hidden class="anchor" aria-hidden="true" href="#jdbc-커서-설정">#</a></h3>
+<p><strong>MySQL 필수 조건</strong>:</p>
+<ol>
+<li>JDBC URL에 <code>useCursorFetch=true</code> 추가</li>
+<li><code>setFetchSize(n &gt; 0)</code> 설정</li>
+</ol>
+<p><strong>Oracle 필수 조건</strong>:</p>
+<ol>
+<li><code>setFetchSize(n &gt; 0)</code> 설정</li>
+</ol>
+<h3 id="내부-동작-방식">내부 동작 방식<a hidden class="anchor" aria-hidden="true" href="#내부-동작-방식">#</a></h3>
+<p><strong>저장 방식</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 임시 테이블 생성 (MEMORY → MyISAM)</li>
+<li><strong>Oracle</strong>: PGA 메모리에 커서 상태만 유지</li>
+</ul>
+<p><strong>데이터 구체화</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 전체 결과를 임시 테이블에 저장</li>
+<li><strong>Oracle</strong>: 포인터만 유지, 필요한 만큼만 페치</li>
+</ul>
+<p><strong>메모리 위치</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 서버 전역 (임시 테이블)</li>
+<li><strong>Oracle</strong>: 세션별 PGA (격리됨)</li>
+</ul>
+<p><strong>디스크 사용</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 큰 결과 시 디스크 임시 테이블 사용</li>
+<li><strong>Oracle</strong>: 거의 없음 (Buffer Cache 활용)</li>
+</ul>
+<p><strong>초기 오버헤드</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 높음 (전체 결과 구체화 필요)</li>
+<li><strong>Oracle</strong>: 낮음 (즉시 시작 가능)</li>
+</ul>
+<p><strong>성능</strong></p>
+<ul>
+<li><strong>MySQL</strong>: 상대적으로 느림 (초기 구체화 시간)</li>
+<li><strong>Oracle</strong>: 상대적으로 빠름 (On-demand)</li>
+</ul>
+<h3 id="장단점">장단점<a hidden class="anchor" aria-hidden="true" href="#장단점">#</a></h3>
+<p><strong>MySQL</strong>:</p>
+<ul>
+<li>장점: 단순한 구현, 결과가 확정되어 일관성 보장</li>
+<li>단점: 초기 구체화 시간, 메모리/디스크 사용량 높음</li>
+</ul>
+<p><strong>Oracle</strong>:</p>
+<ul>
+<li>장점: 메모리 효율적, 빠른 시작, 유연한 페치</li>
+<li>단점: 상대적으로 복잡한 구조</li>
+</ul>
+<hr>
+<h2 id="6-실전-가이드">6. 실전 가이드<a hidden class="anchor" aria-hidden="true" href="#6-실전-가이드">#</a></h2>
+<h3 id="mysql에서-서버-커서-사용하기">MySQL에서 서버 커서 사용하기<a hidden class="anchor" aria-hidden="true" href="#mysql에서-서버-커서-사용하기">#</a></h3>
+<h4 id="기본-사용">기본 사용<a hidden class="anchor" aria-hidden="true" href="#기본-사용">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jdbc:mysql://localhost:3306/mydb?useCursorFetch=true&#34;</span>;
+</span></span><span style="display:flex;"><span>Properties props <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Properties();
+</span></span><span style="display:flex;"><span>props.<span style="color:#a6e22e">setProperty</span>(<span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;username&#34;</span>);
+</span></span><span style="display:flex;"><span>props.<span style="color:#a6e22e">setProperty</span>(<span style="color:#e6db74">&#34;password&#34;</span>, <span style="color:#e6db74">&#34;password&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">try</span> (Connection conn <span style="color:#f92672">=</span> DriverManager.<span style="color:#a6e22e">getConnection</span>(url, props)) {
+</span></span><span style="display:flex;"><span>    PreparedStatement pstmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;SELECT * FROM large_table WHERE created_at &gt; ?&#34;</span>,
+</span></span><span style="display:flex;"><span>        ResultSet.<span style="color:#a6e22e">TYPE_FORWARD_ONLY</span>,
+</span></span><span style="display:flex;"><span>        ResultSet.<span style="color:#a6e22e">CONCUR_READ_ONLY</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>    pstmt.<span style="color:#a6e22e">setFetchSize</span>(1000);
+</span></span><span style="display:flex;"><span>    pstmt.<span style="color:#a6e22e">setTimestamp</span>(1, startDate);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ResultSet rs <span style="color:#f92672">=</span> pstmt.<span style="color:#a6e22e">executeQuery</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (rs.<span style="color:#a6e22e">next</span>()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 1000건씩 페치하며 처리</span>
+</span></span><span style="display:flex;"><span>        processRow(rs);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="스트리밍-모드-커서-아님">스트리밍 모드 (커서 아님)<a hidden class="anchor" aria-hidden="true" href="#스트리밍-모드-커서-아님">#</a></h4>
+<p>서버 커서가 아닌 <strong>스트리밍 모드</strong>도 있습니다. 이는 임시 테이블을 생성하지 않고 서버에서 결과를 직접 스트리밍합니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>Connection conn <span style="color:#f92672">=</span> DriverManager.<span style="color:#a6e22e">getConnection</span>(url, user, password);
+</span></span><span style="display:flex;"><span>conn.<span style="color:#a6e22e">setAutoCommit</span>(<span style="color:#66d9ef">false</span>);  <span style="color:#75715e">// 필수!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Statement stmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">createStatement</span>(
+</span></span><span style="display:flex;"><span>    ResultSet.<span style="color:#a6e22e">TYPE_FORWARD_ONLY</span>,
+</span></span><span style="display:flex;"><span>    ResultSet.<span style="color:#a6e22e">CONCUR_READ_ONLY</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>stmt.<span style="color:#a6e22e">setFetchSize</span>(Integer.<span style="color:#a6e22e">MIN_VALUE</span>);  <span style="color:#75715e">// 특별한 값!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ResultSet rs <span style="color:#f92672">=</span> stmt.<span style="color:#a6e22e">executeQuery</span>(<span style="color:#e6db74">&#34;SELECT * FROM large_table&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (rs.<span style="color:#a6e22e">next</span>()) {
+</span></span><span style="display:flex;"><span>    processRow(rs);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>conn.<span style="color:#a6e22e">commit</span>();
+</span></span></code></pre></div><p><strong>차이점</strong>:</p>
+<ul>
+<li>서버 커서: 임시 테이블 생성, 여러 번 페치 가능</li>
+<li>스트리밍: 임시 테이블 없음, 한 방향으로만 순회, 더 빠름</li>
+</ul>
+<h3 id="oracle에서-커서-최적화하기">Oracle에서 커서 최적화하기<a hidden class="anchor" aria-hidden="true" href="#oracle에서-커서-최적화하기">#</a></h3>
+<h4 id="기본-사용-1">기본 사용<a hidden class="anchor" aria-hidden="true" href="#기본-사용-1">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span>String url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;jdbc:oracle:thin:@localhost:1521:orcl&#34;</span>;
+</span></span><span style="display:flex;"><span>Connection conn <span style="color:#f92672">=</span> DriverManager.<span style="color:#a6e22e">getConnection</span>(url, <span style="color:#e6db74">&#34;user&#34;</span>, <span style="color:#e6db74">&#34;password&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>PreparedStatement pstmt <span style="color:#f92672">=</span> conn.<span style="color:#a6e22e">prepareStatement</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;SELECT * FROM large_table WHERE created_at &gt; ?&#34;</span>
+</span></span><span style="display:flex;"><span>);
+</span></span><span style="display:flex;"><span>pstmt.<span style="color:#a6e22e">setFetchSize</span>(1000);  <span style="color:#75715e">// 이것만으로 충분!</span>
+</span></span><span style="display:flex;"><span>pstmt.<span style="color:#a6e22e">setTimestamp</span>(1, startDate);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ResultSet rs <span style="color:#f92672">=</span> pstmt.<span style="color:#a6e22e">executeQuery</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (rs.<span style="color:#a6e22e">next</span>()) {
+</span></span><span style="display:flex;"><span>    processRow(rs);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="fetchsize-최적화">FetchSize 최적화<a hidden class="anchor" aria-hidden="true" href="#fetchsize-최적화">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// 너무 작으면: 네트워크 왕복 횟수 증가</span>
+</span></span><span style="display:flex;"><span>pstmt.<span style="color:#a6e22e">setFetchSize</span>(10);  <span style="color:#75715e">// 비효율적</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 너무 크면: 클라이언트 메모리 부담</span>
+</span></span><span style="display:flex;"><span>pstmt.<span style="color:#a6e22e">setFetchSize</span>(10000);  <span style="color:#75715e">// 과도할 수 있음</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 권장: 100-1000 사이</span>
+</span></span><span style="display:flex;"><span>pstmt.<span style="color:#a6e22e">setFetchSize</span>(100);  <span style="color:#75715e">// Oracle 공식 권장</span>
+</span></span></code></pre></div><h4 id="plsql-커서-활용">PL/SQL 커서 활용<a hidden class="anchor" aria-hidden="true" href="#plsql-커서-활용">#</a></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">CREATE</span> <span style="color:#66d9ef">OR</span> <span style="color:#66d9ef">REPLACE</span> <span style="color:#66d9ef">PROCEDURE</span> process_employees <span style="color:#66d9ef">IS</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CURSOR</span> emp_cursor <span style="color:#66d9ef">IS</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">SELECT</span> id, name, salary
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">FROM</span> employees
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">WHERE</span> department_id <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">TYPE</span> emp_table <span style="color:#66d9ef">IS</span> <span style="color:#66d9ef">TABLE</span> <span style="color:#66d9ef">OF</span> emp_cursor<span style="color:#f92672">%</span>ROWTYPE;
+</span></span><span style="display:flex;"><span>    emp_batch emp_table;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    batch_size CONSTANT PLS_INTEGER :<span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">OPEN</span> emp_cursor;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    LOOP
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">FETCH</span> emp_cursor BULK COLLECT <span style="color:#66d9ef">INTO</span> emp_batch <span style="color:#66d9ef">LIMIT</span> batch_size;
+</span></span><span style="display:flex;"><span>        EXIT <span style="color:#66d9ef">WHEN</span> emp_batch.<span style="color:#66d9ef">COUNT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        FORALL i <span style="color:#66d9ef">IN</span> <span style="color:#ae81ff">1</span>..emp_batch.<span style="color:#66d9ef">COUNT</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">UPDATE</span> employees
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">SET</span> salary <span style="color:#f92672">=</span> salary <span style="color:#f92672">*</span> <span style="color:#ae81ff">1</span>.<span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">WHERE</span> id <span style="color:#f92672">=</span> emp_batch(i).id;
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">COMMIT</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">END</span> LOOP;
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">CLOSE</span> emp_cursor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">END</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">/</span>
+</span></span></code></pre></div><hr>
+<h2 id="7-다른-데이터베이스는">7. 다른 데이터베이스는?<a hidden class="anchor" aria-hidden="true" href="#7-다른-데이터베이스는">#</a></h2>
+<h3 id="postgresql">PostgreSQL<a hidden class="anchor" aria-hidden="true" href="#postgresql">#</a></h3>
+<p>Oracle과 유사한 방식으로 서버 커서를 지원합니다.</p>
+<ul>
+<li>SQL 콘솔에서 <code>DECLARE CURSOR</code> 사용 가능</li>
+<li><code>FETCH</code> 방향 제어 가능 (FORWARD, BACKWARD)</li>
+<li>트랜잭션 내에서만 유효</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">BEGIN</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">DECLARE</span> emp_cursor <span style="color:#66d9ef">CURSOR</span> <span style="color:#66d9ef">FOR</span> <span style="color:#66d9ef">SELECT</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">FROM</span> employees;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">NEXT</span> <span style="color:#66d9ef">FROM</span> emp_cursor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">FETCH</span> <span style="color:#66d9ef">PRIOR</span> <span style="color:#66d9ef">FROM</span> emp_cursor;  <span style="color:#75715e">-- 역방향 가능!
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">CLOSE</span> emp_cursor;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">COMMIT</span>;
+</span></span></code></pre></div><h3 id="sql-server">SQL Server<a hidden class="anchor" aria-hidden="true" href="#sql-server">#</a></h3>
+<p>클라이언트/서버 사이드 커서를 모두 명시적으로 구분하여 지원합니다.</p>
+<ul>
+<li>ADO에서 <code>CursorLocation</code> 속성으로 선택</li>
+<li><code>adUseClient</code>: 클라이언트 사이드 커서</li>
+<li><code>adUseServer</code>: 서버 사이드 커서</li>
+<li>성능상 커서보다 SET 기반 처리 권장</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dont.kr/tags/db/">Db</a></li>
+      <li><a href="https://dont.kr/tags/cursor/">Cursor</a></li>
+      <li><a href="https://dont.kr/tags/mysql/">Mysql</a></li>
+      <li><a href="https://dont.kr/tags/oracle/">Oracle</a></li>
+    </ul>
+
+    <script src="https://utteranc.es/client.js"
+        repo="duddns/dontkr-utterances"
+        issue-term="title"
+        label="✨💬✨"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
