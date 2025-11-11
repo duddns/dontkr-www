@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>머신러닝 개념 정리 | DoNT - Do Not Think!!!</title>
+<meta name="keywords" content="ai, machine learning, deep learning">
+<meta name="description" content="1. 머신러닝 전체 프로세스
+원본 데이터 (텍스트, 이미지, 표 등)
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 전처리 단계
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+쪼개기
+   - 텍스트 → 토큰
+   - 이미지 → 픽셀
+   - 음성 → 프레임
+    ↓
+수치화 (Numericalization)
+   - 표현 방식을 숫자로 변환
+   - 토큰 → 숫자 ID
+   - 픽셀 → RGB 값
+   - 정규화 (0~1 범위)
+    ↓
+Feature 추출 (Feature Extraction)
+   - 의미있는 표현 선택/생성
+   - 수치화된 데이터 중 중요한 부분 선택
+   - 임베딩, 인코딩 등
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ Feature (입력 준비 완료)
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+[전통 머신러닝 경로]          [딥러닝 경로]
+    ↓                      ↓
+사람 설계 Feature     자동 Feature 학습
+(Feature 고정)        (Parameter 학습으로
+    ↓                  Feature도 간접 학습)
+Parameter만 학습           ↓
+    ↓                Layer별 Feature 발전
+━━━━━━━━━━━━━━━━━━━━━━━
+ 학습 과정
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+① 초기 Parameter (랜덤)
+    ↓
+② Feature × Parameter = 예측
+    ↓
+③ 오차 계산 (정답과 비교)
+    ↓
+④ 역전파 (Parameter 조정)
+    ↓
+⑤ ②~④ 반복 (수백만~수억 회)
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 모델 완성 (구조 &#43; 최적 Parameter)
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 추론 단계 (실사용)
+━━━━━━━━━━━━━━━━━━━━━━━
+새로운 입력 데이터
+    ↓
+같은 전처리 과정
+    ↓
+Feature 추출
+    ↓
+학습된 Parameter로 계산
+    ↓
+예측 결과
+2. 핵심 용어 완전 정리
+데이터 (Data)
+원본 정보">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/posts/2025/2025-11-12-ml-fundamentals/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.b82bb54e773ca1a0c77d4d6f9be35e1e5b5dda2a8437e0f176570e67c8a85ffd.css" integrity="sha256-uCu1Tnc8oaDHfU1vm&#43;NeHltd2iqEN&#43;DxdlcOZ8ioX/0=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/2025/2025-11-12-ml-fundamentals/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      머신러닝 개념 정리
+    </h1>
+    <div class="post-meta"><span title='2025-11-11 01:00:00 +0900 KST'>2025년 11월 11일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="1-머신러닝-전체-프로세스">1. 머신러닝 전체 프로세스<a hidden class="anchor" aria-hidden="true" href="#1-머신러닝-전체-프로세스">#</a></h2>
+<pre tabindex="0"><code>원본 데이터 (텍스트, 이미지, 표 등)
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 전처리 단계
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+쪼개기
+   - 텍스트 → 토큰
+   - 이미지 → 픽셀
+   - 음성 → 프레임
+    ↓
+수치화 (Numericalization)
+   - 표현 방식을 숫자로 변환
+   - 토큰 → 숫자 ID
+   - 픽셀 → RGB 값
+   - 정규화 (0~1 범위)
+    ↓
+Feature 추출 (Feature Extraction)
+   - 의미있는 표현 선택/생성
+   - 수치화된 데이터 중 중요한 부분 선택
+   - 임베딩, 인코딩 등
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ Feature (입력 준비 완료)
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+[전통 머신러닝 경로]          [딥러닝 경로]
+    ↓                      ↓
+사람 설계 Feature     자동 Feature 학습
+(Feature 고정)        (Parameter 학습으로
+    ↓                  Feature도 간접 학습)
+Parameter만 학습           ↓
+    ↓                Layer별 Feature 발전
+━━━━━━━━━━━━━━━━━━━━━━━
+ 학습 과정
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+① 초기 Parameter (랜덤)
+    ↓
+② Feature × Parameter = 예측
+    ↓
+③ 오차 계산 (정답과 비교)
+    ↓
+④ 역전파 (Parameter 조정)
+    ↓
+⑤ ②~④ 반복 (수백만~수억 회)
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 모델 완성 (구조 + 최적 Parameter)
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 추론 단계 (실사용)
+━━━━━━━━━━━━━━━━━━━━━━━
+새로운 입력 데이터
+    ↓
+같은 전처리 과정
+    ↓
+Feature 추출
+    ↓
+학습된 Parameter로 계산
+    ↓
+예측 결과
+</code></pre><h2 id="2-핵심-용어-완전-정리">2. 핵심 용어 완전 정리<a hidden class="anchor" aria-hidden="true" href="#2-핵심-용어-완전-정리">#</a></h2>
+<h3 id="데이터-data">데이터 (Data)<a hidden class="anchor" aria-hidden="true" href="#데이터-data">#</a></h3>
+<p>원본 정보</p>
+<h4 id="예시">예시<a hidden class="anchor" aria-hidden="true" href="#예시">#</a></h4>
+<ul>
+<li>텍스트: &ldquo;안녕하세요&rdquo;</li>
+<li>이미지: 고양이 사진</li>
+<li>표: 집 정보 (평수, 방개수)</li>
+</ul>
+<h4 id="역할">역할<a hidden class="anchor" aria-hidden="true" href="#역할">#</a></h4>
+<p>학습의 재료</p>
+<h3 id="수치화-numericalization">수치화 (Numericalization)<a hidden class="anchor" aria-hidden="true" href="#수치화-numericalization">#</a></h3>
+<p>데이터를 숫자로 변환하는 과정 (표현 방식의 변환)</p>
+<pre tabindex="0"><code>&#34;안녕&#34; → 1523 (숫자 ID)
+빨간 픽셀 → [255, 0, 0] (RGB 값)
+</code></pre><h4 id="목적">목적<a hidden class="anchor" aria-hidden="true" href="#목적">#</a></h4>
+<p>기계가 읽을 수 있는 형태로 변환</p>
+<h3 id="feature-추출-feature-extraction">Feature 추출 (Feature Extraction)<a hidden class="anchor" aria-hidden="true" href="#feature-추출-feature-extraction">#</a></h3>
+<p>수치화된 데이터 중 의미있는 부분을 선택하거나 새로 만드는 과정</p>
+<pre tabindex="0"><code>수치화: [1523, 8842, ...]
+    ↓
+Feature 추출: 의미있는 표현 생성
+    ↓
+Feature: [[0.2, -0.5, 0.8], ...]
+</code></pre><h4 id="핵심">핵심<a hidden class="anchor" aria-hidden="true" href="#핵심">#</a></h4>
+<ul>
+<li>수치화는 표현 방식의 변환</li>
+<li>Feature 추출은 의미 선택의 과정</li>
+<li>둘은 구분되지만 일부 겹침</li>
+</ul>
+<h3 id="feature-특징">Feature (특징)<a hidden class="anchor" aria-hidden="true" href="#feature-특징">#</a></h3>
+<p>모델이 학습에 활용하는 의미있는 숫자 표현</p>
+<h4 id="전통-머신러닝-예시-감정-분석">전통 머신러닝 예시 (감정 분석)<a hidden class="anchor" aria-hidden="true" href="#전통-머신러닝-예시-감정-분석">#</a></h4>
+<pre tabindex="0"><code>리뷰 텍스트 → Feature (사람이 설계)
+- 긍정 단어 개수: 3
+- 부정 단어 개수: 0
+- 느낌표 개수: 2
+→ Feature: [3, 0, 2]
+</code></pre><h4 id="딥러닝-예시-감정-분석">딥러닝 예시 (감정 분석)<a hidden class="anchor" aria-hidden="true" href="#딥러닝-예시-감정-분석">#</a></h4>
+<pre tabindex="0"><code>리뷰 텍스트 → Feature (자동 학습)
+- 입력: &#34;이 영화 정말 최고예요!&#34;
+- Layer 1: 단어 조합 패턴
+- Layer 2: 감정 강도 패턴
+- Layer 3: 전체 의도 (극찬)
+</code></pre><h4 id="학습-대상-여부">학습 대상 여부<a hidden class="anchor" aria-hidden="true" href="#학습-대상-여부">#</a></h4>
+<ul>
+<li>전통 머신러닝: Feature 고정, Parameter만 학습</li>
+<li>딥러닝: Parameter 학습을 통해 Feature 표현도 간접 학습</li>
+</ul>
+<h4 id="핵심-1">핵심<a hidden class="anchor" aria-hidden="true" href="#핵심-1">#</a></h4>
+<ul>
+<li>모델에 &ldquo;무엇을 볼 것인가&rdquo; 제공</li>
+<li>딥러닝: 각 Layer 출력도 Feature</li>
+</ul>
+<h4 id="전통-머신러닝-vs-딥러닝">전통 머신러닝 vs 딥러닝<a hidden class="anchor" aria-hidden="true" href="#전통-머신러닝-vs-딥러닝">#</a></h4>
+<ul>
+<li>전통 머신러닝: 사람이 Feature 설계 (고정)</li>
+<li>딥러닝: Feature 자동 학습 (Parameter로 제어)</li>
+</ul>
+<h3 id="parameter-파라미터">Parameter (파라미터)<a hidden class="anchor" aria-hidden="true" href="#parameter-파라미터">#</a></h3>
+<p>모델이 학습으로 조정하는 내부 숫자 값</p>
+<h4 id="예시-1">예시<a hidden class="anchor" aria-hidden="true" href="#예시-1">#</a></h4>
+<pre tabindex="0"><code>감정점수 = (긍정단어 × a) + (부정단어 × b) + (느낌표 × c)
+
+a = 0.5   ← Parameter
+b = -0.8  ← Parameter
+c = 0.3   ← Parameter
+</code></pre><h4 id="구성">구성<a hidden class="anchor" aria-hidden="true" href="#구성">#</a></h4>
+<ul>
+<li>가중치 (Weight)</li>
+<li>편향 (Bias)</li>
+</ul>
+<h4 id="핵심-2">핵심<a hidden class="anchor" aria-hidden="true" href="#핵심-2">#</a></h4>
+<ul>
+<li>학습으로 조정됨 (최적화 대상)</li>
+<li>Feature를 &ldquo;어떻게 처리할지&rdquo; 결정</li>
+</ul>
+<h4 id="크기">크기<a hidden class="anchor" aria-hidden="true" href="#크기">#</a></h4>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>Parameter 규모</th>
+          <th>예시</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>전통 머신러닝</td>
+          <td>10² ~ 10⁴</td>
+          <td>선형 회귀, SVM</td>
+      </tr>
+      <tr>
+          <td>CNN (딥러닝)</td>
+          <td>10⁵ ~ 10⁷</td>
+          <td>이미지넷 모델</td>
+      </tr>
+      <tr>
+          <td>Transformer</td>
+          <td>10⁸ ~ 10¹⁰</td>
+          <td>BERT, GPT-2</td>
+      </tr>
+      <tr>
+          <td>LLM</td>
+          <td>10¹¹ ~ 10¹³</td>
+          <td>GPT-3, GPT-4</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="범위">범위<a hidden class="anchor" aria-hidden="true" href="#범위">#</a></h4>
+<p>머신러닝 전체 (딥러닝 전용 아님)</p>
+<h3 id="토큰-token">토큰 (Token)<a hidden class="anchor" aria-hidden="true" href="#토큰-token">#</a></h3>
+<p>텍스트를 처리 가능한 작은 단위로 나눈 것</p>
+<pre tabindex="0"><code>&#34;안녕하세요&#34; → [&#34;안녕&#34;, &#34;하세요&#34;] (2토큰)
+&#34;I love you&#34; → [&#34;I&#34;, &#34;love&#34;, &#34;you&#34;] (3토큰)
+</code></pre><h4 id="특징">특징<a hidden class="anchor" aria-hidden="true" href="#특징">#</a></h4>
+<ul>
+<li>NLP(자연어 처리) 전용 용어</li>
+<li>이미지는 &ldquo;픽셀&rdquo;, 음성은 &ldquo;프레임&rdquo;</li>
+<li>LLM에서 비용/길이 계산 단위</li>
+</ul>
+<h4 id="범위-1">범위<a hidden class="anchor" aria-hidden="true" href="#범위-1">#</a></h4>
+<p>자연어 처리 전반 (LLM 전용 아님)</p>
+<h3 id="학습-training">학습 (Training)<a hidden class="anchor" aria-hidden="true" href="#학습-training">#</a></h3>
+<p>데이터로 최적의 Parameter를 찾는 과정</p>
+<ol>
+<li>랜덤 Parameter로 시작</li>
+<li>Feature × Parameter = 예측</li>
+<li>오차 계산 (틀린 정도)</li>
+<li>역전파로 Parameter 조정</li>
+<li>반복 (점점 정확해짐)</li>
+</ol>
+<h4 id="결과">결과<a hidden class="anchor" aria-hidden="true" href="#결과">#</a></h4>
+<p>최적화된 Parameter</p>
+<h4 id="딥러닝에서">딥러닝에서<a hidden class="anchor" aria-hidden="true" href="#딥러닝에서">#</a></h4>
+<p>Parameter 학습으로 Feature 표현도 함께 최적화됨</p>
+<h3 id="추론-inference">추론 (Inference)<a hidden class="anchor" aria-hidden="true" href="#추론-inference">#</a></h3>
+<p>학습된 모델로 예측하는 과정</p>
+<pre tabindex="0"><code>입력 Feature × 학습된 Parameter = 예측 결과
+</code></pre><h4 id="예시-2">예시<a hidden class="anchor" aria-hidden="true" href="#예시-2">#</a></h4>
+<ul>
+<li>새 집 정보 → Feature 추출 → 모델로 계산 → 집값 예측</li>
+<li>고양이 사진 → Feature 추출 → 모델로 계산 → &ldquo;고양이 95%&rdquo;</li>
+</ul>
+<h3 id="모델-model">모델 (Model)<a hidden class="anchor" aria-hidden="true" href="#모델-model">#</a></h3>
+<p>구조(Architecture) + 학습된 Parameter</p>
+<pre tabindex="0"><code>모델 = 구조 + 학습된 Parameter
+
+모델 파일 (예: PyTorch .pt, TensorFlow .pb):
+- 네트워크 구조 정의
+- 학습된 Parameter 값들
+</code></pre><h4 id="예시-3">예시<a hidden class="anchor" aria-hidden="true" href="#예시-3">#</a></h4>
+<pre tabindex="0"><code>GPT-3 모델 = Transformer 구조 + 1,750억 개 Parameter = 700GB
+</code></pre><h4 id="사용">사용<a hidden class="anchor" aria-hidden="true" href="#사용">#</a></h4>
+<p>새 입력 → 모델(구조+Parameter) → 예측</p>
+<h3 id="feature-vs-parameter-한눈에">Feature vs Parameter 한눈에<a hidden class="anchor" aria-hidden="true" href="#feature-vs-parameter-한눈에">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>Feature</th>
+          <th>Parameter</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>정의</strong></td>
+          <td>의미있는 숫자 표현</td>
+          <td>학습 가능한 내부 값</td>
+      </tr>
+      <tr>
+          <td><strong>출처</strong></td>
+          <td>데이터에서 계산</td>
+          <td>학습으로 조정</td>
+      </tr>
+      <tr>
+          <td><strong>역할</strong></td>
+          <td>무엇을 볼 것인가</td>
+          <td>어떻게 계산할 것인가</td>
+      </tr>
+      <tr>
+          <td><strong>예시</strong></td>
+          <td>평수 30, 픽셀값</td>
+          <td>a=200, w=1.5</td>
+      </tr>
+      <tr>
+          <td><strong>위치</strong></td>
+          <td>입력/중간 표현</td>
+          <td>모델 내부</td>
+      </tr>
+      <tr>
+          <td><strong>학습 대상</strong></td>
+          <td>전통 머신러닝: ✗<!-- raw HTML omitted -->딥러닝: 간접 ✓</td>
+          <td>✓ (직접 최적화)</td>
+      </tr>
+      <tr>
+          <td><strong>비유</strong></td>
+          <td>요리 재료</td>
+          <td>요리 레시피</td>
+      </tr>
+  </tbody>
+</table>
+<h4 id="관계">관계<a hidden class="anchor" aria-hidden="true" href="#관계">#</a></h4>
+<pre tabindex="0"><code>Feature (입력) × Parameter (가중치) = 출력
+</code></pre><hr>
+<h2 id="3-전통-머신러닝-vs-딥러닝-비교">3. 전통 머신러닝 vs 딥러닝 비교<a hidden class="anchor" aria-hidden="true" href="#3-전통-머신러닝-vs-딥러닝-비교">#</a></h2>
+<h3 id="전통-머신러닝">전통 머신러닝<a hidden class="anchor" aria-hidden="true" href="#전통-머신러닝">#</a></h3>
+<pre tabindex="0"><code>원본 데이터: &#34;이 영화 정말 최고예요!&#34;
+    ↓
+전처리 (토큰화, 정제)
+    ↓
+사람이 Feature 설계 (수동)
+   &#34;긍정 단어, 부정 단어, 느낌표 개수를 사용하자&#34;
+    ↓
+Feature: [3, 0, 2] (고정)
+    ↓
+학습으로 Parameter 찾기 (자동)
+    ↓
+Parameter: a=0.5, b=-0.8, c=0.3
+    ↓
+모델: 감정점수 = 3×0.5 + 0×(-0.8) + 2×0.3 = 2.1 (긍정)
+</code></pre><p><strong>특징:</strong></p>
+<ul>
+<li>Feature 고정, Parameter만 학습</li>
+<li>Feature 설계가 핵심 (Feature Engineering)</li>
+<li>Parameter 수: 10² ~ 10⁴</li>
+<li>빠르고 해석 가능</li>
+<li>단순한 패턴 학습</li>
+</ul>
+<p><strong>예시 알고리즘:</strong></p>
+<ul>
+<li>선형 회귀</li>
+<li>로지스틱 회귀</li>
+<li>SVM</li>
+<li>의사결정나무</li>
+<li>랜덤포레스트</li>
+</ul>
+<hr>
+<h3 id="딥러닝">딥러닝<a hidden class="anchor" aria-hidden="true" href="#딥러닝">#</a></h3>
+<pre tabindex="0"><code>원본 데이터: &#34;이 영화 정말 최고예요!&#34;
+    ↓
+전처리 (토큰화, 정제)
+    ↓
+Feature 자동 학습
+   층층이 쌓인 신경망
+    ↓
+[Layer 1] 단어 조합 패턴
+    ↓
+[Layer 2] 감정 표현 패턴
+    ↓
+[Layer 3] 전체 의도/맥락
+    ↓
+Parameter 자동 학습
+    ↓
+모델: 10⁵ ~ 10¹³ 개 Parameter
+</code></pre><p><strong>특징:</strong></p>
+<ul>
+<li>데이터 품질 관리와 전처리는 여전히 중요</li>
+<li>Feature Engineering 불필요 (자동 학습)</li>
+<li>Parameter 학습으로 Feature도 자동 학습</li>
+<li>Parameter 수: 10⁵ ~ 10¹³</li>
+<li>복잡한 패턴 학습 가능</li>
+<li>GPU 필요</li>
+</ul>
+<p><strong>예시 알고리즘:</strong></p>
+<ul>
+<li>CNN (이미지)</li>
+<li>RNN (시계열)</li>
+<li>Transformer (언어)</li>
+<li>LLM (GPT, Claude)</li>
+</ul>
+<hr>
+<h3 id="비교표">비교표<a hidden class="anchor" aria-hidden="true" href="#비교표">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th></th>
+          <th>전통 머신러닝</th>
+          <th>딥러닝</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Feature</strong></td>
+          <td>사람이 설계 (고정)</td>
+          <td>Parameter 학습으로 자동 학습</td>
+      </tr>
+      <tr>
+          <td><strong>Parameter</strong></td>
+          <td>자동 학습</td>
+          <td>자동 학습</td>
+      </tr>
+      <tr>
+          <td><strong>파라미터 수</strong></td>
+          <td>10² ~ 10⁴</td>
+          <td>10⁵ ~ 10¹³</td>
+      </tr>
+      <tr>
+          <td><strong>계산량</strong></td>
+          <td>적음</td>
+          <td>많음 (GPU 필요)</td>
+      </tr>
+      <tr>
+          <td><strong>데이터 필요량</strong></td>
+          <td>수천~수만</td>
+          <td>수백만~수조</td>
+      </tr>
+      <tr>
+          <td><strong>학습 시간</strong></td>
+          <td>분~시간</td>
+          <td>일~월</td>
+      </tr>
+      <tr>
+          <td><strong>복잡도</strong></td>
+          <td>단순 패턴</td>
+          <td>복잡한 패턴</td>
+      </tr>
+      <tr>
+          <td><strong>전처리</strong></td>
+          <td>필요</td>
+          <td>필요 (자동≠불필요)</td>
+      </tr>
+      <tr>
+          <td><strong>해석 가능성</strong></td>
+          <td>높음</td>
+          <td>상대적으로 낮음 (XAI로 개선 중)</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="4-llm-특수성">4. LLM 특수성<a hidden class="anchor" aria-hidden="true" href="#4-llm-특수성">#</a></h2>
+<h3 id="llm--딥러닝의-한-종류">LLM = 딥러닝의 한 종류<a hidden class="anchor" aria-hidden="true" href="#llm--딥러닝의-한-종류">#</a></h3>
+<pre tabindex="0"><code>AI
+└─ 머신러닝
+    ├─ 전통 머신러닝
+    └─ 딥러닝
+        └─ Transformer
+            └─ LLM ← 여기
+</code></pre><hr>
+<h3 id="llm-프로세스">LLM 프로세스<a hidden class="anchor" aria-hidden="true" href="#llm-프로세스">#</a></h3>
+<pre tabindex="0"><code>━━━━━━━━━━━━━━━━━━━━━━━
+ 1단계: Pre-training (사전학습)
+━━━━━━━━━━━━━━━━━━━━━━━
+
+인터넷 전체 텍스트 (수조 단어)
+    ↓
+토큰화
+&#34;안녕하세요&#34; → [&#34;안녕&#34;, &#34;하세요&#34;]
+    ↓
+임베딩 (Feature 추출)
+[[0.2, -0.5, 0.8], [0.1, 0.3, -0.2]]
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ Transformer Layer 반복
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+[Layer 1] Feature → 다음 Feature
+[Layer 2] Feature → 다음 Feature
+...
+[마지막 Layer] Feature → 최종 표현
+    ↓
+&#34;다음 토큰 확률 예측&#34; 반복 학습
+    ↓
+10¹¹ ~ 10¹³ 개 Parameter 최적화
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 사전학습 모델 완성
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 2단계: Fine-tuning (미세조정)
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+① Supervised Fine-tuning (SFT)
+   - 고품질 대화 데이터로 학습
+   - 지시 따르기 능력 향상
+    ↓
+② RLHF (인간 피드백 강화학습)
+   - 사람이 &#34;좋은 답변&#34; 평가
+   - 유용성, 안전성 향상
+    ↓
+━━━━━━━━━━━━━━━━━━━━━━━
+ 대화형 LLM 완성
+━━━━━━━━━━━━━━━━━━━━━━━
+    ↓
+GPT-4, Claude 3.5 등
+</code></pre><p><strong>핵심:</strong></p>
+<ul>
+<li>기본: 다음 토큰 확률 예측 학습</li>
+<li>완성: SFT + RLHF로 대화형 모델 발전</li>
+</ul>
+<hr>
+<h3 id="llm-추론">LLM 추론<a hidden class="anchor" aria-hidden="true" href="#llm-추론">#</a></h3>
+<pre tabindex="0"><code>&#34;오늘 날씨가&#34;
+    ↓
+토큰화: [&#34;오늘&#34;, &#34;날씨&#34;, &#34;가&#34;]
+    ↓
+임베딩: Feature 추출
+    ↓
+수십~수백개 Layer 통과
+(각 Layer마다 새로운 Feature 생성)
+    ↓
+다음 토큰 확률 분포 계산
+&#34;좋네요&#34; (70%), &#34;나쁘네요&#34; (20%), &#34;흐리네요&#34; (8%), ...
+    ↓
+Sampling 전략에 따라 선택
+(temperature, top-k, top-p 등)
+    ↓
+&#34;좋네요&#34; 선택
+</code></pre><p><strong>추론 메커니즘:</strong></p>
+<ul>
+<li>확률 분포 계산 후</li>
+<li>설정된 sampling 전략에 따라 토큰 선택</li>
+<li>Temperature 높음 → 창의적 (다양한 선택)</li>
+<li>Temperature 낮음 → 보수적 (높은 확률만 선택)</li>
+</ul>
+<hr>
+<h3 id="llm의-핵심-특징">LLM의 핵심 특징<a hidden class="anchor" aria-hidden="true" href="#llm의-핵심-특징">#</a></h3>
+<h4 id="1-large-대규모-parameter">1. Large (대규모 Parameter)<a hidden class="anchor" aria-hidden="true" href="#1-large-대규모-parameter">#</a></h4>
+<p><strong>규모:</strong> 10¹¹ ~ 10¹³ 개</p>
+<ul>
+<li>GPT-3: 1.75 × 10¹¹ 개 (700GB)</li>
+<li>GPT-4: 추정 10¹² ~ 10¹³ 개</li>
+</ul>
+<h4 id="2-language-언어-전용">2. Language (언어 전용)<a hidden class="anchor" aria-hidden="true" href="#2-language-언어-전용">#</a></h4>
+<ul>
+<li>입력: 텍스트</li>
+<li>처리: 토큰</li>
+<li>출력: 텍스트</li>
+</ul>
+<h4 id="3-model-학습된-parameter">3. Model (학습된 Parameter)<a hidden class="anchor" aria-hidden="true" href="#3-model-학습된-parameter">#</a></h4>
+<ul>
+<li>사전학습: &ldquo;다음 토큰 예측&rdquo;</li>
+<li>미세조정: SFT + RLHF</li>
+<li>→ 대화, 요약, 번역, 코딩 모두 가능</li>
+</ul>
+<hr>
+<h2 id="5-전체-요약">5. 전체 요약<a hidden class="anchor" aria-hidden="true" href="#5-전체-요약">#</a></h2>
+<h3 id="머신러닝--데이터로-모델-만들기">머신러닝 = 데이터로 모델 만들기<a hidden class="anchor" aria-hidden="true" href="#머신러닝--데이터로-모델-만들기">#</a></h3>
+<pre tabindex="0"><code>데이터 → Feature → Parameter 학습 → 모델 → 예측
+</code></pre><h3 id="핵심-개념">핵심 개념<a hidden class="anchor" aria-hidden="true" href="#핵심-개념">#</a></h3>
+<p><strong>수치화 vs Feature 추출:</strong></p>
+<ul>
+<li>수치화: 표현 방식의 변환 (숫자로)</li>
+<li>Feature 추출: 의미 선택의 과정 (중요한 것만)</li>
+</ul>
+<p><strong>Feature (특징):</strong></p>
+<ul>
+<li>데이터에서 계산한 의미있는 숫자</li>
+<li>&ldquo;무엇을 볼 것인가&rdquo;</li>
+<li>전통 머신러닝: 사람 설계 (고정)</li>
+<li>딥러닝: Parameter 학습으로 간접 학습</li>
+</ul>
+<p><strong>Parameter (파라미터):</strong></p>
+<ul>
+<li>학습으로 조정하는 모델 내부 값</li>
+<li>&ldquo;어떻게 계산할 것인가&rdquo;</li>
+<li>모델의 실체</li>
+</ul>
+<p><strong>학습:</strong></p>
+<ul>
+<li>Feature를 이용해 Parameter 최적화</li>
+<li>딥러닝: Parameter 변화로 Feature도 발전</li>
+</ul>
+<p><strong>추론:</strong></p>
+<ul>
+<li>학습된 Parameter로 예측</li>
+</ul>
+<p><strong>모델:</strong></p>
+<ul>
+<li>구조(Architecture) + 학습된 Parameter</li>
+</ul>
+<h3 id="발전-과정">발전 과정<a hidden class="anchor" aria-hidden="true" href="#발전-과정">#</a></h3>
+<p><strong>2000년대: 전통 머신러닝</strong></p>
+<ul>
+<li>사람이 Feature 설계</li>
+<li>Parameter 10² ~ 10⁴ 개</li>
+<li>간단한 작업</li>
+</ul>
+<p><strong>2010년대: 딥러닝</strong></p>
+<ul>
+<li>Feature 자동 학습</li>
+<li>Parameter 10⁵ ~ 10⁷ 개</li>
+<li>이미지, 음성 인식 성공</li>
+<li>GPU 필수</li>
+</ul>
+<p><strong>2020년대: LLM</strong></p>
+<ul>
+<li>초대규모 Parameter (10¹¹ ~ 10¹³)</li>
+<li>언어 이해/생성</li>
+<li>Pre-training + Fine-tuning</li>
+<li>범용 AI의 시작</li>
+</ul>
+<hr>
+<h2 id="6-실무-관점-정리">6. 실무 관점 정리<a hidden class="anchor" aria-hidden="true" href="#6-실무-관점-정리">#</a></h2>
+<h3 id="ai-도입-시-이해해야-할-것">AI 도입 시 이해해야 할 것<a hidden class="anchor" aria-hidden="true" href="#ai-도입-시-이해해야-할-것">#</a></h3>
+<h4 id="1-어떤-ai인가">1. 어떤 AI인가?<a hidden class="anchor" aria-hidden="true" href="#1-어떤-ai인가">#</a></h4>
+<ul>
+<li>전통 머신러닝: 정형 데이터, 예측</li>
+<li>딥러닝: 이미지, 음성, 복잡한 패턴</li>
+<li>LLM: 텍스트 이해/생성</li>
+</ul>
+<h4 id="2-feature는-무엇인가">2. Feature는 무엇인가?<a hidden class="anchor" aria-hidden="true" href="#2-feature는-무엇인가">#</a></h4>
+<ul>
+<li>전통 머신러닝: 직접 설계 필요 (Feature Engineering)</li>
+<li>딥러닝/LLM: 자동 학습 (하지만 데이터 품질 관리와 전처리는 여전히 중요)</li>
+</ul>
+<h4 id="3-리소스는">3. 리소스는?<a hidden class="anchor" aria-hidden="true" href="#3-리소스는">#</a></h4>
+<ul>
+<li>전통 머신러닝: 적음</li>
+<li>딥러닝: GPU 필요</li>
+<li>LLM: API 사용 (외부 모델) 또는 막대한 인프라</li>
+</ul>
+<h4 id="4-parameter는">4. Parameter는?<a hidden class="anchor" aria-hidden="true" href="#4-parameter는">#</a></h4>
+<pre tabindex="0"><code>모델 크기 = Parameter 수
+클수록: 성능↑, 비용↑, 속도↓
+
+10² ~ 10⁴: 전통 머신러닝
+10⁵ ~ 10⁷: CNN
+10⁸ ~ 10¹⁰: BERT급
+10¹¹ ~ 10¹³: LLM
+</code></pre><h4 id="5-모델-이해">5. 모델 이해<a hidden class="anchor" aria-hidden="true" href="#5-모델-이해">#</a></h4>
+<pre tabindex="0"><code>모델 = 구조 + Parameter
+파일에는 둘 다 포함 (.pt, .pb 등)
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/tags/ai/">Ai</a></li>
+      <li><a href="http://localhost:1313/tags/machine-learning/">Machine-Learning</a></li>
+      <li><a href="http://localhost:1313/tags/deep-learning/">Deep-Learning</a></li>
+    </ul>
+
+    <script src="https://utteranc.es/client.js"
+        repo="duddns/dontkr-utterances"
+        issue-term="title"
+        label="✨💬✨"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">DoNT - Do Not Think!!!</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

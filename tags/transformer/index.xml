@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Transformer on DoNT - Do Not Think!!!</title>
+    <link>http://localhost:1313/tags/transformer/</link>
+    <description>Recent content in Transformer on DoNT - Do Not Think!!!</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Tue, 11 Nov 2025 02:00:00 +0900</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM 개념 정리</title>
+      <link>http://localhost:1313/posts/2025/2025-11-13-llm-fundamentals/</link>
+      <pubDate>Tue, 11 Nov 2025 02:00:00 +0900</pubDate>
+      <guid>http://localhost:1313/posts/2025/2025-11-13-llm-fundamentals/</guid>
+      <description>&lt;h2 id=&#34;1-llm이란-무엇인가&#34;&gt;1. LLM이란 무엇인가?&lt;/h2&gt;
+&lt;h3 id=&#34;정의&#34;&gt;정의&lt;/h3&gt;
+&lt;p&gt;Large Language Model = 대규모 언어 모델&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;엄청난 양의 텍스트로 학습한&lt;/li&gt;
+&lt;li&gt;파라미터가 수백억~조 개인&lt;/li&gt;
+&lt;li&gt;언어를 이해하고 생성하는 AI 모델&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;본질&#34;&gt;본질&lt;/h3&gt;
+&lt;p&gt;&amp;ldquo;다음 단어 예측&amp;quot;을 극한까지 잘하는 모델&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;입력: &amp;#34;오늘 날씨가 정말&amp;#34;
+LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;→ 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-llm의-3가지-핵심-특징&#34;&gt;2. LLM의 3가지 핵심 특징&lt;/h2&gt;
+&lt;h3 id=&#34;large-대규모&#34;&gt;Large (대규모)&lt;/h3&gt;
+&lt;p&gt;파라미터 = 모델의 학습 가능한 내부 값&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPT-3: 1,750억 개&lt;/li&gt;
+&lt;li&gt;GPT-4: 추정 1조+ 개&lt;/li&gt;
+&lt;li&gt;Claude 3.5: 비공개 (아마 수천억~조)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;많을수록:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

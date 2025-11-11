@@ -2,13 +2,31 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dont.kr/</loc>
+    <lastmod>2025-11-13T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/</loc>
+    <lastmod>2025-11-13T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/ai/</loc>
+    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/</loc>
+    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/llm/</loc>
+    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/machine-learning/</loc>
+    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/</loc>
+    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://dont.kr/tags/cursor/</loc>
     <lastmod>2025-11-04T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/db/</loc>
-    <lastmod>2025-11-04T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/</loc>
     <lastmod>2025-11-04T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/mysql/</loc>
@@ -19,15 +37,6 @@
   </url><url>
     <loc>https://dont.kr/tags/oracle/</loc>
     <lastmod>2025-11-04T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/posts/</loc>
-    <lastmod>2025-11-04T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/</loc>
-    <lastmod>2025-11-04T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/ai/</loc>
-    <lastmod>2025-10-02T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/planning/</loc>
     <lastmod>2025-10-02T00:00:00+09:00</lastmod>

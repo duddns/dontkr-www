@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Ai on DoNT - Do Not Think!!!</title>
-    <link>https://dont.kr/tags/ai/</link>
-    <description>Recent content in Ai on DoNT - Do Not Think!!!</description>
+    <title>Llm on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/llm/</link>
+    <description>Recent content in Llm on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
     <lastBuildDate>Tue, 11 Nov 2025 00:00:00 +0900</lastBuildDate>
-    <atom:link href="https://dont.kr/tags/ai/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://dont.kr/tags/llm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI 개념 정리</title>
       <link>https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/</link>
@@ -138,50 +138,6 @@
 &lt;li&gt;데이터에서 패턴/인사이트 찾기&lt;/li&gt;
 &lt;li&gt;머신러닝을 도구로 활용&lt;/li&gt;
 &lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용</title>
-      <link>https://dont.kr/posts/2025/2025-10-02-beyond-vibe-coding-planning/</link>
-      <pubDate>Thu, 02 Oct 2025 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2025/2025-10-02-beyond-vibe-coding-planning/</guid>
-      <description>&lt;p&gt;코딩 영역에서 시작된 자연어 기반 AI 협업이 기획 영역에도 적용되고 있습니다. 바이브 코딩이 자연어로 코드를 작성하는 방식이라면, 기획에서는 자연어로 사용자 스토리, 제품 요구사항, 기능 명세서를 생성하는 방식입니다.&lt;/p&gt;
-&lt;h2 id=&#34;ai가-효과적인-기획-작업&#34;&gt;AI가 효과적인 기획 작업&lt;/h2&gt;
-&lt;h3 id=&#34;1-사용자-스토리-작성&#34;&gt;1. 사용자 스토리 작성&lt;/h3&gt;
-&lt;p&gt;표준 형식의 사용자 스토리를 빠르게 생성할 수 있습니다.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;로그인 기능에 대한 사용자 스토리를 작성해줘.
-이메일/비밀번호 방식과 소셜 로그인 지원&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2-제품-요구사항-문서prd-초안&#34;&gt;2. 제품 요구사항 문서(PRD) 초안&lt;/h3&gt;
-&lt;p&gt;제품 아이디어를 구조화된 문서로 변환하는 데 유용합니다.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;온라인 서점 장바구니 기능 PRD 작성.
-목표, 기능 요구사항, 제외 범위 포함&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;3-기능-명세서-작성&#34;&gt;3. 기능 명세서 작성&lt;/h3&gt;
-&lt;p&gt;복잡한 기능을 단계별로 분해하고 명세화하는 작업에서 효율적입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>바이브 코딩 심화편 - 실무 적용과 한계</title>
-      <link>https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/</link>
-      <pubDate>Wed, 24 Sep 2025 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/</guid>
-      <description>&lt;p&gt;바이브 코딩은 개념적으로는 혁신적이지만, 단순한 작업에서의 높은 효율성과 달리 복잡한 비즈니스 요구사항이나 팀 협업 환경에서는 여러 제약과 한계가 드러납니다.&lt;/p&gt;
-&lt;h2 id=&#34;바이브-코딩이-효과적인-영역&#34;&gt;바이브 코딩이 효과적인 영역&lt;/h2&gt;
-&lt;h3 id=&#34;1-프로토타이핑과-초기-개발&#34;&gt;1. 프로토타이핑과 초기 개발&lt;/h3&gt;
-&lt;p&gt;기본적인 CRUD 애플리케이션이나 간단한 웹 서비스 프로토타입 개발에서 높은 효율성을 보입니다.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;React로 사용자 관리 시스템을 만들어줘. 
-추가, 수정, 삭제 기능과 로컬 스토리지 연동 포함&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2-데이터-처리-및-변환&#34;&gt;2. 데이터 처리 및 변환&lt;/h3&gt;
-&lt;p&gt;CSV 파싱, JSON 변환, 데이터 정제 등 명확한 입출력 구조를 가진 작업에서 높은 정확도를 보입니다.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임</title>
-      <link>https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/</link>
-      <pubDate>Wed, 17 Sep 2025 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/</guid>
-      <description>&lt;h2 id=&#34;바이브-코딩이란&#34;&gt;바이브 코딩이란?&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;바이브 코딩(Vibe Coding)&lt;/strong&gt; 이란 &lt;strong&gt;직관적이고 자연어에 가까운 방식&lt;/strong&gt;으로 코드를 작성하는 접근법입니다. 개발자가 원하는 기능이나 로직을 마치 동료에게 설명하듯 자연스럽게 표현하면, AI가 이를 해석해서 실제 작동하는 코드로 변환해주는 방식입니다.&lt;/p&gt;
-&lt;p&gt;기존의 프로그래밍이 &lt;strong&gt;정확한 문법과 구조&lt;/strong&gt;를 요구했다면, 바이브 코딩은 &lt;strong&gt;의도와 맥락&lt;/strong&gt;을 중시합니다. &lt;strong&gt;어떻게 구현할 것인가&lt;/strong&gt;보다 &lt;strong&gt;무엇을 하고 싶은가&lt;/strong&gt;에 초점을 맞춘 개발 방식이라고 할 수 있습니다.&lt;/p&gt;
-&lt;h2 id=&#34;바이브-코딩의-핵심-특징&#34;&gt;바이브 코딩의 핵심 특징&lt;/h2&gt;
-&lt;h3 id=&#34;1-자연어-기반-접근&#34;&gt;1. 자연어 기반 접근&lt;/h3&gt;
-&lt;p&gt;기존의 정확한 문법보다는 &lt;strong&gt;의도와 맥락&lt;/strong&gt;을 중시합니다. AI가 개발자의 의도를 파악해서 적절한 코드로 변환해주는 방식입니다.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

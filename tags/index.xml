@@ -6,8 +6,29 @@
     <description>Recent content in Tags on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 04 Nov 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 11 Nov 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ai</title>
+      <link>https://dont.kr/tags/ai/</link>
+      <pubDate>Tue, 11 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://dont.kr/tags/llm/</link>
+      <pubDate>Tue, 11 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Machine Learning</title>
+      <link>https://dont.kr/tags/machine-learning/</link>
+      <pubDate>Tue, 11 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/machine-learning/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Cursor</title>
       <link>https://dont.kr/tags/cursor/</link>
@@ -34,13 +55,6 @@
       <link>https://dont.kr/tags/oracle/</link>
       <pubDate>Tue, 04 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/tags/oracle/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Ai</title>
-      <link>https://dont.kr/tags/ai/</link>
-      <pubDate>Thu, 02 Oct 2025 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/tags/ai/</guid>
       <description></description>
     </item>
     <item>
