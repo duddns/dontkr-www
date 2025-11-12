@@ -1,25 +1,25 @@
 <!DOCTYPE html>
-<html lang="ko" dir="auto">
+<html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
-<title>Deep-Learning | DoNT - Do Not Think!!!</title>
+<meta name="robots" content="index, follow">
+<title>Deep Learning | DoNT - Do Not Think!!!</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/tags/deep-learning/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b82bb54e773ca1a0c77d4d6f9be35e1e5b5dda2a8437e0f176570e67c8a85ffd.css" integrity="sha256-uCu1Tnc8oaDHfU1vm&#43;NeHltd2iqEN&#43;DxdlcOZ8ioX/0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://dont.kr/tags/deep-learning/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4bef824c135d95ffd8df119b1b511d3c1507c4d3fed7cf470539d03f95ec7625.css" integrity="sha256-S&#43;&#43;CTBNdlf/Y3xGbG1EdPBUHxNP&#43;189HBTnQP5XsdiU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/tags/deep-learning/index.xml" title="rss">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/tags/deep-learning/">
+<link rel="alternate" type="application/rss+xml" href="https://dont.kr/tags/deep-learning/index.xml" title="rss">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/tags/deep-learning/">
 <noscript>
     <style>
         #theme-toggle,
@@ -40,41 +40,52 @@
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-</head>
-
-<body class="list" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+       document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
 
-</script>
+</script><meta property="og:url" content="https://dont.kr/tags/deep-learning/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="Deep Learning">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deep Learning">
+<meta name="twitter:description" content="">
 
-<header class="header">
+</head>
+<body class="list" id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -100,12 +111,12 @@
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="Archive">
+                <a href="https://dont.kr/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://dont.kr/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -115,7 +126,7 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    Deep-Learning
+    Deep Learning
   </h1>
 </header>
 
@@ -125,16 +136,16 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>1. 머신러닝 전체 프로세스 원본 데이터 (텍스트, 이미지, 표 등) ↓ ━━━━━━━━━━━━━━━━━━━━━━━ 전처리 단계 ━━━━━━━━━━━━━━━━━━━━━━━ ↓ 쪼개기 - 텍스트 → 토큰 - 이미지 → 픽셀 - 음성 → 프레임 ↓ 수치화 (Numericalization) - 표현 방식을 숫자로 변환 - 토큰 → 숫자 ID - 픽셀 → RGB 값 - 정규화 (0~1 범위) ↓ Feature 추출 (Feature Extraction) - 의미있는 표현 선택/생성 - 수치화된 데이터 중 중요한 부분 선택 - 임베딩, 인코딩 등 ↓ ━━━━━━━━━━━━━━━━━━━━━━━ Feature (입력 준비 완료) ━━━━━━━━━━━━━━━━━━━━━━━ ↓ [전통 머신러닝 경로] [딥러닝 경로] ↓ ↓ 사람 설계 Feature 자동 Feature 학습 (Feature 고정) (Parameter 학습으로 ↓ Feature도 간접 학습) Parameter만 학습 ↓ ↓ Layer별 Feature 발전 ━━━━━━━━━━━━━━━━━━━━━━━ 학습 과정 ━━━━━━━━━━━━━━━━━━━━━━━ ↓ ① 초기 Parameter (랜덤) ↓ ② Feature × Parameter = 예측 ↓ ③ 오차 계산 (정답과 비교) ↓ ④ 역전파 (Parameter 조정) ↓ ⑤ ②~④ 반복 (수백만~수억 회) ↓ ━━━━━━━━━━━━━━━━━━━━━━━ 모델 완성 (구조 &#43; 최적 Parameter) ━━━━━━━━━━━━━━━━━━━━━━━ ↓ ━━━━━━━━━━━━━━━━━━━━━━━ 추론 단계 (실사용) ━━━━━━━━━━━━━━━━━━━━━━━ 새로운 입력 데이터 ↓ 같은 전처리 과정 ↓ Feature 추출 ↓ 학습된 Parameter로 계산 ↓ 예측 결과 2. 핵심 용어 완전 정리 데이터 (Data) 원본 정보
+    <p>1. 머신러닝 전체 프로세스 단계 전통 머신러닝 딥러닝 1. 원본 데이터 텍스트, 이미지, 표 등 텍스트, 이미지, 표 등 2. 분할 텍스트→토큰, 이미지→픽셀, 음성→프레임 텍스트→토큰, 이미지→픽셀, 음성→프레임 3. 벡터화 숫자로 변환 (ID, RGB, 정규화) 숫자로 변환 (ID, RGB, 정규화) 4. Feature 추출 사람이 설계 (고정)- 긍정단어 개수- 부정단어 개수- 느낌표 개수 - 5. 학습 초기화 랜덤 Parameter 랜덤 Parameter 6. 순전파 Feature × Parameter = 예측 벡터화된 입력 × Parameter→ Layer별 Feature 자동 생성→ 예측 7. 손실 계산 정답과 비교 정답과 비교 8. 역전파 Parameter 조정 Parameter 조정→ Feature 표현도 변화 9. 반복 68 반복 (수백만수억 회) 68 반복 (수백만수억 회) 10. 학습된 모델 고정 Feature &#43; 학습된 Parameter 학습된 Parameter(Feature 표현 내장) 11. 추론: 전처리 분할 &#43; 벡터화 분할 &#43; 벡터화 12. 추론: Feature 같은 방식으로 Feature 추출 학습된 모델로 자동 생성 13. 추론: 예측 학습된 Parameter로 계산 학습된 Parameter로 계산 14. 예측 결과 출력 출력 2. 핵심 용어 완전 정리 데이터 (Data) 원본 정보
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-11-11 01:00:00 +0900 KST'>2025년 11월 11일</span></footer>
-  <a class="entry-link" aria-label="post link to 머신러닝 개념 정리" href="http://localhost:1313/posts/2025/2025-11-12-ml-fundamentals/"></a>
+  <footer class="entry-footer"><span title='2025-11-12 00:00:00 +0900 KST'>2025년 11월 12일</span></footer>
+  <a class="entry-link" aria-label="post link to 머신러닝 개념 정리" href="https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/"></a>
 </article>
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">DoNT - Do Not Think!!!</a></span> · 
+        <span>&copy; 2025 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
 
     <span>
         Powered by
@@ -149,9 +160,14 @@
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -192,11 +208,12 @@
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

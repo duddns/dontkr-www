@@ -6,8 +6,37 @@
     <description>Recent content in Llm on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 11 Nov 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 13 Nov 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/llm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM 개념 정리</title>
+      <link>https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/</link>
+      <pubDate>Thu, 13 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/</guid>
+      <description>&lt;h2 id=&#34;1-llm이란-무엇인가&#34;&gt;1. LLM이란 무엇인가?&lt;/h2&gt;
+&lt;h3 id=&#34;정의&#34;&gt;정의&lt;/h3&gt;
+&lt;p&gt;Large Language Model = 대규모 언어 모델&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;엄청난 양의 텍스트로 학습한&lt;/li&gt;
+&lt;li&gt;파라미터가 수백억~조 개인&lt;/li&gt;
+&lt;li&gt;언어를 이해하고 생성하는 AI 모델&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;본질&#34;&gt;본질&lt;/h3&gt;
+&lt;p&gt;&amp;ldquo;다음 단어 예측&amp;quot;을 극한까지 잘하는 모델&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;입력: &amp;#34;오늘 날씨가 정말&amp;#34;
+LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;→ 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-llm의-3가지-핵심-특징&#34;&gt;2. LLM의 3가지 핵심 특징&lt;/h2&gt;
+&lt;h3 id=&#34;large-대규모&#34;&gt;Large (대규모)&lt;/h3&gt;
+&lt;p&gt;파라미터 = 모델의 학습 가능한 내부 값&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPT-3: 1,750억 개&lt;/li&gt;
+&lt;li&gt;GPT-4: 추정 1조+ 개&lt;/li&gt;
+&lt;li&gt;Claude 3.5: 비공개 (아마 수천억~조)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;많을수록:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>AI 개념 정리</title>
       <link>https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/</link>
@@ -40,18 +69,16 @@
         ╲              ╱
          ╲            ╱
             머신러닝
-            (공통 핵심 도구)
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;설명&#34;&gt;설명&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;데이터 마이닝: &amp;ldquo;왜 이런 일이 일어나는가?&amp;rdquo; (패턴 발견)&lt;/li&gt;
 &lt;li&gt;AI: &amp;ldquo;이 상황에서 뭘 해야 하는가?&amp;rdquo; (문제 해결)&lt;/li&gt;
-&lt;li&gt;머신러닝: 둘 다 사용하는 핵심 기술 (교집합)&lt;/li&gt;
+&lt;li&gt;머신러닝: 머신러닝: AI의 한 분야이자, 데이터 마이닝에서 활용되는 핵심 도구&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;예시&#34;&gt;예시&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;데이터 마이닝: 고객 데이터 분석 → &amp;ldquo;금요일 저녁 맥주+치킨 많이 팔림&amp;rdquo; 발견&lt;/li&gt;
 &lt;li&gt;AI: 고객 접속 시 → &amp;ldquo;이 사람에게 맥주 추천&amp;rdquo; 자동 판단&lt;/li&gt;
-&lt;li&gt;둘 다 머신러닝 활용&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;3-ai의-기술-체계&#34;&gt;3. AI의 기술 체계&lt;/h2&gt;

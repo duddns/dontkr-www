@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ko" dir="auto">
+<html lang="ko" dir="auto" data-theme="auto">
 
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<head><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="robots" content="noindex, nofollow">
+<meta name="robots" content="index, follow">
 <title>LLM 개념 정리 | DoNT - Do Not Think!!!</title>
 <meta name="keywords" content="ai, llm, transformer">
 <meta name="description" content="1. LLM이란 무엇인가?
@@ -31,16 +31,16 @@ Claude 3.5: 비공개 (아마 수천억~조)
 
 많을수록:">
 <meta name="author" content="">
-<link rel="canonical" href="http://localhost:1313/posts/2025/2025-11-13-llm-fundamentals/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.b82bb54e773ca1a0c77d4d6f9be35e1e5b5dda2a8437e0f176570e67c8a85ffd.css" integrity="sha256-uCu1Tnc8oaDHfU1vm&#43;NeHltd2iqEN&#43;DxdlcOZ8ioX/0=" rel="preload stylesheet" as="style">
-<link rel="icon" href="http://localhost:1313/favicon.ico">
-<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
-<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
-<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<link rel="canonical" href="https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4bef824c135d95ffd8df119b1b511d3c1507c4d3fed7cf470539d03f95ec7625.css" integrity="sha256-S&#43;&#43;CTBNdlf/Y3xGbG1EdPBUHxNP&#43;189HBTnQP5XsdiU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" hreflang="ko" href="http://localhost:1313/posts/2025/2025-11-13-llm-fundamentals/">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/">
 <noscript>
     <style>
         #theme-toggle,
@@ -61,41 +61,135 @@ Claude 3.5: 비공개 (아마 수천억~조)
                 --code-block-bg: rgb(46, 46, 51);
                 --code-bg: rgb(55, 56, 62);
                 --border: rgb(51, 51, 51);
+                color-scheme: dark;
             }
 
             .list {
                 background: var(--theme);
             }
 
-            .list:not(.dark)::-webkit-scrollbar-track {
-                background: 0 0;
+            .toc {
+                background: var(--entry);
             }
+        }
 
-            .list:not(.dark)::-webkit-scrollbar-thumb {
-                border-color: var(--theme);
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
             }
         }
 
     </style>
 </noscript>
-</head>
-
-<body class="" id="top">
 <script>
     if (localStorage.getItem("pref-theme") === "dark") {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
     } else if (localStorage.getItem("pref-theme") === "light") {
-        document.body.classList.remove('dark')
+       document.querySelector("html").dataset.theme = 'light';
     } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.body.classList.add('dark');
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
     }
 
-</script>
+</script><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="LLM 개념 정리">
+  <meta property="og:description" content="1. LLM이란 무엇인가? 정의 Large Language Model = 대규모 언어 모델
+엄청난 양의 텍스트로 학습한 파라미터가 수백억~조 개인 언어를 이해하고 생성하는 AI 모델 본질 “다음 단어 예측&#34;을 극한까지 잘하는 모델
+입력: &#34;오늘 날씨가 정말&#34; LLM: &#34;좋네요&#34; (가장 자연스러운 다음 단어 선택) → 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능
+2. LLM의 3가지 핵심 특징 Large (대규모) 파라미터 = 모델의 학습 가능한 내부 값
+GPT-3: 1,750억 개 GPT-4: 추정 1조&#43; 개 Claude 3.5: 비공개 (아마 수천억~조) 많을수록:">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-13T00:00:00+09:00">
+    <meta property="article:modified_time" content="2025-11-13T00:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Llm">
+    <meta property="article:tag" content="Transformer">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="LLM 개념 정리">
+<meta name="twitter:description" content="1. LLM이란 무엇인가?
+정의
+Large Language Model = 대규모 언어 모델
 
-<header class="header">
+엄청난 양의 텍스트로 학습한
+파라미터가 수백억~조 개인
+언어를 이해하고 생성하는 AI 모델
+
+본질
+&ldquo;다음 단어 예측&quot;을 극한까지 잘하는 모델
+입력: &#34;오늘 날씨가 정말&#34;
+LLM: &#34;좋네요&#34; (가장 자연스러운 다음 단어 선택)
+→ 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능
+
+2. LLM의 3가지 핵심 특징
+Large (대규모)
+파라미터 = 모델의 학습 가능한 내부 값
+
+GPT-3: 1,750억 개
+GPT-4: 추정 1조&#43; 개
+Claude 3.5: 비공개 (아마 수천억~조)
+
+많을수록:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dont.kr/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "LLM 개념 정리",
+      "item": "https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LLM 개념 정리",
+  "name": "LLM 개념 정리",
+  "description": "1. LLM이란 무엇인가? 정의 Large Language Model = 대규모 언어 모델\n엄청난 양의 텍스트로 학습한 파라미터가 수백억~조 개인 언어를 이해하고 생성하는 AI 모델 본질 \u0026ldquo;다음 단어 예측\u0026quot;을 극한까지 잘하는 모델\n입력: \u0026#34;오늘 날씨가 정말\u0026#34; LLM: \u0026#34;좋네요\u0026#34; (가장 자연스러운 다음 단어 선택) → 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능\n2. LLM의 3가지 핵심 특징 Large (대규모) 파라미터 = 모델의 학습 가능한 내부 값\nGPT-3: 1,750억 개 GPT-4: 추정 1조+ 개 Claude 3.5: 비공개 (아마 수천억~조) 많을수록:\n",
+  "keywords": [
+    "ai", "llm", "transformer"
+  ],
+  "articleBody": "1. LLM이란 무엇인가? 정의 Large Language Model = 대규모 언어 모델\n엄청난 양의 텍스트로 학습한 파라미터가 수백억~조 개인 언어를 이해하고 생성하는 AI 모델 본질 “다음 단어 예측\"을 극한까지 잘하는 모델\n입력: \"오늘 날씨가 정말\" LLM: \"좋네요\" (가장 자연스러운 다음 단어 선택) → 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능\n2. LLM의 3가지 핵심 특징 Large (대규모) 파라미터 = 모델의 학습 가능한 내부 값\nGPT-3: 1,750억 개 GPT-4: 추정 1조+ 개 Claude 3.5: 비공개 (아마 수천억~조) 많을수록:\n복잡한 패턴 학습 미묘한 뉘앙스 이해 추론 능력 향상 Language (언어) 텍스트만 다룸\n학습 데이터: 텍스트 입력: 텍스트 출력: 텍스트 이미지/음성 모델과 구분되는 핵심 Model (모델) 머신러닝으로 학습된 결과물\n사람이 규칙을 짜지 않음 데이터에서 스스로 패턴 학습 한번 학습하면 계속 사용 3. LLM은 어떻게 만들어지나? 1단계: Pre-training (사전 학습) 데이터 인터넷 전체 텍스트 (수조 단어) 위키백과 뉴스 기사 책 코드 웹페이지 대화 등 방법 “다음 단어 맞추기” 반복 학습 기간 수개월 (엄청난 컴퓨팅 파워) 비용 수백억 원 결과 언어의 구조와 패턴 이해 세상 지식 습득 하지만 대화는 아직 서툴음 2단계: Fine-tuning (미세 조정) 데이터 고품질 대화/지시 데이터 사람이 직접 작성한 대화 “좋은 답변” vs “나쁜 답변” 평가 방법 RLHF (인간 피드백 강화학습) 기간 수주~수개월 결과 자연스러운 대화 가능 유용하고 안전한 답변 사용자 의도 이해 4. LLM의 작동 원리 (간단히) 핵심: Transformer 구조 Attention 메커니즘 \"그는 학교에 갔다. 그는 친구를 만났다.\" ↑ ↑ └────────관계 파악────┘ 문장의 모든 단어 간 관계 분석 문맥을 이해하는 핵심 기술 층층이 쌓인 구조 입력 텍스트 ↓ [Transformer Layer 1] ← 간단한 패턴 [Transformer Layer 2] ← 조금 복잡한 패턴 [Transformer Layer 3] ← 더 복잡한 패턴 ... [마지막 Transformer Layer] ← 추상적 의미 ↓ 출력 텍스트 토큰 단위 처리 \"안녕하세요\" → [\"안녕\", \"하세요\"] (2토큰) → 각 토큰마다 확률 계산 → 가장 적절한 다음 토큰 선택 5. LLM이 잘하는 것 자연스러운 대화 문맥 유지 의도 파악 자연스러운 응답 텍스트 생성/변환 요약 번역 다시 쓰기 형식 변환 지식 활용 질문 답변 설명 조언 추론 논리적 사고 단계별 분석 문제 해결 창작 글쓰기 아이디어 발산 스토리텔링 코딩 코드 생성 버그 수정 설명 6. LLM의 한계 할루시네이션 (가장 큰 문제) 사실이 아닌 내용을 그럴듯하게 생성\n질문: \"2025년 노벨물리학상 수상자는?\" LLM: \"김철수 박사입니다\" (지어낸 답) → 자신 없어도 확신하는 척\n→ 중요한 사실은 반드시 검증 필요\n지식 컷오프 학습 시점 이후 정보 모름\nClaude: 2025년 1월까지만 앎 최신 뉴스/사건 모름 검색 도구로 보완 가능 계산 약함 수학 계산 실수 가능\n질문: \"123456 × 789 = ?\" LLM: 틀릴 수 있음 → 복잡한 계산은 코드/도구 사용\n일관성 문제 같은 질문에 다른 답변 긴 대화에서 앞뒤 모순 편향 학습 데이터의 편향 반영 문화/성별/인종 편견 가능 비용 API 호출마다 과금 대량 사용 시 비용 부담 7. LLM과 다른 AI의 관계 전체 지형도 AI ├─ 전통 머신러닝 │ └─ 추천 시스템 (넷플릭스) ├─ 딥러닝 │ ├─ CNN → 이미지 인식 │ ├─ RNN → 시계열 │ ├─ Transformer │ │ └─ LLM ← 여기 │ ├─ Diffusion → 이미지 생성 (Stable Diffusion) │ └─ GAN → 이미지/영상 생성 └─ 강화학습 → 게임 AI LLM의 위치 AI의 일부 딥러닝의 일부 Transformer 기반 현재 가장 주목받는 분야 Multimodal 확장 최근 트렌드:\nLLM (텍스트) + Vision (이미지) + Audio (음성) = Multimodal AI (GPT-4V, Gemini) → 하지만 코어는 여전히 LLM\n8. 핵심 요약 LLM 엄청난 텍스트로 학습한, 언어를 이해하고 생성하는 대규모 AI 모델 특징 Large: 수백억~조 개 파라미터 Language: 텍스트만 처리 다음 단어 예측이 핵심 원리 잘하는 것 대화, 요약, 번역, 추론, 창작, 코딩 한계 할루시네이션, 지식 컷오프, 계산 약함, 비용 위치 AI \u003e 딥러닝 \u003e Transformer \u003e LLM ",
+  "wordCount" : "568",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-13T00:00:00+09:00",
+  "dateModified": "2025-11-13T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoNT - Do Not Think!!!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dont.kr/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="http://localhost:1313/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
             <div class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
@@ -121,12 +215,12 @@ Claude 3.5: 비공개 (아마 수천억~조)
         </div>
         <ul id="menu">
             <li>
-                <a href="http://localhost:1313/archives/" title="Archive">
+                <a href="https://dont.kr/archives/" title="Archive">
                     <span>Archive</span>
                 </a>
             </li>
             <li>
-                <a href="http://localhost:1313/tags/" title="Tags">
+                <a href="https://dont.kr/tags/" title="Tags">
                     <span>Tags</span>
                 </a>
             </li>
@@ -141,7 +235,7 @@ Claude 3.5: 비공개 (아마 수천억~조)
     <h1 class="post-title">
       LLM 개념 정리
     </h1>
-    <div class="post-meta"><span title='2025-11-11 02:00:00 +0900 KST'>2025년 11월 11일</span>
+    <div class="post-meta"><span title='2025-11-13 00:00:00 +0900 KST'>2025년 11월 13일</span>
 
 </div>
   </header> 
@@ -406,9 +500,9 @@ Multimodal AI (GPT-4V, Gemini)
 
   <footer class="post-footer">
     <ul class="post-tags">
-      <li><a href="http://localhost:1313/tags/ai/">Ai</a></li>
-      <li><a href="http://localhost:1313/tags/llm/">Llm</a></li>
-      <li><a href="http://localhost:1313/tags/transformer/">Transformer</a></li>
+      <li><a href="https://dont.kr/tags/ai/">Ai</a></li>
+      <li><a href="https://dont.kr/tags/llm/">Llm</a></li>
+      <li><a href="https://dont.kr/tags/transformer/">Transformer</a></li>
     </ul>
 
     <script src="https://utteranc.es/client.js"
@@ -424,7 +518,7 @@ Multimodal AI (GPT-4V, Gemini)
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="http://localhost:1313/">DoNT - Do Not Think!!!</a></span> · 
+        <span>&copy; 2025 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
 
     <span>
         Powered by
@@ -439,9 +533,14 @@ Multimodal AI (GPT-4V, Gemini)
 </a>
 
 <script>
-    let menu = document.getElementById('menu')
+    let menu = document.getElementById('menu');
     if (menu) {
-        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
         menu.onscroll = function () {
             localStorage.setItem("menu-scroll-position", menu.scrollLeft);
         }
@@ -482,11 +581,12 @@ Multimodal AI (GPT-4V, Gemini)
 </script>
 <script>
     document.getElementById("theme-toggle").addEventListener("click", () => {
-        if (document.body.className.includes("dark")) {
-            document.body.classList.remove('dark');
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
             localStorage.setItem("pref-theme", 'light');
         } else {
-            document.body.classList.add('dark');
+            html.dataset.theme = 'dark';
             localStorage.setItem("pref-theme", 'dark');
         }
     })

@@ -2,25 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dont.kr/tags/ai/</loc>
+    <lastmod>2025-11-13T00:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://dont.kr/</loc>
+    <lastmod>2025-11-13T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/llm/</loc>
+    <lastmod>2025-11-13T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/</loc>
     <lastmod>2025-11-13T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/</loc>
     <lastmod>2025-11-13T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://dont.kr/tags/ai/</loc>
-    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+    <loc>https://dont.kr/tags/</loc>
+    <lastmod>2025-11-13T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/</loc>
-    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+    <loc>https://dont.kr/tags/transformer/</loc>
+    <lastmod>2025-11-13T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://dont.kr/tags/llm/</loc>
-    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+    <loc>https://dont.kr/tags/deep-learning/</loc>
+    <lastmod>2025-11-12T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/machine-learning/</loc>
-    <lastmod>2025-11-11T00:00:00+09:00</lastmod>
+    <lastmod>2025-11-12T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://dont.kr/tags/</loc>
+    <loc>https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/</loc>
+    <lastmod>2025-11-12T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/</loc>
     <lastmod>2025-11-11T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/cursor/</loc>

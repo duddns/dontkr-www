@@ -1,83 +1,102 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Deep-Learning on DoNT - Do Not Think!!!</title>
-    <link>http://localhost:1313/tags/deep-learning/</link>
-    <description>Recent content in Deep-Learning on DoNT - Do Not Think!!!</description>
+    <title>Deep Learning on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/deep-learning/</link>
+    <description>Recent content in Deep Learning on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 11 Nov 2025 01:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 12 Nov 2025 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>머신러닝 개념 정리</title>
-      <link>http://localhost:1313/posts/2025/2025-11-12-ml-fundamentals/</link>
-      <pubDate>Tue, 11 Nov 2025 01:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2025/2025-11-12-ml-fundamentals/</guid>
+      <link>https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/</link>
+      <pubDate>Wed, 12 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/</guid>
       <description>&lt;h2 id=&#34;1-머신러닝-전체-프로세스&#34;&gt;1. 머신러닝 전체 프로세스&lt;/h2&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;원본 데이터 (텍스트, 이미지, 표 등)
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- 전처리 단계
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-쪼개기
-   - 텍스트 → 토큰
-   - 이미지 → 픽셀
-   - 음성 → 프레임
-    ↓
-수치화 (Numericalization)
-   - 표현 방식을 숫자로 변환
-   - 토큰 → 숫자 ID
-   - 픽셀 → RGB 값
-   - 정규화 (0~1 범위)
-    ↓
-Feature 추출 (Feature Extraction)
-   - 의미있는 표현 선택/생성
-   - 수치화된 데이터 중 중요한 부분 선택
-   - 임베딩, 인코딩 등
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- Feature (입력 준비 완료)
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-[전통 머신러닝 경로]          [딥러닝 경로]
-    ↓                      ↓
-사람 설계 Feature     자동 Feature 학습
-(Feature 고정)        (Parameter 학습으로
-    ↓                  Feature도 간접 학습)
-Parameter만 학습           ↓
-    ↓                Layer별 Feature 발전
-━━━━━━━━━━━━━━━━━━━━━━━
- 학습 과정
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-① 초기 Parameter (랜덤)
-    ↓
-② Feature × Parameter = 예측
-    ↓
-③ 오차 계산 (정답과 비교)
-    ↓
-④ 역전파 (Parameter 조정)
-    ↓
-⑤ ②~④ 반복 (수백만~수억 회)
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- 모델 완성 (구조 + 최적 Parameter)
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- 추론 단계 (실사용)
-━━━━━━━━━━━━━━━━━━━━━━━
-새로운 입력 데이터
-    ↓
-같은 전처리 과정
-    ↓
-Feature 추출
-    ↓
-학습된 Parameter로 계산
-    ↓
-예측 결과
-&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;2-핵심-용어-완전-정리&#34;&gt;2. 핵심 용어 완전 정리&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;단계&lt;/th&gt;
+          &lt;th&gt;전통 머신러닝&lt;/th&gt;
+          &lt;th&gt;딥러닝&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;1. 원본 데이터&lt;/td&gt;
+          &lt;td&gt;텍스트, 이미지, 표 등&lt;/td&gt;
+          &lt;td&gt;텍스트, 이미지, 표 등&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;2. 분할&lt;/td&gt;
+          &lt;td&gt;텍스트→토큰, 이미지→픽셀, 음성→프레임&lt;/td&gt;
+          &lt;td&gt;텍스트→토큰, 이미지→픽셀, 음성→프레임&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;3. 벡터화&lt;/td&gt;
+          &lt;td&gt;숫자로 변환 (ID, RGB, 정규화)&lt;/td&gt;
+          &lt;td&gt;숫자로 변환 (ID, RGB, 정규화)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;4. Feature 추출&lt;/td&gt;
+          &lt;td&gt;사람이 설계 (고정)&lt;!-- raw HTML omitted --&gt;- 긍정단어 개수&lt;!-- raw HTML omitted --&gt;- 부정단어 개수&lt;!-- raw HTML omitted --&gt;- 느낌표 개수&lt;/td&gt;
+          &lt;td&gt;-&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;5. 학습 초기화&lt;/td&gt;
+          &lt;td&gt;랜덤 Parameter&lt;/td&gt;
+          &lt;td&gt;랜덤 Parameter&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;6. 순전파&lt;/td&gt;
+          &lt;td&gt;Feature × Parameter = 예측&lt;/td&gt;
+          &lt;td&gt;벡터화된 입력 × Parameter&lt;!-- raw HTML omitted --&gt;→ Layer별 Feature 자동 생성&lt;!-- raw HTML omitted --&gt;→ 예측&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;7. 손실 계산&lt;/td&gt;
+          &lt;td&gt;정답과 비교&lt;/td&gt;
+          &lt;td&gt;정답과 비교&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;8. 역전파&lt;/td&gt;
+          &lt;td&gt;Parameter 조정&lt;/td&gt;
+          &lt;td&gt;Parameter 조정&lt;!-- raw HTML omitted --&gt;→ Feature 표현도 변화&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;9. 반복&lt;/td&gt;
+          &lt;td&gt;6&lt;del&gt;8 반복 (수백만&lt;/del&gt;수억 회)&lt;/td&gt;
+          &lt;td&gt;6&lt;del&gt;8 반복 (수백만&lt;/del&gt;수억 회)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;10. 학습된 모델&lt;/td&gt;
+          &lt;td&gt;고정 Feature + 학습된 Parameter&lt;/td&gt;
+          &lt;td&gt;학습된 Parameter&lt;!-- raw HTML omitted --&gt;(Feature 표현 내장)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;11. 추론: 전처리&lt;/td&gt;
+          &lt;td&gt;분할 + 벡터화&lt;/td&gt;
+          &lt;td&gt;분할 + 벡터화&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;12. 추론: Feature&lt;/td&gt;
+          &lt;td&gt;같은 방식으로 Feature 추출&lt;/td&gt;
+          &lt;td&gt;학습된 모델로 자동 생성&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;13. 추론: 예측&lt;/td&gt;
+          &lt;td&gt;학습된 Parameter로 계산&lt;/td&gt;
+          &lt;td&gt;학습된 Parameter로 계산&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;14. 예측 결과&lt;/td&gt;
+          &lt;td&gt;출력&lt;/td&gt;
+          &lt;td&gt;출력&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;2-핵심-용어-완전-정리&#34;&gt;2. 핵심 용어 완전 정리&lt;/h2&gt;
 &lt;h3 id=&#34;데이터-data&#34;&gt;데이터 (Data)&lt;/h3&gt;
 &lt;p&gt;원본 정보&lt;/p&gt;</description>
     </item>

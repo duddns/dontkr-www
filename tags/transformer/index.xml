@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Transformer on DoNT - Do Not Think!!!</title>
-    <link>http://localhost:1313/tags/transformer/</link>
+    <link>https://dont.kr/tags/transformer/</link>
     <description>Recent content in Transformer on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 11 Nov 2025 02:00:00 +0900</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Nov 2025 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/transformer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>LLM 개념 정리</title>
-      <link>http://localhost:1313/posts/2025/2025-11-13-llm-fundamentals/</link>
-      <pubDate>Tue, 11 Nov 2025 02:00:00 +0900</pubDate>
-      <guid>http://localhost:1313/posts/2025/2025-11-13-llm-fundamentals/</guid>
+      <link>https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/</link>
+      <pubDate>Thu, 13 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/</guid>
       <description>&lt;h2 id=&#34;1-llm이란-무엇인가&#34;&gt;1. LLM이란 무엇인가?&lt;/h2&gt;
 &lt;h3 id=&#34;정의&#34;&gt;정의&lt;/h3&gt;
 &lt;p&gt;Large Language Model = 대규모 언어 모델&lt;/p&gt;
