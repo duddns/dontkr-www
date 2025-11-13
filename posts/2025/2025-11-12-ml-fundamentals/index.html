@@ -287,8 +287,8 @@
   "keywords": [
     "ai", "machine learning", "deep learning"
   ],
-  "articleBody": "1. 머신러닝 전체 프로세스 단계 전통 머신러닝 딥러닝 1. 원본 데이터 텍스트, 이미지, 표 등 텍스트, 이미지, 표 등 2. 분할 텍스트→토큰, 이미지→픽셀, 음성→프레임 텍스트→토큰, 이미지→픽셀, 음성→프레임 3. 벡터화 숫자로 변환 (ID, RGB, 정규화) 숫자로 변환 (ID, RGB, 정규화) 4. Feature 추출 사람이 설계 (고정)- 긍정단어 개수- 부정단어 개수- 느낌표 개수 - 5. 학습 초기화 랜덤 Parameter 랜덤 Parameter 6. 순전파 Feature × Parameter = 예측 벡터화된 입력 × Parameter→ Layer별 Feature 자동 생성→ 예측 7. 손실 계산 정답과 비교 정답과 비교 8. 역전파 Parameter 조정 Parameter 조정→ Feature 표현도 변화 9. 반복 68 반복 (수백만수억 회) 68 반복 (수백만수억 회) 10. 학습된 모델 고정 Feature + 학습된 Parameter 학습된 Parameter(Feature 표현 내장) 11. 추론: 전처리 분할 + 벡터화 분할 + 벡터화 12. 추론: Feature 같은 방식으로 Feature 추출 학습된 모델로 자동 생성 13. 추론: 예측 학습된 Parameter로 계산 학습된 Parameter로 계산 14. 예측 결과 출력 출력 2. 핵심 용어 완전 정리 데이터 (Data) 원본 정보\n예시 텍스트: “안녕하세요” 이미지: 고양이 사진 표: 집 정보 (평수, 방개수) 역할 학습의 재료\n분할 (Segmentation) 데이터를 처리 가능한 작은 단위로 나누는 과정\n데이터별 분할 텍스트 → 토큰 (Tokenization) 이미지 → 픽셀 (Pixelation) 음성 → 프레임 (Framing) 목적 벡터화하기 전 처리 가능한 단위로 분해\n토큰 (Token) 텍스트를 처리 가능한 작은 단위로 나눈 것\n\"안녕하세요\" → [\"안녕\", \"하세요\"] (2토큰) \"I love you\" → [\"I\", \"love\", \"you\"] (3토큰) 특징 NLP(자연어 처리) 전용 용어 이미지는 “픽셀”, 음성은 “프레임” LLM에서 비용/길이 계산 단위 범위 자연어 처리 전반 (LLM 전용 아님)\n벡터화 (Vectorization) 데이터를 숫자로 변환하는 과정 (표현 방식의 변환)\n\"안녕\" → 1523 (숫자 ID) 빨간 픽셀 → [255, 0, 0] (RGB 값) 목적 기계가 읽을 수 있는 형태로 변환\nFeature 추출 벡터화된 데이터 중 의미있는 부분을 선택하거나 새로 만드는 과정\n벡터화: [1523, 8842, ...] ↓ Feature 추출: 의미있는 표현 생성 ↓ Feature: [3, 0, 2] (긍정단어 개수, 부정단어 개수, 느낌표) 핵심 벡터화는 표현 방식의 변환 Feature 추출은 의미 선택의 과정 둘은 구분되지만 일부 겹침 Feature (특징) 모델이 학습에 활용하는 의미있는 숫자 표현\n전통 머신러닝 예시 (감정 분석) 리뷰 텍스트 → Feature (사람이 설계) - 긍정 단어 개수: 3 - 부정 단어 개수: 0 - 느낌표 개수: 2 → Feature: [3, 0, 2] 딥러닝 예시 (감정 분석) 리뷰 텍스트 → Feature (자동 학습) - 입력: \"이 영화 정말 최고예요!\" - Layer 1: 단어 조합 패턴 - Layer 2: 감정 강도 패턴 - Layer 3: 전체 의도 (극찬) 학습 대상 여부 전통 머신러닝: Feature 고정, Parameter만 학습 딥러닝: Parameter 학습을 통해 Feature 표현도 간접 학습 핵심 모델에 “무엇을 볼 것인가” 제공 딥러닝: 각 Layer 출력도 Feature 전통 머신러닝 vs 딥러닝 전통 머신러닝: 사람이 Feature 설계 (고정) 딥러닝: Feature 자동 학습 (Parameter로 제어) Parameter (파라미터) 모델이 학습으로 조정하는 내부 숫자 값\n예시 감정점수 = (긍정단어 × a) + (부정단어 × b) + (느낌표 × c) a = 0.5 ← 긍정단어: 양수 (점수 올림) b = -0.8 ← 부정단어: 음수 (점수 낮춤) c = 0.3 ← 느낌표: 약한 양수 (약간 긍정) 구성 가중치 (Weight) 편향 (Bias) 핵심 학습으로 조정됨 (최적화 대상) Feature를 “어떻게 처리할지” 결정 크기 구분 Parameter 규모 예시 전통 머신러닝 10² ~ 10⁴ 선형 회귀, SVM CNN (딥러닝) 10⁵ ~ 10⁷ 이미지넷 모델 Transformer 10⁸ ~ 10¹⁰ BERT, GPT-2 LLM 10¹¹ ~ 10¹³ GPT-3, GPT-4 Feature vs Parameter 한눈에 Feature Parameter 정의 의미있는 숫자 표현 학습 가능한 내부 값 생성 방식 데이터에서 계산 랜덤 초기화 후 학습으로 최적화 역할 무엇을 볼 것인가 어떻게 계산할 것인가 예시 [3, 0, 2] (긍정, 부정, 느낌표) a=0.5, b=-0.8, c=0.3 위치 입력/중간 표현 모델 내부 학습 대상 전통 머신러닝: ✗딥러닝: 간접 ✓ ✓ (직접 최적화) 비유 요리 재료 요리 레시피 관계 Feature (입력) × Parameter (가중치) = 출력 (예측) 학습: 출력 → 손실 계산 → Parameter 조정 → 반복 추론: 출력 = 최종 예측 학습 (Training) 데이터로 최적의 Parameter를 찾는 과정\n랜덤 Parameter로 시작 Feature × Parameter = 예측 오차 계산 (틀린 정도) 역전파로 Parameter 조정 반복 (점점 정확해짐) 결과 학습된 모델 (구조 + 최적화된 Parameter)\n딥러닝에서 Parameter 학습으로 Feature 표현도 함께 최적화됨\n모델 (Model) 구조(Architecture) + 학습된 Parameter\n모델 파일 (예: PyTorch .pt, TensorFlow .pb): - 네트워크 구조 정의 - 학습된 Parameter 값들 예시 GPT-3 모델 = Transformer 구조 + 1,750억 개 Parameter = 700GB 추론 (Inference) 학습된 모델로 예측하는 과정\n입력 Feature × 학습된 Parameter = 예측 결과 예시 새 리뷰: “음식 맛있어요!” → Feature 추출 → 모델로 계산 → “긍정 92%” 새 리뷰: “별로예요…” → Feature 추출 → 모델로 계산 → “부정 85%” 사용 새 입력 → 모델 → 예측\n3. 전통 머신러닝 vs 딥러닝 비교 전통 머신러닝 Feature: 사람 설계 (고정) 학습: Parameter만 예시: 선형 회귀, SVM, 랜덤포레스트 딥러닝 Feature: 학습 중 자동 생성 학습: Parameter + Feature 동시 예시: CNN, RNN, Transformer, LLM 비교표 전통 머신러닝 딥러닝 Feature 사람이 설계 (고정) Parameter 학습으로 자동 학습 Parameter 자동 학습 자동 학습 파라미터 수 10² ~ 10⁴ 10⁵ ~ 10¹³ 계산량 적음 많음 (GPU 필요) 데이터 필요량 수천~수만 수백만~수조 학습 시간 분~시간 일~월 복잡도 단순 패턴 복잡한 패턴 전처리 필요 필요 (자동≠불필요) 해석 가능성 높음 상대적으로 낮음 (XAI로 개선 중) 4. LLM 특수성 LLM = 딥러닝의 한 종류 AI └─ 머신러닝 ├─ 전통 머신러닝 └─ 딥러닝 └─ Transformer └─ LLM ← 여기 LLM 학습 프로세스 ━━━━━━━━━━━━━━━━━━━━━━━ 1단계: Pre-training (사전학습) ━━━━━━━━━━━━━━━━━━━━━━━ 대규모 텍스트 데이터 (수조 토큰) ↓ 토큰화 \"안녕하세요\" → [\"안녕\", \"하세요\"] ↓ 임베딩 (Feature 추출) [[0.2, -0.5, 0.8], [0.1, 0.3, -0.2]] ↓ ━━━━━━━━━━━━━━━━━━━━━━━ Transformer Layer 반복 ━━━━━━━━━━━━━━━━━━━━━━━ ↓ [Layer 1] Feature → 다음 Feature [Layer 2] Feature → 다음 Feature ... [마지막 Layer] Feature → 최종 표현 ↓ \"다음 토큰 확률 예측\" 반복 학습 ↓ 10¹¹ ~ 10¹³ 개 Parameter 최적화 ↓ ━━━━━━━━━━━━━━━━━━━━━━━ 사전학습 모델 완성 ━━━━━━━━━━━━━━━━━━━━━━━ ↓ ━━━━━━━━━━━━━━━━━━━━━━━ 2단계: Fine-tuning (미세조정) ━━━━━━━━━━━━━━━━━━━━━━━ ↓ ① Supervised Fine-tuning (SFT) - 고품질 대화 데이터로 학습 - 지시 따르기 능력 향상 ↓ ② RLHF (Reinforcement Learning from Human Feedback, 인간 피드백 강화학습) - 사람이 \"좋은 답변\" 평가 - 유용성, 안전성 향상 ↓ ━━━━━━━━━━━━━━━━━━━━━━━ 대화형 LLM 완성 ━━━━━━━━━━━━━━━━━━━━━━━ ↓ GPT, Claude 등 학습 핵심 기본: 다음 토큰 확률 예측 학습 완성: SFT + RLHF로 대화형 모델 발전 LLM 추론 \"오늘 날씨가\" ↓ 토큰화: [\"오늘\", \"날씨\", \"가\"] ↓ 임베딩: Feature 추출 ↓ 수십~수백개 Layer 통과 (각 Layer마다 새로운 Feature 생성) ↓ 다음 토큰 확률 분포 계산 \"좋네요\" (70%), \"나쁘네요\" (20%), \"흐리네요\" (8%), ... ↓ Sampling 전략에 따라 선택 (temperature, top-k, top-p 등) ↓ \"좋네요\" 선택 추론 메커니즘 확률 분포 계산 후 Sampling 전략에 따라 토큰 선택 Temperature: 확률 분포 조절 값 낮음 (0~0.5): 보수적 (높은 확률만) 기본 (1.0): 균형 높음 (1.5~2.0): 창의적 (다양한 선택) top-k, top-p 등도 사용 LLM의 핵심 특징 1. Large (대규모 Parameter) 규모: 10¹¹ ~ 10¹³ 개 GPT-3: 1.75 × 10¹¹ 개 (700GB) GPT-4: 추정 10¹² ~ 10¹³ 개 2. Language (언어 전용) 입력: 텍스트 처리: 토큰 출력: 텍스트 3. Model (학습된 Parameter) 사전학습: “다음 토큰 예측” 미세조정: SFT + RLHF → 대화, 요약, 번역, 코딩 모두 가능 5. 전체 요약 머신러닝 = 데이터로 모델 만들기 데이터 → Feature → Parameter 학습 → 모델 → 예측 전통 ML vs 딥러닝 전통 ML: Feature 사람 설계 딥러닝: Feature 자동 학습 발전 과정 2000년대: 전통 머신러닝 사람이 Feature 설계 Parameter 10² ~ 10⁴ 개 간단한 작업 2010년대: 딥러닝 Feature 자동 학습 Parameter 10⁵ ~ 10⁷ 개 이미지, 음성 인식 성공 GPU 필수 2020년대: LLM 초대규모 Parameter (10¹¹ ~ 10¹³) 언어 이해/생성 Pre-training + Fine-tuning 범용 AI의 시작 6. 실무 관점 정리 AI 도입 시 이해해야 할 것 전통 머신러닝을 선택하는 경우 정형 데이터 (표 형태) 데이터: 수천~수만 건 해석 가능성 중요 빠른 개발 필요 예: 집값 예측, 고객 이탈 예측 딥러닝을 선택하는 경우 비정형 데이터 (이미지, 음성, 텍스트) 데이터: 수십만 건 이상 복잡한 패턴 GPU 인프라 있음 예: 얼굴 인식, 음성 인식 LLM API 사용하는 경우 텍스트 처리 빠른 프로토타입 자체 모델 학습 불필요 예: 챗봇, 요약, 번역 준비 사항 체크리스트 데이터 충분한가? (양, 품질) 리소스 있는가? (GPU, 시간, 비용) Feature 설계 가능한가? (전통 ML) 해석 가능성 필요한가? 실시간 응답 필요한가? ",
-  "wordCount" : "1285",
+  "articleBody": "1. 머신러닝 전체 프로세스 단계 전통 머신러닝 딥러닝 1. 원본 데이터 텍스트, 이미지, 표 등 텍스트, 이미지, 표 등 2. 분할 텍스트→토큰, 이미지→픽셀, 음성→프레임 텍스트→토큰, 이미지→픽셀, 음성→프레임 3. 벡터화 숫자로 변환 (ID, RGB, 정규화) 숫자로 변환 (ID, RGB, 정규화) 4. Feature 추출 사람이 설계 (고정)- 긍정단어 개수- 부정단어 개수- 느낌표 개수 - 5. 학습 초기화 랜덤 Parameter 랜덤 Parameter 6. 순전파 Feature × Parameter = 예측 벡터화된 입력 × Parameter→ Layer별 Feature 자동 생성→ 예측 7. 손실 계산 정답과 비교 정답과 비교 8. 역전파 Parameter 조정 Parameter 조정→ Feature 표현도 변화 9. 반복 68 반복 (수백만수억 회) 68 반복 (수백만수억 회) 10. 학습된 모델 고정 Feature + 학습된 Parameter 학습된 Parameter(Feature 표현 내장) 11. 추론: 전처리 분할 + 벡터화 분할 + 벡터화 12. 추론: Feature 같은 방식으로 Feature 추출 학습된 모델로 자동 생성 13. 추론: 예측 학습된 Parameter로 계산 학습된 Parameter로 계산 14. 예측 결과 출력 출력 2. 핵심 용어 완전 정리 데이터 (Data) 원본 정보\n예시 텍스트: “안녕하세요” 이미지: 고양이 사진 표: 집 정보 (평수, 방개수) 역할 학습의 재료\n분할 (Segmentation) 데이터를 처리 가능한 작은 단위로 나누는 과정\n데이터별 분할 텍스트 → 토큰 (Tokenization) 이미지 → 픽셀 (Pixelation) 음성 → 프레임 (Framing) 목적 벡터화하기 전 처리 가능한 단위로 분해\n토큰 (Token) 텍스트를 처리 가능한 작은 단위로 나눈 것\n\"안녕하세요\" → [\"안녕\", \"하세요\"] (2토큰) \"I love you\" → [\"I\", \"love\", \"you\"] (3토큰) 특징 NLP(자연어 처리) 전용 용어 이미지는 “픽셀”, 음성은 “프레임” LLM에서 비용/길이 계산 단위 범위 자연어 처리 전반 (LLM 전용 아님)\n벡터화 (Vectorization) 데이터를 숫자로 변환하는 과정 (표현 방식의 변환)\n\"안녕\" → 1523 (숫자 ID) 빨간 픽셀 → [255, 0, 0] (RGB 값) 목적 기계가 읽을 수 있는 형태로 변환\nFeature 추출 벡터화된 데이터 중 의미있는 부분을 선택하거나 새로 만드는 과정\n벡터화: [1523, 8842, ...] ↓ Feature 추출: 의미있는 표현 생성 ↓ Feature: [3, 0, 2] (긍정단어 개수, 부정단어 개수, 느낌표) 핵심 벡터화는 표현 방식의 변환 Feature 추출은 의미 선택의 과정 둘은 구분되지만 일부 겹침 Feature (특징) 모델이 학습에 활용하는 의미있는 숫자 표현\n전통 머신러닝 예시 (감정 분석) 리뷰 텍스트 → Feature (사람이 설계) - 긍정 단어 개수: 3 - 부정 단어 개수: 0 - 느낌표 개수: 2 → Feature: [3, 0, 2] 딥러닝 예시 (감정 분석) 리뷰 텍스트 → Feature (자동 학습) - 입력: \"이 영화 정말 최고예요!\" - Layer 1: 단어 조합 패턴 - Layer 2: 감정 강도 패턴 - Layer 3: 전체 의도 (극찬) 학습 대상 여부 전통 머신러닝: Feature 고정, Parameter만 학습 딥러닝: Parameter 학습을 통해 Feature 표현도 간접 학습 핵심 모델에 “무엇을 볼 것인가” 제공 딥러닝: 각 Layer 출력도 Feature 전통 머신러닝 vs 딥러닝 전통 머신러닝: 사람이 Feature 설계 (고정) 딥러닝: Feature 자동 학습 (Parameter로 제어) Parameter (파라미터) 모델이 학습으로 조정하는 내부 숫자 값\n예시 감정점수 = (긍정단어 × a) + (부정단어 × b) + (느낌표 × c) a = 0.5 ← 긍정단어: 양수 (점수 올림) b = -0.8 ← 부정단어: 음수 (점수 낮춤) c = 0.3 ← 느낌표: 약한 양수 (약간 긍정) 구성 가중치 (Weight) 편향 (Bias) 핵심 학습으로 조정됨 (최적화 대상) Feature를 “어떻게 처리할지” 결정 크기 구분 Parameter 규모 예시 전통 머신러닝 10² ~ 10⁴ 선형 회귀, SVM CNN (딥러닝) 10⁵ ~ 10⁷ 이미지넷 모델 Transformer 10⁸ ~ 10¹⁰ BERT, GPT-2 LLM 10¹¹ ~ 10¹³ GPT-3, GPT-4 Feature vs Parameter 한눈에 Feature Parameter 정의 의미있는 숫자 표현 학습 가능한 내부 값 생성 방식 데이터에서 계산 랜덤 초기화 후 학습으로 최적화 역할 무엇을 볼 것인가 어떻게 계산할 것인가 예시 [3, 0, 2] (긍정, 부정, 느낌표) a=0.5, b=-0.8, c=0.3 위치 입력/중간 표현 모델 내부 학습 대상 전통 머신러닝: ✗딥러닝: 간접 ✓ ✓ (직접 최적화) 비유 요리 재료 요리 레시피 관계 Feature (입력) × Parameter (가중치) = 출력 (예측) 학습: 출력 → 손실 계산 → Parameter 조정 → 반복 추론: 출력 = 최종 예측 학습 (Training) 데이터로 최적의 Parameter를 찾는 과정\n랜덤 Parameter로 시작 Feature × Parameter = 예측 오차 계산 (틀린 정도) 역전파로 Parameter 조정 반복 (점점 정확해짐) 결과 학습된 모델 (구조 + 최적화된 Parameter)\n딥러닝에서 Parameter 학습으로 Feature 표현도 함께 최적화됨\n모델 (Model) 구조(Architecture) + 학습된 Parameter\n모델 파일 (예: PyTorch .pt, TensorFlow .pb): - 네트워크 구조 정의 - 학습된 Parameter 값들 예시 GPT-3 모델 = Transformer 구조 + 1,750억 개 Parameter = 700GB 추론 (Inference) 학습된 모델로 예측하는 과정\n입력 Feature × 학습된 Parameter = 예측 결과 예시 새 리뷰: “음식 맛있어요!” → Feature 추출 → 모델로 계산 → “긍정 92%” 새 리뷰: “별로예요…” → Feature 추출 → 모델로 계산 → “부정 85%” 사용 새 입력 → 모델 → 예측\n3. 전통 머신러닝 vs 딥러닝 비교 전통 머신러닝 Feature: 사람 설계 (고정) 학습: Parameter만 예시: 선형 회귀, SVM, 랜덤포레스트 딥러닝 Feature: 학습 중 자동 생성 학습: Parameter + Feature 동시 예시: CNN, RNN, Transformer, LLM 비교표 전통 머신러닝 딥러닝 Feature 사람이 설계 (고정) Parameter 학습으로 자동 학습 Parameter 자동 학습 자동 학습 파라미터 수 10² ~ 10⁴ 10⁵ ~ 10¹³ 계산량 적음 많음 (GPU 필요) 데이터 필요량 수천~수만 수백만~수조 학습 시간 분~시간 일~월 복잡도 단순 패턴 복잡한 패턴 전처리 필요 필요 (자동≠불필요) 해석 가능성 높음 상대적으로 낮음 (XAI로 개선 중) 4. 전체 요약 머신러닝 = 데이터로 모델 만들기 데이터 → Feature → Parameter 학습 → 모델 → 예측 전통 ML vs 딥러닝 전통 ML: Feature 사람 설계 딥러닝: Feature 자동 학습 발전 과정 2000년대: 전통 머신러닝 사람이 Feature 설계 Parameter 10² ~ 10⁴ 개 간단한 작업 2010년대: 딥러닝 Feature 자동 학습 Parameter 10⁵ ~ 10⁷ 개 이미지, 음성 인식 성공 GPU 필수 2020년대: LLM 초대규모 Parameter (10¹¹ ~ 10¹³) 언어 이해/생성 Pre-training + Fine-tuning 범용 AI의 시작 5. 실무 관점 정리 AI 도입 시 이해해야 할 것 전통 머신러닝을 선택하는 경우 정형 데이터 (표 형태) 데이터: 수천~수만 건 해석 가능성 중요 빠른 개발 필요 예: 집값 예측, 고객 이탈 예측 딥러닝을 선택하는 경우 비정형 데이터 (이미지, 음성, 텍스트) 데이터: 수십만 건 이상 복잡한 패턴 GPU 인프라 있음 예: 얼굴 인식, 음성 인식 LLM API 사용하는 경우 텍스트 처리 빠른 프로토타입 자체 모델 학습 불필요 예: 챗봇, 요약, 번역 준비 사항 체크리스트 데이터 충분한가? (양, 품질) 리소스 있는가? (GPU, 시간, 비용) Feature 설계 가능한가? (전통 ML) 해석 가능성 필요한가? 실시간 응답 필요한가? ",
+  "wordCount" : "989",
   "inLanguage": "ko",
   "datePublished": "2025-11-12T00:00:00+09:00",
   "dateModified": "2025-11-12T00:00:00+09:00",
@@ -730,117 +730,7 @@ c = 0.3   ← 느낌표: 약한 양수 (약간 긍정)
   </tbody>
 </table>
 <hr>
-<h2 id="4-llm-특수성">4. LLM 특수성<a hidden class="anchor" aria-hidden="true" href="#4-llm-특수성">#</a></h2>
-<h3 id="llm--딥러닝의-한-종류">LLM = 딥러닝의 한 종류<a hidden class="anchor" aria-hidden="true" href="#llm--딥러닝의-한-종류">#</a></h3>
-<pre tabindex="0"><code>AI
-└─ 머신러닝
-    ├─ 전통 머신러닝
-    └─ 딥러닝
-        └─ Transformer
-            └─ LLM ← 여기
-</code></pre><h3 id="llm-학습-프로세스">LLM 학습 프로세스<a hidden class="anchor" aria-hidden="true" href="#llm-학습-프로세스">#</a></h3>
-<pre tabindex="0"><code>━━━━━━━━━━━━━━━━━━━━━━━
- 1단계: Pre-training (사전학습)
-━━━━━━━━━━━━━━━━━━━━━━━
-
-대규모 텍스트 데이터 (수조 토큰)
-    ↓
-토큰화
-&#34;안녕하세요&#34; → [&#34;안녕&#34;, &#34;하세요&#34;]
-    ↓
-임베딩 (Feature 추출)
-[[0.2, -0.5, 0.8], [0.1, 0.3, -0.2]]
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- Transformer Layer 반복
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-[Layer 1] Feature → 다음 Feature
-[Layer 2] Feature → 다음 Feature
-...
-[마지막 Layer] Feature → 최종 표현
-    ↓
-&#34;다음 토큰 확률 예측&#34; 반복 학습
-    ↓
-10¹¹ ~ 10¹³ 개 Parameter 최적화
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- 사전학습 모델 완성
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- 2단계: Fine-tuning (미세조정)
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-① Supervised Fine-tuning (SFT)
-   - 고품질 대화 데이터로 학습
-   - 지시 따르기 능력 향상
-    ↓
-② RLHF (Reinforcement Learning from Human Feedback, 인간 피드백 강화학습)
-   - 사람이 &#34;좋은 답변&#34; 평가
-   - 유용성, 안전성 향상
-    ↓
-━━━━━━━━━━━━━━━━━━━━━━━
- 대화형 LLM 완성
-━━━━━━━━━━━━━━━━━━━━━━━
-    ↓
-GPT, Claude 등
-</code></pre><h4 id="학습-핵심">학습 핵심<a hidden class="anchor" aria-hidden="true" href="#학습-핵심">#</a></h4>
-<ul>
-<li>기본: 다음 토큰 확률 예측 학습</li>
-<li>완성: SFT + RLHF로 대화형 모델 발전</li>
-</ul>
-<h3 id="llm-추론">LLM 추론<a hidden class="anchor" aria-hidden="true" href="#llm-추론">#</a></h3>
-<pre tabindex="0"><code>&#34;오늘 날씨가&#34;
-    ↓
-토큰화: [&#34;오늘&#34;, &#34;날씨&#34;, &#34;가&#34;]
-    ↓
-임베딩: Feature 추출
-    ↓
-수십~수백개 Layer 통과
-(각 Layer마다 새로운 Feature 생성)
-    ↓
-다음 토큰 확률 분포 계산
-&#34;좋네요&#34; (70%), &#34;나쁘네요&#34; (20%), &#34;흐리네요&#34; (8%), ...
-    ↓
-Sampling 전략에 따라 선택
-(temperature, top-k, top-p 등)
-    ↓
-&#34;좋네요&#34; 선택
-</code></pre><h4 id="추론-메커니즘">추론 메커니즘<a hidden class="anchor" aria-hidden="true" href="#추론-메커니즘">#</a></h4>
-<ul>
-<li>확률 분포 계산 후</li>
-<li>Sampling 전략에 따라 토큰 선택
-<ul>
-<li>Temperature: 확률 분포 조절 값</li>
-<li>낮음 (0~0.5): 보수적 (높은 확률만)</li>
-<li>기본 (1.0): 균형</li>
-<li>높음 (1.5~2.0): 창의적 (다양한 선택)</li>
-<li>top-k, top-p 등도 사용</li>
-</ul>
-</li>
-</ul>
-<h3 id="llm의-핵심-특징">LLM의 핵심 특징<a hidden class="anchor" aria-hidden="true" href="#llm의-핵심-특징">#</a></h3>
-<h4 id="1-large-대규모-parameter">1. Large (대규모 Parameter)<a hidden class="anchor" aria-hidden="true" href="#1-large-대규모-parameter">#</a></h4>
-<ul>
-<li>규모: 10¹¹ ~ 10¹³ 개</li>
-<li>GPT-3: 1.75 × 10¹¹ 개 (700GB)</li>
-<li>GPT-4: 추정 10¹² ~ 10¹³ 개</li>
-</ul>
-<h4 id="2-language-언어-전용">2. Language (언어 전용)<a hidden class="anchor" aria-hidden="true" href="#2-language-언어-전용">#</a></h4>
-<ul>
-<li>입력: 텍스트</li>
-<li>처리: 토큰</li>
-<li>출력: 텍스트</li>
-</ul>
-<h4 id="3-model-학습된-parameter">3. Model (학습된 Parameter)<a hidden class="anchor" aria-hidden="true" href="#3-model-학습된-parameter">#</a></h4>
-<ul>
-<li>사전학습: &ldquo;다음 토큰 예측&rdquo;</li>
-<li>미세조정: SFT + RLHF</li>
-<li>→ 대화, 요약, 번역, 코딩 모두 가능</li>
-</ul>
-<hr>
-<h2 id="5-전체-요약">5. 전체 요약<a hidden class="anchor" aria-hidden="true" href="#5-전체-요약">#</a></h2>
+<h2 id="4-전체-요약">4. 전체 요약<a hidden class="anchor" aria-hidden="true" href="#4-전체-요약">#</a></h2>
 <h3 id="머신러닝--데이터로-모델-만들기">머신러닝 = 데이터로 모델 만들기<a hidden class="anchor" aria-hidden="true" href="#머신러닝--데이터로-모델-만들기">#</a></h3>
 <pre tabindex="0"><code>데이터 → Feature → Parameter 학습 → 모델 → 예측
 </code></pre><h3 id="전통-ml-vs-딥러닝">전통 ML vs 딥러닝<a hidden class="anchor" aria-hidden="true" href="#전통-ml-vs-딥러닝">#</a></h3>
@@ -870,7 +760,7 @@ Sampling 전략에 따라 선택
 <li>범용 AI의 시작</li>
 </ul>
 <hr>
-<h2 id="6-실무-관점-정리">6. 실무 관점 정리<a hidden class="anchor" aria-hidden="true" href="#6-실무-관점-정리">#</a></h2>
+<h2 id="5-실무-관점-정리">5. 실무 관점 정리<a hidden class="anchor" aria-hidden="true" href="#5-실무-관점-정리">#</a></h2>
 <h3 id="ai-도입-시-이해해야-할-것">AI 도입 시 이해해야 할 것<a hidden class="anchor" aria-hidden="true" href="#ai-도입-시-이해해야-할-것">#</a></h3>
 <h4 id="전통-머신러닝을-선택하는-경우">전통 머신러닝을 선택하는 경우<a hidden class="anchor" aria-hidden="true" href="#전통-머신러닝을-선택하는-경우">#</a></h4>
 <ul>

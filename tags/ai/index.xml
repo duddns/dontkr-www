@@ -27,15 +27,23 @@
 LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;→ 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;2-llm의-3가지-핵심-특징&#34;&gt;2. LLM의 3가지 핵심 특징&lt;/h2&gt;
-&lt;h3 id=&#34;large-대규모&#34;&gt;Large (대규모)&lt;/h3&gt;
-&lt;p&gt;파라미터 = 모델의 학습 가능한 내부 값&lt;/p&gt;
+&lt;h2 id=&#34;2-llm--딥러닝의-한-종류&#34;&gt;2. LLM = 딥러닝의 한 종류&lt;/h2&gt;
+&lt;h3 id=&#34;ai-기술-계층도&#34;&gt;AI 기술 계층도&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;AI
+└─ 머신러닝
+    ├─ 전통 머신러닝
+    └─ 딥러닝
+        └─ Transformer
+            └─ LLM ← 여기
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;llm의-위치&#34;&gt;LLM의 위치&lt;/h3&gt;
 &lt;ul&gt;
-&lt;li&gt;GPT-3: 1,750억 개&lt;/li&gt;
-&lt;li&gt;GPT-4: 추정 1조+ 개&lt;/li&gt;
-&lt;li&gt;Claude 3.5: 비공개 (아마 수천억~조)&lt;/li&gt;
+&lt;li&gt;AI의 일부&lt;/li&gt;
+&lt;li&gt;딥러닝의 일부&lt;/li&gt;
+&lt;li&gt;Transformer 기반&lt;/li&gt;
+&lt;li&gt;현재 가장 주목받는 분야&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;많을수록:&lt;/p&gt;</description>
+&lt;h3 id=&#34;multimodal-확장&#34;&gt;Multimodal 확장&lt;/h3&gt;
+&lt;p&gt;최근 트렌드:&lt;/p&gt;</description>
     </item>
     <item>
       <title>머신러닝 개념 정리</title>
@@ -165,7 +173,7 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
 &lt;ul&gt;
 &lt;li&gt;데이터 마이닝: &amp;ldquo;왜 이런 일이 일어나는가?&amp;rdquo; (패턴 발견)&lt;/li&gt;
 &lt;li&gt;AI: &amp;ldquo;이 상황에서 뭘 해야 하는가?&amp;rdquo; (문제 해결)&lt;/li&gt;
-&lt;li&gt;머신러닝: 머신러닝: AI의 한 분야이자, 데이터 마이닝에서 활용되는 핵심 도구&lt;/li&gt;
+&lt;li&gt;머신러닝: AI의 한 분야이자, 데이터 마이닝에서 활용되는 핵심 도구&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;예시&#34;&gt;예시&lt;/h3&gt;
 &lt;ul&gt;
