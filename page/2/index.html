@@ -141,6 +141,19 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Mac zsh 설정
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함. 원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-04-25 00:00:00 +0900 KST'>2025년 4월 25일</span></footer>
+  <a class="entry-link" aria-label="post link to Mac zsh 설정" href="https://dont.kr/posts/2025/2025-04-25-mac-zsh/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">ImageMagick crop
     </h2>
   </header>
@@ -257,19 +270,6 @@ $ brew install hugo github 저장소 생성 duddns.github.io: GitHub Pages 저�
   </div>
   <footer class="entry-footer"><span title='2021-10-28 09:49:00 +0900 KST'>2021년 10월 28일</span></footer>
   <a class="entry-link" aria-label="post link to [Backup] gradle 의존성 갱신" href="https://dont.kr/posts/2021/2021-10-28-backup-gradle-refresh-dependencies/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">[Backup] aws ec2 인스턴스 생성후 하는 작업 v3
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>업데이트 $ sudo apt update ; sudo apt upgrade -y zsh $ sudo apt install zsh $ curl -L https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh | sh $ sudo chsh -s $(which zsh) ubuntu vim $ sudo add-apt-repository ppa:jonathonf/vim $ sudo apt update $ sudo apt install vim java (spring boot application 실행을 위해) $ wget -qO - https://adoptopenjdk.jfrog.io/adoptopenjdk/api/gpg/key/public | sudo apt-key add - $ sudo add-apt-repository --yes https://adoptopenjdk.jfrog.io/adoptopenjdk/deb/ $ sudo apt update $ sudo apt install adoptopenjdk-13-hotspot nginx (웹서버 및 SSL 적용을 위해) nginx 설치 $ echo &#34;deb http://nginx.org/packages/mainline/ubuntu `lsb_release -cs` nginx&#34; | sudo tee /etc/apt/sources.list.d/nginx.list $ curl -fsSL https://nginx.org/keys/nginx_signing.key | sudo apt-key add - $ sudo apt-key fingerprint ABF5BD827BD9BF62 pub rsa2048 2011-08-19 [SC] [expires: 2024-06-14] 573B FD6B 3D8F BC64 1079 A6AB ABF5 BD82 7BD9 BF62 uid [ unknown] nginx signing key &lt;signing-key@nginx.com&gt; $ sudo apt-get update $ sudo apt-get install nginx nginx 설정 ssl 설정 badbot blocker https://github.com/mariusv/nginx-badbot-blocker/tree/master/VERSION_2
-</p>
-  </div>
-  <footer class="entry-footer"><span title='2020-03-09 16:24:00 +0900 KST'>2020년 3월 9일</span></footer>
-  <a class="entry-link" aria-label="post link to [Backup] aws ec2 인스턴스 생성후 하는 작업 v3" href="https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
