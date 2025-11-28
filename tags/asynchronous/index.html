@@ -5,11 +5,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Message Queue | DoNT - Do Not Think!!!</title>
+<title>Asynchronous | DoNT - Do Not Think!!!</title>
 <meta name="keywords" content="">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="canonical" href="https://dont.kr/tags/message-queue/">
+<link rel="canonical" href="https://dont.kr/tags/asynchronous/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.4bef824c135d95ffd8df119b1b511d3c1507c4d3fed7cf470539d03f95ec7625.css" integrity="sha256-S&#43;&#43;CTBNdlf/Y3xGbG1EdPBUHxNP&#43;189HBTnQP5XsdiU=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dont.kr/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
@@ -18,8 +18,8 @@
 <link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
-<link rel="alternate" type="application/rss+xml" href="https://dont.kr/tags/message-queue/index.xml" title="rss">
-<link rel="alternate" hreflang="ko" href="https://dont.kr/tags/message-queue/">
+<link rel="alternate" type="application/rss+xml" href="https://dont.kr/tags/asynchronous/index.xml" title="rss">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/tags/asynchronous/">
 <noscript>
     <style>
         #theme-toggle,
@@ -71,13 +71,13 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://dont.kr/tags/message-queue/">
+</script><meta property="og:url" content="https://dont.kr/tags/asynchronous/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
-  <meta property="og:title" content="Message Queue">
+  <meta property="og:title" content="Asynchronous">
   <meta property="og:locale" content="ko-kr">
   <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Message Queue">
+<meta name="twitter:title" content="Asynchronous">
 <meta name="twitter:description" content="">
 
 </head>
@@ -126,22 +126,26 @@
 <main class="main"> 
 <header class="page-header">
   <h1>
-    Message Queue
+    Asynchronous
   </h1>
 </header>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Apache Kafka 기본 개념 정리
+    <h2 class="entry-hint-parent">블록킹/논블록킹, 동기/비동기 개념 정리
     </h2>
   </header>
   <div class="entry-content">
-    <p>Apache Kafka의 핵심 개념과 동작 원리를 정리합니다.
-아키텍처 Kafka Cluster (여러 Broker의 집합) │ └─ Broker (카프카 서버, 여러 대 가능) │ └─ Topic (메시지 종류) │ ├─ Partition 0 ──┐ ├─ Partition 1 ──┼── Consumer Group A ─┬─ Consumer 1 └─ Partition 2 ──┘ ├─ Consumer 2 │ └─ Consumer 3 │ └──────────── Consumer Group B ─── Consumer 1 구성 요소 Broker: Kafka 서버 (여러 대로 클러스터 구성) Topic: 메시지 종류별 논리적 그룹 Partition: 토픽 내 병렬 처리 단위 Consumer Group: 동일 group.id로 묶인 컨슈머들 설계 시 고려사항 파티션 수 = 최대 병렬 처리 수 파티션 수 ≥ 컨슈머 수 (컨슈머가 더 많으면 일부는 idle) 메시지 흐름 Producer ──produce──▶ Kafka Broker ◀──poll── Consumer │ ▼ consume 처리 로직 동작 방식 Producer가 메시지 전송 Broker가 파티션에 메시지 저장 Consumer가 주기적으로 폴링 새 메시지 있으면 가져와서 처리 메시지 관리 Offset 관리 Offset: 파티션 내 메시지 위치 (0부터 시작) Committed Offset: 처리 완료한 마지막 위치 Latest Offset: 파티션의 마지막 메시지 위치 Consumer Lag: Latest - Committed (처리 지연 정도) Commit 전략 // 자동 커밋 (기본값) enable.auto.commit=true auto.commit.interval.ms=5000 // 수동 커밋 consumer.commitSync(); consumer.commitAsync(); 메시지 전달 보장 1. At-most-once 처리 전 commit 장점: 중복 없음 단점: 메시지 유실 가능 2. At-least-once (기본값) 처리 후 commit 장점: 메시지 유실 없음 단점: 중복 처리 가능 중요: 애플리케이션 레벨에서 멱등성 보장 필요 3. Exactly-once 트랜잭션 사용 장점: 중복도 유실도 없음 단점: 성능 오버헤드 메시지 보관 일반 메시지 큐와 달리 Kafka는 consume 후에도 메시지 보관:
+    <p>혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.
+개념 정의 블록킹 vs 논블록킹 구분 기준: 제어권을 바로 돌려주는가?
+블록킹: 작업 완료까지 제어권을 돌려주지 않음 논블록킹: 작업 요청 후 바로 제어권 반환 카페 주문 비유:
+블록킹: 카운터에서 서서 기다림 (다른 일 못함) 논블록킹: 진동벨 받고 자리로 (다른 일 가능) 동기 vs 비동기 구분 기준: 결과를 누가 확인하는가?
+동기: 요청한 쪽이 결과를 직접 확인 비동기: 결과가 준비되면 콜백으로 알려줌 카페 주문 비유:
+동기: 내가 직접 “제 커피 됐나요?” 확인 비동기: 직원이 “OO번 고객님~” 불러줌 핵심 구분 구분 질문 블록킹 논블록킹 제어권 기다리는 동안 다른 일 할 수 있어? 못함 (멈춤) 가능 (안 멈춤) 구분 질문 동기 비동기 결과 확인 결과를 내가 확인해? 알려줘? 내가 확인 알려줌 C 디바이스 I/O 예제 블록킹 I/O int fd = open(&#34;/dev/device&#34;, O_RDONLY); char buf[1024]; // 데이터 올 때까지 멈춤 int result = read(fd, buf, 1024); // 여기 도달 = buf 채워짐 보장 printf(&#34;읽음: %s&#34;, buf); 동작:
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span></footer>
-  <a class="entry-link" aria-label="post link to Apache Kafka 기본 개념 정리" href="https://dont.kr/posts/2025/2025-11-27-apache-kafka/"></a>
+  <footer class="entry-footer"><span title='2025-11-28 00:00:00 +0900 KST'>2025년 11월 28일</span></footer>
+  <a class="entry-link" aria-label="post link to 블록킹/논블록킹, 동기/비동기 개념 정리" href="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/"></a>
 </article>
     </main>
     

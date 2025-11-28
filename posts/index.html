@@ -147,7 +147,25 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2 class="entry-hint-parent">Apache Kafka 기본 개념
+    <h2 class="entry-hint-parent">블록킹/논블록킹, 동기/비동기 개념 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.
+개념 정의 블록킹 vs 논블록킹 구분 기준: 제어권을 바로 돌려주는가?
+블록킹: 작업 완료까지 제어권을 돌려주지 않음 논블록킹: 작업 요청 후 바로 제어권 반환 카페 주문 비유:
+블록킹: 카운터에서 서서 기다림 (다른 일 못함) 논블록킹: 진동벨 받고 자리로 (다른 일 가능) 동기 vs 비동기 구분 기준: 결과를 누가 확인하는가?
+동기: 요청한 쪽이 결과를 직접 확인 비동기: 결과가 준비되면 콜백으로 알려줌 카페 주문 비유:
+동기: 내가 직접 “제 커피 됐나요?” 확인 비동기: 직원이 “OO번 고객님~” 불러줌 핵심 구분 구분 질문 블록킹 논블록킹 제어권 기다리는 동안 다른 일 할 수 있어? 못함 (멈춤) 가능 (안 멈춤) 구분 질문 동기 비동기 결과 확인 결과를 내가 확인해? 알려줘? 내가 확인 알려줌 C 디바이스 I/O 예제 블록킹 I/O int fd = open(&#34;/dev/device&#34;, O_RDONLY); char buf[1024]; // 데이터 올 때까지 멈춤 int result = read(fd, buf, 1024); // 여기 도달 = buf 채워짐 보장 printf(&#34;읽음: %s&#34;, buf); 동작:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-28 00:00:00 +0900 KST'>2025년 11월 28일</span></footer>
+  <a class="entry-link" aria-label="post link to 블록킹/논블록킹, 동기/비동기 개념 정리" href="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Apache Kafka 기본 개념 정리
     </h2>
   </header>
   <div class="entry-content">
@@ -156,7 +174,7 @@
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span></footer>
-  <a class="entry-link" aria-label="post link to Apache Kafka 기본 개념" href="https://dont.kr/posts/2025/2025-11-27-apache-kafka/"></a>
+  <a class="entry-link" aria-label="post link to Apache Kafka 기본 개념 정리" href="https://dont.kr/posts/2025/2025-11-27-apache-kafka/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -273,21 +291,6 @@ AI가 효과적인 기획 작업 1. 사용자 스토리 작성 표준 형식의 
   </div>
   <footer class="entry-footer"><span title='2025-09-24 00:00:00 +0900 KST'>2025년 9월 24일</span></footer>
   <a class="entry-link" aria-label="post link to 바이브 코딩 심화편 - 실무 적용과 한계" href="https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>바이브 코딩이란? 바이브 코딩(Vibe Coding) 이란 직관적이고 자연어에 가까운 방식으로 코드를 작성하는 접근법입니다. 개발자가 원하는 기능이나 로직을 마치 동료에게 설명하듯 자연스럽게 표현하면, AI가 이를 해석해서 실제 작동하는 코드로 변환해주는 방식입니다.
-기존의 프로그래밍이 정확한 문법과 구조를 요구했다면, 바이브 코딩은 의도와 맥락을 중시합니다. 어떻게 구현할 것인가보다 무엇을 하고 싶은가에 초점을 맞춘 개발 방식이라고 할 수 있습니다.
-바이브 코딩의 핵심 특징 1. 자연어 기반 접근 기존의 정확한 문법보다는 의도와 맥락을 중시합니다. AI가 개발자의 의도를 파악해서 적절한 코드로 변환해주는 방식입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-09-17 00:00:00 +0900 KST'>2025년 9월 17일</span></footer>
-  <a class="entry-link" aria-label="post link to 바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임" href="https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

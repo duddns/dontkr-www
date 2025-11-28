@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Apache Kafka 기본 개념 | DoNT - Do Not Think!!!</title>
+<title>Apache Kafka 기본 개념 정리 | DoNT - Do Not Think!!!</title>
 <meta name="keywords" content="kafka, message queue">
 <meta name="description" content="Apache Kafka의 핵심 개념과 동작 원리를 정리합니다.
 아키텍처
@@ -148,7 +148,7 @@ consumer.commitAsync();
 
 </script><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-27-apache-kafka/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
-  <meta property="og:title" content="Apache Kafka 기본 개념">
+  <meta property="og:title" content="Apache Kafka 기본 개념 정리">
   <meta property="og:description" content="Apache Kafka의 핵심 개념과 동작 원리를 정리합니다.
 아키텍처 Kafka Cluster (여러 Broker의 집합) │ └─ Broker (카프카 서버, 여러 대 가능) │ └─ Topic (메시지 종류) │ ├─ Partition 0 ──┐ ├─ Partition 1 ──┼── Consumer Group A ─┬─ Consumer 1 └─ Partition 2 ──┘ ├─ Consumer 2 │ └─ Consumer 3 │ └──────────── Consumer Group B ─── Consumer 1 구성 요소 Broker: Kafka 서버 (여러 대로 클러스터 구성) Topic: 메시지 종류별 논리적 그룹 Partition: 토픽 내 병렬 처리 단위 Consumer Group: 동일 group.id로 묶인 컨슈머들 설계 시 고려사항 파티션 수 = 최대 병렬 처리 수 파티션 수 ≥ 컨슈머 수 (컨슈머가 더 많으면 일부는 idle) 메시지 흐름 Producer ──produce──▶ Kafka Broker ◀──poll── Consumer │ ▼ consume 처리 로직 동작 방식 Producer가 메시지 전송 Broker가 파티션에 메시지 저장 Consumer가 주기적으로 폴링 새 메시지 있으면 가져와서 처리 메시지 관리 Offset 관리 Offset: 파티션 내 메시지 위치 (0부터 시작) Committed Offset: 처리 완료한 마지막 위치 Latest Offset: 파티션의 마지막 메시지 위치 Consumer Lag: Latest - Committed (처리 지연 정도) Commit 전략 // 자동 커밋 (기본값) enable.auto.commit=true auto.commit.interval.ms=5000 // 수동 커밋 consumer.commitSync(); consumer.commitAsync(); 메시지 전달 보장 1. At-most-once 처리 전 commit 장점: 중복 없음 단점: 메시지 유실 가능 2. At-least-once (기본값) 처리 후 commit 장점: 메시지 유실 없음 단점: 중복 처리 가능 중요: 애플리케이션 레벨에서 멱등성 보장 필요 3. Exactly-once 트랜잭션 사용 장점: 중복도 유실도 없음 단점: 성능 오버헤드 메시지 보관 일반 메시지 큐와 달리 Kafka는 consume 후에도 메시지 보관:">
   <meta property="og:locale" content="ko-kr">
@@ -159,7 +159,7 @@ consumer.commitAsync();
     <meta property="article:tag" content="Kafka">
     <meta property="article:tag" content="Message Queue">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Apache Kafka 기본 개념">
+<meta name="twitter:title" content="Apache Kafka 기본 개념 정리">
 <meta name="twitter:description" content="Apache Kafka의 핵심 개념과 동작 원리를 정리합니다.
 아키텍처
 Kafka Cluster (여러 Broker의 집합)
@@ -253,7 +253,7 @@ consumer.commitAsync();
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "Apache Kafka 기본 개념",
+      "name": "Apache Kafka 기본 개념 정리",
       "item": "https://dont.kr/posts/2025/2025-11-27-apache-kafka/"
     }
   ]
@@ -263,8 +263,8 @@ consumer.commitAsync();
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "Apache Kafka 기본 개념",
-  "name": "Apache Kafka 기본 개념",
+  "headline": "Apache Kafka 기본 개념 정리",
+  "name": "Apache Kafka 기본 개념 정리",
   "description": "Apache Kafka의 핵심 개념과 동작 원리를 정리합니다.\n아키텍처 Kafka Cluster (여러 Broker의 집합) │ └─ Broker (카프카 서버, 여러 대 가능) │ └─ Topic (메시지 종류) │ ├─ Partition 0 ──┐ ├─ Partition 1 ──┼── Consumer Group A ─┬─ Consumer 1 └─ Partition 2 ──┘ ├─ Consumer 2 │ └─ Consumer 3 │ └──────────── Consumer Group B ─── Consumer 1 구성 요소 Broker: Kafka 서버 (여러 대로 클러스터 구성) Topic: 메시지 종류별 논리적 그룹 Partition: 토픽 내 병렬 처리 단위 Consumer Group: 동일 group.id로 묶인 컨슈머들 설계 시 고려사항 파티션 수 = 최대 병렬 처리 수 파티션 수 ≥ 컨슈머 수 (컨슈머가 더 많으면 일부는 idle) 메시지 흐름 Producer ──produce──▶ Kafka Broker ◀──poll── Consumer │ ▼ consume 처리 로직 동작 방식 Producer가 메시지 전송 Broker가 파티션에 메시지 저장 Consumer가 주기적으로 폴링 새 메시지 있으면 가져와서 처리 메시지 관리 Offset 관리 Offset: 파티션 내 메시지 위치 (0부터 시작) Committed Offset: 처리 완료한 마지막 위치 Latest Offset: 파티션의 마지막 메시지 위치 Consumer Lag: Latest - Committed (처리 지연 정도) Commit 전략 // 자동 커밋 (기본값) enable.auto.commit=true auto.commit.interval.ms=5000 // 수동 커밋 consumer.commitSync(); consumer.commitAsync(); 메시지 전달 보장 1. At-most-once 처리 전 commit 장점: 중복 없음 단점: 메시지 유실 가능 2. At-least-once (기본값) 처리 후 commit 장점: 메시지 유실 없음 단점: 중복 처리 가능 중요: 애플리케이션 레벨에서 멱등성 보장 필요 3. Exactly-once 트랜잭션 사용 장점: 중복도 유실도 없음 단점: 성능 오버헤드 메시지 보관 일반 메시지 큐와 달리 Kafka는 consume 후에도 메시지 보관:\n",
   "keywords": [
     "kafka", "message queue"
@@ -337,7 +337,7 @@ consumer.commitAsync();
   <header class="post-header">
     
     <h1 class="post-title">
-      Apache Kafka 기본 개념
+      Apache Kafka 기본 개념 정리
     </h1>
     <div class="post-meta"><span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span>
 

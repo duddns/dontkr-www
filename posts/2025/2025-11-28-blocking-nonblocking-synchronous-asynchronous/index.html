@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>블록킹/논블록킹, 동기/비동기 개념 정리 | DoNT - Do Not Think!!!</title>
+<meta name="keywords" content="blocking, non blocking, synchronous, asynchronous">
+<meta name="description" content="혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.
+개념 정의
+블록킹 vs 논블록킹
+구분 기준: 제어권을 바로 돌려주는가?
+
+블록킹: 작업 완료까지 제어권을 돌려주지 않음
+논블록킹: 작업 요청 후 바로 제어권 반환
+
+카페 주문 비유:
+
+블록킹: 카운터에서 서서 기다림 (다른 일 못함)
+논블록킹: 진동벨 받고 자리로 (다른 일 가능)
+
+동기 vs 비동기
+구분 기준: 결과를 누가 확인하는가?
+
+동기: 요청한 쪽이 결과를 직접 확인
+비동기: 결과가 준비되면 콜백으로 알려줌
+
+카페 주문 비유:
+
+동기: 내가 직접 &ldquo;제 커피 됐나요?&rdquo; 확인
+비동기: 직원이 &ldquo;OO번 고객님~&rdquo; 불러줌
+
+핵심 구분
+
+  
+      
+          구분
+          질문
+          블록킹
+          논블록킹
+      
+  
+  
+      
+          제어권
+          기다리는 동안 다른 일 할 수 있어?
+          못함 (멈춤)
+          가능 (안 멈춤)
+      
+  
+
+
+  
+      
+          구분
+          질문
+          동기
+          비동기
+      
+  
+  
+      
+          결과 확인
+          결과를 내가 확인해? 알려줘?
+          내가 확인
+          알려줌
+      
+  
+
+C 디바이스 I/O 예제
+블록킹 I/O
+int fd = open(&#34;/dev/device&#34;, O_RDONLY);
+char buf[1024];
+
+// 데이터 올 때까지 멈춤
+int result = read(fd, buf, 1024);
+
+// 여기 도달 = buf 채워짐 보장
+printf(&#34;읽음: %s&#34;, buf);
+동작:">
+<meta name="author" content="">
+<link rel="canonical" href="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4bef824c135d95ffd8df119b1b511d3c1507c4d3fed7cf470539d03f95ec7625.css" integrity="sha256-S&#43;&#43;CTBNdlf/Y3xGbG1EdPBUHxNP&#43;189HBTnQP5XsdiU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="블록킹/논블록킹, 동기/비동기 개념 정리">
+  <meta property="og:description" content="혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.
+개념 정의 블록킹 vs 논블록킹 구분 기준: 제어권을 바로 돌려주는가?
+블록킹: 작업 완료까지 제어권을 돌려주지 않음 논블록킹: 작업 요청 후 바로 제어권 반환 카페 주문 비유:
+블록킹: 카운터에서 서서 기다림 (다른 일 못함) 논블록킹: 진동벨 받고 자리로 (다른 일 가능) 동기 vs 비동기 구분 기준: 결과를 누가 확인하는가?
+동기: 요청한 쪽이 결과를 직접 확인 비동기: 결과가 준비되면 콜백으로 알려줌 카페 주문 비유:
+동기: 내가 직접 “제 커피 됐나요?” 확인 비동기: 직원이 “OO번 고객님~” 불러줌 핵심 구분 구분 질문 블록킹 논블록킹 제어권 기다리는 동안 다른 일 할 수 있어? 못함 (멈춤) 가능 (안 멈춤) 구분 질문 동기 비동기 결과 확인 결과를 내가 확인해? 알려줘? 내가 확인 알려줌 C 디바이스 I/O 예제 블록킹 I/O int fd = open(&#34;/dev/device&#34;, O_RDONLY); char buf[1024]; // 데이터 올 때까지 멈춤 int result = read(fd, buf, 1024); // 여기 도달 = buf 채워짐 보장 printf(&#34;읽음: %s&#34;, buf); 동작:">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-11-28T00:00:00+09:00">
+    <meta property="article:modified_time" content="2025-11-28T00:00:00+09:00">
+    <meta property="article:tag" content="Blocking">
+    <meta property="article:tag" content="Non Blocking">
+    <meta property="article:tag" content="Synchronous">
+    <meta property="article:tag" content="Asynchronous">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="블록킹/논블록킹, 동기/비동기 개념 정리">
+<meta name="twitter:description" content="혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.
+개념 정의
+블록킹 vs 논블록킹
+구분 기준: 제어권을 바로 돌려주는가?
+
+블록킹: 작업 완료까지 제어권을 돌려주지 않음
+논블록킹: 작업 요청 후 바로 제어권 반환
+
+카페 주문 비유:
+
+블록킹: 카운터에서 서서 기다림 (다른 일 못함)
+논블록킹: 진동벨 받고 자리로 (다른 일 가능)
+
+동기 vs 비동기
+구분 기준: 결과를 누가 확인하는가?
+
+동기: 요청한 쪽이 결과를 직접 확인
+비동기: 결과가 준비되면 콜백으로 알려줌
+
+카페 주문 비유:
+
+동기: 내가 직접 &ldquo;제 커피 됐나요?&rdquo; 확인
+비동기: 직원이 &ldquo;OO번 고객님~&rdquo; 불러줌
+
+핵심 구분
+
+  
+      
+          구분
+          질문
+          블록킹
+          논블록킹
+      
+  
+  
+      
+          제어권
+          기다리는 동안 다른 일 할 수 있어?
+          못함 (멈춤)
+          가능 (안 멈춤)
+      
+  
+
+
+  
+      
+          구분
+          질문
+          동기
+          비동기
+      
+  
+  
+      
+          결과 확인
+          결과를 내가 확인해? 알려줘?
+          내가 확인
+          알려줌
+      
+  
+
+C 디바이스 I/O 예제
+블록킹 I/O
+int fd = open(&#34;/dev/device&#34;, O_RDONLY);
+char buf[1024];
+
+// 데이터 올 때까지 멈춤
+int result = read(fd, buf, 1024);
+
+// 여기 도달 = buf 채워짐 보장
+printf(&#34;읽음: %s&#34;, buf);
+동작:">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dont.kr/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "블록킹/논블록킹, 동기/비동기 개념 정리",
+      "item": "https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "블록킹/논블록킹, 동기/비동기 개념 정리",
+  "name": "블록킹\/논블록킹, 동기\/비동기 개념 정리",
+  "description": "혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.\n개념 정의 블록킹 vs 논블록킹 구분 기준: 제어권을 바로 돌려주는가?\n블록킹: 작업 완료까지 제어권을 돌려주지 않음 논블록킹: 작업 요청 후 바로 제어권 반환 카페 주문 비유:\n블록킹: 카운터에서 서서 기다림 (다른 일 못함) 논블록킹: 진동벨 받고 자리로 (다른 일 가능) 동기 vs 비동기 구분 기준: 결과를 누가 확인하는가?\n동기: 요청한 쪽이 결과를 직접 확인 비동기: 결과가 준비되면 콜백으로 알려줌 카페 주문 비유:\n동기: 내가 직접 \u0026ldquo;제 커피 됐나요?\u0026rdquo; 확인 비동기: 직원이 \u0026ldquo;OO번 고객님~\u0026rdquo; 불러줌 핵심 구분 구분 질문 블록킹 논블록킹 제어권 기다리는 동안 다른 일 할 수 있어? 못함 (멈춤) 가능 (안 멈춤) 구분 질문 동기 비동기 결과 확인 결과를 내가 확인해? 알려줘? 내가 확인 알려줌 C 디바이스 I/O 예제 블록킹 I/O int fd = open(\u0026#34;/dev/device\u0026#34;, O_RDONLY); char buf[1024]; // 데이터 올 때까지 멈춤 int result = read(fd, buf, 1024); // 여기 도달 = buf 채워짐 보장 printf(\u0026#34;읽음: %s\u0026#34;, buf); 동작:\n",
+  "keywords": [
+    "blocking", "non blocking", "synchronous", "asynchronous"
+  ],
+  "articleBody": "혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.\n개념 정의 블록킹 vs 논블록킹 구분 기준: 제어권을 바로 돌려주는가?\n블록킹: 작업 완료까지 제어권을 돌려주지 않음 논블록킹: 작업 요청 후 바로 제어권 반환 카페 주문 비유:\n블록킹: 카운터에서 서서 기다림 (다른 일 못함) 논블록킹: 진동벨 받고 자리로 (다른 일 가능) 동기 vs 비동기 구분 기준: 결과를 누가 확인하는가?\n동기: 요청한 쪽이 결과를 직접 확인 비동기: 결과가 준비되면 콜백으로 알려줌 카페 주문 비유:\n동기: 내가 직접 “제 커피 됐나요?” 확인 비동기: 직원이 “OO번 고객님~” 불러줌 핵심 구분 구분 질문 블록킹 논블록킹 제어권 기다리는 동안 다른 일 할 수 있어? 못함 (멈춤) 가능 (안 멈춤) 구분 질문 동기 비동기 결과 확인 결과를 내가 확인해? 알려줘? 내가 확인 알려줌 C 디바이스 I/O 예제 블록킹 I/O int fd = open(\"/dev/device\", O_RDONLY); char buf[1024]; // 데이터 올 때까지 멈춤 int result = read(fd, buf, 1024); // 여기 도달 = buf 채워짐 보장 printf(\"읽음: %s\", buf); 동작:\n프로세스가 커널에 read() 요청 데이터 없으면 프로세스 sleep 데이터 도착하면 커널이 프로세스 깨움 그제서야 다음 줄 실행 논블록킹 I/O + Polling int fd = open(\"/dev/device\", O_RDONLY | O_NONBLOCK); char buf[1024]; while (1) { int result = read(fd, buf, 1024); // 바로 리턴 if (result \u003e 0) { printf(\"읽음: %s\", buf); break; } else if (result == -1 \u0026\u0026 errno == EAGAIN) { // 데이터 없음 → 다른 일 하고 다시 확인 doOtherWork(); } } 동작:\n프로세스가 커널에 read() 요청 데이터 없으면 즉시 -1 리턴 프로세스는 계속 실행 반복해서 확인 (polling) 논블록킹 I/O + select() int fd = open(\"/dev/device\", O_RDONLY | O_NONBLOCK); fd_set readfds; while (1) { FD_ZERO(\u0026readfds); FD_SET(fd, \u0026readfds); // 타임아웃 100ms struct timeval timeout = {0, 100000}; int ready = select(fd + 1, \u0026readfds, NULL, NULL, \u0026timeout); if (ready \u003e 0) { read(fd, buf, 1024); break; } else if (ready == 0) { doOtherWork(); } } 동작:\nselect()로 데이터 준비 여부를 커널에 위임 효율적인 대기 - CPU가 계속 확인하는 대신 커널이 깨워줄 때까지 대기 타임아웃 시 다른 작업 가능 Java Spring 예제 동기 + 블록킹 (RestTemplate) @GetMapping(\"/user\") public User getUser() { // 현재 스레드가 여기서 멈춤 User user = restTemplate.getForObject(url, User.class); return user; } 비동기 + 논블록킹 (WebClient) @GetMapping(\"/user\") public Mono getUser() { // 요청만 하고 바로 반환 return webClient.get() .uri(url) .retrieve() .bodyToMono(User.class); } I/O 방식별 비교 방식 대기 효율 사용 환경 블록킹 스레드 멈춤 단순함 일반 애플리케이션 논블록킹 + Polling 안 멈춤 (반복 체크) CPU 낭비 임베디드 논블록킹 + select/epoll 안 멈춤 (이벤트 대기) 높음 서버 조합별 특징 조합 빈도 예시 동기 + 블록킹 ✅ 흔함 JDBC, RestTemplate 비동기 + 논블록킹 ✅ 흔함 WebFlux, Node.js 동기 + 논블록킹 드묾 polling 비동기 + 블록킹 드묾 안티패턴 정리 블록킹/논블록킹: 제어권 반환 시점 동기/비동기: 결과 확인 주체 대부분 동기+블록킹 또는 비동기+논블록킹 조합 사용 I/O 방식 선택은 성능과 복잡도의 트레이드오프 참고 비동기 + 블록킹 안티패턴 @GetMapping(\"/user\") public User getUser() { // 비동기로 시작했지만... CompletableFuture future = CompletableFuture.supplyAsync(() -\u003e { return userService.findUser(); }); // get()으로 블록킹하면 비동기의 의미 없음 return future.get(); // 여기서 블록킹! } 비동기로 작업을 시작했지만 결과를 기다리느라 블록킹되어 비동기의 장점이 사라짐.\n",
+  "wordCount" : "488",
+  "inLanguage": "ko",
+  "datePublished": "2025-11-28T00:00:00+09:00",
+  "dateModified": "2025-11-28T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoNT - Do Not Think!!!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dont.kr/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dont.kr/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dont.kr/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      블록킹/논블록킹, 동기/비동기 개념 정리
+    </h1>
+    <div class="post-meta"><span title='2025-11-28 00:00:00 +0900 KST'>2025년 11월 28일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.</p>
+<h2 id="개념-정의">개념 정의<a hidden class="anchor" aria-hidden="true" href="#개념-정의">#</a></h2>
+<h3 id="블록킹-vs-논블록킹">블록킹 vs 논블록킹<a hidden class="anchor" aria-hidden="true" href="#블록킹-vs-논블록킹">#</a></h3>
+<p>구분 기준: 제어권을 바로 돌려주는가?</p>
+<ul>
+<li>블록킹: 작업 완료까지 제어권을 돌려주지 않음</li>
+<li>논블록킹: 작업 요청 후 바로 제어권 반환</li>
+</ul>
+<p>카페 주문 비유:</p>
+<ul>
+<li>블록킹: 카운터에서 서서 기다림 (다른 일 못함)</li>
+<li>논블록킹: 진동벨 받고 자리로 (다른 일 가능)</li>
+</ul>
+<h3 id="동기-vs-비동기">동기 vs 비동기<a hidden class="anchor" aria-hidden="true" href="#동기-vs-비동기">#</a></h3>
+<p>구분 기준: 결과를 누가 확인하는가?</p>
+<ul>
+<li>동기: 요청한 쪽이 결과를 직접 확인</li>
+<li>비동기: 결과가 준비되면 콜백으로 알려줌</li>
+</ul>
+<p>카페 주문 비유:</p>
+<ul>
+<li>동기: 내가 직접 &ldquo;제 커피 됐나요?&rdquo; 확인</li>
+<li>비동기: 직원이 &ldquo;OO번 고객님~&rdquo; 불러줌</li>
+</ul>
+<h3 id="핵심-구분">핵심 구분<a hidden class="anchor" aria-hidden="true" href="#핵심-구분">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>질문</th>
+          <th>블록킹</th>
+          <th>논블록킹</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>제어권</td>
+          <td>기다리는 동안 다른 일 할 수 있어?</td>
+          <td>못함 (멈춤)</td>
+          <td>가능 (안 멈춤)</td>
+      </tr>
+  </tbody>
+</table>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>질문</th>
+          <th>동기</th>
+          <th>비동기</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>결과 확인</td>
+          <td>결과를 내가 확인해? 알려줘?</td>
+          <td>내가 확인</td>
+          <td>알려줌</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="c-디바이스-io-예제">C 디바이스 I/O 예제<a hidden class="anchor" aria-hidden="true" href="#c-디바이스-io-예제">#</a></h2>
+<h3 id="블록킹-io">블록킹 I/O<a hidden class="anchor" aria-hidden="true" href="#블록킹-io">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">1024</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 데이터 올 때까지 멈춤
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">read</span>(fd, buf, <span style="color:#ae81ff">1024</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// 여기 도달 = buf 채워짐 보장
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;읽음: %s&#34;</span>, buf);
+</span></span></code></pre></div><p>동작:</p>
+<ol>
+<li>프로세스가 커널에 read() 요청</li>
+<li>데이터 없으면 프로세스 sleep</li>
+<li>데이터 도착하면 커널이 프로세스 깨움</li>
+<li>그제서야 다음 줄 실행</li>
+</ol>
+<h3 id="논블록킹-io--polling">논블록킹 I/O + Polling<a hidden class="anchor" aria-hidden="true" href="#논블록킹-io--polling">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY <span style="color:#f92672">|</span> O_NONBLOCK);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">1024</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> result <span style="color:#f92672">=</span> <span style="color:#a6e22e">read</span>(fd, buf, <span style="color:#ae81ff">1024</span>);  <span style="color:#75715e">// 바로 리턴
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">printf</span>(<span style="color:#e6db74">&#34;읽음: %s&#34;</span>, buf);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (result <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;&amp;</span> errno <span style="color:#f92672">==</span> EAGAIN) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// 데이터 없음 → 다른 일 하고 다시 확인
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">doOtherWork</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>동작:</p>
+<ol>
+<li>프로세스가 커널에 read() 요청</li>
+<li>데이터 없으면 즉시 -1 리턴</li>
+<li>프로세스는 계속 실행</li>
+<li>반복해서 확인 (polling)</li>
+</ol>
+<h3 id="논블록킹-io--select">논블록킹 I/O + select()<a hidden class="anchor" aria-hidden="true" href="#논블록킹-io--select">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY <span style="color:#f92672">|</span> O_NONBLOCK);
+</span></span><span style="display:flex;"><span>fd_set readfds;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FD_ZERO</span>(<span style="color:#f92672">&amp;</span>readfds);
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">FD_SET</span>(fd, <span style="color:#f92672">&amp;</span>readfds);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 타임아웃 100ms
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">struct</span> timeval timeout <span style="color:#f92672">=</span> {<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">100000</span>};
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> ready <span style="color:#f92672">=</span> <span style="color:#a6e22e">select</span>(fd <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>, <span style="color:#f92672">&amp;</span>readfds, NULL, NULL, <span style="color:#f92672">&amp;</span>timeout);
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (ready <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">read</span>(fd, buf, <span style="color:#ae81ff">1024</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (ready <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">doOtherWork</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>동작:</p>
+<ol>
+<li>select()로 데이터 준비 여부를 커널에 위임</li>
+<li>효율적인 대기 - CPU가 계속 확인하는 대신 커널이 깨워줄 때까지 대기</li>
+<li>타임아웃 시 다른 작업 가능</li>
+</ol>
+<h2 id="java-spring-예제">Java Spring 예제<a hidden class="anchor" aria-hidden="true" href="#java-spring-예제">#</a></h2>
+<h3 id="동기--블록킹-resttemplate">동기 + 블록킹 (RestTemplate)<a hidden class="anchor" aria-hidden="true" href="#동기--블록킹-resttemplate">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> User <span style="color:#a6e22e">getUser</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 현재 스레드가 여기서 멈춤</span>
+</span></span><span style="display:flex;"><span>    User user <span style="color:#f92672">=</span> restTemplate.<span style="color:#a6e22e">getForObject</span>(url, User.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> user;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="비동기--논블록킹-webclient">비동기 + 논블록킹 (WebClient)<a hidden class="anchor" aria-hidden="true" href="#비동기--논블록킹-webclient">#</a></h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Mono <span style="color:#a6e22e">getUser</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 요청만 하고 바로 반환</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> webClient.<span style="color:#a6e22e">get</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">uri</span>(url)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">retrieve</span>()
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">bodyToMono</span>(User.<span style="color:#a6e22e">class</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="io-방식별-비교">I/O 방식별 비교<a hidden class="anchor" aria-hidden="true" href="#io-방식별-비교">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>방식</th>
+          <th>대기</th>
+          <th>효율</th>
+          <th>사용 환경</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>블록킹</td>
+          <td>스레드 멈춤</td>
+          <td>단순함</td>
+          <td>일반 애플리케이션</td>
+      </tr>
+      <tr>
+          <td>논블록킹 + Polling</td>
+          <td>안 멈춤 (반복 체크)</td>
+          <td>CPU 낭비</td>
+          <td>임베디드</td>
+      </tr>
+      <tr>
+          <td>논블록킹 + select/epoll</td>
+          <td>안 멈춤 (이벤트 대기)</td>
+          <td>높음</td>
+          <td>서버</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="조합별-특징">조합별 특징<a hidden class="anchor" aria-hidden="true" href="#조합별-특징">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>조합</th>
+          <th>빈도</th>
+          <th>예시</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>동기 + 블록킹</td>
+          <td>✅ 흔함</td>
+          <td>JDBC, RestTemplate</td>
+      </tr>
+      <tr>
+          <td>비동기 + 논블록킹</td>
+          <td>✅ 흔함</td>
+          <td>WebFlux, Node.js</td>
+      </tr>
+      <tr>
+          <td>동기 + 논블록킹</td>
+          <td>드묾</td>
+          <td>polling</td>
+      </tr>
+      <tr>
+          <td>비동기 + 블록킹</td>
+          <td>드묾</td>
+          <td>안티패턴</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
+<ul>
+<li>블록킹/논블록킹: 제어권 반환 시점</li>
+<li>동기/비동기: 결과 확인 주체</li>
+<li>대부분 동기+블록킹 또는 비동기+논블록킹 조합 사용</li>
+<li>I/O 방식 선택은 성능과 복잡도의 트레이드오프</li>
+</ul>
+<h2 id="참고-비동기--블록킹-안티패턴">참고 비동기 + 블록킹 안티패턴<a hidden class="anchor" aria-hidden="true" href="#참고-비동기--블록킹-안티패턴">#</a></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> User <span style="color:#a6e22e">getUser</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 비동기로 시작했지만...</span>
+</span></span><span style="display:flex;"><span>    CompletableFuture future <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(() <span style="color:#f92672">-&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> userService.<span style="color:#a6e22e">findUser</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// get()으로 블록킹하면 비동기의 의미 없음</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> future.<span style="color:#a6e22e">get</span>();  <span style="color:#75715e">// 여기서 블록킹!</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>비동기로 작업을 시작했지만 결과를 기다리느라 블록킹되어 비동기의 장점이 사라짐.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dont.kr/tags/blocking/">Blocking</a></li>
+      <li><a href="https://dont.kr/tags/non-blocking/">Non Blocking</a></li>
+      <li><a href="https://dont.kr/tags/synchronous/">Synchronous</a></li>
+      <li><a href="https://dont.kr/tags/asynchronous/">Asynchronous</a></li>
+    </ul>
+
+    <script src="https://utteranc.es/client.js"
+        repo="duddns/dontkr-utterances"
+        issue-term="title"
+        label="✨💬✨"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+    </script>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

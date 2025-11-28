@@ -6,10 +6,88 @@
     <description>Recent content in Posts on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Thu, 27 Nov 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Apache Kafka 기본 개념</title>
+      <title>블록킹/논블록킹, 동기/비동기 개념 정리</title>
+      <link>https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/</link>
+      <pubDate>Fri, 28 Nov 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/</guid>
+      <description>&lt;p&gt;혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;개념-정의&#34;&gt;개념 정의&lt;/h2&gt;
+&lt;h3 id=&#34;블록킹-vs-논블록킹&#34;&gt;블록킹 vs 논블록킹&lt;/h3&gt;
+&lt;p&gt;구분 기준: 제어권을 바로 돌려주는가?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;블록킹: 작업 완료까지 제어권을 돌려주지 않음&lt;/li&gt;
+&lt;li&gt;논블록킹: 작업 요청 후 바로 제어권 반환&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;카페 주문 비유:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;블록킹: 카운터에서 서서 기다림 (다른 일 못함)&lt;/li&gt;
+&lt;li&gt;논블록킹: 진동벨 받고 자리로 (다른 일 가능)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;동기-vs-비동기&#34;&gt;동기 vs 비동기&lt;/h3&gt;
+&lt;p&gt;구분 기준: 결과를 누가 확인하는가?&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;동기: 요청한 쪽이 결과를 직접 확인&lt;/li&gt;
+&lt;li&gt;비동기: 결과가 준비되면 콜백으로 알려줌&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;카페 주문 비유:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;동기: 내가 직접 &amp;ldquo;제 커피 됐나요?&amp;rdquo; 확인&lt;/li&gt;
+&lt;li&gt;비동기: 직원이 &amp;ldquo;OO번 고객님~&amp;rdquo; 불러줌&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;핵심-구분&#34;&gt;핵심 구분&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;구분&lt;/th&gt;
+          &lt;th&gt;질문&lt;/th&gt;
+          &lt;th&gt;블록킹&lt;/th&gt;
+          &lt;th&gt;논블록킹&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;제어권&lt;/td&gt;
+          &lt;td&gt;기다리는 동안 다른 일 할 수 있어?&lt;/td&gt;
+          &lt;td&gt;못함 (멈춤)&lt;/td&gt;
+          &lt;td&gt;가능 (안 멈춤)&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;구분&lt;/th&gt;
+          &lt;th&gt;질문&lt;/th&gt;
+          &lt;th&gt;동기&lt;/th&gt;
+          &lt;th&gt;비동기&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;결과 확인&lt;/td&gt;
+          &lt;td&gt;결과를 내가 확인해? 알려줘?&lt;/td&gt;
+          &lt;td&gt;내가 확인&lt;/td&gt;
+          &lt;td&gt;알려줌&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;c-디바이스-io-예제&#34;&gt;C 디바이스 I/O 예제&lt;/h2&gt;
+&lt;h3 id=&#34;블록킹-io&#34;&gt;블록킹 I/O&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-c&#34; data-lang=&#34;c&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; fd &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;open&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/dev/device&amp;#34;&lt;/span&gt;, O_RDONLY);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; buf[&lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;];
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 데이터 올 때까지 멈춤
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;(fd, buf, &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 여기 도달 = buf 채워짐 보장
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;읽음: %s&amp;#34;&lt;/span&gt;, buf);
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;동작:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Apache Kafka 기본 개념 정리</title>
       <link>https://dont.kr/posts/2025/2025-11-27-apache-kafka/</link>
       <pubDate>Thu, 27 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-11-27-apache-kafka/</guid>
