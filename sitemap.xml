@@ -2,25 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dont.kr/</loc>
+    <lastmod>2025-12-03T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/giscus/</loc>
+    <lastmod>2025-12-03T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/hugo/</loc>
+    <lastmod>2025-12-03T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/</loc>
+    <lastmod>2025-12-03T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/</loc>
+    <lastmod>2025-12-03T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/</loc>
+    <lastmod>2025-12-03T00:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://dont.kr/tags/asynchronous/</loc>
     <lastmod>2025-11-28T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/blocking/</loc>
     <lastmod>2025-11-28T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://dont.kr/</loc>
-    <lastmod>2025-11-28T00:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://dont.kr/tags/non-blocking/</loc>
     <lastmod>2025-11-28T00:00:00+09:00</lastmod>
   </url><url>
-    <loc>https://dont.kr/posts/</loc>
-    <lastmod>2025-11-28T00:00:00+09:00</lastmod>
-  </url><url>
     <loc>https://dont.kr/tags/synchronous/</loc>
-    <lastmod>2025-11-28T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/</loc>
     <lastmod>2025-11-28T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/</loc>
@@ -121,9 +130,6 @@
   </url><url>
     <loc>https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/</loc>
     <lastmod>2024-11-07T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/hugo/</loc>
-    <lastmod>2024-01-12T19:10:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/2024/2024-01-12-hugo-tags/</loc>
     <lastmod>2024-01-12T19:10:00+09:00</lastmod>

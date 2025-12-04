@@ -6,8 +6,41 @@
     <description>Recent content in Posts on DoNT - Do Not Think!!!</description>
     <generator>Hugo -- 0.152.2</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 28 Nov 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo 댓글 - giscus 적용</title>
+      <link>https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/</link>
+      <pubDate>Wed, 03 Dec 2025 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/</guid>
+      <description>&lt;p&gt;Hugo 블로그에 GitHub Discussions 기반 댓글 시스템 giscus를 적용합니다.&lt;/p&gt;
+&lt;h2 id=&#34;사전-준비&#34;&gt;사전 준비&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;GitHub 공개 저장소 준비&lt;/li&gt;
+&lt;li&gt;해당 공개 저장소에 Discussions 활성화: Settings → General → Features → Discussions&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/apps/giscus&#34;&gt;giscus 앱&lt;/a&gt; 설치 후 저장소 선택&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;giscus-설정&#34;&gt;giscus 설정&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://giscus.app&#34;&gt;https://giscus.app&lt;/a&gt; 접속&lt;/li&gt;
+&lt;li&gt;저장소와 원하는 옵션 선택&lt;/li&gt;
+&lt;li&gt;생성된 스크립트 코드 복사&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;hugo-적용&#34;&gt;Hugo 적용&lt;/h2&gt;
+&lt;h3 id=&#34;댓글-파일-생성&#34;&gt;댓글 파일 생성&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-html&#34; data-lang=&#34;html&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&amp;lt;!-- layouts/partials/comment.html --&amp;gt;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;// 스크립트 코드
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;설정-파일-수정&#34;&gt;설정 파일 수정&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# hugo.toml&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;params&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;comments&lt;/span&gt; = &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;정리&#34;&gt;정리&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;giscus는 GitHub Discussions를 댓글로 사용&lt;/li&gt;
+&lt;li&gt;별도 DB나 서버 불필요&lt;/li&gt;
+&lt;li&gt;GitHub 로그인으로 댓글 작성&lt;/li&gt;
+&lt;/ul&gt;</description>
+    </item>
     <item>
       <title>블록킹/논블록킹, 동기/비동기 개념 정리</title>
       <link>https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/</link>
