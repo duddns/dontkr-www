@@ -4,10 +4,81 @@
     <title>Posts on DoNT - Do Not Think!!!</title>
     <link>https://dont.kr/posts/</link>
     <description>Recent content in Posts on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.152.2</generator>
+    <generator>Hugo -- 0.154.5</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 03 Dec 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 13 Jan 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kotlin의 접근 제어자 설계 철학</title>
+      <link>https://dont.kr/posts/2026/2026-01-13-kotlin-access-modifier/</link>
+      <pubDate>Tue, 13 Jan 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-01-13-kotlin-access-modifier/</guid>
+      <description>&lt;p&gt;Java package-private 클래스를 Kotlin 테스트 코드에서 접근하려니 생성자 호출이 안 되어 reflection을 써야 했습니다. 왜 이런 문제가 발생할까요?&lt;/p&gt;
+&lt;h2 id=&#34;java와-kotlin-접근-제어자-비교&#34;&gt;Java와 Kotlin 접근 제어자 비교&lt;/h2&gt;
+&lt;h3 id=&#34;java&#34;&gt;Java&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;public: 전체&lt;/li&gt;
+&lt;li&gt;protected: 상속 + 같은 패키지&lt;/li&gt;
+&lt;li&gt;(default): 같은 패키지&lt;/li&gt;
+&lt;li&gt;private: 같은 클래스&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;kotlin&#34;&gt;Kotlin&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;public: 전체&lt;/li&gt;
+&lt;li&gt;internal: 같은 모듈&lt;/li&gt;
+&lt;li&gt;protected: 상속 관계만&lt;/li&gt;
+&lt;li&gt;private: 같은 클래스 (클래스 멤버) / 같은 파일 (최상위 선언)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;핵심-차이&#34;&gt;핵심 차이&lt;/h3&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;&lt;/th&gt;
+          &lt;th&gt;Java&lt;/th&gt;
+          &lt;th&gt;Kotlin&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;캡슐화 단위&lt;/td&gt;
+          &lt;td&gt;패키지&lt;/td&gt;
+          &lt;td&gt;모듈&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;테스트 접근&lt;/td&gt;
+          &lt;td&gt;같은 패키지 필요&lt;/td&gt;
+          &lt;td&gt;같은 모듈이면 OK&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;package-private&lt;/td&gt;
+          &lt;td&gt;있음&lt;/td&gt;
+          &lt;td&gt;없음 (internal로 대체)&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;protected&lt;/td&gt;
+          &lt;td&gt;상속 + 같은 패키지&lt;/td&gt;
+          &lt;td&gt;상속만&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;kotlin의-설계-철학&#34;&gt;Kotlin의 설계 철학&lt;/h2&gt;
+&lt;h3 id=&#34;1-패키지는-캡슐화-경계가-아니다&#34;&gt;1. 패키지는 캡슐화 경계가 아니다&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 원래 라이브러리 (example-lib.jar)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; com.example.core;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;InternalClass&lt;/span&gt; {  &lt;span style=&#34;color:#75715e&#34;&gt;// package-private&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;sensitiveMethod&lt;/span&gt;() { }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 악의적 사용자 코드 (다른 프로젝트)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; com.example.core; &lt;span style=&#34;color:#75715e&#34;&gt;// 같은 패키지명 사용&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Hacker&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;access&lt;/span&gt;() {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;new&lt;/span&gt; InternalClass();  &lt;span style=&#34;color:#75715e&#34;&gt;// package-private인데 접근됨&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;패키지는 &lt;strong&gt;코드 조직화 수단&lt;/strong&gt;일 뿐, 실제 캡슐화는 &lt;strong&gt;컴파일/배포 단위인 모듈&lt;/strong&gt;에서 이루어져야 합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Hugo 댓글 - giscus 적용</title>
       <link>https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/</link>
@@ -113,10 +184,10 @@
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;char&lt;/span&gt; buf[&lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;];
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 데이터 올 때까지 멈춤
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;(fd, buf, &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;int&lt;/span&gt; result &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt;(fd, buf, &lt;span style=&#34;color:#ae81ff&#34;&gt;1024&lt;/span&gt;);
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 여기 도달 = buf 채워짐 보장
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;읽음: %s&amp;#34;&lt;/span&gt;, buf);
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;printf&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;읽음: %s&amp;#34;&lt;/span&gt;, buf);
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;동작:&lt;/p&gt;</description>
     </item>
     <item>

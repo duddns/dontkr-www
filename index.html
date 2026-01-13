@@ -2,7 +2,7 @@
 <html lang="ko" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.152.2"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.154.5"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -141,6 +141,20 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Kotlin의 접근 제어자 설계 철학
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Java package-private 클래스를 Kotlin 테스트 코드에서 접근하려니 생성자 호출이 안 되어 reflection을 써야 했습니다. 왜 이런 문제가 발생할까요?
+Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#43; 같은 패키지 (default): 같은 패키지 private: 같은 클래스 Kotlin public: 전체 internal: 같은 모듈 protected: 상속 관계만 private: 같은 클래스 (클래스 멤버) / 같은 파일 (최상위 선언) 핵심 차이 Java Kotlin 캡슐화 단위 패키지 모듈 테스트 접근 같은 패키지 필요 같은 모듈이면 OK package-private 있음 없음 (internal로 대체) protected 상속 &#43; 같은 패키지 상속만 Kotlin의 설계 철학 1. 패키지는 캡슐화 경계가 아니다 // 원래 라이브러리 (example-lib.jar) package com.example.core; class InternalClass { // package-private void sensitiveMethod() { } } // 악의적 사용자 코드 (다른 프로젝트) package com.example.core; // 같은 패키지명 사용 public class Hacker { void access() { new InternalClass(); // package-private인데 접근됨 } } 패키지는 코드 조직화 수단일 뿐, 실제 캡슐화는 컴파일/배포 단위인 모듈에서 이루어져야 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-13 00:00:00 +0900 KST'>2026년 1월 13일</span></footer>
+  <a class="entry-link" aria-label="post link to Kotlin의 접근 제어자 설계 철학" href="https://dont.kr/posts/2026/2026-01-13-kotlin-access-modifier/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Hugo 댓글 - giscus 적용
     </h2>
   </header>
@@ -268,22 +282,6 @@ ConfigData API (Spring Boot 2.4&#43;) Spring Boot 2.4 부터 설정 로딩 방�
   <footer class="entry-footer"><span title='2025-11-04 00:00:00 +0900 KST'>2025년 11월 4일</span></footer>
   <a class="entry-link" aria-label="post link to MySQL vs Oracle: 커서(Cursor) 동작 방식 비교" href="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>코딩 영역에서 시작된 자연어 기반 AI 협업이 기획 영역에도 적용되고 있습니다. 바이브 코딩이 자연어로 코드를 작성하는 방식이라면, 기획에서는 자연어로 사용자 스토리, 제품 요구사항, 기능 명세서를 생성하는 방식입니다.
-AI가 효과적인 기획 작업 1. 사용자 스토리 작성 표준 형식의 사용자 스토리를 빠르게 생성할 수 있습니다.
-&#34;로그인 기능에 대한 사용자 스토리를 작성해줘. 이메일/비밀번호 방식과 소셜 로그인 지원&#34; 2. 제품 요구사항 문서(PRD) 초안 제품 아이디어를 구조화된 문서로 변환하는 데 유용합니다.
-&#34;온라인 서점 장바구니 기능 PRD 작성. 목표, 기능 요구사항, 제외 범위 포함&#34; 3. 기능 명세서 작성 복잡한 기능을 단계별로 분해하고 명세화하는 작업에서 효율적입니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-10-02 00:00:00 +0900 KST'>2025년 10월 2일</span></footer>
-  <a class="entry-link" aria-label="post link to 바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용" href="https://dont.kr/posts/2025/2025-10-02-beyond-vibe-coding-planning/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="next" href="https://dont.kr/page/2/">다음 페이지&nbsp;&nbsp;»
@@ -293,7 +291,7 @@ AI가 효과적인 기획 작업 1. 사용자 스토리 작성 표준 형식의 
     </main>
     
 <footer class="footer">
-        <span>&copy; 2025 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
+        <span>&copy; 2026 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
 
     <span>
         Powered by
