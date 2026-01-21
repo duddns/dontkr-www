@@ -2,22 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://dont.kr/tags/access-modifier/</loc>
-    <lastmod>2026-01-13T00:00:00+09:00</lastmod>
+    <loc>https://dont.kr/tags/data/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/data-lake/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/data-warehouse/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/database/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/2026/2026-01-21-data-storage-terms/</loc>
+    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/access-modifier/</loc>
     <lastmod>2026-01-13T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/kotlin/</loc>
     <lastmod>2026-01-13T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/2026/2026-01-13-kotlin-access-modifier/</loc>
-    <lastmod>2026-01-13T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/posts/</loc>
-    <lastmod>2026-01-13T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/</loc>
     <lastmod>2026-01-13T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/giscus/</loc>

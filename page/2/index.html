@@ -141,6 +141,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">MySQL vs Oracle: 커서(Cursor) 동작 방식 비교
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>TL;DR MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다름 MySQL: 임시 테이블 생성하여 전체 결과 저장 Oracle: PGA 메모리에서 커서 상태만 유지하고 필요한 만큼 페치 “클라이언트 사이드 커서&#34;는 MySQL에서 공식 용어가 아님 MySQL: 클라이언트 버퍼링, 스트리밍, 서버 커서 3가지 방식 제공 1. 커서란 무엇인가 데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.
+데이터베이스에서는 결과를 처리하는 위치에 따라 서버 커서와 클라이언트 커서으로 구분할 수 있습니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-04 00:00:00 +0900 KST'>2025년 11월 4일</span></footer>
+  <a class="entry-link" aria-label="post link to MySQL vs Oracle: 커서(Cursor) 동작 방식 비교" href="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용
     </h2>
   </header>
@@ -259,21 +273,6 @@ $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg </p>
   </div>
   <footer class="entry-footer"><span title='2024-01-05 19:10:00 +0900 KST'>2024년 1월 5일</span></footer>
   <a class="entry-link" aria-label="post link to Synology NAS ssh 설정" href="https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">IntelliJ SonarLint 한글 이름 사용
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>IntelliJ SonarLint 플러그인 설치 https://plugins.jetbrains.com/plugin/7973-sonarlint
-SonarLint 설정 IntelliJ - Settings - Tools - SonarLint - Rules
-각 룰 마다 다음 정규표현식 설정
-Class names: ^[A-Z][a-zA-Z0-9]*|[A-Z가-힣][a-zA-Z0-9가-힣_]*$ Field names: ^[a-z][a-zA-Z0-9]*|[a-z가-힣][a-zA-Z0-9가-힣_]*$ Interface names: ^[A-Z][a-zA-Z0-9]*|[A-Z가-힣][a-zA-Z0-9가-힣_]*$ Local variable and method parameter names: ^[a-z][a-zA-Z0-9]*|[a-z가-힣][a-zA-Z0-9가-힣_]*$ Method names: ^[a-z][a-zA-Z0-9]*|[a-z가-힣][a-zA-Z0-9가-힣_]*$ Test class names: ^((Test|IT)[a-zA-Z0-9가-힣_]&#43;|[A-Z][a-zA-Z0-9_]*|[A-Z가-힣][a-zA-Z0-9가-힣_]*(Test|Tests|TestCase|IT|ITCase))$ </p>
-  </div>
-  <footer class="entry-footer"><span title='2024-01-02 19:10:00 +0900 KST'>2024년 1월 2일</span></footer>
-  <a class="entry-link" aria-label="post link to IntelliJ SonarLint 한글 이름 사용" href="https://dont.kr/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

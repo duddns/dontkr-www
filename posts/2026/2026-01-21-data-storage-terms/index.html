@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>데이터 저장소 용어 정리 | DoNT - Do Not Think!!!</title>
+<meta name="keywords" content="data, database, data warehouse, data lake">
+<meta name="description" content="데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.
+한눈에 비교
+
+  
+      
+          구분
+          데이터베이스
+          데이터 웨어하우스
+          데이터 레이크
+          데이터 레이크하우스
+      
+  
+  
+      
+          목적
+          운영/트랜잭션(OLTP)
+          분석(OLAP)
+          원시 데이터 저장
+          분석 &#43; 저장 통합
+      
+      
+          데이터 형태
+          구조화
+          구조화
+          비구조화/반구조화
+          모두 지원
+      
+      
+          스키마
+          Schema-on-Write
+          Schema-on-Write
+          Schema-on-Read
+          둘 다 가능
+      
+      
+          ACID
+          O
+          O
+          X
+          O
+      
+      
+          쿼리 패턴
+          단건 읽기/쓰기
+          대량 집계/분석
+          배치 처리
+          대량 집계/분석
+      
+      
+          실시간성
+          실시간
+          준실시간~배치
+          배치
+          준실시간~배치
+      
+      
+          대표 제품
+          MySQL, PostgreSQL
+          Snowflake, Redshift, BigQuery
+          S3, HDFS
+          Databricks
+      
+  
+
+쉬운 비유
+
+데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다.
+데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다.
+데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다.
+데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다.
+
+용어 유래
+
+Database: Data &#43; Base(기지) → 데이터를 저장하고 관리하는 기본 시스템
+Data Warehouse: Data &#43; Warehouse(창고) → 정리된 물건을 체계적으로 보관
+Data Lake: Data &#43; Lake(호수) → 모든 물이 흘러드는 호수
+Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신조어)
+
+&ldquo;Data Lake Warehouse&quot;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://dont.kr/posts/2026/2026-01-21-data-storage-terms/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.4bef824c135d95ffd8df119b1b511d3c1507c4d3fed7cf470539d03f95ec7625.css" integrity="sha256-S&#43;&#43;CTBNdlf/Y3xGbG1EdPBUHxNP&#43;189HBTnQP5XsdiU=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/posts/2026/2026-01-21-data-storage-terms/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script><meta property="og:url" content="https://dont.kr/posts/2026/2026-01-21-data-storage-terms/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="데이터 저장소 용어 정리">
+  <meta property="og:description" content="데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.
+한눈에 비교 구분 데이터베이스 데이터 웨어하우스 데이터 레이크 데이터 레이크하우스 목적 운영/트랜잭션(OLTP) 분석(OLAP) 원시 데이터 저장 분석 &#43; 저장 통합 데이터 형태 구조화 구조화 비구조화/반구조화 모두 지원 스키마 Schema-on-Write Schema-on-Write Schema-on-Read 둘 다 가능 ACID O O X O 쿼리 패턴 단건 읽기/쓰기 대량 집계/분석 배치 처리 대량 집계/분석 실시간성 실시간 준실시간~배치 배치 준실시간~배치 대표 제품 MySQL, PostgreSQL Snowflake, Redshift, BigQuery S3, HDFS Databricks 쉬운 비유 데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다. 데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다. 데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다. 데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다. 용어 유래 Database: Data &#43; Base(기지) → 데이터를 저장하고 관리하는 기본 시스템 Data Warehouse: Data &#43; Warehouse(창고) → 정리된 물건을 체계적으로 보관 Data Lake: Data &#43; Lake(호수) → 모든 물이 흘러드는 호수 Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신조어) “Data Lake Warehouse&#34;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.">
+  <meta property="og:locale" content="ko-kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-01-21T00:00:00+09:00">
+    <meta property="article:modified_time" content="2026-01-21T00:00:00+09:00">
+    <meta property="article:tag" content="Data">
+    <meta property="article:tag" content="Database">
+    <meta property="article:tag" content="Data Warehouse">
+    <meta property="article:tag" content="Data Lake">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="데이터 저장소 용어 정리">
+<meta name="twitter:description" content="데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.
+한눈에 비교
+
+  
+      
+          구분
+          데이터베이스
+          데이터 웨어하우스
+          데이터 레이크
+          데이터 레이크하우스
+      
+  
+  
+      
+          목적
+          운영/트랜잭션(OLTP)
+          분석(OLAP)
+          원시 데이터 저장
+          분석 &#43; 저장 통합
+      
+      
+          데이터 형태
+          구조화
+          구조화
+          비구조화/반구조화
+          모두 지원
+      
+      
+          스키마
+          Schema-on-Write
+          Schema-on-Write
+          Schema-on-Read
+          둘 다 가능
+      
+      
+          ACID
+          O
+          O
+          X
+          O
+      
+      
+          쿼리 패턴
+          단건 읽기/쓰기
+          대량 집계/분석
+          배치 처리
+          대량 집계/분석
+      
+      
+          실시간성
+          실시간
+          준실시간~배치
+          배치
+          준실시간~배치
+      
+      
+          대표 제품
+          MySQL, PostgreSQL
+          Snowflake, Redshift, BigQuery
+          S3, HDFS
+          Databricks
+      
+  
+
+쉬운 비유
+
+데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다.
+데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다.
+데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다.
+데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다.
+
+용어 유래
+
+Database: Data &#43; Base(기지) → 데이터를 저장하고 관리하는 기본 시스템
+Data Warehouse: Data &#43; Warehouse(창고) → 정리된 물건을 체계적으로 보관
+Data Lake: Data &#43; Lake(호수) → 모든 물이 흘러드는 호수
+Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신조어)
+
+&ldquo;Data Lake Warehouse&quot;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dont.kr/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "데이터 저장소 용어 정리",
+      "item": "https://dont.kr/posts/2026/2026-01-21-data-storage-terms/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "데이터 저장소 용어 정리",
+  "name": "데이터 저장소 용어 정리",
+  "description": "데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.\n한눈에 비교 구분 데이터베이스 데이터 웨어하우스 데이터 레이크 데이터 레이크하우스 목적 운영/트랜잭션(OLTP) 분석(OLAP) 원시 데이터 저장 분석 + 저장 통합 데이터 형태 구조화 구조화 비구조화/반구조화 모두 지원 스키마 Schema-on-Write Schema-on-Write Schema-on-Read 둘 다 가능 ACID O O X O 쿼리 패턴 단건 읽기/쓰기 대량 집계/분석 배치 처리 대량 집계/분석 실시간성 실시간 준실시간~배치 배치 준실시간~배치 대표 제품 MySQL, PostgreSQL Snowflake, Redshift, BigQuery S3, HDFS Databricks 쉬운 비유 데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다. 데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다. 데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다. 데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다. 용어 유래 Database: Data + Base(기지) → 데이터를 저장하고 관리하는 기본 시스템 Data Warehouse: Data + Warehouse(창고) → 정리된 물건을 체계적으로 보관 Data Lake: Data + Lake(호수) → 모든 물이 흘러드는 호수 Data Lakehouse: Data + Lake + House (Databricks가 2020년 제안한 신조어) \u0026ldquo;Data Lake Warehouse\u0026quot;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.\n",
+  "keywords": [
+    "data", "database", "data warehouse", "data lake"
+  ],
+  "articleBody": "데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.\n한눈에 비교 구분 데이터베이스 데이터 웨어하우스 데이터 레이크 데이터 레이크하우스 목적 운영/트랜잭션(OLTP) 분석(OLAP) 원시 데이터 저장 분석 + 저장 통합 데이터 형태 구조화 구조화 비구조화/반구조화 모두 지원 스키마 Schema-on-Write Schema-on-Write Schema-on-Read 둘 다 가능 ACID O O X O 쿼리 패턴 단건 읽기/쓰기 대량 집계/분석 배치 처리 대량 집계/분석 실시간성 실시간 준실시간~배치 배치 준실시간~배치 대표 제품 MySQL, PostgreSQL Snowflake, Redshift, BigQuery S3, HDFS Databricks 쉬운 비유 데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다. 데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다. 데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다. 데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다. 용어 유래 Database: Data + Base(기지) → 데이터를 저장하고 관리하는 기본 시스템 Data Warehouse: Data + Warehouse(창고) → 정리된 물건을 체계적으로 보관 Data Lake: Data + Lake(호수) → 모든 물이 흘러드는 호수 Data Lakehouse: Data + Lake + House (Databricks가 2020년 제안한 신조어) “Data Lake Warehouse\"가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.\n타임라인 시기 사건 1960년대 Database 개념 등장 (IBM IMS 등 계층형 DB) 1970년대 관계형 데이터베이스(RDBMS) 이론 정립 (E.F. Codd) 1980년대 Oracle, DB2 등 상용 RDBMS 확산 1990년대 Data Warehouse 등장 (Bill Inmon, Ralph Kimball) 2010년대 초 Data Lake 등장 (Hadoop 시대) 2020년 Databricks가 Lakehouse 논문 발표 2021년~ Delta Lake, Iceberg, Hudi 등 테이블 포맷 확산 기술적 정의 데이터베이스 = 트랜잭션 처리 엔진 + 스토리지 (OLTP 최적화) 데이터 웨어하우스 = 데이터베이스 + 분석 최적화 구조 (OLAP, 스타/스노우플레이크 스키마) 데이터 레이크 = 분산 스토리지 (S3, HDFS) + 스키마 없음 데이터 레이크하우스 = 데이터 레이크 + 테이블 포맷 (Delta Lake/Iceberg/Hudi) 테이블 포맷이 ACID, 스키마 진화, 타임트래블 기능을 제공합니다.\nOLTP vs OLAP OLTP (Online Transaction Processing): 운영 트랜잭션 처리. 실시간 단건 처리에 최적화. OLAP (Online Analytical Processing): 대용량 분석 처리. 집계와 리포트에 최적화. 데이터 흐름 전통적 아키텍처 데이터베이스 (OLTP) → 데이터 레이크 → 데이터 웨어하우스 (OLAP) 현대적 아키텍처 데이터베이스 (OLTP) → 데이터 레이크하우스 (OLAP) (레이크 + 웨어하우스 통합) 레이크하우스가 등장하면서 별도의 웨어하우스 없이 레이크 위에서 바로 분석이 가능해졌습니다.\n정리 데이터베이스: 운영 시스템 (OLTP) 데이터 웨어하우스: 분석 시스템 (OLAP) 데이터 레이크: 원시 데이터 저장 데이터 레이크하우스: 레이크 + 웨어하우스 장점 결합 ",
+  "wordCount" : "355",
+  "inLanguage": "ko",
+  "datePublished": "2026-01-21T00:00:00+09:00",
+  "dateModified": "2026-01-21T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dont.kr/posts/2026/2026-01-21-data-storage-terms/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoNT - Do Not Think!!!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dont.kr/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dont.kr/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dont.kr/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      데이터 저장소 용어 정리
+    </h1>
+    <div class="post-meta"><span title='2026-01-21 00:00:00 +0900 KST'>2026년 1월 21일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.</p>
+<h2 id="한눈에-비교">한눈에 비교<a hidden class="anchor" aria-hidden="true" href="#한눈에-비교">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>구분</th>
+          <th>데이터베이스</th>
+          <th>데이터 웨어하우스</th>
+          <th>데이터 레이크</th>
+          <th>데이터 레이크하우스</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>목적</td>
+          <td>운영/트랜잭션(OLTP)</td>
+          <td>분석(OLAP)</td>
+          <td>원시 데이터 저장</td>
+          <td>분석 + 저장 통합</td>
+      </tr>
+      <tr>
+          <td>데이터 형태</td>
+          <td>구조화</td>
+          <td>구조화</td>
+          <td>비구조화/반구조화</td>
+          <td>모두 지원</td>
+      </tr>
+      <tr>
+          <td>스키마</td>
+          <td>Schema-on-Write</td>
+          <td>Schema-on-Write</td>
+          <td>Schema-on-Read</td>
+          <td>둘 다 가능</td>
+      </tr>
+      <tr>
+          <td>ACID</td>
+          <td>O</td>
+          <td>O</td>
+          <td>X</td>
+          <td>O</td>
+      </tr>
+      <tr>
+          <td>쿼리 패턴</td>
+          <td>단건 읽기/쓰기</td>
+          <td>대량 집계/분석</td>
+          <td>배치 처리</td>
+          <td>대량 집계/분석</td>
+      </tr>
+      <tr>
+          <td>실시간성</td>
+          <td>실시간</td>
+          <td>준실시간~배치</td>
+          <td>배치</td>
+          <td>준실시간~배치</td>
+      </tr>
+      <tr>
+          <td>대표 제품</td>
+          <td>MySQL, PostgreSQL</td>
+          <td>Snowflake, Redshift, BigQuery</td>
+          <td>S3, HDFS</td>
+          <td>Databricks</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="쉬운-비유">쉬운 비유<a hidden class="anchor" aria-hidden="true" href="#쉬운-비유">#</a></h2>
+<ul>
+<li>데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다.</li>
+<li>데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다.</li>
+<li>데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다.</li>
+<li>데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다.</li>
+</ul>
+<h2 id="용어-유래">용어 유래<a hidden class="anchor" aria-hidden="true" href="#용어-유래">#</a></h2>
+<ul>
+<li>Database: Data + Base(기지) → 데이터를 저장하고 관리하는 기본 시스템</li>
+<li>Data Warehouse: Data + Warehouse(창고) → 정리된 물건을 체계적으로 보관</li>
+<li>Data Lake: Data + Lake(호수) → 모든 물이 흘러드는 호수</li>
+<li>Data Lakehouse: Data + Lake + House (Databricks가 2020년 제안한 신조어)</li>
+</ul>
+<p>&ldquo;Data Lake Warehouse&quot;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.</p>
+<h2 id="타임라인">타임라인<a hidden class="anchor" aria-hidden="true" href="#타임라인">#</a></h2>
+<table>
+  <thead>
+      <tr>
+          <th>시기</th>
+          <th>사건</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>1960년대</td>
+          <td>Database 개념 등장 (IBM IMS 등 계층형 DB)</td>
+      </tr>
+      <tr>
+          <td>1970년대</td>
+          <td>관계형 데이터베이스(RDBMS) 이론 정립 (E.F. Codd)</td>
+      </tr>
+      <tr>
+          <td>1980년대</td>
+          <td>Oracle, DB2 등 상용 RDBMS 확산</td>
+      </tr>
+      <tr>
+          <td>1990년대</td>
+          <td>Data Warehouse 등장 (Bill Inmon, Ralph Kimball)</td>
+      </tr>
+      <tr>
+          <td>2010년대 초</td>
+          <td>Data Lake 등장 (Hadoop 시대)</td>
+      </tr>
+      <tr>
+          <td>2020년</td>
+          <td>Databricks가 Lakehouse 논문 발표</td>
+      </tr>
+      <tr>
+          <td>2021년~</td>
+          <td>Delta Lake, Iceberg, Hudi 등 테이블 포맷 확산</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="기술적-정의">기술적 정의<a hidden class="anchor" aria-hidden="true" href="#기술적-정의">#</a></h2>
+<ul>
+<li>데이터베이스 = 트랜잭션 처리 엔진 + 스토리지 (OLTP 최적화)</li>
+<li>데이터 웨어하우스 = 데이터베이스 + 분석 최적화 구조 (OLAP, 스타/스노우플레이크 스키마)</li>
+<li>데이터 레이크 = 분산 스토리지 (S3, HDFS) + 스키마 없음</li>
+<li>데이터 레이크하우스 = 데이터 레이크 + 테이블 포맷 (Delta Lake/Iceberg/Hudi)</li>
+</ul>
+<p>테이블 포맷이 ACID, 스키마 진화, 타임트래블 기능을 제공합니다.</p>
+<h2 id="oltp-vs-olap">OLTP vs OLAP<a hidden class="anchor" aria-hidden="true" href="#oltp-vs-olap">#</a></h2>
+<ul>
+<li>OLTP (Online Transaction Processing): 운영 트랜잭션 처리. 실시간 단건 처리에 최적화.</li>
+<li>OLAP (Online Analytical Processing): 대용량 분석 처리. 집계와 리포트에 최적화.</li>
+</ul>
+<h2 id="데이터-흐름">데이터 흐름<a hidden class="anchor" aria-hidden="true" href="#데이터-흐름">#</a></h2>
+<h3 id="전통적-아키텍처">전통적 아키텍처<a hidden class="anchor" aria-hidden="true" href="#전통적-아키텍처">#</a></h3>
+<pre tabindex="0"><code>데이터베이스 (OLTP) → 데이터 레이크 → 데이터 웨어하우스 (OLAP)
+</code></pre><h3 id="현대적-아키텍처">현대적 아키텍처<a hidden class="anchor" aria-hidden="true" href="#현대적-아키텍처">#</a></h3>
+<pre tabindex="0"><code>데이터베이스 (OLTP) → 데이터 레이크하우스 (OLAP)
+                      (레이크 + 웨어하우스 통합)
+</code></pre><p>레이크하우스가 등장하면서 별도의 웨어하우스 없이 레이크 위에서 바로 분석이 가능해졌습니다.</p>
+<h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
+<ul>
+<li>데이터베이스: 운영 시스템 (OLTP)</li>
+<li>데이터 웨어하우스: 분석 시스템 (OLAP)</li>
+<li>데이터 레이크: 원시 데이터 저장</li>
+<li>데이터 레이크하우스: 레이크 + 웨어하우스 장점 결합</li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dont.kr/tags/data/">Data</a></li>
+      <li><a href="https://dont.kr/tags/database/">Database</a></li>
+      <li><a href="https://dont.kr/tags/data-warehouse/">Data Warehouse</a></li>
+      <li><a href="https://dont.kr/tags/data-lake/">Data Lake</a></li>
+    </ul>
+  </footer><script src="https://giscus.app/client.js"
+    data-repo="duddns/dontkr-www"
+    data-repo-id="R_kgDOJ5uOLg"
+    data-category="General"
+    data-category-id="DIC_kwDOJ5uOLs4CzVRe"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

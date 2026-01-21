@@ -147,6 +147,20 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">데이터 저장소 용어 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.
+한눈에 비교 구분 데이터베이스 데이터 웨어하우스 데이터 레이크 데이터 레이크하우스 목적 운영/트랜잭션(OLTP) 분석(OLAP) 원시 데이터 저장 분석 &#43; 저장 통합 데이터 형태 구조화 구조화 비구조화/반구조화 모두 지원 스키마 Schema-on-Write Schema-on-Write Schema-on-Read 둘 다 가능 ACID O O X O 쿼리 패턴 단건 읽기/쓰기 대량 집계/분석 배치 처리 대량 집계/분석 실시간성 실시간 준실시간~배치 배치 준실시간~배치 대표 제품 MySQL, PostgreSQL Snowflake, Redshift, BigQuery S3, HDFS Databricks 쉬운 비유 데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다. 데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다. 데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다. 데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다. 용어 유래 Database: Data &#43; Base(기지) → 데이터를 저장하고 관리하는 기본 시스템 Data Warehouse: Data &#43; Warehouse(창고) → 정리된 물건을 체계적으로 보관 Data Lake: Data &#43; Lake(호수) → 모든 물이 흘러드는 호수 Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신조어) “Data Lake Warehouse&#34;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-01-21 00:00:00 +0900 KST'>2026년 1월 21일</span></footer>
+  <a class="entry-link" aria-label="post link to 데이터 저장소 용어 정리" href="https://dont.kr/posts/2026/2026-01-21-data-storage-terms/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Kotlin의 접근 제어자 설계 철학
     </h2>
   </header>
@@ -273,20 +287,6 @@ ConfigData API (Spring Boot 2.4&#43;) Spring Boot 2.4 부터 설정 로딩 방�
   </div>
   <footer class="entry-footer"><span title='2025-11-11 00:00:00 +0900 KST'>2025년 11월 11일</span></footer>
   <a class="entry-link" aria-label="post link to AI 개념 정리" href="https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">MySQL vs Oracle: 커서(Cursor) 동작 방식 비교
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>TL;DR MySQL과 Oracle은 서버 커서 구현 방식이 근본적으로 다름 MySQL: 임시 테이블 생성하여 전체 결과 저장 Oracle: PGA 메모리에서 커서 상태만 유지하고 필요한 만큼 페치 “클라이언트 사이드 커서&#34;는 MySQL에서 공식 용어가 아님 MySQL: 클라이언트 버퍼링, 스트리밍, 서버 커서 3가지 방식 제공 1. 커서란 무엇인가 데이터베이스 커서는 쿼리 결과를 순차적으로 처리하기 위한 메커니즘입니다. 대용량 결과를 한 번에 메모리로 로드하지 않고, 필요한 만큼만 가져와서 처리할 수 있게 해줍니다.
-데이터베이스에서는 결과를 처리하는 위치에 따라 서버 커서와 클라이언트 커서으로 구분할 수 있습니다.
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-11-04 00:00:00 +0900 KST'>2025년 11월 4일</span></footer>
-  <a class="entry-link" aria-label="post link to MySQL vs Oracle: 커서(Cursor) 동작 방식 비교" href="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

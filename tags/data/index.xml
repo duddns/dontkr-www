@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Data on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/data/</link>
+    <description>Recent content in Data on DoNT - Do Not Think!!!</description>
+    <generator>Hugo -- 0.154.5</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 21 Jan 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/data/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>데이터 저장소 용어 정리</title>
+      <link>https://dont.kr/posts/2026/2026-01-21-data-storage-terms/</link>
+      <pubDate>Wed, 21 Jan 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-01-21-data-storage-terms/</guid>
+      <description>&lt;p&gt;데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.&lt;/p&gt;
+&lt;h2 id=&#34;한눈에-비교&#34;&gt;한눈에 비교&lt;/h2&gt;
+&lt;table&gt;
+  &lt;thead&gt;
+      &lt;tr&gt;
+          &lt;th&gt;구분&lt;/th&gt;
+          &lt;th&gt;데이터베이스&lt;/th&gt;
+          &lt;th&gt;데이터 웨어하우스&lt;/th&gt;
+          &lt;th&gt;데이터 레이크&lt;/th&gt;
+          &lt;th&gt;데이터 레이크하우스&lt;/th&gt;
+      &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+      &lt;tr&gt;
+          &lt;td&gt;목적&lt;/td&gt;
+          &lt;td&gt;운영/트랜잭션(OLTP)&lt;/td&gt;
+          &lt;td&gt;분석(OLAP)&lt;/td&gt;
+          &lt;td&gt;원시 데이터 저장&lt;/td&gt;
+          &lt;td&gt;분석 + 저장 통합&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;데이터 형태&lt;/td&gt;
+          &lt;td&gt;구조화&lt;/td&gt;
+          &lt;td&gt;구조화&lt;/td&gt;
+          &lt;td&gt;비구조화/반구조화&lt;/td&gt;
+          &lt;td&gt;모두 지원&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;스키마&lt;/td&gt;
+          &lt;td&gt;Schema-on-Write&lt;/td&gt;
+          &lt;td&gt;Schema-on-Write&lt;/td&gt;
+          &lt;td&gt;Schema-on-Read&lt;/td&gt;
+          &lt;td&gt;둘 다 가능&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;ACID&lt;/td&gt;
+          &lt;td&gt;O&lt;/td&gt;
+          &lt;td&gt;O&lt;/td&gt;
+          &lt;td&gt;X&lt;/td&gt;
+          &lt;td&gt;O&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;쿼리 패턴&lt;/td&gt;
+          &lt;td&gt;단건 읽기/쓰기&lt;/td&gt;
+          &lt;td&gt;대량 집계/분석&lt;/td&gt;
+          &lt;td&gt;배치 처리&lt;/td&gt;
+          &lt;td&gt;대량 집계/분석&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;실시간성&lt;/td&gt;
+          &lt;td&gt;실시간&lt;/td&gt;
+          &lt;td&gt;준실시간~배치&lt;/td&gt;
+          &lt;td&gt;배치&lt;/td&gt;
+          &lt;td&gt;준실시간~배치&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+          &lt;td&gt;대표 제품&lt;/td&gt;
+          &lt;td&gt;MySQL, PostgreSQL&lt;/td&gt;
+          &lt;td&gt;Snowflake, Redshift, BigQuery&lt;/td&gt;
+          &lt;td&gt;S3, HDFS&lt;/td&gt;
+          &lt;td&gt;Databricks&lt;/td&gt;
+      &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id=&#34;쉬운-비유&#34;&gt;쉬운 비유&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다.&lt;/li&gt;
+&lt;li&gt;데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다.&lt;/li&gt;
+&lt;li&gt;데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다.&lt;/li&gt;
+&lt;li&gt;데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;용어-유래&#34;&gt;용어 유래&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Database: Data + Base(기지) → 데이터를 저장하고 관리하는 기본 시스템&lt;/li&gt;
+&lt;li&gt;Data Warehouse: Data + Warehouse(창고) → 정리된 물건을 체계적으로 보관&lt;/li&gt;
+&lt;li&gt;Data Lake: Data + Lake(호수) → 모든 물이 흘러드는 호수&lt;/li&gt;
+&lt;li&gt;Data Lakehouse: Data + Lake + House (Databricks가 2020년 제안한 신조어)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;ldquo;Data Lake Warehouse&amp;quot;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
