@@ -37,7 +37,7 @@ HelloWorld.java (소스코드)
 바이트코드 인터프리터 실행으로 성능이 느렸습니다.">
 <meta name="author" content="">
 <link rel="canonical" href="https://dont.kr/posts/2025/2025-11-25-spring-boot-warmup/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4bef824c135d95ffd8df119b1b511d3c1507c4d3fed7cf470539d03f95ec7625.css" integrity="sha256-S&#43;&#43;CTBNdlf/Y3xGbG1EdPBUHxNP&#43;189HBTnQP5XsdiU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f56f6fcbbbf1b56135b161970b2be054c0f93cd0507af71fddbab4cf707c5c56.css" integrity="sha256-9W9vy7vxtWE1sWGXCyvgVMD5PNBQevcf3bq0z3B8XFY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dont.kr/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
@@ -280,20 +280,20 @@ HelloWorld.java (소스코드)
 </code></pre><h3 id="hot-spot">Hot Spot<a hidden class="anchor" aria-hidden="true" href="#hot-spot">#</a></h3>
 <p>JIT는 자주 실행되는 코드만 최적화합니다.</p>
 <h4 id="판정-기준-java-17">판정 기준 (Java 17)<a hidden class="anchor" aria-hidden="true" href="#판정-기준-java-17">#</a></h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// C1 컴파일러</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// C1 컴파일러</span>
 </span></span><span style="display:flex;"><span>메서드 호출 200회 <span style="color:#960050;background-color:#1e0010">→</span> C1 컴파일
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// C2 컴파일러</span>
 </span></span><span style="display:flex;"><span>메서드 호출 15,000회 <span style="color:#960050;background-color:#1e0010">→</span> C2 컴파일
 </span></span></code></pre></div><p>확인 방법:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -XX:+PrintFlagsFinal -version | grep Threshold
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>java -XX:+PrintFlagsFinal -version | grep Threshold
 </span></span></code></pre></div><h2 id="spring-boot-콜드-스타트">Spring Boot 콜드 스타트<a hidden class="anchor" aria-hidden="true" href="#spring-boot-콜드-스타트">#</a></h2>
 <h3 id="dispatcherservlet---첫-http-요청-시">DispatcherServlet - 첫 HTTP 요청 시<a hidden class="anchor" aria-hidden="true" href="#dispatcherservlet---첫-http-요청-시">#</a></h3>
 <ul>
 <li>첫 HTTP 요청 시 초기화</li>
 <li>설정으로 변경 가능</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">spring.mvc.servlet.load-on-startup</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">spring.mvc.servlet.load-on-startup</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>
 </span></span></code></pre></div><h3 id="handlermapping">HandlerMapping<a hidden class="anchor" aria-hidden="true" href="#handlermapping">#</a></h3>
 <ul>
 <li>DispatcherServlet과 함께</li>
@@ -311,7 +311,7 @@ HelloWorld.java (소스코드)
 <li>첫 DB 쿼리 시 초기화</li>
 <li>설정으로 변경 가능</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">spring.datasource.hikari.initialization-fail-timeout</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-properties" data-lang="properties"><span style="display:flex;"><span><span style="color:#a6e22e">spring.datasource.hikari.initialization-fail-timeout</span><span style="color:#f92672">=</span><span style="color:#e6db74">1</span>
 </span></span></code></pre></div><h3 id="빈-외에-다른-클래스-파일들">빈 외에 다른 클래스 파일들<a hidden class="anchor" aria-hidden="true" href="#빈-외에-다른-클래스-파일들">#</a></h3>
 <ul>
 <li>JVM 지연 클래스 로딩: 빈 생성 시 내부 클래스는 미로딩</li>
@@ -321,7 +321,7 @@ HelloWorld.java (소스코드)
 <ul>
 <li>대부분의 경우 충분</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">WarmupRunner</span> <span style="color:#66d9ef">implements</span> ApplicationRunner {
 </span></span><span style="display:flex;"><span>        
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>
@@ -343,7 +343,7 @@ HelloWorld.java (소스코드)
 <li>트래픽 민감한 서비스</li>
 <li>상황에 따라 C1 또는 C2 최적화 선택</li>
 </ul>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Component</span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FullWarmupRunner</span> <span style="color:#66d9ef">implements</span> ApplicationRunner {
 </span></span><span style="display:flex;"><span>    
 </span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@Override</span>

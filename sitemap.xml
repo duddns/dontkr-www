@@ -2,6 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://dont.kr/tags/aws/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/2026/2026-02-10-ecs-jvm-memory/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/ecs/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/java/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/jvm/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/memory/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/posts/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/spring-boot/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
+    <loc>https://dont.kr/tags/</loc>
+    <lastmod>2026-02-10T00:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://dont.kr/tags/data/</loc>
     <lastmod>2026-01-21T00:00:00+09:00</lastmod>
   </url><url>
@@ -12,15 +42,6 @@
     <lastmod>2026-01-21T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/database/</loc>
-    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/</loc>
-    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/posts/</loc>
-    <lastmod>2026-01-21T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/</loc>
     <lastmod>2026-01-21T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/2026/2026-01-21-data-storage-terms/</loc>
@@ -67,9 +88,6 @@
   </url><url>
     <loc>https://dont.kr/tags/message-queue/</loc>
     <lastmod>2025-11-27T00:00:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/spring-boot/</loc>
-    <lastmod>2025-11-26T00:00:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/2025/2025-11-26-spring-boot-config/</loc>
     <lastmod>2025-11-26T00:00:00+09:00</lastmod>
@@ -189,9 +207,6 @@
     <lastmod>2021-10-28T09:49:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/</loc>
-    <lastmod>2020-03-09T16:24:00+09:00</lastmod>
-  </url><url>
-    <loc>https://dont.kr/tags/aws/</loc>
     <lastmod>2020-03-09T16:24:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/posts/2019/2019-07-09-ngrok/</loc>

@@ -81,7 +81,7 @@ printf(&#34;읽음: %s&#34;, buf);
 동작:">
 <meta name="author" content="">
 <link rel="canonical" href="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.4bef824c135d95ffd8df119b1b511d3c1507c4d3fed7cf470539d03f95ec7625.css" integrity="sha256-S&#43;&#43;CTBNdlf/Y3xGbG1EdPBUHxNP&#43;189HBTnQP5XsdiU=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f56f6fcbbbf1b56135b161970b2be054c0f93cd0507af71fddbab4cf707c5c56.css" integrity="sha256-9W9vy7vxtWE1sWGXCyvgVMD5PNBQevcf3bq0z3B8XFY=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dont.kr/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
@@ -402,7 +402,7 @@ printf(&#34;읽음: %s&#34;, buf);
 </table>
 <h2 id="c-디바이스-io-예제">C 디바이스 I/O 예제<a hidden class="anchor" aria-hidden="true" href="#c-디바이스-io-예제">#</a></h2>
 <h3 id="블록킹-io">블록킹 I/O<a hidden class="anchor" aria-hidden="true" href="#블록킹-io">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">1024</span>];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e">// 데이터 올 때까지 멈춤
@@ -418,7 +418,7 @@ printf(&#34;읽음: %s&#34;, buf);
 <li>그제서야 다음 줄 실행</li>
 </ol>
 <h3 id="논블록킹-io--polling">논블록킹 I/O + Polling<a hidden class="anchor" aria-hidden="true" href="#논블록킹-io--polling">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY <span style="color:#f92672">|</span> O_NONBLOCK);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY <span style="color:#f92672">|</span> O_NONBLOCK);
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">char</span> buf[<span style="color:#ae81ff">1024</span>];
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
@@ -440,7 +440,7 @@ printf(&#34;읽음: %s&#34;, buf);
 <li>반복해서 확인 (polling)</li>
 </ol>
 <h3 id="논블록킹-io--select">논블록킹 I/O + select()<a hidden class="anchor" aria-hidden="true" href="#논블록킹-io--select">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY <span style="color:#f92672">|</span> O_NONBLOCK);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">int</span> fd <span style="color:#f92672">=</span> <span style="color:#a6e22e">open</span>(<span style="color:#e6db74">&#34;/dev/device&#34;</span>, O_RDONLY <span style="color:#f92672">|</span> O_NONBLOCK);
 </span></span><span style="display:flex;"><span>fd_set readfds;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> (<span style="color:#ae81ff">1</span>) {
@@ -467,14 +467,14 @@ printf(&#34;읽음: %s&#34;, buf);
 </ol>
 <h2 id="java-spring-예제">Java Spring 예제<a hidden class="anchor" aria-hidden="true" href="#java-spring-예제">#</a></h2>
 <h3 id="동기--블록킹-resttemplate">동기 + 블록킹 (RestTemplate)<a hidden class="anchor" aria-hidden="true" href="#동기--블록킹-resttemplate">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> User <span style="color:#a6e22e">getUser</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 현재 스레드가 여기서 멈춤</span>
 </span></span><span style="display:flex;"><span>    User user <span style="color:#f92672">=</span> restTemplate.<span style="color:#a6e22e">getForObject</span>(url, User.<span style="color:#a6e22e">class</span>);
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> user;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h3 id="비동기--논블록킹-webclient">비동기 + 논블록킹 (WebClient)<a hidden class="anchor" aria-hidden="true" href="#비동기--논블록킹-webclient">#</a></h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Mono <span style="color:#a6e22e">getUser</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 요청만 하고 바로 반환</span>
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> webClient.<span style="color:#a6e22e">get</span>()
@@ -553,7 +553,7 @@ printf(&#34;읽음: %s&#34;, buf);
 <li>I/O 방식 선택은 성능과 복잡도의 트레이드오프</li>
 </ul>
 <h2 id="참고-비동기--블록킹-안티패턴">참고 비동기 + 블록킹 안티패턴<a hidden class="anchor" aria-hidden="true" href="#참고-비동기--블록킹-안티패턴">#</a></h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>(<span style="color:#e6db74">&#34;/user&#34;</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> User <span style="color:#a6e22e">getUser</span>() {
 </span></span><span style="display:flex;"><span>    <span style="color:#75715e">// 비동기로 시작했지만...</span>
 </span></span><span style="display:flex;"><span>    CompletableFuture future <span style="color:#f92672">=</span> CompletableFuture.<span style="color:#a6e22e">supplyAsync</span>(() <span style="color:#f92672">-&gt;</span> {

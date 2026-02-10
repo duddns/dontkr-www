@@ -4,7 +4,7 @@
     <title>Message Queue on DoNT - Do Not Think!!!</title>
     <link>https://dont.kr/tags/message-queue/</link>
     <description>Recent content in Message Queue on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.154.5</generator>
+    <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
     <lastBuildDate>Thu, 27 Nov 2025 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/message-queue/index.xml" rel="self" type="application/rss+xml" />
@@ -98,7 +98,7 @@
 &lt;li&gt;&lt;strong&gt;Consumer Lag&lt;/strong&gt;: Latest - Committed (처리 지연 정도)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;commit-전략&#34;&gt;Commit 전략&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 자동 커밋 (기본값)&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 자동 커밋 (기본값)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;enable.&lt;span style=&#34;color:#a6e22e&#34;&gt;auto&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;commit&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;auto.&lt;span style=&#34;color:#a6e22e&#34;&gt;commit&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;interval&lt;/span&gt;.&lt;span style=&#34;color:#a6e22e&#34;&gt;ms&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;5000
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;

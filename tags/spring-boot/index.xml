@@ -4,10 +4,24 @@
     <title>Spring Boot on DoNT - Do Not Think!!!</title>
     <link>https://dont.kr/tags/spring-boot/</link>
     <description>Recent content in Spring Boot on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.154.5</generator>
+    <generator>Hugo -- 0.155.3</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 26 Nov 2025 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/spring-boot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS ECS에서 Java &#43; Spring Boot 어플리케이션 메모리 설정</title>
+      <link>https://dont.kr/posts/2026/2026-02-10-ecs-jvm-memory/</link>
+      <pubDate>Tue, 10 Feb 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-02-10-ecs-jvm-memory/</guid>
+      <description>&lt;h2 id=&#34;컨테이너-환경의-메모리-구조&#34;&gt;컨테이너 환경의 메모리 구조&lt;/h2&gt;
+&lt;p&gt;기존 서버/VM 환경에서는 OS가 물리 메모리를 먼저 차지하고, 나머지를 JVM이 사용했습니다.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[VM/서버] 물리 메모리 → OS 커널 + 시스템 프로세스 → JVM
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;ECS 컨테이너는 다릅니다. 호스트 OS 커널을 공유하기 때문에, Task에 할당된 메모리는 거의 전부 컨테이너 프로세스(JVM)가 사용합니다.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;[ECS Task] Task 메모리 ≈ JVM 전용
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&amp;ldquo;OS 몫을 남겨야 한다&amp;quot;는 상식은 컨테이너 환경에서는 불필요합니다. Fargate든 EC2든 Task 내부의 메모리 설정은 동일합니다.&lt;/p&gt;
+&lt;h2 id=&#34;jvm-메모리-구조&#34;&gt;JVM 메모리 구조&lt;/h2&gt;
+&lt;p&gt;JVM 메모리는 크게 Heap과 Non-Heap으로 나뉩니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Spring Boot 설정 파일 로딩</title>
       <link>https://dont.kr/posts/2025/2025-11-26-spring-boot-config/</link>
