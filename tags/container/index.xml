@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Container on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/container/</link>
+    <description>Recent content in Container on DoNT - Do Not Think!!!</description>
+    <generator>Hugo -- 0.155.3</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 09 Feb 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>컨테이너 기초 용어 정리</title>
+      <link>https://dont.kr/posts/2026/2026-02-09-container-basics/</link>
+      <pubDate>Mon, 09 Feb 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-02-09-container-basics/</guid>
+      <description>&lt;p&gt;물리 서버, 가상 머신 (VM), 컨테이너. 서버 환경이 어떻게 변해왔는지, 컨테이너 관련 용어들의 관계를 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;서버-환경의-변천&#34;&gt;서버 환경의 변천&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;물리 서버 → VM  → 컨테이너
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;물리 서버와 VM은 사용자 입장에서 거의 동일합니다. OS 설치하고, Java 설치하고, jar 배포하고. 차이는 하드웨어를 직접 만지느냐, 콘솔에서 클릭하느냐 정도입니다.&lt;/p&gt;
+&lt;p&gt;패러다임이 바뀌는 건 VM → 컨테이너 구간입니다.&lt;/p&gt;
+&lt;h2 id=&#34;컨테이너의-구조&#34;&gt;컨테이너의 구조&lt;/h2&gt;
+&lt;h3 id=&#34;기존-서버-환경-물리-서버--vm&#34;&gt;기존 서버 환경 (물리 서버 / VM)&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Application (jar)
+Java (JDK)
+OS (Linux)
+─────────────
+물리 서버 / VM
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;기존 서버 환경은 각 계층을 하나하나 직접 설치합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

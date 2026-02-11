@@ -141,6 +141,35 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">LLM 개념 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1. LLM이란 무엇인가? 정의 Large Language Model = 대규모 언어 모델
+엄청난 양의 텍스트로 학습한 파라미터가 수백억~조 개인 언어를 이해하고 생성하는 AI 모델 본질 “다음 단어 예측&#34;을 극한까지 잘하는 모델
+입력: &#34;오늘 날씨가 정말&#34; LLM: &#34;좋네요&#34; (가장 자연스러운 다음 단어 선택) → 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능
+2. LLM = 딥러닝의 한 종류 AI 기술 계층도 AI └─ 머신러닝 ├─ 전통 머신러닝 └─ 딥러닝 └─ Transformer └─ LLM ← 여기 LLM의 위치 AI의 일부 딥러닝의 일부 Transformer 기반 현재 가장 주목받는 분야 Multimodal 확장 최근 트렌드:
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-13 00:00:00 +0900 KST'>2025년 11월 13일</span></footer>
+  <a class="entry-link" aria-label="post link to LLM 개념 정리" href="https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">머신러닝 개념 정리
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>1. 머신러닝 전체 프로세스 단계 전통 머신러닝 딥러닝 1. 원본 데이터 텍스트, 이미지, 표 등 텍스트, 이미지, 표 등 2. 분할 텍스트→토큰, 이미지→픽셀, 음성→프레임 텍스트→토큰, 이미지→픽셀, 음성→프레임 3. 벡터화 숫자로 변환 (ID, RGB, 정규화) 숫자로 변환 (ID, RGB, 정규화) 4. Feature 추출 사람이 설계 (고정)- 긍정단어 개수- 부정단어 개수- 느낌표 개수 - 5. 학습 초기화 랜덤 Parameter 랜덤 Parameter 6. 순전파 Feature × Parameter = 예측 벡터화된 입력 × Parameter→ Layer별 Feature 자동 생성→ 예측 7. 손실 계산 정답과 비교 정답과 비교 8. 역전파 Parameter 조정 Parameter 조정→ Feature 표현도 변화 9. 반복 68 반복 (수백만수억 회) 68 반복 (수백만수억 회) 10. 학습된 모델 고정 Feature &#43; 학습된 Parameter 학습된 Parameter(Feature 표현 내장) 11. 추론: 전처리 분할 &#43; 벡터화 분할 &#43; 벡터화 12. 추론: Feature 같은 방식으로 Feature 추출 학습된 모델로 자동 생성 13. 추론: 예측 학습된 Parameter로 계산 학습된 Parameter로 계산 14. 예측 결과 출력 출력 2. 핵심 용어 완전 정리 데이터 (Data) 원본 정보
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2025-11-12 00:00:00 +0900 KST'>2025년 11월 12일</span></footer>
+  <a class="entry-link" aria-label="post link to 머신러닝 개념 정리" href="https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">AI 개념 정리
     </h2>
   </header>
@@ -248,30 +277,6 @@ $ convert a.jpg -crop 1179x1040&#43;0&#43;420 1.jpg </p>
   </div>
   <footer class="entry-footer"><span title='2025-03-26 00:00:00 +0900 KST'>2025년 3월 26일</span></footer>
   <a class="entry-link" aria-label="post link to ImageMagick crop" href="https://dont.kr/posts/2025/2025-03-26-imagemagick-crop/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">IntelliJ debug variable json view
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>IntelliJ debug variable json view new com.fasterxml.jackson.databind.ObjectMapper() .registerModule(new com.fasterxml.jackson.datatype.jsr310.JavaTimeModule()) .disable(com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS) .writerWithDefaultPrettyPrinter() .writeValueAsString(); </p>
-  </div>
-  <footer class="entry-footer"><span title='2024-11-07 00:00:00 +0900 KST'>2024년 11월 7일</span></footer>
-  <a class="entry-link" aria-label="post link to IntelliJ debug variable json view" href="https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Hugo 태그 설정
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Hugo 기본 설정으로 tags 사용 PaperMod 테마 설정 hugo.yaml 파일 수정 menu: main: - identifier: tags name: tags url: /tags/ weight: 10 content 에 태그 추가 tags: - hugo 참고 링크 Hugo Taxonomies: https://gohugo.io/content-management/taxonomies/ PaperMod wiki: https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#sample-configyml </p>
-  </div>
-  <footer class="entry-footer"><span title='2024-01-12 19:10:00 +0900 KST'>2024년 1월 12일</span></footer>
-  <a class="entry-link" aria-label="post link to Hugo 태그 설정" href="https://dont.kr/posts/2024/2024-01-12-hugo-tags/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

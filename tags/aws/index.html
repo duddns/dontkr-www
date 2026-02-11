@@ -136,14 +136,28 @@
     </h2>
   </header>
   <div class="entry-content">
-    <p>컨테이너 환경의 메모리 구조 기존 서버/VM 환경에서는 OS가 물리 메모리를 먼저 차지하고, 나머지를 JVM이 사용했습니다.
-[VM/서버] 물리 메모리 → OS 커널 &#43; 시스템 프로세스 → JVM ECS 컨테이너는 다릅니다. 호스트 OS 커널을 공유하기 때문에, Task에 할당된 메모리는 거의 전부 컨테이너 프로세스(JVM)가 사용합니다.
+    <p>ECS에서 Java 애플리케이션을 운영할 때, JVM Heap을 얼마나 잡아야 하는지 정리합니다.
+컨테이너 환경의 메모리 구조 기존 서버 환경에서는 OS가 물리 메모리를 먼저 차지하고, 나머지를 JVM이 사용했습니다.
+[VM/서버] 물리 메모리 → OS 커널 &#43; 시스템 프로세스 → JVM ECS 컨테이너는 다릅니다. 호스트 OS 커널을 공유하기 때문에, Task에 할당된 메모리를 OS 몫 없이 컨테이너가 사용할 수 있습니다. 사이드카가 있으면 여러 컨테이너가 나눠 쓰지만, 이 문서에서는 메인 컨테이너만 있는 경우를 다룹니다.
 [ECS Task] Task 메모리 ≈ JVM 전용 “OS 몫을 남겨야 한다&#34;는 상식은 컨테이너 환경에서는 불필요합니다. Fargate든 EC2든 Task 내부의 메모리 설정은 동일합니다.
-JVM 메모리 구조 JVM 메모리는 크게 Heap과 Non-Heap으로 나뉩니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-02-11 00:00:00 +0900 KST'>2026년 2월 11일</span></footer>
+  <a class="entry-link" aria-label="post link to AWS ECS에서 Java &#43; Spring Boot 어플리케이션 메모리 설정" href="https://dont.kr/posts/2026/2026-02-11-ecs-jvm-memory/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">AWS ECS Task 메모리 설정
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>ECS에서 메모리 설정은 Task, Container, Application(JVM 등) 3개 레벨로 나뉩니다. 각 레벨이 어떻게 동작하는지 정리합니다.
+메모리 설정의 3개 레벨 Task 메모리 (Task에 할당된 전체 메모리) └→ Container 메모리 (프로세스별 할당) └→ Application 메모리 (JVM Heap 등) 레벨 설정 위치 역할 Task 메모리 Task Definition 전체 메모리 한도 Container 메모리 Task Definition &gt; containerDefinitions 컨테이너별 메모리 한도 Application 메모리 JVM 옵션 (-Xmx 등) 애플리케이션 내부 메모리 Application 레벨(JVM 메모리 설정)은 AWS ECS에서 Java &#43; Spring Boot 어플리케이션 메모리 설정 에서 다룹니다.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-02-10 00:00:00 +0900 KST'>2026년 2월 10일</span></footer>
-  <a class="entry-link" aria-label="post link to AWS ECS에서 Java &#43; Spring Boot 어플리케이션 메모리 설정" href="https://dont.kr/posts/2026/2026-02-10-ecs-jvm-memory/"></a>
+  <a class="entry-link" aria-label="post link to AWS ECS Task 메모리 설정" href="https://dont.kr/posts/2026/2026-02-10-ecs-task-memory-allocation/"></a>
 </article>
 
 <article class="post-entry tag-entry"> 
