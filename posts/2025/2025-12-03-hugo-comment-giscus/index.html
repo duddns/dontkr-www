@@ -96,7 +96,21 @@ GitHub 로그인으로 댓글 작성
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVEM176XM1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVEM176XM1');
+        }
+      </script><meta property="og:url" content="https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="Hugo 댓글 - giscus 적용">
   <meta property="og:description" content="Hugo 블로그에 GitHub Discussions 기반 댓글 시스템 giscus를 적용합니다.

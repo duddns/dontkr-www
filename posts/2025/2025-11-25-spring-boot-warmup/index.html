@@ -97,7 +97,21 @@ HelloWorld.java (소스코드)
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-25-spring-boot-warmup/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVEM176XM1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVEM176XM1');
+        }
+      </script><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-25-spring-boot-warmup/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="Spring Boot 애플리케이션 웜업">
   <meta property="og:description" content="Spring Boot 배포 직후 첫 요청이 느린 이유를 JVM 동작 원리부터 설명합니다.

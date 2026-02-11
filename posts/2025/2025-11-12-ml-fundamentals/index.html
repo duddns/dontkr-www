@@ -155,7 +155,21 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVEM176XM1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVEM176XM1');
+        }
+      </script><meta property="og:url" content="https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="머신러닝 개념 정리">
   <meta property="og:description" content="1. 머신러닝 전체 프로세스 단계 전통 머신러닝 딥러닝 1. 원본 데이터 텍스트, 이미지, 표 등 텍스트, 이미지, 표 등 2. 분할 텍스트→토큰, 이미지→픽셀, 음성→프레임 텍스트→토큰, 이미지→픽셀, 음성→프레임 3. 벡터화 숫자로 변환 (ID, RGB, 정규화) 숫자로 변환 (ID, RGB, 정규화) 4. Feature 추출 사람이 설계 (고정)- 긍정단어 개수- 부정단어 개수- 느낌표 개수 - 5. 학습 초기화 랜덤 Parameter 랜덤 Parameter 6. 순전파 Feature × Parameter = 예측 벡터화된 입력 × Parameter→ Layer별 Feature 자동 생성→ 예측 7. 손실 계산 정답과 비교 정답과 비교 8. 역전파 Parameter 조정 Parameter 조정→ Feature 표현도 변화 9. 반복 68 반복 (수백만수억 회) 68 반복 (수백만수억 회) 10. 학습된 모델 고정 Feature &#43; 학습된 Parameter 학습된 Parameter(Feature 표현 내장) 11. 추론: 전처리 분할 &#43; 벡터화 분할 &#43; 벡터화 12. 추론: Feature 같은 방식으로 Feature 추출 학습된 모델로 자동 생성 13. 추론: 예측 학습된 Parameter로 계산 학습된 Parameter로 계산 14. 예측 결과 출력 출력 2. 핵심 용어 완전 정리 데이터 (Data) 원본 정보">

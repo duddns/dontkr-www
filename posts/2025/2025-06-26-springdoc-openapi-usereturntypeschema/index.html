@@ -77,7 +77,21 @@
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://dont.kr/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVEM176XM1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVEM176XM1');
+        }
+      </script><meta property="og:url" content="https://dont.kr/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="springdoc-openapi @ApiResponse 어노테이션의 useReturnTypeSchema 속성">
   <meta property="og:description" content="@ApiResponse 어노테이션의 useReturnTypeSchema 속성 컨트롤러 메서드의 반환 타입을 자동으로 추론하여 OpenAPI 스펙의 response schema 로 사용 @Operation(summary = &#34;사용자 조회&#34;, responses = { @ApiResponse(responseCode = &#34;200&#34;, description = &#34;조회 성공&#34;, useReturnTypeSchema = true) }) ">

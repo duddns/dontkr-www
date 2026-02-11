@@ -91,7 +91,21 @@ powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 �
         document.querySelector("html").dataset.theme = 'light';
     }
 
-</script><meta property="og:url" content="https://dont.kr/posts/2025/2025-04-25-mac-zsh/">
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVEM176XM1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVEM176XM1');
+        }
+      </script><meta property="og:url" content="https://dont.kr/posts/2025/2025-04-25-mac-zsh/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="Mac zsh 설정">
   <meta property="og:description" content="zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함. 원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함">
