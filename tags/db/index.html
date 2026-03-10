@@ -88,11 +88,11 @@
       </script><meta property="og:url" content="https://dont.kr/tags/db/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="Db">
-  <meta property="og:locale" content="ko-kr">
+  <meta property="og:locale" content="ko_kr">
   <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Db">
-<meta name="twitter:description" content="">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Db">
 
 </head>
 <body class="list" id="top">
@@ -143,6 +143,22 @@
     Db
   </h1>
 </header>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
+    <h2 class="entry-hint-parent">Primary/Replica DB 분리와 Replication Lag
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Primary/Replica DB를 분리하는 이유, Replication Lag 문제, 그리고 해결 전략을 정리합니다.
+왜 Primary/Replica를 분리하는가 일반적인 웹 애플리케이션은 읽기 트래픽이 쓰기 트래픽보다 훨씬 많습니다. 하나의 DB가 모든 트래픽을 처리하면 부하가 집중되고, 읽기 쿼리가 쓰기 락에 영향을 받을 수 있습니다.
+[분리 전] App → 단일 DB (읽기 &#43; 쓰기 모두 처리) [분리 후] ┌─→ Primary DB (쓰기) App ─┤ └─→ Replica DB (읽기) Primary/Replica 분리의 목적은 크게 세 가지입니다.
+목적 설명 부하 분산 읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다 읽기 성능 향상 Replica를 여러 대 두어 읽기 처리량을 수평 확장한다 가용성 Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다 Replication Lag Primary/Replica 분리에는 근본적인 문제가 따릅니다. Primary에 기록된 데이터가 Replica에서 조회 가능해지기까지 지연이 발생하며, 이를 Replication Lag이라 합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-10 00:00:00 +0900 KST'>2026년 3월 10일</span></footer>
+  <a class="entry-link" aria-label="post link to Primary/Replica DB 분리와 Replication Lag" href="https://dont.kr/posts/2026/2026-03-10-db-replication-lag/"></a>
+</article>
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">

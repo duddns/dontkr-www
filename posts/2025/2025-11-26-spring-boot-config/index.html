@@ -118,42 +118,19 @@ Oracle Java 문서: 여러 모듈이 동일한 클래스 로더에 정의되고,
 ConfigData API (Spring Boot 2.4&#43;) Spring Boot 2.4 부터 설정 로딩 방식이 ConfigData API로 변경되었습니다.
 주요 변경사항 Spring Cloud Bootstrap Context 대체 (bootstrap.yml → application.yml) 단일 ApplicationContext 사용 spring.config.import 도입 설정 파일 로딩 기본 동작 검색 위치 Spring Boot는 다음 위치에서 설정 파일을 검색합니다 (낮은 → 높은 우선순위):
 1. classpath:/application.yml 2. classpath:/config/application.yml 3. file:./application.yml 4. file:./config/application.yml 5. file:./config/*/application.yml 로딩 규칙 다른 경로: 모두 로드 후 병합 같은 classpath 경로: 첫 번째만 사용 Oracle Java 문서: 여러 모듈이 동일한 클래스 로더에 정의되고, 둘 이상의 모듈이 주어진 이름의 리소스를 포함하는 경우, 모듈이 검색되는 순서는 명시되지 않으며 매우 예측할 수 없을 수 있습니다. 우선순위 나중에 로드된 것이 우선:">
-  <meta property="og:locale" content="ko-kr">
+  <meta property="og:locale" content="ko_kr">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-11-26T00:00:00+09:00">
     <meta property="article:modified_time" content="2025-11-26T00:00:00+09:00">
     <meta property="article:tag" content="Spring Boot">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Spring Boot 설정 파일 로딩">
-<meta name="twitter:description" content="Spring Boot의 설정 파일 로딩 메커니즘과 외부 라이브러리 사용 시 발생하는 문제를 다룹니다.
-ConfigData API (Spring Boot 2.4&#43;)
-Spring Boot 2.4 부터 설정 로딩 방식이 ConfigData API로 변경되었습니다.
-주요 변경사항
 
-Spring Cloud Bootstrap Context 대체 (bootstrap.yml → application.yml)
-단일 ApplicationContext 사용
-spring.config.import 도입
-
-설정 파일 로딩 기본 동작
-검색 위치
-Spring Boot는 다음 위치에서 설정 파일을 검색합니다 (낮은 → 높은 우선순위):
-1. classpath:/application.yml
-2. classpath:/config/application.yml
-3. file:./application.yml
-4. file:./config/application.yml
-5. file:./config/*/application.yml
-로딩 규칙
-
-다른 경로: 모두 로드 후 병합
-같은 classpath 경로: 첫 번째만 사용
-
-Oracle Java 문서: 여러 모듈이 동일한 클래스 로더에 정의되고, 둘 이상의 모듈이 주어진 이름의 리소스를 포함하는 경우, 모듈이 검색되는 순서는 명시되지 않으며 매우 예측할 수 없을 수 있습니다.
-
-
-
-우선순위
-나중에 로드된 것이 우선:">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Spring Boot 설정 파일 로딩">
+  <meta name="twitter:description" content="Spring Boot의 설정 파일 로딩 메커니즘과 외부 라이브러리 사용 시 발생하는 문제를 다룹니다.
+ConfigData API (Spring Boot 2.4&#43;) Spring Boot 2.4 부터 설정 로딩 방식이 ConfigData API로 변경되었습니다.
+주요 변경사항 Spring Cloud Bootstrap Context 대체 (bootstrap.yml → application.yml) 단일 ApplicationContext 사용 spring.config.import 도입 설정 파일 로딩 기본 동작 검색 위치 Spring Boot는 다음 위치에서 설정 파일을 검색합니다 (낮은 → 높은 우선순위):
+1. classpath:/application.yml 2. classpath:/config/application.yml 3. file:./application.yml 4. file:./config/application.yml 5. file:./config/*/application.yml 로딩 규칙 다른 경로: 모두 로드 후 병합 같은 classpath 경로: 첫 번째만 사용 Oracle Java 문서: 여러 모듈이 동일한 클래스 로더에 정의되고, 둘 이상의 모듈이 주어진 이름의 리소스를 포함하는 경우, 모듈이 검색되는 순서는 명시되지 않으며 매우 예측할 수 없을 수 있습니다. 우선순위 나중에 로드된 것이 우선:">
 
 
 <script type="application/ld+json">

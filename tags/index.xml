@@ -4,10 +4,24 @@
     <title>Tags on DoNT - Do Not Think!!!</title>
     <link>https://dont.kr/tags/</link>
     <description>Recent content in Tags on DoNT - Do Not Think!!!</description>
-    <generator>Hugo -- 0.155.3</generator>
+    <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Db</title>
+      <link>https://dont.kr/tags/db/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/db/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Replication Lag</title>
+      <link>https://dont.kr/tags/replication-lag/</link>
+      <pubDate>Tue, 10 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/replication-lag/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Aws</title>
       <link>https://dont.kr/tags/aws/</link>
@@ -202,13 +216,6 @@
       <link>https://dont.kr/tags/cursor/</link>
       <pubDate>Tue, 04 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/tags/cursor/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Db</title>
-      <link>https://dont.kr/tags/db/</link>
-      <pubDate>Tue, 04 Nov 2025 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/tags/db/</guid>
       <description></description>
     </item>
     <item>

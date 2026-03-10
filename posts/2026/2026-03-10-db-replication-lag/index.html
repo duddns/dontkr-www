@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Primary/Replica DB 분리와 Replication Lag | DoNT - Do Not Think!!!</title>
+<meta name="keywords" content="db, replication lag">
+<meta name="description" content="Primary/Replica DB를 분리하는 이유, Replication Lag 문제, 그리고 해결 전략을 정리합니다.
+왜 Primary/Replica를 분리하는가
+일반적인 웹 애플리케이션은 읽기 트래픽이 쓰기 트래픽보다 훨씬 많습니다. 하나의 DB가 모든 트래픽을 처리하면 부하가 집중되고, 읽기 쿼리가 쓰기 락에 영향을 받을 수 있습니다.
+[분리 전]
+App → 단일 DB (읽기 &#43; 쓰기 모두 처리)
+
+[분리 후]
+     ┌─→ Primary DB (쓰기)
+App ─┤
+     └─→ Replica DB (읽기)
+Primary/Replica 분리의 목적은 크게 세 가지입니다.
+
+  
+      
+          목적
+          설명
+      
+  
+  
+      
+          부하 분산
+          읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다
+      
+      
+          읽기 성능 향상
+          Replica를 여러 대 두어 읽기 처리량을 수평 확장한다
+      
+      
+          가용성
+          Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다
+      
+  
+
+
+Replication Lag
+Primary/Replica 분리에는 근본적인 문제가 따릅니다. Primary에 기록된 데이터가 Replica에서 조회 가능해지기까지 지연이 발생하며, 이를 Replication Lag이라 합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://dont.kr/posts/2026/2026-03-10-db-replication-lag/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.f56f6fcbbbf1b56135b161970b2be054c0f93cd0507af71fddbab4cf707c5c56.css" integrity="sha256-9W9vy7vxtWE1sWGXCyvgVMD5PNBQevcf3bq0z3B8XFY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/posts/2026/2026-03-10-db-replication-lag/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVEM176XM1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVEM176XM1');
+        }
+      </script><meta property="og:url" content="https://dont.kr/posts/2026/2026-03-10-db-replication-lag/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="Primary/Replica DB 분리와 Replication Lag">
+  <meta property="og:description" content="Primary/Replica DB를 분리하는 이유, Replication Lag 문제, 그리고 해결 전략을 정리합니다.
+왜 Primary/Replica를 분리하는가 일반적인 웹 애플리케이션은 읽기 트래픽이 쓰기 트래픽보다 훨씬 많습니다. 하나의 DB가 모든 트래픽을 처리하면 부하가 집중되고, 읽기 쿼리가 쓰기 락에 영향을 받을 수 있습니다.
+[분리 전] App → 단일 DB (읽기 &#43; 쓰기 모두 처리) [분리 후] ┌─→ Primary DB (쓰기) App ─┤ └─→ Replica DB (읽기) Primary/Replica 분리의 목적은 크게 세 가지입니다.
+목적 설명 부하 분산 읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다 읽기 성능 향상 Replica를 여러 대 두어 읽기 처리량을 수평 확장한다 가용성 Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다 Replication Lag Primary/Replica 분리에는 근본적인 문제가 따릅니다. Primary에 기록된 데이터가 Replica에서 조회 가능해지기까지 지연이 발생하며, 이를 Replication Lag이라 합니다.">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-03-10T00:00:00+09:00">
+    <meta property="article:modified_time" content="2026-03-10T00:00:00+09:00">
+    <meta property="article:tag" content="Db">
+    <meta property="article:tag" content="Replication Lag">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Primary/Replica DB 분리와 Replication Lag">
+  <meta name="twitter:description" content="Primary/Replica DB를 분리하는 이유, Replication Lag 문제, 그리고 해결 전략을 정리합니다.
+왜 Primary/Replica를 분리하는가 일반적인 웹 애플리케이션은 읽기 트래픽이 쓰기 트래픽보다 훨씬 많습니다. 하나의 DB가 모든 트래픽을 처리하면 부하가 집중되고, 읽기 쿼리가 쓰기 락에 영향을 받을 수 있습니다.
+[분리 전] App → 단일 DB (읽기 &#43; 쓰기 모두 처리) [분리 후] ┌─→ Primary DB (쓰기) App ─┤ └─→ Replica DB (읽기) Primary/Replica 분리의 목적은 크게 세 가지입니다.
+목적 설명 부하 분산 읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다 읽기 성능 향상 Replica를 여러 대 두어 읽기 처리량을 수평 확장한다 가용성 Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다 Replication Lag Primary/Replica 분리에는 근본적인 문제가 따릅니다. Primary에 기록된 데이터가 Replica에서 조회 가능해지기까지 지연이 발생하며, 이를 Replication Lag이라 합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dont.kr/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Primary/Replica DB 분리와 Replication Lag",
+      "item": "https://dont.kr/posts/2026/2026-03-10-db-replication-lag/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Primary/Replica DB 분리와 Replication Lag",
+  "name": "Primary\/Replica DB 분리와 Replication Lag",
+  "description": "Primary/Replica DB를 분리하는 이유, Replication Lag 문제, 그리고 해결 전략을 정리합니다.\n왜 Primary/Replica를 분리하는가 일반적인 웹 애플리케이션은 읽기 트래픽이 쓰기 트래픽보다 훨씬 많습니다. 하나의 DB가 모든 트래픽을 처리하면 부하가 집중되고, 읽기 쿼리가 쓰기 락에 영향을 받을 수 있습니다.\n[분리 전] App → 단일 DB (읽기 + 쓰기 모두 처리) [분리 후] ┌─→ Primary DB (쓰기) App ─┤ └─→ Replica DB (읽기) Primary/Replica 분리의 목적은 크게 세 가지입니다.\n목적 설명 부하 분산 읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다 읽기 성능 향상 Replica를 여러 대 두어 읽기 처리량을 수평 확장한다 가용성 Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다 Replication Lag Primary/Replica 분리에는 근본적인 문제가 따릅니다. Primary에 기록된 데이터가 Replica에서 조회 가능해지기까지 지연이 발생하며, 이를 Replication Lag이라 합니다.\n",
+  "keywords": [
+    "db", "replication lag"
+  ],
+  "articleBody": "Primary/Replica DB를 분리하는 이유, Replication Lag 문제, 그리고 해결 전략을 정리합니다.\n왜 Primary/Replica를 분리하는가 일반적인 웹 애플리케이션은 읽기 트래픽이 쓰기 트래픽보다 훨씬 많습니다. 하나의 DB가 모든 트래픽을 처리하면 부하가 집중되고, 읽기 쿼리가 쓰기 락에 영향을 받을 수 있습니다.\n[분리 전] App → 단일 DB (읽기 + 쓰기 모두 처리) [분리 후] ┌─→ Primary DB (쓰기) App ─┤ └─→ Replica DB (읽기) Primary/Replica 분리의 목적은 크게 세 가지입니다.\n목적 설명 부하 분산 읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다 읽기 성능 향상 Replica를 여러 대 두어 읽기 처리량을 수평 확장한다 가용성 Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다 Replication Lag Primary/Replica 분리에는 근본적인 문제가 따릅니다. Primary에 기록된 데이터가 Replica에서 조회 가능해지기까지 지연이 발생하며, 이를 Replication Lag이라 합니다.\nPrimary/Replica 분리는 읽기 성능을 확장하는 구조이지만, 읽기 일관성(read-after-write consistency)은 보장하지 않습니다. 따라서 쓰기 직후 읽기에서는 Replication Lag으로 인한 문제가 발생할 수 있습니다.\n오동작 사례 주문 생성 후 바로 주문을 조회하는 코드입니다.\n@Transactional public void createOrder(OrderRequest request) { orderRepository.save(new Order(request)); // Primary에 INSERT } @Transactional(readOnly = true) public Order getOrder(Long orderId) { return orderRepository.findById(orderId) // Replica에서 SELECT .orElseThrow(() -\u003e new OrderNotFoundException(orderId)); } // Controller orderService.createOrder(request); // Primary에 저장 Order order = orderService.getOrder(orderId); // Replica에서 조회 → 아직 없음! Primary에 INSERT한 직후 Replica에서 SELECT하면, Replica에 데이터가 아직 복제되지 않아 조회 결과가 없습니다. 사용자는 주문을 생성했는데 “주문을 찾을 수 없습니다\"라는 응답을 받게 됩니다.\n이 문제는 쓰기 직후 읽기가 발생하는 모든 곳에서 나타날 수 있습니다. 회원가입 후 로그인, 게시글 작성 후 목록 조회, 설정 변경 후 변경된 값 확인 등이 대표적입니다.\nReplication Lag이 발생하는 이유 MySQL은 binlog를 Replica로 전송하여 재실행하는 방식입니다.\n[MySQL Replication] Primary binlog → Replica IO thread → relay log → Replica SQL thread → apply (replay) → 네트워크 전송 + relay log 기록 + SQL 재실행 비용 = 수백ms~수초 lag (부하에 따라 더 증가 가능) Aurora는 공유 스토리지 아키텍처를 사용하여 Replication 구조 자체가 다릅니다.\n[Aurora Replication] Primary → 공유 스토리지 (redo log 기록) ← Replica (읽기) → 100ms 미만 (공식 문서 기준: \"usually much less than 100 milliseconds\") Aurora의 Primary와 Replica는 같은 스토리지 볼륨을 바라봅니다. Primary가 데이터를 commit하면 스토리지에 기록되고 Replica는 같은 스토리지를 읽습니다. 다만 Primary에서 commit된 변경 사항이 Replica에서 조회 가능해지기까지는 짧은 지연이 발생할 수 있습니다. 이는 commit 정보가 Replica로 전파되는 과정과 Replica의 버퍼 캐시 무효화 과정 때문입니다. 따라서 Aurora에서도 짧은 Replication Lag이 존재합니다.\nAurora는 Primary와 Replica가 같은 스토리지를 공유하기 때문에 전통적인 MySQL Replication보다 lag이 크게 줄어들지만, commit 정보 전파와 캐시 무효화 과정 때문에 완전히 0ms가 되지는 않습니다.\nAurora의 Replication Lag은 일반적으로 수십 ms 수준이며, 보통 100ms 미만입니다. 인스턴스 사양과 부하에 따라 달라지며, 실제 운영 환경에서 CloudWatch AuroraReplicaLag 지표를 확인한 결과 20ms 이하로 관측되었습니다. 기존 MySQL 대비 크게 개선되었지만 0ms는 아니므로, 쓰기 직후 읽기 패턴에서는 여전히 문제가 될 수 있습니다.\n해결 전략 Replication Lag에 대한 완벽한 해결책은 없습니다. 상황에 따라 적절한 전략을 선택해야 합니다.\n쓰기 직후 읽기는 Primary에서 조회 가장 단순하고 확실한 방법입니다. 쓰기 직후 조회가 필요한 경우에만 Primary를 사용합니다. 쓰기 트랜잭션 안에서 결과를 반환하거나, 해당 조회만 readOnly를 빼서 Primary로 보내는 방법이 있습니다. 다만 이 패턴을 남용하면 읽기 부하가 Primary에 집중되어 분리의 의미가 퇴색되므로, lag이 문제가 되는 특정 흐름에서만 제한적으로 사용해야 합니다.\n지연 읽기 (Delay) 조회 시점을 의도적으로 늦추는 방법입니다. 클라이언트 측에서 폴링 간격을 두거나, 서버에서 짧은 대기 후 조회합니다. 실시간성이 중요하지 않은 경우(이메일 발송 확인, 비동기 작업 결과 등)에 적합합니다.\n세션 기반 읽기 일관성 사용자가 데이터를 쓴 뒤, 해당 사용자의 읽기 요청만 일정 시간 동안 Primary로 보내는 방법입니다. 구현이 복잡하고 사용자별 상태를 관리해야 하는 부담이 있습니다.\n정리 방법 복잡도 적합한 경우 쓰기 직후 Primary 조회 낮음 쓰기 후 즉시 결과가 필요한 API 지연 읽기 낮음 실시간성이 덜 중요한 경우 세션 기반 읽기 일관성 높음 대규모 서비스, 정교한 제어 필요 대부분의 경우 “쓰기 직후 Primary 조회\"로 충분합니다. 모든 읽기를 Primary로 보내는 것이 아니라, lag이 문제가 되는 특정 흐름에서만 Primary를 사용하는 것이 핵심입니다.\n참고 AWS 공식 - Amazon Aurora Replication ",
+  "wordCount" : "618",
+  "inLanguage": "ko",
+  "datePublished": "2026-03-10T00:00:00+09:00",
+  "dateModified": "2026-03-10T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dont.kr/posts/2026/2026-03-10-db-replication-lag/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoNT - Do Not Think!!!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dont.kr/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dont.kr/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dont.kr/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      Primary/Replica DB 분리와 Replication Lag
+    </h1>
+    <div class="post-meta"><span title='2026-03-10 00:00:00 +0900 KST'>2026년 3월 10일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>Primary/Replica DB를 분리하는 이유, Replication Lag 문제, 그리고 해결 전략을 정리합니다.</p>
+<h2 id="왜-primaryreplica를-분리하는가">왜 Primary/Replica를 분리하는가<a hidden class="anchor" aria-hidden="true" href="#왜-primaryreplica를-분리하는가">#</a></h2>
+<p>일반적인 웹 애플리케이션은 읽기 트래픽이 쓰기 트래픽보다 훨씬 많습니다. 하나의 DB가 모든 트래픽을 처리하면 부하가 집중되고, 읽기 쿼리가 쓰기 락에 영향을 받을 수 있습니다.</p>
+<pre tabindex="0"><code>[분리 전]
+App → 단일 DB (읽기 + 쓰기 모두 처리)
+
+[분리 후]
+     ┌─→ Primary DB (쓰기)
+App ─┤
+     └─→ Replica DB (읽기)
+</code></pre><p>Primary/Replica 분리의 목적은 크게 세 가지입니다.</p>
+<table>
+  <thead>
+      <tr>
+          <th>목적</th>
+          <th>설명</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>부하 분산</td>
+          <td>읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다</td>
+      </tr>
+      <tr>
+          <td>읽기 성능 향상</td>
+          <td>Replica를 여러 대 두어 읽기 처리량을 수평 확장한다</td>
+      </tr>
+      <tr>
+          <td>가용성</td>
+          <td>Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="replication-lag">Replication Lag<a hidden class="anchor" aria-hidden="true" href="#replication-lag">#</a></h2>
+<p>Primary/Replica 분리에는 근본적인 문제가 따릅니다. Primary에 기록된 데이터가 Replica에서 조회 가능해지기까지 지연이 발생하며, 이를 Replication Lag이라 합니다.</p>
+<p>Primary/Replica 분리는 읽기 성능을 확장하는 구조이지만, 읽기 일관성(read-after-write consistency)은 보장하지 않습니다. 따라서 쓰기 직후 읽기에서는 Replication Lag으로 인한 문제가 발생할 수 있습니다.</p>
+<h3 id="오동작-사례">오동작 사례<a hidden class="anchor" aria-hidden="true" href="#오동작-사례">#</a></h3>
+<p>주문 생성 후 바로 주문을 조회하는 코드입니다.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">createOrder</span>(OrderRequest request) {
+</span></span><span style="display:flex;"><span>  orderRepository.<span style="color:#a6e22e">save</span>(<span style="color:#66d9ef">new</span> Order(request));  <span style="color:#75715e">// Primary에 INSERT</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@Transactional</span>(readOnly <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> Order <span style="color:#a6e22e">getOrder</span>(Long orderId) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> orderRepository.<span style="color:#a6e22e">findById</span>(orderId)  <span style="color:#75715e">// Replica에서 SELECT</span>
+</span></span><span style="display:flex;"><span>      .<span style="color:#a6e22e">orElseThrow</span>(() <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">new</span> OrderNotFoundException(orderId));
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#75715e">// Controller</span>
+</span></span><span style="display:flex;"><span>orderService.<span style="color:#a6e22e">createOrder</span>(request);            <span style="color:#75715e">// Primary에 저장</span>
+</span></span><span style="display:flex;"><span>Order order <span style="color:#f92672">=</span> orderService.<span style="color:#a6e22e">getOrder</span>(orderId); <span style="color:#75715e">// Replica에서 조회 → 아직 없음!</span>
+</span></span></code></pre></div><p>Primary에 INSERT한 직후 Replica에서 SELECT하면, Replica에 데이터가 아직 복제되지 않아 조회 결과가 없습니다. 사용자는 주문을 생성했는데 &ldquo;주문을 찾을 수 없습니다&quot;라는 응답을 받게 됩니다.</p>
+<p>이 문제는 쓰기 직후 읽기가 발생하는 모든 곳에서 나타날 수 있습니다. 회원가입 후 로그인, 게시글 작성 후 목록 조회, 설정 변경 후 변경된 값 확인 등이 대표적입니다.</p>
+<h3 id="replication-lag이-발생하는-이유">Replication Lag이 발생하는 이유<a hidden class="anchor" aria-hidden="true" href="#replication-lag이-발생하는-이유">#</a></h3>
+<p>MySQL은 binlog를 Replica로 전송하여 재실행하는 방식입니다.</p>
+<pre tabindex="0"><code>[MySQL Replication]
+Primary binlog → Replica IO thread → relay log → Replica SQL thread → apply (replay)
+→ 네트워크 전송 + relay log 기록 + SQL 재실행 비용 = 수백ms~수초 lag (부하에 따라 더 증가 가능)
+</code></pre><p>Aurora는 공유 스토리지 아키텍처를 사용하여 Replication 구조 자체가 다릅니다.</p>
+<pre tabindex="0"><code>[Aurora Replication]
+Primary → 공유 스토리지 (redo log 기록) ← Replica (읽기)
+→ 100ms 미만 (공식 문서 기준: &#34;usually much less than 100 milliseconds&#34;)
+</code></pre><p>Aurora의 Primary와 Replica는 같은 스토리지 볼륨을 바라봅니다. Primary가 데이터를 commit하면 스토리지에 기록되고 Replica는 같은 스토리지를 읽습니다. 다만 Primary에서 commit된 변경 사항이 Replica에서 조회 가능해지기까지는 짧은 지연이 발생할 수 있습니다. 이는 commit 정보가 Replica로 전파되는 과정과 Replica의 버퍼 캐시 무효화 과정 때문입니다. 따라서 Aurora에서도 짧은 Replication Lag이 존재합니다.</p>
+<p>Aurora는 Primary와 Replica가 같은 스토리지를 공유하기 때문에 전통적인 MySQL Replication보다 lag이 크게 줄어들지만, commit 정보 전파와 캐시 무효화 과정 때문에 완전히 0ms가 되지는 않습니다.</p>
+<p>Aurora의 Replication Lag은 일반적으로 수십 ms 수준이며, 보통 100ms 미만입니다. 인스턴스 사양과 부하에 따라 달라지며, 실제 운영 환경에서 CloudWatch <code>AuroraReplicaLag</code> 지표를 확인한 결과 20ms 이하로 관측되었습니다. 기존 MySQL 대비 크게 개선되었지만 0ms는 아니므로, 쓰기 직후 읽기 패턴에서는 여전히 문제가 될 수 있습니다.</p>
+<hr>
+<h2 id="해결-전략">해결 전략<a hidden class="anchor" aria-hidden="true" href="#해결-전략">#</a></h2>
+<p>Replication Lag에 대한 완벽한 해결책은 없습니다. 상황에 따라 적절한 전략을 선택해야 합니다.</p>
+<h3 id="쓰기-직후-읽기는-primary에서-조회">쓰기 직후 읽기는 Primary에서 조회<a hidden class="anchor" aria-hidden="true" href="#쓰기-직후-읽기는-primary에서-조회">#</a></h3>
+<p>가장 단순하고 확실한 방법입니다. 쓰기 직후 조회가 필요한 경우에만 Primary를 사용합니다. 쓰기 트랜잭션 안에서 결과를 반환하거나, 해당 조회만 readOnly를 빼서 Primary로 보내는 방법이 있습니다. 다만 이 패턴을 남용하면 읽기 부하가 Primary에 집중되어 분리의 의미가 퇴색되므로, lag이 문제가 되는 특정 흐름에서만 제한적으로 사용해야 합니다.</p>
+<h3 id="지연-읽기-delay">지연 읽기 (Delay)<a hidden class="anchor" aria-hidden="true" href="#지연-읽기-delay">#</a></h3>
+<p>조회 시점을 의도적으로 늦추는 방법입니다. 클라이언트 측에서 폴링 간격을 두거나, 서버에서 짧은 대기 후 조회합니다. 실시간성이 중요하지 않은 경우(이메일 발송 확인, 비동기 작업 결과 등)에 적합합니다.</p>
+<h3 id="세션-기반-읽기-일관성">세션 기반 읽기 일관성<a hidden class="anchor" aria-hidden="true" href="#세션-기반-읽기-일관성">#</a></h3>
+<p>사용자가 데이터를 쓴 뒤, 해당 사용자의 읽기 요청만 일정 시간 동안 Primary로 보내는 방법입니다. 구현이 복잡하고 사용자별 상태를 관리해야 하는 부담이 있습니다.</p>
+<h3 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h3>
+<table>
+  <thead>
+      <tr>
+          <th>방법</th>
+          <th>복잡도</th>
+          <th>적합한 경우</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>쓰기 직후 Primary 조회</td>
+          <td>낮음</td>
+          <td>쓰기 후 즉시 결과가 필요한 API</td>
+      </tr>
+      <tr>
+          <td>지연 읽기</td>
+          <td>낮음</td>
+          <td>실시간성이 덜 중요한 경우</td>
+      </tr>
+      <tr>
+          <td>세션 기반 읽기 일관성</td>
+          <td>높음</td>
+          <td>대규모 서비스, 정교한 제어 필요</td>
+      </tr>
+  </tbody>
+</table>
+<p>대부분의 경우 &ldquo;쓰기 직후 Primary 조회&quot;로 충분합니다. 모든 읽기를 Primary로 보내는 것이 아니라, lag이 문제가 되는 특정 흐름에서만 Primary를 사용하는 것이 핵심입니다.</p>
+<h2 id="참고">참고<a hidden class="anchor" aria-hidden="true" href="#참고">#</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Replication.html">AWS 공식 - Amazon Aurora Replication</a></li>
+</ul>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dont.kr/tags/db/">Db</a></li>
+      <li><a href="https://dont.kr/tags/replication-lag/">Replication Lag</a></li>
+    </ul>
+  </footer><script src="https://giscus.app/client.js"
+    data-repo="duddns/dontkr-www"
+    data-repo-id="R_kgDOJ5uOLg"
+    data-category="General"
+    data-category-id="DIC_kwDOJ5uOLs4CzVRe"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
