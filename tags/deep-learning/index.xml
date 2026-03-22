@@ -13,7 +13,8 @@
       <link>https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/</link>
       <pubDate>Wed, 12 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/</guid>
-      <description>&lt;h2 id=&#34;1-머신러닝-전체-프로세스&#34;&gt;1. 머신러닝 전체 프로세스&lt;/h2&gt;
+      <description>&lt;p&gt;머신러닝의 학습 과정을 단계별로 정리하고, Feature와 Parameter의 차이를 설명합니다.&lt;/p&gt;
+&lt;h2 id=&#34;머신러닝-전체-프로세스&#34;&gt;머신러닝 전체 프로세스&lt;/h2&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -96,7 +97,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;2-핵심-용어-완전-정리&#34;&gt;2. 핵심 용어 완전 정리&lt;/h2&gt;
+&lt;h2 id=&#34;핵심-용어-정리&#34;&gt;핵심 용어 정리&lt;/h2&gt;
 &lt;h3 id=&#34;데이터-data&#34;&gt;데이터 (Data)&lt;/h3&gt;
 &lt;p&gt;원본 정보&lt;/p&gt;</description>
     </item>

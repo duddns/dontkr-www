@@ -62,7 +62,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id=&#34;kotlin의-설계-철학&#34;&gt;Kotlin의 설계 철학&lt;/h2&gt;
-&lt;h3 id=&#34;1-패키지는-캡슐화-경계가-아니다&#34;&gt;1. 패키지는 캡슐화 경계가 아니다&lt;/h3&gt;
+&lt;h3 id=&#34;패키지는-캡슐화-경계가-아니다&#34;&gt;패키지는 캡슐화 경계가 아니다&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;// 원래 라이브러리 (example-lib.jar)&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;package&lt;/span&gt; com.example.core;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;

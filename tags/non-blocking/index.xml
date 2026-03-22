@@ -13,29 +13,18 @@
       <link>https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/</link>
       <pubDate>Fri, 28 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/</guid>
-      <description>&lt;p&gt;혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.&lt;/p&gt;
-&lt;h2 id=&#34;개념-정의&#34;&gt;개념 정의&lt;/h2&gt;
-&lt;h3 id=&#34;블록킹-vs-논블록킹&#34;&gt;블록킹 vs 논블록킹&lt;/h3&gt;
+      <description>&lt;p&gt;블록킹/논블록킹은 제어권 반환 시점의 차이이고, 동기/비동기는 결과 확인 주체의 차이입니다.&lt;/p&gt;
+&lt;h2 id=&#34;블록킹-vs-논블록킹&#34;&gt;블록킹 vs 논블록킹&lt;/h2&gt;
 &lt;p&gt;구분 기준: 제어권을 바로 돌려주는가?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;블록킹: 작업 완료까지 제어권을 돌려주지 않음&lt;/li&gt;
 &lt;li&gt;논블록킹: 작업 요청 후 바로 제어권 반환&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;카페 주문 비유:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;블록킹: 카운터에서 서서 기다림 (다른 일 못함)&lt;/li&gt;
-&lt;li&gt;논블록킹: 진동벨 받고 자리로 (다른 일 가능)&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;동기-vs-비동기&#34;&gt;동기 vs 비동기&lt;/h3&gt;
+&lt;h2 id=&#34;동기-vs-비동기&#34;&gt;동기 vs 비동기&lt;/h2&gt;
 &lt;p&gt;구분 기준: 결과를 누가 확인하는가?&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;동기: 요청한 쪽이 결과를 직접 확인&lt;/li&gt;
 &lt;li&gt;비동기: 결과가 준비되면 콜백으로 알려줌&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;카페 주문 비유:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;동기: 내가 직접 &amp;ldquo;제 커피 됐나요?&amp;rdquo; 확인&lt;/li&gt;
-&lt;li&gt;비동기: 직원이 &amp;ldquo;OO번 고객님~&amp;rdquo; 불러줌&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;핵심-구분&#34;&gt;핵심 구분&lt;/h3&gt;
 &lt;table&gt;

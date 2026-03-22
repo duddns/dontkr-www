@@ -151,7 +151,7 @@
   </header>
   <div class="entry-content">
     <p>Java package-private 클래스를 Kotlin 테스트 코드에서 접근하려니 생성자 호출이 안 되어 reflection을 써야 했습니다. 왜 이런 문제가 발생할까요?
-Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#43; 같은 패키지 (default): 같은 패키지 private: 같은 클래스 Kotlin public: 전체 internal: 같은 모듈 protected: 상속 관계만 private: 같은 클래스 (클래스 멤버) / 같은 파일 (최상위 선언) 핵심 차이 Java Kotlin 캡슐화 단위 패키지 모듈 테스트 접근 같은 패키지 필요 같은 모듈이면 OK package-private 있음 없음 (internal로 대체) protected 상속 &#43; 같은 패키지 상속만 Kotlin의 설계 철학 1. 패키지는 캡슐화 경계가 아니다 // 원래 라이브러리 (example-lib.jar) package com.example.core; class InternalClass { // package-private void sensitiveMethod() { } } // 악의적 사용자 코드 (다른 프로젝트) package com.example.core; // 같은 패키지명 사용 public class Hacker { void access() { new InternalClass(); // package-private인데 접근됨 } } 패키지는 코드 조직화 수단일 뿐, 실제 캡슐화는 컴파일/배포 단위인 모듈에서 이루어져야 합니다.
+Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#43; 같은 패키지 (default): 같은 패키지 private: 같은 클래스 Kotlin public: 전체 internal: 같은 모듈 protected: 상속 관계만 private: 같은 클래스 (클래스 멤버) / 같은 파일 (최상위 선언) 핵심 차이 Java Kotlin 캡슐화 단위 패키지 모듈 테스트 접근 같은 패키지 필요 같은 모듈이면 OK package-private 있음 없음 (internal로 대체) protected 상속 &#43; 같은 패키지 상속만 Kotlin의 설계 철학 패키지는 캡슐화 경계가 아니다 // 원래 라이브러리 (example-lib.jar) package com.example.core; class InternalClass { // package-private void sensitiveMethod() { } } // 악의적 사용자 코드 (다른 프로젝트) package com.example.core; // 같은 패키지명 사용 public class Hacker { void access() { new InternalClass(); // package-private인데 접근됨 } } 패키지는 코드 조직화 수단일 뿐, 실제 캡슐화는 컴파일/배포 단위인 모듈에서 이루어져야 합니다.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-01-13 00:00:00 +0900 KST'>2026년 1월 13일</span></footer>

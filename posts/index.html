@@ -228,7 +228,7 @@
   </header>
   <div class="entry-content">
     <p>데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.
-한눈에 비교 구분 데이터베이스 데이터 웨어하우스 데이터 레이크 데이터 레이크하우스 목적 운영/트랜잭션(OLTP) 분석(OLAP) 원시 데이터 저장 분석 &#43; 저장 통합 데이터 형태 구조화 구조화 비구조화/반구조화 모두 지원 스키마 Schema-on-Write Schema-on-Write Schema-on-Read 둘 다 가능 ACID O O X O 쿼리 패턴 단건 읽기/쓰기 대량 집계/분석 배치 처리 대량 집계/분석 실시간성 실시간 준실시간~배치 배치 준실시간~배치 대표 제품 MySQL, PostgreSQL Snowflake, Redshift, BigQuery S3, HDFS Databricks 쉬운 비유 데이터베이스: 매장 POS 시스템. 실시간 거래를 기록합니다. 데이터 웨어하우스: 본사 경영분석실. 정제된 보고서용 데이터를 보관합니다. 데이터 레이크: 창고에 일단 다 쌓아둡니다. 정리는 안 되어 있습니다. 데이터 레이크하우스: 창고에 관리 시스템을 얹었습니다. 저렴하게 저장하고, 체계적으로 관리합니다. 용어 유래 Database: Data &#43; Base(기지) → 데이터를 저장하고 관리하는 기본 시스템 Data Warehouse: Data &#43; Warehouse(창고) → 정리된 물건을 체계적으로 보관 Data Lake: Data &#43; Lake(호수) → 모든 물이 흘러드는 호수 Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신조어) “Data Lake Warehouse&#34;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.
+한눈에 비교 구분 데이터베이스 데이터 웨어하우스 데이터 레이크 데이터 레이크하우스 목적 운영/트랜잭션(OLTP) 분석(OLAP) 원시 데이터 저장 분석 &#43; 저장 통합 데이터 형태 구조화 구조화 비구조화/반구조화 모두 지원 스키마 Schema-on-Write Schema-on-Write Schema-on-Read 둘 다 가능 ACID O O X O 쿼리 패턴 단건 읽기/쓰기 대량 집계/분석 배치 처리 대량 집계/분석 실시간성 실시간 준실시간~배치 배치 준실시간~배치 대표 제품 MySQL, PostgreSQL Snowflake, Redshift, BigQuery S3, HDFS Databricks 용어 유래 Database: Data &#43; Base(기지) → 데이터를 저장하고 관리하는 기본 시스템 Data Warehouse: Data &#43; Warehouse(창고) → 정리된 물건을 체계적으로 보관 Data Lake: Data &#43; Lake(호수) → 모든 물이 흘러드는 호수 Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신조어) “Data Lake Warehouse&#34;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-01-21 00:00:00 +0900 KST'>2026년 1월 21일</span></footer>
@@ -242,7 +242,7 @@
   </header>
   <div class="entry-content">
     <p>Java package-private 클래스를 Kotlin 테스트 코드에서 접근하려니 생성자 호출이 안 되어 reflection을 써야 했습니다. 왜 이런 문제가 발생할까요?
-Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#43; 같은 패키지 (default): 같은 패키지 private: 같은 클래스 Kotlin public: 전체 internal: 같은 모듈 protected: 상속 관계만 private: 같은 클래스 (클래스 멤버) / 같은 파일 (최상위 선언) 핵심 차이 Java Kotlin 캡슐화 단위 패키지 모듈 테스트 접근 같은 패키지 필요 같은 모듈이면 OK package-private 있음 없음 (internal로 대체) protected 상속 &#43; 같은 패키지 상속만 Kotlin의 설계 철학 1. 패키지는 캡슐화 경계가 아니다 // 원래 라이브러리 (example-lib.jar) package com.example.core; class InternalClass { // package-private void sensitiveMethod() { } } // 악의적 사용자 코드 (다른 프로젝트) package com.example.core; // 같은 패키지명 사용 public class Hacker { void access() { new InternalClass(); // package-private인데 접근됨 } } 패키지는 코드 조직화 수단일 뿐, 실제 캡슐화는 컴파일/배포 단위인 모듈에서 이루어져야 합니다.
+Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#43; 같은 패키지 (default): 같은 패키지 private: 같은 클래스 Kotlin public: 전체 internal: 같은 모듈 protected: 상속 관계만 private: 같은 클래스 (클래스 멤버) / 같은 파일 (최상위 선언) 핵심 차이 Java Kotlin 캡슐화 단위 패키지 모듈 테스트 접근 같은 패키지 필요 같은 모듈이면 OK package-private 있음 없음 (internal로 대체) protected 상속 &#43; 같은 패키지 상속만 Kotlin의 설계 철학 패키지는 캡슐화 경계가 아니다 // 원래 라이브러리 (example-lib.jar) package com.example.core; class InternalClass { // package-private void sensitiveMethod() { } } // 악의적 사용자 코드 (다른 프로젝트) package com.example.core; // 같은 패키지명 사용 public class Hacker { void access() { new InternalClass(); // package-private인데 접근됨 } } 패키지는 코드 조직화 수단일 뿐, 실제 캡슐화는 컴파일/배포 단위인 모듈에서 이루어져야 합니다.
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2026-01-13 00:00:00 +0900 KST'>2026년 1월 13일</span></footer>
@@ -256,7 +256,7 @@ Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#4
   </header>
   <div class="entry-content">
     <p>Hugo 블로그에 GitHub Discussions 기반 댓글 시스템 giscus를 적용합니다.
-사전 준비 GitHub 공개 저장소 준비 해당 공개 저장소에 Discussions 활성화: Settings → General → Features → Discussions giscus 앱 설치 후 저장소 선택 giscus 설정 https://giscus.app 접속 저장소와 원하는 옵션 선택 생성된 스크립트 코드 복사 Hugo 적용 댓글 파일 생성 &lt;!-- layouts/partials/comment.html --&gt; // 스크립트 코드 설정 파일 수정 # hugo.toml [params] comments = true 정리 giscus는 GitHub Discussions를 댓글로 사용 별도 DB나 서버 불필요 GitHub 로그인으로 댓글 작성 </p>
+사전 준비 GitHub 공개 저장소 준비 해당 공개 저장소에 Discussions 활성화: Settings → General → Features → Discussions giscus 앱 설치 후 저장소 선택 giscus 설정 https://giscus.app 접속 저장소와 원하는 옵션 선택 생성된 스크립트 코드 복사 Hugo 적용 댓글 파일 생성 &lt;!-- layouts/partials/comment.html --&gt; // 스크립트 코드 설정 파일 수정 # hugo.toml [params] comments = true </p>
   </div>
   <footer class="entry-footer"><span title='2025-12-03 00:00:00 +0900 KST'>2025년 12월 3일</span></footer>
   <a class="entry-link" aria-label="post link to Hugo 댓글 - giscus 적용" href="https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/"></a>
@@ -268,12 +268,10 @@ Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#4
     </h2>
   </header>
   <div class="entry-content">
-    <p>혼동하기 쉬운 블록킹/논블록킹과 동기/비동기 개념을 정리합니다.
-개념 정의 블록킹 vs 논블록킹 구분 기준: 제어권을 바로 돌려주는가?
-블록킹: 작업 완료까지 제어권을 돌려주지 않음 논블록킹: 작업 요청 후 바로 제어권 반환 카페 주문 비유:
-블록킹: 카운터에서 서서 기다림 (다른 일 못함) 논블록킹: 진동벨 받고 자리로 (다른 일 가능) 동기 vs 비동기 구분 기준: 결과를 누가 확인하는가?
-동기: 요청한 쪽이 결과를 직접 확인 비동기: 결과가 준비되면 콜백으로 알려줌 카페 주문 비유:
-동기: 내가 직접 “제 커피 됐나요?” 확인 비동기: 직원이 “OO번 고객님~” 불러줌 핵심 구분 구분 질문 블록킹 논블록킹 제어권 기다리는 동안 다른 일 할 수 있어? 못함 (멈춤) 가능 (안 멈춤) 구분 질문 동기 비동기 결과 확인 결과를 내가 확인해? 알려줘? 내가 확인 알려줌 C 디바이스 I/O 예제 블록킹 I/O int fd = open(&#34;/dev/device&#34;, O_RDONLY); char buf[1024]; // 데이터 올 때까지 멈춤 int result = read(fd, buf, 1024); // 여기 도달 = buf 채워짐 보장 printf(&#34;읽음: %s&#34;, buf); 동작:
+    <p>블록킹/논블록킹은 제어권 반환 시점의 차이이고, 동기/비동기는 결과 확인 주체의 차이입니다.
+블록킹 vs 논블록킹 구분 기준: 제어권을 바로 돌려주는가?
+블록킹: 작업 완료까지 제어권을 돌려주지 않음 논블록킹: 작업 요청 후 바로 제어권 반환 동기 vs 비동기 구분 기준: 결과를 누가 확인하는가?
+동기: 요청한 쪽이 결과를 직접 확인 비동기: 결과가 준비되면 콜백으로 알려줌 핵심 구분 구분 질문 블록킹 논블록킹 제어권 기다리는 동안 다른 일 할 수 있어? 못함 (멈춤) 가능 (안 멈춤) 구분 질문 동기 비동기 결과 확인 결과를 내가 확인해? 알려줘? 내가 확인 알려줌 C 디바이스 I/O 예제 블록킹 I/O int fd = open(&#34;/dev/device&#34;, O_RDONLY); char buf[1024]; // 데이터 올 때까지 멈춤 int result = read(fd, buf, 1024); // 여기 도달 = buf 채워짐 보장 printf(&#34;읽음: %s&#34;, buf); 동작:
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-11-28 00:00:00 +0900 KST'>2025년 11월 28일</span></footer>
@@ -287,7 +285,7 @@ Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#4
   </header>
   <div class="entry-content">
     <p>Apache Kafka의 핵심 개념과 동작 원리를 정리합니다.
-아키텍처 Kafka Cluster (여러 Broker의 집합) │ └─ Broker (카프카 서버, 여러 대 가능) │ └─ Topic (메시지 종류) │ ├─ Partition 0 ──┐ ├─ Partition 1 ──┼── Consumer Group A ─┬─ Consumer 1 └─ Partition 2 ──┘ ├─ Consumer 2 │ └─ Consumer 3 │ └──────────── Consumer Group B ─── Consumer 1 구성 요소 Broker: Kafka 서버 (여러 대로 클러스터 구성) Topic: 메시지 종류별 논리적 그룹 Partition: 토픽 내 병렬 처리 단위 Consumer Group: 동일 group.id로 묶인 컨슈머들 설계 시 고려사항 파티션 수 = 최대 병렬 처리 수 파티션 수 ≥ 컨슈머 수 (컨슈머가 더 많으면 일부는 idle) 용어 정리 ← 여기 동작 일반 메시지 큐 Kafka 메시지 보내기 Publish Produce 보내는 주체 Publisher Producer 토픽 구독 Subscribe Subscribe (동일) 메시지 받기 Push (서버가 보냄) Poll (주기적으로 가져감) 받는 주체 Subscriber Consumer 메시지 흐름 Producer ──produce──▶ Kafka Broker ◀──poll── Consumer │ ▼ consume 처리 로직 동작 방식 Producer가 메시지 전송 Broker가 파티션에 메시지 저장 Consumer가 주기적으로 폴링 새 메시지 있으면 가져와서 처리 메시지 관리 Offset 관리 Offset: 파티션 내 메시지 위치 (0부터 시작) Committed Offset: 처리 완료한 마지막 위치 Latest Offset: 파티션의 마지막 메시지 위치 Consumer Lag: Latest - Committed (처리 지연 정도) Commit 전략 // 자동 커밋 (기본값) enable.auto.commit=true auto.commit.interval.ms=5000 // 수동 커밋 consumer.commitSync(); consumer.commitAsync(); 메시지 전달 보장 1. At-most-once 처리 전 commit 장점: 중복 없음 단점: 메시지 유실 가능 2. At-least-once (기본값) 처리 후 commit 장점: 메시지 유실 없음 단점: 중복 처리 가능 중요: 애플리케이션 레벨에서 멱등성 보장 필요 3. Exactly-once 트랜잭션 사용 장점: 중복도 유실도 없음 단점: 성능 오버헤드 메시지 보관 일반 메시지 큐와 달리 Kafka는 consume 후에도 메시지 보관:
+아키텍처 Kafka Cluster (여러 Broker의 집합) │ └─ Broker (카프카 서버, 여러 대 가능) │ └─ Topic (메시지 종류) │ ├─ Partition 0 ──┐ ├─ Partition 1 ──┼── Consumer Group A ─┬─ Consumer 1 └─ Partition 2 ──┘ ├─ Consumer 2 │ └─ Consumer 3 │ └──────────── Consumer Group B ─── Consumer 1 구성 요소 Broker: Kafka 서버 (여러 대로 클러스터 구성) Topic: 메시지 종류별 논리적 그룹 Partition: 토픽 내 병렬 처리 단위 Consumer Group: 동일 group.id로 묶인 컨슈머들 설계 시 고려사항 파티션 수 = 최대 병렬 처리 수 파티션 수 ≥ 컨슈머 수 (컨슈머가 더 많으면 일부는 idle) 용어 정리 ← 여기 동작 일반 메시지 큐 Kafka 메시지 보내기 Publish Produce 보내는 주체 Publisher Producer 토픽 구독 Subscribe Subscribe (동일) 메시지 받기 Push (서버가 보냄) Poll (주기적으로 가져감) 받는 주체 Subscriber Consumer 메시지 흐름 Producer ──produce──▶ Kafka Broker ◀──poll── Consumer │ ▼ consume 처리 로직 동작 방식 Producer가 메시지 전송 Broker가 파티션에 메시지 저장 Consumer가 주기적으로 폴링 새 메시지 있으면 가져와서 처리 메시지 관리 Offset 관리 Offset: 파티션 내 메시지 위치 (0부터 시작) Committed Offset: 처리 완료한 마지막 위치 Latest Offset: 파티션의 마지막 메시지 위치 Consumer Lag: Latest - Committed (처리 지연 정도) Commit 전략 // 자동 커밋 (기본값) enable.auto.commit=true auto.commit.interval.ms=5000 // 수동 커밋 consumer.commitSync(); consumer.commitAsync(); 메시지 전달 보장 At-most-once 처리 전 commit 장점: 중복 없음 단점: 메시지 유실 가능 At-least-once (기본값) 처리 후 commit 장점: 메시지 유실 없음 단점: 중복 처리 가능 중요: 애플리케이션 레벨에서 멱등성 보장 필요 Exactly-once 트랜잭션 사용 장점: 중복도 유실도 없음 단점: 성능 오버헤드 메시지 보관 일반 메시지 큐와 달리 Kafka는 consume 후에도 메시지 보관:
 ...</p>
   </div>
   <footer class="entry-footer"><span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span></footer>

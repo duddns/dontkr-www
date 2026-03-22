@@ -13,21 +13,11 @@
       <link>https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/</link>
       <pubDate>Thu, 13 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/</guid>
-      <description>&lt;h2 id=&#34;1-llm이란-무엇인가&#34;&gt;1. LLM이란 무엇인가?&lt;/h2&gt;
-&lt;h3 id=&#34;정의&#34;&gt;정의&lt;/h3&gt;
-&lt;p&gt;Large Language Model = 대규모 언어 모델&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;엄청난 양의 텍스트로 학습한&lt;/li&gt;
-&lt;li&gt;파라미터가 수백억~조 개인&lt;/li&gt;
-&lt;li&gt;언어를 이해하고 생성하는 AI 모델&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;본질&#34;&gt;본질&lt;/h3&gt;
-&lt;p&gt;&amp;ldquo;다음 단어 예측&amp;quot;을 극한까지 잘하는 모델&lt;/p&gt;
+      <description>&lt;p&gt;LLM(Large Language Model)은 &amp;ldquo;다음 단어 예측&amp;quot;을 극한까지 잘하는 모델입니다. 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능합니다.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;입력: &amp;#34;오늘 날씨가 정말&amp;#34;
 LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;→ 이 단순한 원리로 대화, 요약, 번역, 코딩까지 가능&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;2-llm--딥러닝의-한-종류&#34;&gt;2. LLM = 딥러닝의 한 종류&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
+&lt;h2 id=&#34;llm의-위치&#34;&gt;LLM의 위치&lt;/h2&gt;
 &lt;h3 id=&#34;ai-기술-계층도&#34;&gt;AI 기술 계층도&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;AI
 └─ 머신러닝
@@ -35,22 +25,21 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
     └─ 딥러닝
         └─ Transformer
             └─ LLM ← 여기
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;llm의-위치&#34;&gt;LLM의 위치&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;AI의 일부&lt;/li&gt;
-&lt;li&gt;딥러닝의 일부&lt;/li&gt;
-&lt;li&gt;Transformer 기반&lt;/li&gt;
-&lt;li&gt;현재 가장 주목받는 분야&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&#34;multimodal-확장&#34;&gt;Multimodal 확장&lt;/h3&gt;
-&lt;p&gt;최근 트렌드:&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;multimodal-확장&#34;&gt;Multimodal 확장&lt;/h3&gt;
+&lt;p&gt;최근에는 텍스트(LLM) + 이미지(Vision) + 음성(Audio)을 통합한 Multimodal AI(GPT-4V, Gemini)로 확장되고 있지만, 코어는 여전히 LLM입니다.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;llm의-핵심-특징&#34;&gt;LLM의 핵심 특징&lt;/h2&gt;
+&lt;h3 id=&#34;large-대규모-parameter&#34;&gt;Large (대규모 Parameter)&lt;/h3&gt;
+&lt;h4 id=&#34;규모&#34;&gt;규모&lt;/h4&gt;
+&lt;p&gt;10¹¹ ~ 10¹³ 개&lt;/p&gt;</description>
     </item>
     <item>
       <title>머신러닝 개념 정리</title>
       <link>https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/</link>
       <pubDate>Wed, 12 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/</guid>
-      <description>&lt;h2 id=&#34;1-머신러닝-전체-프로세스&#34;&gt;1. 머신러닝 전체 프로세스&lt;/h2&gt;
+      <description>&lt;p&gt;머신러닝의 학습 과정을 단계별로 정리하고, Feature와 Parameter의 차이를 설명합니다.&lt;/p&gt;
+&lt;h2 id=&#34;머신러닝-전체-프로세스&#34;&gt;머신러닝 전체 프로세스&lt;/h2&gt;
 &lt;table&gt;
   &lt;thead&gt;
       &lt;tr&gt;
@@ -133,7 +122,7 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
   &lt;/tbody&gt;
 &lt;/table&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;2-핵심-용어-완전-정리&#34;&gt;2. 핵심 용어 완전 정리&lt;/h2&gt;
+&lt;h2 id=&#34;핵심-용어-정리&#34;&gt;핵심 용어 정리&lt;/h2&gt;
 &lt;h3 id=&#34;데이터-data&#34;&gt;데이터 (Data)&lt;/h3&gt;
 &lt;p&gt;원본 정보&lt;/p&gt;</description>
     </item>
@@ -142,26 +131,27 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
       <link>https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/</link>
       <pubDate>Tue, 11 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/</guid>
-      <description>&lt;h2 id=&#34;1-ai-영역-구분&#34;&gt;1. AI 영역 구분&lt;/h2&gt;
-&lt;h3 id=&#34;1번-ai-모델-개발&#34;&gt;1번: AI 모델 개발&lt;/h3&gt;
+      <description>&lt;p&gt;AI, 머신러닝, 딥러닝, LLM — 용어가 혼용되는데, 각각의 위치와 관계를 정리합니다.&lt;/p&gt;
+&lt;h2 id=&#34;ai-영역-구분&#34;&gt;AI 영역 구분&lt;/h2&gt;
+&lt;h3 id=&#34;ai-모델-개발&#34;&gt;AI 모델 개발&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;직접 머신러닝으로 모델 학습&lt;/li&gt;
 &lt;li&gt;추천, 예측 등 자체 모델 제작&lt;/li&gt;
 &lt;li&gt;시간/비용 많이 들고, 전문 인력 필요&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;2번-ai-기능-통합&#34;&gt;2번: AI 기능 통합&lt;/h3&gt;
+&lt;h3 id=&#34;ai-기능-통합&#34;&gt;AI 기능 통합&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;외부 LLM API 활용 (GPT, Claude)&lt;/li&gt;
 &lt;li&gt;서비스에 챗봇, 요약, 검색 등 추가&lt;/li&gt;
 &lt;li&gt;빠르고, 기존 개발자가 가능&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;3번-ai-도구-사용&#34;&gt;3번: AI 도구 사용&lt;/h3&gt;
+&lt;h3 id=&#34;ai-도구-사용&#34;&gt;AI 도구 사용&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;Claude Code, Copilot으로 개발 효율화&lt;/li&gt;
 &lt;li&gt;AI는 보조 도구&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;2-데이터-마이닝--ai-관계&#34;&gt;2. 데이터 마이닝 ↔ AI 관계&lt;/h2&gt;
+&lt;h2 id=&#34;데이터-마이닝--ai-관계&#34;&gt;데이터 마이닝 ↔ AI 관계&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;데이터 마이닝              AI
 (패턴/인사이트 발견)    (지능적 판단·행동)
       ╲                  ╱
@@ -181,7 +171,7 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
 &lt;li&gt;AI: 고객 접속 시 → &amp;ldquo;이 사람에게 맥주 추천&amp;rdquo; 자동 판단&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;3-ai의-기술-체계&#34;&gt;3. AI의 기술 체계&lt;/h2&gt;
+&lt;h2 id=&#34;ai의-기술-체계&#34;&gt;AI의 기술 체계&lt;/h2&gt;
 &lt;h3 id=&#34;ai의-목적&#34;&gt;AI의 목적&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;지능적 판단·계획·행동으로 문제 해결&lt;/li&gt;
@@ -200,17 +190,17 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
              └─ LLM (대규모 언어모델) ← 요즘 가장 주목받는 분야
                  └─ GPT, Claude, Gemini
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h2 id=&#34;4-머신러닝의-학습-방식&#34;&gt;4. 머신러닝의 학습 방식&lt;/h2&gt;
+&lt;h2 id=&#34;머신러닝의-학습-방식&#34;&gt;머신러닝의 학습 방식&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;머신러닝 (데이터로 모델 학습)
  ├─ 지도 학습 (정답 있는 데이터로 학습)
  ├─ 비지도 학습 (정답 없이 패턴 찾기)
  └─ 강화 학습 (시행착오로 학습)
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h2 id=&#34;5-핵심-프로세스&#34;&gt;5. 핵심 프로세스&lt;/h2&gt;
+&lt;h2 id=&#34;핵심-프로세스&#34;&gt;핵심 프로세스&lt;/h2&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;학습 데이터 → [학습/Training] → 모델
 입력 데이터 → [추론/Inference] → 결과
 &lt;/code&gt;&lt;/pre&gt;&lt;hr&gt;
-&lt;h2 id=&#34;6-시대별-ai의-의미&#34;&gt;6. 시대별 &amp;ldquo;AI&amp;quot;의 의미&lt;/h2&gt;
+&lt;h2 id=&#34;시대별-ai의-의미&#34;&gt;시대별 &amp;ldquo;AI&amp;quot;의 의미&lt;/h2&gt;
 &lt;h3 id=&#34;1980년대-ai--규칙-기반&#34;&gt;1980년대: AI = 규칙 기반&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;한계에 부딪힘 (AI의 겨울)&lt;/li&gt;
@@ -231,7 +221,7 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
 &lt;li&gt;ChatGPT, Claude 등의 폭발적 성장&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;7-핵심-용어-정리&#34;&gt;7. 핵심 용어 정리&lt;/h2&gt;
+&lt;h2 id=&#34;핵심-용어-정리&#34;&gt;핵심 용어 정리&lt;/h2&gt;
 &lt;h3 id=&#34;ai-인공지능&#34;&gt;AI (인공지능)&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;지능적으로 판단·계획·행동하여 문제 해결&lt;/li&gt;
@@ -271,32 +261,30 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
       <link>https://dont.kr/posts/2025/2025-10-02-beyond-vibe-coding-planning/</link>
       <pubDate>Thu, 02 Oct 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-10-02-beyond-vibe-coding-planning/</guid>
-      <description>&lt;p&gt;코딩 영역에서 시작된 자연어 기반 AI 협업이 기획 영역에도 적용되고 있습니다. 바이브 코딩이 자연어로 코드를 작성하는 방식이라면, 기획에서는 자연어로 사용자 스토리, 제품 요구사항, 기능 명세서를 생성하는 방식입니다.&lt;/p&gt;
-&lt;h2 id=&#34;ai가-효과적인-기획-작업&#34;&gt;AI가 효과적인 기획 작업&lt;/h2&gt;
-&lt;h3 id=&#34;1-사용자-스토리-작성&#34;&gt;1. 사용자 스토리 작성&lt;/h3&gt;
-&lt;p&gt;표준 형식의 사용자 스토리를 빠르게 생성할 수 있습니다.&lt;/p&gt;
+      <description>&lt;p&gt;바이브 코딩을 기획 단계에 적용하면 문서 초안을 빠르게 뽑을 수 있습니다. 다만 비즈니스 맥락과 우선순위는 사람이 채워야 합니다.&lt;/p&gt;
+&lt;h2 id=&#34;ai가-잘하는-기획-작업&#34;&gt;AI가 잘하는 기획 작업&lt;/h2&gt;
+&lt;p&gt;문서 초안 작성, 구조화, 표준 포맷 적용에서 효과적입니다. 사용자 스토리, PRD 초안, 기능 명세서 같은 정형화된 산출물을 빠르게 만들 수 있습니다.&lt;/p&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;로그인 기능에 대한 사용자 스토리를 작성해줘.
 이메일/비밀번호 방식과 소셜 로그인 지원&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2-제품-요구사항-문서prd-초안&#34;&gt;2. 제품 요구사항 문서(PRD) 초안&lt;/h3&gt;
-&lt;p&gt;제품 아이디어를 구조화된 문서로 변환하는 데 유용합니다.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;온라인 서점 장바구니 기능 PRD 작성.
-목표, 기능 요구사항, 제외 범위 포함&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;3-기능-명세서-작성&#34;&gt;3. 기능 명세서 작성&lt;/h3&gt;
-&lt;p&gt;복잡한 기능을 단계별로 분해하고 명세화하는 작업에서 효율적입니다.&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;결제 프로세스의 상세 플로우를 단계별로 정리.
+각 단계의 필요 데이터와 예외 상황 포함&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;반면 비즈니스 맥락은 이해하지 못합니다. 일반적인 요구사항은 작성할 수 있지만, 특정 도메인의 비즈니스 규칙이나 이해관계자 간 요구사항 조율은 할 수 없습니다.&lt;/p&gt;</description>
     </item>
     <item>
       <title>바이브 코딩 심화편 - 실무 적용과 한계</title>
       <link>https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/</link>
       <pubDate>Wed, 24 Sep 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/</guid>
-      <description>&lt;p&gt;바이브 코딩은 개념적으로는 혁신적이지만, 단순한 작업에서의 높은 효율성과 달리 복잡한 비즈니스 요구사항이나 팀 협업 환경에서는 여러 제약과 한계가 드러납니다.&lt;/p&gt;
-&lt;h2 id=&#34;바이브-코딩이-효과적인-영역&#34;&gt;바이브 코딩이 효과적인 영역&lt;/h2&gt;
-&lt;h3 id=&#34;1-프로토타이핑과-초기-개발&#34;&gt;1. 프로토타이핑과 초기 개발&lt;/h3&gt;
-&lt;p&gt;기본적인 CRUD 애플리케이션이나 간단한 웹 서비스 프로토타입 개발에서 높은 효율성을 보입니다.&lt;/p&gt;
-&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;React로 사용자 관리 시스템을 만들어줘. 
+      <description>&lt;p&gt;단순한 작업에서는 바이브 코딩이 잘 먹힙니다. 다만 복잡한 비즈니스 로직이나 보안이 중요한 영역에서는 한계가 뚜렷합니다.&lt;/p&gt;
+&lt;h2 id=&#34;잘-먹히는-영역&#34;&gt;잘 먹히는 영역&lt;/h2&gt;
+&lt;p&gt;프로토타이핑, 데이터 변환, 문서화, 단순 테스트 코드 작성 정도가 현실적으로 효과적인 범위입니다.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;React로 사용자 관리 시스템을 만들어줘.
 추가, 수정, 삭제 기능과 로컬 스토리지 연동 포함&amp;#34;
-&lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;2-데이터-처리-및-변환&#34;&gt;2. 데이터 처리 및 변환&lt;/h3&gt;
-&lt;p&gt;CSV 파싱, JSON 변환, 데이터 정제 등 명확한 입출력 구조를 가진 작업에서 높은 정확도를 보입니다.&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;CSV 파일을 읽어서 이메일 주소만 추출하고
+중복 제거 후 JSON 배열로 변환해줘&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;명확한 입출력 구조를 가진 작업일수록 정확도가 높습니다.&lt;/p&gt;
+&lt;h2 id=&#34;주의해야-하는-영역&#34;&gt;주의해야 하는 영역&lt;/h2&gt;
+&lt;p&gt;보안이 가장 큰 문제입니다. AI가 생성한 코드에는 SQL 인젝션, 인증 우회 같은 OWASP Top 10 취약점이 포함될 수 있습니다. 특히 입력 검증과 권한 관리에서 치명적 오류가 발생하기 쉽습니다.&lt;/p&gt;</description>
     </item>
     <item>
       <title>바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임</title>
@@ -304,11 +292,15 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
       <pubDate>Wed, 17 Sep 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/</guid>
       <description>&lt;h2 id=&#34;바이브-코딩이란&#34;&gt;바이브 코딩이란?&lt;/h2&gt;
-&lt;p&gt;&lt;strong&gt;바이브 코딩(Vibe Coding)&lt;/strong&gt; 이란 &lt;strong&gt;직관적이고 자연어에 가까운 방식&lt;/strong&gt;으로 코드를 작성하는 접근법입니다. 개발자가 원하는 기능이나 로직을 마치 동료에게 설명하듯 자연스럽게 표현하면, AI가 이를 해석해서 실제 작동하는 코드로 변환해주는 방식입니다.&lt;/p&gt;
-&lt;p&gt;기존의 프로그래밍이 &lt;strong&gt;정확한 문법과 구조&lt;/strong&gt;를 요구했다면, 바이브 코딩은 &lt;strong&gt;의도와 맥락&lt;/strong&gt;을 중시합니다. &lt;strong&gt;어떻게 구현할 것인가&lt;/strong&gt;보다 &lt;strong&gt;무엇을 하고 싶은가&lt;/strong&gt;에 초점을 맞춘 개발 방식이라고 할 수 있습니다.&lt;/p&gt;
-&lt;h2 id=&#34;바이브-코딩의-핵심-특징&#34;&gt;바이브 코딩의 핵심 특징&lt;/h2&gt;
-&lt;h3 id=&#34;1-자연어-기반-접근&#34;&gt;1. 자연어 기반 접근&lt;/h3&gt;
-&lt;p&gt;기존의 정확한 문법보다는 &lt;strong&gt;의도와 맥락&lt;/strong&gt;을 중시합니다. AI가 개발자의 의도를 파악해서 적절한 코드로 변환해주는 방식입니다.&lt;/p&gt;</description>
+&lt;p&gt;바이브 코딩(Vibe Coding)이란 자연어로 의도를 설명하면 AI가 코드를 만들어주는 방식입니다. 기존 프로그래밍이 정확한 문법과 구조를 요구했다면, 바이브 코딩은 어떻게 구현할 것인가보다 무엇을 하고 싶은가에 초점을 맞춥니다.&lt;/p&gt;
+&lt;h3 id=&#34;전통적인-방식&#34;&gt;전통적인 방식&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;calculate_average&lt;/span&gt;(numbers):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; len(numbers) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; sum(numbers) &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; len(numbers)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;바이브-코딩-방식-의도-중심&#34;&gt;바이브 코딩 방식 (의도 중심)&lt;/h3&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;&amp;#34;숫자 리스트의 평균을 계산해줘, 빈 리스트면 0 반환&amp;#34;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;완벽한 코드를 한 번에 작성하는 게 아니라, AI와 대화하면서 점진적으로 개선해 나갑니다. 단순히 코드 한 줄을 생성하는 것을 넘어서, 프로젝트 전체 맥락을 이해하고 일관성 있는 코드를 만들어내는 것이 핵심입니다.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
