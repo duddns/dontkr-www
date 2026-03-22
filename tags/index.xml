@@ -6,8 +6,43 @@
     <description>Recent content in Tags on DoNT - Do Not Think!!!</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 10 Mar 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Concurrency</title>
+      <link>https://dont.kr/tags/concurrency/</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/concurrency/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coroutine</title>
+      <link>https://dont.kr/tags/coroutine/</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/coroutine/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Java</title>
+      <link>https://dont.kr/tags/java/</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/java/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Kotlin</title>
+      <link>https://dont.kr/tags/kotlin/</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/kotlin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Thread</title>
+      <link>https://dont.kr/tags/thread/</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/thread/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Db</title>
       <link>https://dont.kr/tags/db/</link>
@@ -34,13 +69,6 @@
       <link>https://dont.kr/tags/ecs/</link>
       <pubDate>Wed, 11 Feb 2026 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/tags/ecs/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Java</title>
-      <link>https://dont.kr/tags/java/</link>
-      <pubDate>Wed, 11 Feb 2026 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/tags/java/</guid>
       <description></description>
     </item>
     <item>
@@ -111,13 +139,6 @@
       <link>https://dont.kr/tags/access-modifier/</link>
       <pubDate>Tue, 13 Jan 2026 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/tags/access-modifier/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Kotlin</title>
-      <link>https://dont.kr/tags/kotlin/</link>
-      <pubDate>Tue, 13 Jan 2026 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/tags/kotlin/</guid>
       <description></description>
     </item>
     <item>

@@ -6,8 +6,37 @@
     <description>Recent content in Kotlin on DoNT - Do Not Think!!!</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Tue, 13 Jan 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 22 Mar 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/kotlin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Java 멀티스레드 vs Kotlin 코루틴</title>
+      <link>https://dont.kr/posts/2026/2026-03-22-java-thread-vs-kotlin-coroutine/</link>
+      <pubDate>Sun, 22 Mar 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-03-22-java-thread-vs-kotlin-coroutine/</guid>
+      <description>&lt;p&gt;Java 멀티스레드와 Kotlin 코루틴의 핵심 차이는 스케줄링 주체입니다. OS가 강제로 전환하느냐, 코드가 자발적으로 양보하느냐.&lt;/p&gt;
+&lt;h2 id=&#34;os-레벨-병렬처리&#34;&gt;OS 레벨 병렬처리&lt;/h2&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;OS 레벨
+├── 멀티 프로세스 (독립 메모리)
+└── 멀티 스레드 (공유 메모리, OS 스케줄링)
+
+언어 레벨
+└── 코루틴 (공유 메모리, 언어 스케줄링)
+&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;핵심-차이-누가-스케줄링하느냐&#34;&gt;핵심 차이: 누가 스케줄링하느냐&lt;/h2&gt;
+&lt;h3 id=&#34;java-멀티스레드&#34;&gt;Java 멀티스레드&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;OS가 CPU 클럭 단위로 강제 스위칭 → 선점형(Preemptive)&lt;/li&gt;
+&lt;li&gt;스레드 전환 비용이 큼 (스택, 레지스터 저장/복원)&lt;/li&gt;
+&lt;li&gt;스레드 1개 = OS 스레드 1개 (~1MB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;kotlin-코루틴&#34;&gt;Kotlin 코루틴&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;suspend&lt;/code&gt; 포인트에서 자발적으로 스레드 반납 → 협력형(Cooperative)&lt;/li&gt;
+&lt;li&gt;전환 비용이 매우 작음 (힙에 상태 저장, ~수KB)&lt;/li&gt;
+&lt;li&gt;스레드 몇 개 위에서 코루틴 수천 개 동작 가능&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;계층-구조&#34;&gt;계층 구조&lt;/h2&gt;
+&lt;p&gt;코루틴은 스레드를 대체하는 게 아니라 스레드 위에서 동작합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Kotlin의 접근 제어자 설계 철학</title>
       <link>https://dont.kr/posts/2026/2026-01-13-kotlin-access-modifier/</link>

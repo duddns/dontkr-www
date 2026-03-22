@@ -155,6 +155,20 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Java 멀티스레드 vs Kotlin 코루틴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Java 멀티스레드와 Kotlin 코루틴의 핵심 차이는 스케줄링 주체입니다. OS가 강제로 전환하느냐, 코드가 자발적으로 양보하느냐.
+OS 레벨 병렬처리 OS 레벨 ├── 멀티 프로세스 (독립 메모리) └── 멀티 스레드 (공유 메모리, OS 스케줄링) 언어 레벨 └── 코루틴 (공유 메모리, 언어 스케줄링) 핵심 차이: 누가 스케줄링하느냐 Java 멀티스레드 OS가 CPU 클럭 단위로 강제 스위칭 → 선점형(Preemptive) 스레드 전환 비용이 큼 (스택, 레지스터 저장/복원) 스레드 1개 = OS 스레드 1개 (~1MB) Kotlin 코루틴 suspend 포인트에서 자발적으로 스레드 반납 → 협력형(Cooperative) 전환 비용이 매우 작음 (힙에 상태 저장, ~수KB) 스레드 몇 개 위에서 코루틴 수천 개 동작 가능 계층 구조 코루틴은 스레드를 대체하는 게 아니라 스레드 위에서 동작합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 00:00:00 +0900 KST'>2026년 3월 22일</span></footer>
+  <a class="entry-link" aria-label="post link to Java 멀티스레드 vs Kotlin 코루틴" href="https://dont.kr/posts/2026/2026-03-22-java-thread-vs-kotlin-coroutine/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Primary/Replica DB 분리와 Replication Lag
     </h2>
   </header>
@@ -284,22 +298,6 @@ Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#4
   </div>
   <footer class="entry-footer"><span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span></footer>
   <a class="entry-link" aria-label="post link to Apache Kafka 기본 개념 정리" href="https://dont.kr/posts/2025/2025-11-27-apache-kafka/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Spring Boot 설정 파일 로딩
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Spring Boot의 설정 파일 로딩 메커니즘과 외부 라이브러리 사용 시 발생하는 문제를 다룹니다.
-ConfigData API (Spring Boot 2.4&#43;) Spring Boot 2.4 부터 설정 로딩 방식이 ConfigData API로 변경되었습니다.
-주요 변경사항 Spring Cloud Bootstrap Context 대체 (bootstrap.yml → application.yml) 단일 ApplicationContext 사용 spring.config.import 도입 설정 파일 로딩 기본 동작 검색 위치 Spring Boot는 다음 위치에서 설정 파일을 검색합니다 (낮은 → 높은 우선순위):
-1. classpath:/application.yml 2. classpath:/config/application.yml 3. file:./application.yml 4. file:./config/application.yml 5. file:./config/*/application.yml 로딩 규칙 다른 경로: 모두 로드 후 병합 같은 classpath 경로: 첫 번째만 사용 Oracle Java 문서: 여러 모듈이 동일한 클래스 로더에 정의되고, 둘 이상의 모듈이 주어진 이름의 리소스를 포함하는 경우, 모듈이 검색되는 순서는 명시되지 않으며 매우 예측할 수 없을 수 있습니다. 우선순위 나중에 로드된 것이 우선:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-11-26 00:00:00 +0900 KST'>2025년 11월 26일</span></footer>
-  <a class="entry-link" aria-label="post link to Spring Boot 설정 파일 로딩" href="https://dont.kr/posts/2025/2025-11-26-spring-boot-config/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

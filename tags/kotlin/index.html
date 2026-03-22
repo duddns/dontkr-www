@@ -146,6 +146,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Java 멀티스레드 vs Kotlin 코루틴
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Java 멀티스레드와 Kotlin 코루틴의 핵심 차이는 스케줄링 주체입니다. OS가 강제로 전환하느냐, 코드가 자발적으로 양보하느냐.
+OS 레벨 병렬처리 OS 레벨 ├── 멀티 프로세스 (독립 메모리) └── 멀티 스레드 (공유 메모리, OS 스케줄링) 언어 레벨 └── 코루틴 (공유 메모리, 언어 스케줄링) 핵심 차이: 누가 스케줄링하느냐 Java 멀티스레드 OS가 CPU 클럭 단위로 강제 스위칭 → 선점형(Preemptive) 스레드 전환 비용이 큼 (스택, 레지스터 저장/복원) 스레드 1개 = OS 스레드 1개 (~1MB) Kotlin 코루틴 suspend 포인트에서 자발적으로 스레드 반납 → 협력형(Cooperative) 전환 비용이 매우 작음 (힙에 상태 저장, ~수KB) 스레드 몇 개 위에서 코루틴 수천 개 동작 가능 계층 구조 코루틴은 스레드를 대체하는 게 아니라 스레드 위에서 동작합니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-03-22 00:00:00 +0900 KST'>2026년 3월 22일</span></footer>
+  <a class="entry-link" aria-label="post link to Java 멀티스레드 vs Kotlin 코루틴" href="https://dont.kr/posts/2026/2026-03-22-java-thread-vs-kotlin-coroutine/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Kotlin의 접근 제어자 설계 철학
     </h2>
   </header>
