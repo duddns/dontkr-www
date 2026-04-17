@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Performance on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/performance/</link>
+    <description>Recent content in Performance on DoNT - Do Not Think!!!</description>
+    <generator>Hugo</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Fri, 17 Apr 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/performance/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CPU Bound와 스레드 컨텍스트 스위칭</title>
+      <link>https://dont.kr/posts/2026/2026-04-17-cpu-bound-context-switching/</link>
+      <pubDate>Fri, 17 Apr 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-04-17-cpu-bound-context-switching/</guid>
+      <description>&lt;p&gt;CPU Bound 작업에서 스레드를 늘려도 처리 속도가 비례해서 빨라지지 않습니다. CPU 코어 수와 컨텍스트 스위칭 비용 때문입니다.&lt;/p&gt;
+&lt;h2 id=&#34;cpu-bound란&#34;&gt;CPU Bound란?&lt;/h2&gt;
+&lt;p&gt;이미지/영상 처리, 압축, 수치 계산, 암호화처럼 외부 대기 없이 CPU를 직접 사용하는 작업입니다. 작업이 끝날 때까지 CPU를 계속 점유하며, 연산 자체가 병목이 됩니다.&lt;/p&gt;
+&lt;p&gt;I/O Bound 작업(DB 쿼리, 네트워크 호출)과 달리 스레드가 대기 상태에 들어가지 않습니다.&lt;/p&gt;
+&lt;h2 id=&#34;1-코어-기준-동작&#34;&gt;1 코어 기준 동작&lt;/h2&gt;
+&lt;p&gt;1 코어에서 여러 스레드를 돌리는 건 동시성(Concurrency)입니다. 실제로 동시에 실행되는 게 아니라 OS가 시간을 쪼개 번갈아 실행하는 방식입니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

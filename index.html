@@ -2,7 +2,7 @@
 <html lang="ko" dir="auto" data-theme="auto">
 
 <head>
-	<meta name="generator" content="Hugo 0.158.0"><meta charset="utf-8">
+	<meta name="generator" content="Hugo 0.160.1"><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://dont.kr/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.f56f6fcbbbf1b56135b161970b2be054c0f93cd0507af71fddbab4cf707c5c56.css" integrity="sha256-9W9vy7vxtWE1sWGXCyvgVMD5PNBQevcf3bq0z3B8XFY=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.16e0c7b9f3151eea935b08f185647c0f40f6d4dd566f8f09dd0b374566b03f5f.css" integrity="sha256-FuDHufMVHuqTWwjxhWR8D0D21N1Wb48J3Qs3RWawP18=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dont.kr/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
@@ -155,6 +155,22 @@
 
 <article class="first-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">CPU Bound와 스레드 컨텍스트 스위칭
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>CPU Bound 작업에서 스레드를 늘려도 처리 속도가 비례해서 빨라지지 않습니다. CPU 코어 수와 컨텍스트 스위칭 비용 때문입니다.
+CPU Bound란? 이미지/영상 처리, 압축, 수치 계산, 암호화처럼 외부 대기 없이 CPU를 직접 사용하는 작업입니다. 작업이 끝날 때까지 CPU를 계속 점유하며, 연산 자체가 병목이 됩니다.
+I/O Bound 작업(DB 쿼리, 네트워크 호출)과 달리 스레드가 대기 상태에 들어가지 않습니다.
+1 코어 기준 동작 1 코어에서 여러 스레드를 돌리는 건 동시성(Concurrency)입니다. 실제로 동시에 실행되는 게 아니라 OS가 시간을 쪼개 번갈아 실행하는 방식입니다.
+...</p>
+  </div>
+  <footer class="entry-footer"><span title='2026-04-17 00:00:00 +0900 KST'>2026년 4월 17일</span></footer>
+  <a class="entry-link" aria-label="post link to CPU Bound와 스레드 컨텍스트 스위칭" href="https://dont.kr/posts/2026/2026-04-17-cpu-bound-context-switching/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Java 멀티스레드 vs Kotlin 코루틴
     </h2>
   </header>
@@ -284,20 +300,6 @@ Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#4
   </div>
   <footer class="entry-footer"><span title='2025-11-28 00:00:00 +0900 KST'>2025년 11월 28일</span></footer>
   <a class="entry-link" aria-label="post link to 블록킹/논블록킹, 동기/비동기 개념 정리" href="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2 class="entry-hint-parent">Apache Kafka 기본 개념 정리
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>Apache Kafka의 핵심 개념과 동작 원리를 정리합니다.
-아키텍처 Kafka Cluster (여러 Broker의 집합) │ └─ Broker (카프카 서버, 여러 대 가능) │ └─ Topic (메시지 종류) │ ├─ Partition 0 ──┐ ├─ Partition 1 ──┼── Consumer Group A ─┬─ Consumer 1 └─ Partition 2 ──┘ ├─ Consumer 2 │ └─ Consumer 3 │ └──────────── Consumer Group B ─── Consumer 1 구성 요소 Broker: Kafka 서버 (여러 대로 클러스터 구성) Topic: 메시지 종류별 논리적 그룹 Partition: 토픽 내 병렬 처리 단위 Consumer Group: 동일 group.id로 묶인 컨슈머들 설계 시 고려사항 파티션 수 = 최대 병렬 처리 수 파티션 수 ≥ 컨슈머 수 (컨슈머가 더 많으면 일부는 idle) 용어 정리 ← 여기 동작 일반 메시지 큐 Kafka 메시지 보내기 Publish Produce 보내는 주체 Publisher Producer 토픽 구독 Subscribe Subscribe (동일) 메시지 받기 Push (서버가 보냄) Poll (주기적으로 가져감) 받는 주체 Subscriber Consumer 메시지 흐름 Producer ──produce──▶ Kafka Broker ◀──poll── Consumer │ ▼ consume 처리 로직 동작 방식 Producer가 메시지 전송 Broker가 파티션에 메시지 저장 Consumer가 주기적으로 폴링 새 메시지 있으면 가져와서 처리 메시지 관리 Offset 관리 Offset: 파티션 내 메시지 위치 (0부터 시작) Committed Offset: 처리 완료한 마지막 위치 Latest Offset: 파티션의 마지막 메시지 위치 Consumer Lag: Latest - Committed (처리 지연 정도) Commit 전략 // 자동 커밋 (기본값) enable.auto.commit=true auto.commit.interval.ms=5000 // 수동 커밋 consumer.commitSync(); consumer.commitAsync(); 메시지 전달 보장 At-most-once 처리 전 commit 장점: 중복 없음 단점: 메시지 유실 가능 At-least-once (기본값) 처리 후 commit 장점: 메시지 유실 없음 단점: 중복 처리 가능 중요: 애플리케이션 레벨에서 멱등성 보장 필요 Exactly-once 트랜잭션 사용 장점: 중복도 유실도 없음 단점: 성능 오버헤드 메시지 보관 일반 메시지 큐와 달리 Kafka는 consume 후에도 메시지 보관:
-...</p>
-  </div>
-  <footer class="entry-footer"><span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span></footer>
-  <a class="entry-link" aria-label="post link to Apache Kafka 기본 개념 정리" href="https://dont.kr/posts/2025/2025-11-27-apache-kafka/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
