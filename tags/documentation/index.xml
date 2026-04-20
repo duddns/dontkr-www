@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Documentation on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/documentation/</link>
+    <description>Recent content in Documentation on DoNT - Do Not Think!!!</description>
+    <generator>Hugo</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 20 Apr 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/documentation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>LLM 기반 작업 시 반복 리뷰로 작업 범위가 넓어지고 목표가 흐려지는 문제</title>
+      <link>https://dont.kr/posts/2026/2026-04-20-llm-review-loop-proble/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-04-20-llm-review-loop-proble/</guid>
+      <description>&lt;p&gt;LLM에게 문서 리뷰-수정을 반복 요청하다 보면 두 가지 문제가 겹쳐서 발생합니다. 매 리뷰마다 새로운 제안이 붙어 범위가 커지고, 직전 버전 기준으로만 수정하다 원래 목표에서 벗어납니다. &amp;lsquo;검토&amp;rsquo;를 개선점 제시로 해석하는 LLM의 편향과, 고정된 기준점 없는 반복 구조가 쌓여 생기는 현상입니다.&lt;/p&gt;
+&lt;h2 id=&#34;현상&#34;&gt;현상&lt;/h2&gt;
+&lt;p&gt;기획이나 설계 문서를 세 단계로 나눠 작성하고, 각 단계마다 LLM에게 리뷰를 맡기는 방식으로 일해봤습니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1단계 (현황 파악): 현재 코드/시스템이 어떻게 생겼는지 정리&lt;/li&gt;
+&lt;li&gt;2단계 (요구사항 정리): 무엇을 만들 것인가 정의&lt;/li&gt;
+&lt;li&gt;3단계 (개발계획): 어떻게 만들 것인가 정의&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;이 흐름에서 다음과 같은 일이 반복됐습니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

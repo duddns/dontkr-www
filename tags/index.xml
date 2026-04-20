@@ -6,8 +6,36 @@
     <description>Recent content in Tags on DoNT - Do Not Think!!!</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Fri, 17 Apr 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Mon, 20 Apr 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude-Code</title>
+      <link>https://dont.kr/tags/claude-code/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/claude-code/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Documentation</title>
+      <link>https://dont.kr/tags/documentation/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/documentation/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Llm</title>
+      <link>https://dont.kr/tags/llm/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Workflow</title>
+      <link>https://dont.kr/tags/workflow/</link>
+      <pubDate>Mon, 20 Apr 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/tags/workflow/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Concurrency</title>
       <link>https://dont.kr/tags/concurrency/</link>
@@ -216,13 +244,6 @@
       <link>https://dont.kr/tags/ai/</link>
       <pubDate>Thu, 13 Nov 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/tags/ai/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Llm</title>
-      <link>https://dont.kr/tags/llm/</link>
-      <pubDate>Thu, 13 Nov 2025 00:00:00 +0900</pubDate>
-      <guid>https://dont.kr/tags/llm/</guid>
       <description></description>
     </item>
     <item>
