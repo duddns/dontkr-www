@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Ascetic Computing on DoNT - Do Not Think!!!</title>
+    <link>https://dont.kr/tags/ascetic-computing/</link>
+    <description>Recent content in Ascetic Computing on DoNT - Do Not Think!!!</description>
+    <generator>Hugo</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Mon, 18 May 2026 00:00:00 +0900</lastBuildDate>
+    <atom:link href="https://dont.kr/tags/ascetic-computing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ascetic Computing (한글)</title>
+      <link>https://dont.kr/posts/2026/2026-05-18-ascetic-computing-kor/</link>
+      <pubDate>Mon, 18 May 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-05-18-ascetic-computing-kor/</guid>
+      <description>&lt;h2 id=&#34;한글-번역&#34;&gt;&lt;a href=&#34;https://ratfactor.com/ascetic-computing&#34;&gt;https://ratfactor.com/ascetic-computing&lt;/a&gt; 한글 번역&lt;/h2&gt;
+&lt;hr&gt;
+&lt;p&gt;최근에 어떤 설정 파일에 제가 써둔 주석을 보게 됐습니다. 주석 처리된 몇 줄 위에 있던 그 주석은 이렇게 되어 있었습니다.&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;# 금욕적인(ascetic) 이유로 이 부분은 빼기로 했다.
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;저는 보통 미적인(aesthetic) 이유로 소스 파일과 설정 파일을 다듬고 정리하는 데 꽤 많은 공을 들이기 때문에, 이 주석을 보고 잠시 어리둥절했습니다. 그러다 피식 웃었죠. 재밌네.&lt;/p&gt;
+&lt;p&gt;그런데 곰곰이 생각해 보니, 요즘 제가 정말로 &amp;ldquo;금욕적인 이유로&amp;rdquo; 많은 일을 하고 있다는 결론에 이르렀습니다.&lt;/p&gt;
+&lt;p&gt;금욕주의(asceticism) 위키피디아 문서는 이렇게 시작합니다.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
