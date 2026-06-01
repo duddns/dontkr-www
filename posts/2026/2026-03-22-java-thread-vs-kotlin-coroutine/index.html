@@ -287,25 +287,25 @@ CPU
 </span></span></code></pre></div><p><code>Dispatchers.IO</code>는 스레드를 반납하는 게 아니라, 블록킹 전용 스레드풀을 크게 잡아서 처리하는 방식입니다. 코루틴의 경량 스레드 장점을 살리려면 non-blocking I/O(R2DBC, Ktor client 등)를 사용해야 합니다.</p>
 <h2 id="스레드풀-설정-기준">스레드풀 설정 기준<a hidden class="anchor" aria-hidden="true" href="#스레드풀-설정-기준">#</a></h2>
 <table>
-  <thead>
-      <tr>
-          <th>작업 유형</th>
-          <th>기준</th>
-          <th>이유</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>CPU bound</td>
-          <td>코어 수</td>
-          <td>코어 수 이상 늘려도 동시 실행 불가</td>
-      </tr>
-      <tr>
-          <td>I/O bound</td>
-          <td>Dispatchers.IO</td>
-          <td>대기 중 CPU를 안 쓰므로 코어 수보다 많이 허용</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>작업 유형</th>
+					<th>기준</th>
+					<th>이유</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>CPU bound</td>
+					<td>코어 수</td>
+					<td>코어 수 이상 늘려도 동시 실행 불가</td>
+			</tr>
+			<tr>
+					<td>I/O bound</td>
+					<td>Dispatchers.IO</td>
+					<td>대기 중 CPU를 안 쓰므로 코어 수보다 많이 허용</td>
+			</tr>
+	</tbody>
 </table>
 <p><code>Dispatchers.IO</code> 기본값은 <code>max(64, CPU 코어 수)</code>입니다.</p>
 <p>스레드풀을 과도하게 늘리면:</p>
@@ -316,26 +316,26 @@ CPU
 </ul>
 <h2 id="다른-언어의-비슷한-개념">다른 언어의 비슷한 개념<a hidden class="anchor" aria-hidden="true" href="#다른-언어의-비슷한-개념">#</a></h2>
 <table>
-  <thead>
-      <tr>
-          <th>언어</th>
-          <th>개념</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Python</td>
-          <td>asyncio</td>
-      </tr>
-      <tr>
-          <td>Go</td>
-          <td>goroutine</td>
-      </tr>
-      <tr>
-          <td>Java 21</td>
-          <td>Virtual Thread</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>언어</th>
+					<th>개념</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Python</td>
+					<td>asyncio</td>
+			</tr>
+			<tr>
+					<td>Go</td>
+					<td>goroutine</td>
+			</tr>
+			<tr>
+					<td>Java 21</td>
+					<td>Virtual Thread</td>
+			</tr>
+	</tbody>
 </table>
 <p>모두 &ldquo;적은 OS 스레드로 높은 동시성&quot;이 목표입니다.</p>
 

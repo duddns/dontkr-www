@@ -25,35 +25,35 @@ private: 같은 클래스 (클래스 멤버) / 같은 파일 (최상위 선언)
 
 핵심 차이
 
-  
-      
-          
-          Java
-          Kotlin
-      
-  
-  
-      
-          캡슐화 단위
-          패키지
-          모듈
-      
-      
-          테스트 접근
-          같은 패키지 필요
-          같은 모듈이면 OK
-      
-      
-          package-private
-          있음
-          없음 (internal로 대체)
-      
-      
-          protected
-          상속 &#43; 같은 패키지
-          상속만
-      
-  
+	
+			
+					
+					Java
+					Kotlin
+			
+	
+	
+			
+					캡슐화 단위
+					패키지
+					모듈
+			
+			
+					테스트 접근
+					같은 패키지 필요
+					같은 모듈이면 OK
+			
+			
+					package-private
+					있음
+					없음 (internal로 대체)
+			
+			
+					protected
+					상속 &#43; 같은 패키지
+					상속만
+			
+	
 
 Kotlin의 설계 철학
 패키지는 캡슐화 경계가 아니다
@@ -289,35 +289,35 @@ Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#4
 </ul>
 <h3 id="핵심-차이">핵심 차이<a hidden class="anchor" aria-hidden="true" href="#핵심-차이">#</a></h3>
 <table>
-  <thead>
-      <tr>
-          <th></th>
-          <th>Java</th>
-          <th>Kotlin</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>캡슐화 단위</td>
-          <td>패키지</td>
-          <td>모듈</td>
-      </tr>
-      <tr>
-          <td>테스트 접근</td>
-          <td>같은 패키지 필요</td>
-          <td>같은 모듈이면 OK</td>
-      </tr>
-      <tr>
-          <td>package-private</td>
-          <td>있음</td>
-          <td>없음 (internal로 대체)</td>
-      </tr>
-      <tr>
-          <td>protected</td>
-          <td>상속 + 같은 패키지</td>
-          <td>상속만</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th></th>
+					<th>Java</th>
+					<th>Kotlin</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>캡슐화 단위</td>
+					<td>패키지</td>
+					<td>모듈</td>
+			</tr>
+			<tr>
+					<td>테스트 접근</td>
+					<td>같은 패키지 필요</td>
+					<td>같은 모듈이면 OK</td>
+			</tr>
+			<tr>
+					<td>package-private</td>
+					<td>있음</td>
+					<td>없음 (internal로 대체)</td>
+			</tr>
+			<tr>
+					<td>protected</td>
+					<td>상속 + 같은 패키지</td>
+					<td>상속만</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="kotlin의-설계-철학">Kotlin의 설계 철학<a hidden class="anchor" aria-hidden="true" href="#kotlin의-설계-철학">#</a></h2>
 <h3 id="패키지는-캡슐화-경계가-아니다">패키지는 캡슐화 경계가 아니다<a hidden class="anchor" aria-hidden="true" href="#패키지는-캡슐화-경계가-아니다">#</a></h3>
@@ -440,25 +440,25 @@ Java와 Kotlin 접근 제어자 비교 Java public: 전체 protected: 상속 &#4
 </code></pre><p>캡슐화가 필요하면 패키지가 아닌 모듈로 분리합니다.</p>
 <h3 id="모듈-크기-선택">모듈 크기 선택<a hidden class="anchor" aria-hidden="true" href="#모듈-크기-선택">#</a></h3>
 <table>
-  <thead>
-      <tr>
-          <th>크기</th>
-          <th>장점</th>
-          <th>단점</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>작게 많이</td>
-          <td>캡슐화 명확</td>
-          <td>설정 복잡</td>
-      </tr>
-      <tr>
-          <td>크게 적게</td>
-          <td>단순함</td>
-          <td>internal 노출 범위 넓음</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>크기</th>
+					<th>장점</th>
+					<th>단점</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>작게 많이</td>
+					<td>캡슐화 명확</td>
+					<td>설정 복잡</td>
+			</tr>
+			<tr>
+					<td>크게 적게</td>
+					<td>단순함</td>
+					<td>internal 노출 범위 넓음</td>
+			</tr>
+	</tbody>
 </table>
 <p>실무에서는 기존 Java는 package-private 유지하고, 신규 모듈은 Kotlin + internal로 작성하면 됩니다.</p>
 

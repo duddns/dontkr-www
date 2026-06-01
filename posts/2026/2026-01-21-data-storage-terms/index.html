@@ -10,66 +10,66 @@
 <meta name="description" content="데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.
 한눈에 비교
 
-  
-      
-          구분
-          데이터베이스
-          데이터 웨어하우스
-          데이터 레이크
-          데이터 레이크하우스
-      
-  
-  
-      
-          목적
-          운영/트랜잭션(OLTP)
-          분석(OLAP)
-          원시 데이터 저장
-          분석 &#43; 저장 통합
-      
-      
-          데이터 형태
-          구조화
-          구조화
-          비구조화/반구조화
-          모두 지원
-      
-      
-          스키마
-          Schema-on-Write
-          Schema-on-Write
-          Schema-on-Read
-          둘 다 가능
-      
-      
-          ACID
-          O
-          O
-          X
-          O
-      
-      
-          쿼리 패턴
-          단건 읽기/쓰기
-          대량 집계/분석
-          배치 처리
-          대량 집계/분석
-      
-      
-          실시간성
-          실시간
-          준실시간~배치
-          배치
-          준실시간~배치
-      
-      
-          대표 제품
-          MySQL, PostgreSQL
-          Snowflake, Redshift, BigQuery
-          S3, HDFS
-          Databricks
-      
-  
+	
+			
+					구분
+					데이터베이스
+					데이터 웨어하우스
+					데이터 레이크
+					데이터 레이크하우스
+			
+	
+	
+			
+					목적
+					운영/트랜잭션(OLTP)
+					분석(OLAP)
+					원시 데이터 저장
+					분석 &#43; 저장 통합
+			
+			
+					데이터 형태
+					구조화
+					구조화
+					비구조화/반구조화
+					모두 지원
+			
+			
+					스키마
+					Schema-on-Write
+					Schema-on-Write
+					Schema-on-Read
+					둘 다 가능
+			
+			
+					ACID
+					O
+					O
+					X
+					O
+			
+			
+					쿼리 패턴
+					단건 읽기/쓰기
+					대량 집계/분석
+					배치 처리
+					대량 집계/분석
+			
+			
+					실시간성
+					실시간
+					준실시간~배치
+					배치
+					준실시간~배치
+			
+			
+					대표 제품
+					MySQL, PostgreSQL
+					Snowflake, Redshift, BigQuery
+					S3, HDFS
+					Databricks
+			
+	
 
 용어 유래
 
@@ -283,66 +283,66 @@ Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신
   <div class="post-content"><p>데이터베이스, 데이터웨어하우스, 데이터레이크, 데이터레이크하우스. 비슷해 보이지만 각각 목적과 특성이 다릅니다.</p>
 <h2 id="한눈에-비교">한눈에 비교<a hidden class="anchor" aria-hidden="true" href="#한눈에-비교">#</a></h2>
 <table>
-  <thead>
-      <tr>
-          <th>구분</th>
-          <th>데이터베이스</th>
-          <th>데이터 웨어하우스</th>
-          <th>데이터 레이크</th>
-          <th>데이터 레이크하우스</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>목적</td>
-          <td>운영/트랜잭션(OLTP)</td>
-          <td>분석(OLAP)</td>
-          <td>원시 데이터 저장</td>
-          <td>분석 + 저장 통합</td>
-      </tr>
-      <tr>
-          <td>데이터 형태</td>
-          <td>구조화</td>
-          <td>구조화</td>
-          <td>비구조화/반구조화</td>
-          <td>모두 지원</td>
-      </tr>
-      <tr>
-          <td>스키마</td>
-          <td>Schema-on-Write</td>
-          <td>Schema-on-Write</td>
-          <td>Schema-on-Read</td>
-          <td>둘 다 가능</td>
-      </tr>
-      <tr>
-          <td>ACID</td>
-          <td>O</td>
-          <td>O</td>
-          <td>X</td>
-          <td>O</td>
-      </tr>
-      <tr>
-          <td>쿼리 패턴</td>
-          <td>단건 읽기/쓰기</td>
-          <td>대량 집계/분석</td>
-          <td>배치 처리</td>
-          <td>대량 집계/분석</td>
-      </tr>
-      <tr>
-          <td>실시간성</td>
-          <td>실시간</td>
-          <td>준실시간~배치</td>
-          <td>배치</td>
-          <td>준실시간~배치</td>
-      </tr>
-      <tr>
-          <td>대표 제품</td>
-          <td>MySQL, PostgreSQL</td>
-          <td>Snowflake, Redshift, BigQuery</td>
-          <td>S3, HDFS</td>
-          <td>Databricks</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>구분</th>
+					<th>데이터베이스</th>
+					<th>데이터 웨어하우스</th>
+					<th>데이터 레이크</th>
+					<th>데이터 레이크하우스</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>목적</td>
+					<td>운영/트랜잭션(OLTP)</td>
+					<td>분석(OLAP)</td>
+					<td>원시 데이터 저장</td>
+					<td>분석 + 저장 통합</td>
+			</tr>
+			<tr>
+					<td>데이터 형태</td>
+					<td>구조화</td>
+					<td>구조화</td>
+					<td>비구조화/반구조화</td>
+					<td>모두 지원</td>
+			</tr>
+			<tr>
+					<td>스키마</td>
+					<td>Schema-on-Write</td>
+					<td>Schema-on-Write</td>
+					<td>Schema-on-Read</td>
+					<td>둘 다 가능</td>
+			</tr>
+			<tr>
+					<td>ACID</td>
+					<td>O</td>
+					<td>O</td>
+					<td>X</td>
+					<td>O</td>
+			</tr>
+			<tr>
+					<td>쿼리 패턴</td>
+					<td>단건 읽기/쓰기</td>
+					<td>대량 집계/분석</td>
+					<td>배치 처리</td>
+					<td>대량 집계/분석</td>
+			</tr>
+			<tr>
+					<td>실시간성</td>
+					<td>실시간</td>
+					<td>준실시간~배치</td>
+					<td>배치</td>
+					<td>준실시간~배치</td>
+			</tr>
+			<tr>
+					<td>대표 제품</td>
+					<td>MySQL, PostgreSQL</td>
+					<td>Snowflake, Redshift, BigQuery</td>
+					<td>S3, HDFS</td>
+					<td>Databricks</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="용어-유래">용어 유래<a hidden class="anchor" aria-hidden="true" href="#용어-유래">#</a></h2>
 <ul>
@@ -354,42 +354,42 @@ Data Lakehouse: Data &#43; Lake &#43; House (Databricks가 2020년 제안한 신
 <p>&ldquo;Data Lake Warehouse&quot;가 아닌 이유? 단순히 둘을 붙여 쓰는 게 아니라, 새로운 패러다임임을 강조하기 위해서입니다.</p>
 <h2 id="타임라인">타임라인<a hidden class="anchor" aria-hidden="true" href="#타임라인">#</a></h2>
 <table>
-  <thead>
-      <tr>
-          <th>시기</th>
-          <th>사건</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>1960년대</td>
-          <td>Database 개념 등장 (IBM IMS 등 계층형 DB)</td>
-      </tr>
-      <tr>
-          <td>1970년대</td>
-          <td>관계형 데이터베이스(RDBMS) 이론 정립 (E.F. Codd)</td>
-      </tr>
-      <tr>
-          <td>1980년대</td>
-          <td>Oracle, DB2 등 상용 RDBMS 확산</td>
-      </tr>
-      <tr>
-          <td>1990년대</td>
-          <td>Data Warehouse 등장 (Bill Inmon, Ralph Kimball)</td>
-      </tr>
-      <tr>
-          <td>2010년대 초</td>
-          <td>Data Lake 등장 (Hadoop 시대)</td>
-      </tr>
-      <tr>
-          <td>2020년</td>
-          <td>Databricks가 Lakehouse 논문 발표</td>
-      </tr>
-      <tr>
-          <td>2021년~</td>
-          <td>Delta Lake, Iceberg, Hudi 등 테이블 포맷 확산</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>시기</th>
+					<th>사건</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>1960년대</td>
+					<td>Database 개념 등장 (IBM IMS 등 계층형 DB)</td>
+			</tr>
+			<tr>
+					<td>1970년대</td>
+					<td>관계형 데이터베이스(RDBMS) 이론 정립 (E.F. Codd)</td>
+			</tr>
+			<tr>
+					<td>1980년대</td>
+					<td>Oracle, DB2 등 상용 RDBMS 확산</td>
+			</tr>
+			<tr>
+					<td>1990년대</td>
+					<td>Data Warehouse 등장 (Bill Inmon, Ralph Kimball)</td>
+			</tr>
+			<tr>
+					<td>2010년대 초</td>
+					<td>Data Lake 등장 (Hadoop 시대)</td>
+			</tr>
+			<tr>
+					<td>2020년</td>
+					<td>Databricks가 Lakehouse 논문 발표</td>
+			</tr>
+			<tr>
+					<td>2021년~</td>
+					<td>Delta Lake, Iceberg, Hudi 등 테이블 포맷 확산</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="기술적-정의">기술적 정의<a hidden class="anchor" aria-hidden="true" href="#기술적-정의">#</a></h2>
 <ul>

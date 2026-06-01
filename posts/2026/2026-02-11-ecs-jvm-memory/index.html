@@ -231,87 +231,87 @@ ECS 컨테이너는 다릅니다. 호스트 OS 커널을 공유하기 때문에,
 <h2 id="jvm-메모리-구조">JVM 메모리 구조<a hidden class="anchor" aria-hidden="true" href="#jvm-메모리-구조">#</a></h2>
 <p>JVM 메모리는 크게 Heap과 Non-Heap으로 나뉩니다.</p>
 <table>
-  <thead>
-      <tr>
-          <th>구분</th>
-          <th>설명</th>
-          <th>설정</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Heap</td>
-          <td>애플리케이션 객체가 저장되는 영역</td>
-          <td>개발자가 <code>-Xmx</code>로 설정</td>
-      </tr>
-      <tr>
-          <td>Non-Heap</td>
-          <td>Metaspace, Thread Stack, Code Cache, GC, Direct Buffer 등</td>
-          <td>JVM이 자동 할당</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>구분</th>
+					<th>설명</th>
+					<th>설정</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Heap</td>
+					<td>애플리케이션 객체가 저장되는 영역</td>
+					<td>개발자가 <code>-Xmx</code>로 설정</td>
+			</tr>
+			<tr>
+					<td>Non-Heap</td>
+					<td>Metaspace, Thread Stack, Code Cache, GC, Direct Buffer 등</td>
+					<td>JVM이 자동 할당</td>
+			</tr>
+	</tbody>
 </table>
 <p>개발자가 직접 설정하는 건 Heap뿐입니다. Non-Heap은 JVM이 필요에 따라 알아서 할당합니다. 문제는 JVM이 컨테이너 메모리 한도를 고려하지 않고 Non-Heap을 할당한다는 점입니다. Heap을 너무 크게 잡으면 Non-Heap이 남은 공간을 초과하고, ECS가 컨테이너를 OOM Kill(exit code 137) 할 수 있습니다.</p>
 <h2 id="spring-boot의-non-heap-사용량">Spring Boot의 Non-Heap 사용량<a hidden class="anchor" aria-hidden="true" href="#spring-boot의-non-heap-사용량">#</a></h2>
 <p>일반적인 Spring Boot 웹 애플리케이션의 Non-Heap 구성입니다.</p>
 <table>
-  <thead>
-      <tr>
-          <th>영역</th>
-          <th>용도</th>
-          <th>일반적 사용량</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Metaspace</td>
-          <td>클래스 메타데이터</td>
-          <td>200~500MB</td>
-      </tr>
-      <tr>
-          <td>Thread Stack</td>
-          <td>스레드당 1MB 기본 (Tomcat 기본 200스레드)</td>
-          <td>200~500MB</td>
-      </tr>
-      <tr>
-          <td>Code Cache</td>
-          <td>JIT 컴파일 결과</td>
-          <td>100~250MB</td>
-      </tr>
-      <tr>
-          <td>GC 오버헤드</td>
-          <td>가비지 컬렉션</td>
-          <td>수백MB</td>
-      </tr>
-      <tr>
-          <td>Direct Buffer</td>
-          <td>NIO 등</td>
-          <td>수십~수백MB</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>영역</th>
+					<th>용도</th>
+					<th>일반적 사용량</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Metaspace</td>
+					<td>클래스 메타데이터</td>
+					<td>200~500MB</td>
+			</tr>
+			<tr>
+					<td>Thread Stack</td>
+					<td>스레드당 1MB 기본 (Tomcat 기본 200스레드)</td>
+					<td>200~500MB</td>
+			</tr>
+			<tr>
+					<td>Code Cache</td>
+					<td>JIT 컴파일 결과</td>
+					<td>100~250MB</td>
+			</tr>
+			<tr>
+					<td>GC 오버헤드</td>
+					<td>가비지 컬렉션</td>
+					<td>수백MB</td>
+			</tr>
+			<tr>
+					<td>Direct Buffer</td>
+					<td>NIO 등</td>
+					<td>수십~수백MB</td>
+			</tr>
+	</tbody>
 </table>
 <p>Spring 공식 블로그의 Petclinic 실측 기준, Heap -Xmx48M 적용 시 Non-Heap 사용량은 약 223MB였습니다. 다만 이건 가벼운 앱 기준이고, Tomcat 기본 스레드(200개)만으로 200MB를 소비하므로 실무에서는 더 높습니다.</p>
 <table>
-  <thead>
-      <tr>
-          <th>앱 규모</th>
-          <th>Non-Heap 예상</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>간단한 앱 (스레드 적음)</td>
-          <td>150~300MB</td>
-      </tr>
-      <tr>
-          <td>일반적인 웹 서비스</td>
-          <td>300~600MB</td>
-      </tr>
-      <tr>
-          <td>무거운 앱 (많은 라이브러리, 스레드 200+)</td>
-          <td>600MB~1.5GB</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>앱 규모</th>
+					<th>Non-Heap 예상</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>간단한 앱 (스레드 적음)</td>
+					<td>150~300MB</td>
+			</tr>
+			<tr>
+					<td>일반적인 웹 서비스</td>
+					<td>300~600MB</td>
+			</tr>
+			<tr>
+					<td>무거운 앱 (많은 라이브러리, 스레드 200+)</td>
+					<td>600MB~1.5GB</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="메모리-설정-가이드라인">메모리 설정 가이드라인<a hidden class="anchor" aria-hidden="true" href="#메모리-설정-가이드라인">#</a></h2>
 <h3 id="75-룰의-한계">&ldquo;75% 룰&quot;의 한계<a hidden class="anchor" aria-hidden="true" href="#75-룰의-한계">#</a></h3>
@@ -319,46 +319,46 @@ ECS 컨테이너는 다릅니다. 호스트 OS 커널을 공유하기 때문에,
 <p>본질은 비율이 아니라 Non-Heap 여유분(절대값)입니다.</p>
 <h3 id="권장-설정-메인-컨테이너가-task-메모리를-전부-사용하는-경우-기준">권장 설정 (메인 컨테이너가 Task 메모리를 전부 사용하는 경우 기준)<a hidden class="anchor" aria-hidden="true" href="#권장-설정-메인-컨테이너가-task-메모리를-전부-사용하는-경우-기준">#</a></h3>
 <table>
-  <thead>
-      <tr>
-          <th>Task 메모리</th>
-          <th>Heap</th>
-          <th>여유 (Non-Heap)</th>
-          <th>비율</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>2GB</td>
-          <td>1~1.5GB</td>
-          <td>0.5~1GB</td>
-          <td>50~75%</td>
-      </tr>
-      <tr>
-          <td>4GB</td>
-          <td>3GB</td>
-          <td>1GB</td>
-          <td>75%</td>
-      </tr>
-      <tr>
-          <td>8GB</td>
-          <td>6~6.5GB</td>
-          <td>1.5~2GB</td>
-          <td>~80%</td>
-      </tr>
-      <tr>
-          <td>16GB</td>
-          <td>14.5GB</td>
-          <td>1.5GB</td>
-          <td>~90%</td>
-      </tr>
-      <tr>
-          <td>32GB</td>
-          <td>30GB</td>
-          <td>2GB</td>
-          <td>~94%</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>Task 메모리</th>
+					<th>Heap</th>
+					<th>여유 (Non-Heap)</th>
+					<th>비율</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>2GB</td>
+					<td>1~1.5GB</td>
+					<td>0.5~1GB</td>
+					<td>50~75%</td>
+			</tr>
+			<tr>
+					<td>4GB</td>
+					<td>3GB</td>
+					<td>1GB</td>
+					<td>75%</td>
+			</tr>
+			<tr>
+					<td>8GB</td>
+					<td>6~6.5GB</td>
+					<td>1.5~2GB</td>
+					<td>~80%</td>
+			</tr>
+			<tr>
+					<td>16GB</td>
+					<td>14.5GB</td>
+					<td>1.5GB</td>
+					<td>~90%</td>
+			</tr>
+			<tr>
+					<td>32GB</td>
+					<td>30GB</td>
+					<td>2GB</td>
+					<td>~94%</td>
+			</tr>
+	</tbody>
 </table>
 <p>메모리가 작을수록 비율이 낮아지고, 클수록 높아집니다. 75% 룰은 4~8GB 구간에서 절대값 기준과 대략 맞아떨어지기 때문에 흔히 쓰이는 것이고, 대용량에서는 그대로 적용하면 메모리 낭비입니다.</p>
 <h2 id="설정-방법">설정 방법<a hidden class="anchor" aria-hidden="true" href="#설정-방법">#</a></h2>

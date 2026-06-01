@@ -19,26 +19,26 @@ App ─┤
      └─→ Replica DB (읽기)
 Primary/Replica 분리의 목적은 크게 세 가지입니다.
 
-  
-      
-          목적
-          설명
-      
-  
-  
-      
-          부하 분산
-          읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다
-      
-      
-          읽기 성능 향상
-          Replica를 여러 대 두어 읽기 처리량을 수평 확장한다
-      
-      
-          가용성
-          Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다
-      
-  
+	
+			
+					목적
+					설명
+			
+	
+	
+			
+					부하 분산
+					읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다
+			
+			
+					읽기 성능 향상
+					Replica를 여러 대 두어 읽기 처리량을 수평 확장한다
+			
+			
+					가용성
+					Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다
+			
+	
 
 
 Replication Lag
@@ -258,26 +258,26 @@ App ─┤
      └─→ Replica DB (읽기)
 </code></pre><p>Primary/Replica 분리의 목적은 크게 세 가지입니다.</p>
 <table>
-  <thead>
-      <tr>
-          <th>목적</th>
-          <th>설명</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>부하 분산</td>
-          <td>읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다</td>
-      </tr>
-      <tr>
-          <td>읽기 성능 향상</td>
-          <td>Replica를 여러 대 두어 읽기 처리량을 수평 확장한다</td>
-      </tr>
-      <tr>
-          <td>가용성</td>
-          <td>Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>목적</th>
+					<th>설명</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>부하 분산</td>
+					<td>읽기 트래픽을 Replica로 보내 Primary의 부하를 줄인다</td>
+			</tr>
+			<tr>
+					<td>읽기 성능 향상</td>
+					<td>Replica를 여러 대 두어 읽기 처리량을 수평 확장한다</td>
+			</tr>
+			<tr>
+					<td>가용성</td>
+					<td>Primary 장애 시 Replica를 승격하여 새로운 Primary로 전환(failover)할 수 있다</td>
+			</tr>
+	</tbody>
 </table>
 <hr>
 <h2 id="replication-lag">Replication Lag<a hidden class="anchor" aria-hidden="true" href="#replication-lag">#</a></h2>
@@ -322,30 +322,30 @@ Primary → 공유 스토리지 (redo log 기록) ← Replica (읽기)
 <p>사용자가 데이터를 쓴 뒤, 해당 사용자의 읽기 요청만 일정 시간 동안 Primary로 보내는 방법입니다. 구현이 복잡하고 사용자별 상태를 관리해야 하는 부담이 있습니다.</p>
 <h3 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h3>
 <table>
-  <thead>
-      <tr>
-          <th>방법</th>
-          <th>복잡도</th>
-          <th>적합한 경우</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>쓰기 직후 Primary 조회</td>
-          <td>낮음</td>
-          <td>쓰기 후 즉시 결과가 필요한 API</td>
-      </tr>
-      <tr>
-          <td>지연 읽기</td>
-          <td>낮음</td>
-          <td>실시간성이 덜 중요한 경우</td>
-      </tr>
-      <tr>
-          <td>세션 기반 읽기 일관성</td>
-          <td>높음</td>
-          <td>대규모 서비스, 정교한 제어 필요</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>방법</th>
+					<th>복잡도</th>
+					<th>적합한 경우</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>쓰기 직후 Primary 조회</td>
+					<td>낮음</td>
+					<td>쓰기 후 즉시 결과가 필요한 API</td>
+			</tr>
+			<tr>
+					<td>지연 읽기</td>
+					<td>낮음</td>
+					<td>실시간성이 덜 중요한 경우</td>
+			</tr>
+			<tr>
+					<td>세션 기반 읽기 일관성</td>
+					<td>높음</td>
+					<td>대규모 서비스, 정교한 제어 필요</td>
+			</tr>
+	</tbody>
 </table>
 <p>대부분의 경우 &ldquo;쓰기 직후 Primary 조회&quot;로 충분합니다. 모든 읽기를 Primary로 보내는 것이 아니라, lag이 문제가 되는 특정 흐름에서만 Primary를 사용하는 것이 핵심입니다.</p>
 <h2 id="참고">참고<a hidden class="anchor" aria-hidden="true" href="#참고">#</a></h2>

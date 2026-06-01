@@ -301,28 +301,28 @@ external-sdk.jar/application.yml  # 위험!
 external-sdk.jar/sdk-defaults.yml  # 고유 이름
 </code></pre><h2 id="classpath-vs-classpath-차이">classpath: vs classpath*: 차이<a hidden class="anchor" aria-hidden="true" href="#classpath-vs-classpath-차이">#</a></h2>
 <table>
-  <thead>
-      <tr>
-          <th>접두사</th>
-          <th>내부 메서드</th>
-          <th>동작</th>
-          <th>사용 예</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td><code>classpath:</code></td>
-          <td><code>getResource()</code></td>
-          <td>첫 번째만 반환</td>
-          <td>Spring Boot 기본값</td>
-      </tr>
-      <tr>
-          <td><code>classpath*:</code></td>
-          <td><code>getResources()</code></td>
-          <td>모두 반환</td>
-          <td>명시적 스캔 필요시</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>접두사</th>
+					<th>내부 메서드</th>
+					<th>동작</th>
+					<th>사용 예</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td><code>classpath:</code></td>
+					<td><code>getResource()</code></td>
+					<td>첫 번째만 반환</td>
+					<td>Spring Boot 기본값</td>
+			</tr>
+			<tr>
+					<td><code>classpath*:</code></td>
+					<td><code>getResources()</code></td>
+					<td>모두 반환</td>
+					<td>명시적 스캔 필요시</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="정리">정리<a hidden class="anchor" aria-hidden="true" href="#정리">#</a></h2>
 <h3 id="핵심-원칙">핵심 원칙<a hidden class="anchor" aria-hidden="true" href="#핵심-원칙">#</a></h3>

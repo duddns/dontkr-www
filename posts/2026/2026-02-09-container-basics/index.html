@@ -252,73 +252,73 @@ OS (Linux)
 <p>OS는 커널과 라이브러리로 구성됩니다.</p>
 <pre tabindex="0"><code>OS = 커널 + 라이브러리 (유저스페이스)
 </code></pre><table>
-  <thead>
-      <tr>
-          <th>구분</th>
-          <th>역할</th>
-          <th>컨테이너에서</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>OS 커널</td>
-          <td>하드웨어 제어, 메모리 관리, 프로세스 관리</td>
-          <td>호스트 것을 공유</td>
-      </tr>
-      <tr>
-          <td>OS 라이브러리</td>
-          <td>앱이 파일을 읽거나 네트워크 통신할 때 사용</td>
-          <td>이미지에 포함</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>구분</th>
+					<th>역할</th>
+					<th>컨테이너에서</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>OS 커널</td>
+					<td>하드웨어 제어, 메모리 관리, 프로세스 관리</td>
+					<td>호스트 것을 공유</td>
+			</tr>
+			<tr>
+					<td>OS 라이브러리</td>
+					<td>앱이 파일을 읽거나 네트워크 통신할 때 사용</td>
+					<td>이미지에 포함</td>
+			</tr>
+	</tbody>
 </table>
 <p>Java는 직접 OS 커널과 통신하지 않고, OS 라이브러리(glibc 등)를 통해 OS 커널 기능을 사용합니다.</p>
 <pre tabindex="0"><code>Java → OS 라이브러리 (이미지에 포함) → OS 커널 (호스트 공유)
 </code></pre><p>그래서 이미지에 &ldquo;최소한의 OS 라이브러리&quot;가 필요합니다. 다만 OS를 통째로 넣는 게 아니라 최소한만 포함하므로, 크기 차이가 큽니다.</p>
 <table>
-  <thead>
-      <tr>
-          <th>구분</th>
-          <th>크기</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>일반 OS 설치 (Ubuntu)</td>
-          <td>수 GB</td>
-      </tr>
-      <tr>
-          <td>컨테이너 OS 베이스 이미지 (Alpine Linux)</td>
-          <td>수십 MB</td>
-      </tr>
-      <tr>
-          <td>컨테이너 Java 베이스 이미지 (amazoncorretto:21)</td>
-          <td>200~400MB</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>구분</th>
+					<th>크기</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>일반 OS 설치 (Ubuntu)</td>
+					<td>수 GB</td>
+			</tr>
+			<tr>
+					<td>컨테이너 OS 베이스 이미지 (Alpine Linux)</td>
+					<td>수십 MB</td>
+			</tr>
+			<tr>
+					<td>컨테이너 Java 베이스 이미지 (amazoncorretto:21)</td>
+					<td>200~400MB</td>
+			</tr>
+	</tbody>
 </table>
 <h2 id="용어-관계">용어 관계<a hidden class="anchor" aria-hidden="true" href="#용어-관계">#</a></h2>
 <h3 id="이미지와-컨테이너">이미지와 컨테이너<a hidden class="anchor" aria-hidden="true" href="#이미지와-컨테이너">#</a></h3>
 <table>
-  <thead>
-      <tr>
-          <th>용어</th>
-          <th>프로그래밍 비유</th>
-          <th>설명</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>이미지</td>
-          <td>클래스 (설계도)</td>
-          <td>앱 실행에 필요한 모든 것을 패키징한 결과물. 불변(immutable)</td>
-      </tr>
-      <tr>
-          <td>컨테이너</td>
-          <td>인스턴스 (실행체)</td>
-          <td>이미지를 실행한 프로세스</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>용어</th>
+					<th>프로그래밍 비유</th>
+					<th>설명</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>이미지</td>
+					<td>클래스 (설계도)</td>
+					<td>앱 실행에 필요한 모든 것을 패키징한 결과물. 불변(immutable)</td>
+			</tr>
+			<tr>
+					<td>컨테이너</td>
+					<td>인스턴스 (실행체)</td>
+					<td>이미지를 실행한 프로세스</td>
+			</tr>
+	</tbody>
 </table>
 <p>이미지 하나로 컨테이너 여러 개를 실행할 수 있습니다.</p>
 <pre tabindex="0"><code>[이미지]
@@ -352,55 +352,55 @@ OS (Linux)
 <h3 id="이미지-빌드-도구">이미지 빌드 도구<a hidden class="anchor" aria-hidden="true" href="#이미지-빌드-도구">#</a></h3>
 <p>이미지를 생성하는 도구입니다.</p>
 <table>
-  <thead>
-      <tr>
-          <th>도구</th>
-          <th>특징</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Docker</td>
-          <td>가장 유명. 범용</td>
-      </tr>
-      <tr>
-          <td>Jib (Google)</td>
-          <td>Docker 없이 빌드 가능. Java 전용</td>
-      </tr>
-      <tr>
-          <td>Kaniko (Google)</td>
-          <td>Docker 없이 빌드 가능. CI/CD 환경</td>
-      </tr>
-      <tr>
-          <td>Buildpacks</td>
-          <td>Spring Boot 공식 지원. Dockerfile 불필요</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>도구</th>
+					<th>특징</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Docker</td>
+					<td>가장 유명. 범용</td>
+			</tr>
+			<tr>
+					<td>Jib (Google)</td>
+					<td>Docker 없이 빌드 가능. Java 전용</td>
+			</tr>
+			<tr>
+					<td>Kaniko (Google)</td>
+					<td>Docker 없이 빌드 가능. CI/CD 환경</td>
+			</tr>
+			<tr>
+					<td>Buildpacks</td>
+					<td>Spring Boot 공식 지원. Dockerfile 불필요</td>
+			</tr>
+	</tbody>
 </table>
 <p>Jib은 Docker 데몬 없이 Java 레벨에서 직접 OCI 이미지를 만듭니다. Java 생태계에서 많이 사용합니다.</p>
 <h3 id="런타임-실행-도구">런타임 (실행 도구)<a hidden class="anchor" aria-hidden="true" href="#런타임-실행-도구">#</a></h3>
 <p>컨테이너 1개를 실행하는 도구입니다.</p>
 <table>
-  <thead>
-      <tr>
-          <th>런타임</th>
-          <th>특징</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>Docker</td>
-          <td>가장 유명. 빌드 + 실행 모두 가능</td>
-      </tr>
-      <tr>
-          <td>containerd</td>
-          <td>Docker 내부에서 쓰이던 런타임. 더 가벼움</td>
-      </tr>
-      <tr>
-          <td>Podman</td>
-          <td>Docker 대체제. Red Hat 계열에서 선호</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>런타임</th>
+					<th>특징</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>Docker</td>
+					<td>가장 유명. 빌드 + 실행 모두 가능</td>
+			</tr>
+			<tr>
+					<td>containerd</td>
+					<td>Docker 내부에서 쓰이던 런타임. 더 가벼움</td>
+			</tr>
+			<tr>
+					<td>Podman</td>
+					<td>Docker 대체제. Red Hat 계열에서 선호</td>
+			</tr>
+	</tbody>
 </table>
 <h3 id="오케스트레이션-운영관리-도구">오케스트레이션 (운영/관리 도구)<a hidden class="anchor" aria-hidden="true" href="#오케스트레이션-운영관리-도구">#</a></h3>
 <p>컨테이너 여러 개를 운영/관리하는 도구입니다. 내부적으로 런타임을 사용해서 컨테이너를 실행합니다.</p>
@@ -410,61 +410,61 @@ OS (Linux)
     ↓ 실행
 컨테이너
 </code></pre><table>
-  <thead>
-      <tr>
-          <th>도구</th>
-          <th>특징</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>AWS ECS</td>
-          <td>AWS 전용. 간편</td>
-      </tr>
-      <tr>
-          <td>Kubernetes</td>
-          <td>범용 (멀티 클라우드, 온프레미스). 복잡</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>도구</th>
+					<th>특징</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>AWS ECS</td>
+					<td>AWS 전용. 간편</td>
+			</tr>
+			<tr>
+					<td>Kubernetes</td>
+					<td>범용 (멀티 클라우드, 온프레미스). 복잡</td>
+			</tr>
+	</tbody>
 </table>
 <p>ECS는 containerd를 이용해서 컨테이너를 실행하고, 추가로 오토스케일링, 로드밸런싱, 무중단 배포 등 운영/관리를 해줍니다.</p>
 <h2 id="전체-흐름">전체 흐름<a hidden class="anchor" aria-hidden="true" href="#전체-흐름">#</a></h2>
 <pre tabindex="0"><code>빌드 → 저장 → 배포 → 실행 → 관리
 </code></pre><table>
-  <thead>
-      <tr>
-          <th>단계</th>
-          <th>동작</th>
-          <th>도구</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>빌드</td>
-          <td>이미지 생성</td>
-          <td>Docker, Jib 등</td>
-      </tr>
-      <tr>
-          <td>저장</td>
-          <td>이미지를 저장소에 업로드</td>
-          <td>Docker Hub, AWS ECR 등</td>
-      </tr>
-      <tr>
-          <td>배포</td>
-          <td>저장소에서 이미지 다운로드</td>
-          <td>오케스트레이션이 처리</td>
-      </tr>
-      <tr>
-          <td>실행</td>
-          <td>컨테이너 실행</td>
-          <td>오케스트레이션이 처리</td>
-      </tr>
-      <tr>
-          <td>관리</td>
-          <td>모니터링, 재시작, 스케일링</td>
-          <td>오케스트레이션이 처리</td>
-      </tr>
-  </tbody>
+	<thead>
+			<tr>
+					<th>단계</th>
+					<th>동작</th>
+					<th>도구</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>빌드</td>
+					<td>이미지 생성</td>
+					<td>Docker, Jib 등</td>
+			</tr>
+			<tr>
+					<td>저장</td>
+					<td>이미지를 저장소에 업로드</td>
+					<td>Docker Hub, AWS ECR 등</td>
+			</tr>
+			<tr>
+					<td>배포</td>
+					<td>저장소에서 이미지 다운로드</td>
+					<td>오케스트레이션이 처리</td>
+			</tr>
+			<tr>
+					<td>실행</td>
+					<td>컨테이너 실행</td>
+					<td>오케스트레이션이 처리</td>
+			</tr>
+			<tr>
+					<td>관리</td>
+					<td>모니터링, 재시작, 스케일링</td>
+					<td>오케스트레이션이 처리</td>
+			</tr>
+	</tbody>
 </table>
 <p>개발자는 이미지를 빌드해서 저장소에 올리기까지만 하고, 이후는 오케스트레이션 도구(ECS 등)가 처리합니다.</p>
 <pre tabindex="0"><code>[개발자]              [오케스트레이션 (ECS)]

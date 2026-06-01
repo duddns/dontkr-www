@@ -32,30 +32,30 @@
   └→ Container 메모리 (프로세스별 할당)
        └→ Application 메모리 (JVM Heap 등)
 &lt;/code&gt;&lt;/pre&gt;&lt;table&gt;
-  &lt;thead&gt;
-      &lt;tr&gt;
-          &lt;th&gt;레벨&lt;/th&gt;
-          &lt;th&gt;설정 위치&lt;/th&gt;
-          &lt;th&gt;역할&lt;/th&gt;
-      &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Task 메모리&lt;/td&gt;
-          &lt;td&gt;Task Definition&lt;/td&gt;
-          &lt;td&gt;전체 메모리 한도&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Container 메모리&lt;/td&gt;
-          &lt;td&gt;Task Definition &amp;gt; containerDefinitions&lt;/td&gt;
-          &lt;td&gt;컨테이너별 메모리 한도&lt;/td&gt;
-      &lt;/tr&gt;
-      &lt;tr&gt;
-          &lt;td&gt;Application 메모리&lt;/td&gt;
-          &lt;td&gt;JVM 옵션 (-Xmx 등)&lt;/td&gt;
-          &lt;td&gt;애플리케이션 내부 메모리&lt;/td&gt;
-      &lt;/tr&gt;
-  &lt;/tbody&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;레벨&lt;/th&gt;
+					&lt;th&gt;설정 위치&lt;/th&gt;
+					&lt;th&gt;역할&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Task 메모리&lt;/td&gt;
+					&lt;td&gt;Task Definition&lt;/td&gt;
+					&lt;td&gt;전체 메모리 한도&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Container 메모리&lt;/td&gt;
+					&lt;td&gt;Task Definition &amp;gt; containerDefinitions&lt;/td&gt;
+					&lt;td&gt;컨테이너별 메모리 한도&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Application 메모리&lt;/td&gt;
+					&lt;td&gt;JVM 옵션 (-Xmx 등)&lt;/td&gt;
+					&lt;td&gt;애플리케이션 내부 메모리&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Application 레벨(JVM 메모리 설정)은 &lt;a href=&#34;https://dont.kr/posts/2026/2026-02-11-ecs-jvm-memory/&#34;&gt;AWS ECS에서 Java + Spring Boot 어플리케이션 메모리 설정&lt;/a&gt; 에서 다룹니다.&lt;/p&gt;</description>
     </item>
