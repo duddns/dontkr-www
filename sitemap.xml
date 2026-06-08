@@ -210,6 +210,9 @@
     <loc>https://dont.kr/posts/2025/2025-04-25-mac-zsh/</loc>
     <lastmod>2025-04-25T00:00:00+09:00</lastmod>
   </url><url>
+    <loc>https://dont.kr/tags/vim/</loc>
+    <lastmod>2025-04-25T00:00:00+09:00</lastmod>
+  </url><url>
     <loc>https://dont.kr/tags/zsh/</loc>
     <lastmod>2025-04-25T00:00:00+09:00</lastmod>
   </url><url>
@@ -246,7 +249,7 @@
     <loc>https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/</loc>
     <lastmod>2023-07-10T19:10:00+09:00</lastmod>
   </url><url>
-    <loc>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</loc>
+    <loc>https://dont.kr/posts/2022/2022-04-30-backup-vscode-regex-replace/</loc>
     <lastmod>2022-04-30T14:02:00+09:00</lastmod>
   </url><url>
     <loc>https://dont.kr/tags/vscode/</loc>

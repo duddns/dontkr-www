@@ -939,7 +939,7 @@ LLM: &amp;#34;좋네요&amp;#34; (가장 자연스러운 다음 단어 선택)
       <link>https://dont.kr/posts/2025/2025-04-25-mac-zsh/</link>
       <pubDate>Fri, 25 Apr 2025 00:00:00 +0900</pubDate>
       <guid>https://dont.kr/posts/2025/2025-04-25-mac-zsh/</guid>
-      <description>&lt;h3 id=&#34;zsh-설치&#34;&gt;zsh 설치&lt;/h3&gt;
+      <description>&lt;h3 id=&#34;deprecated-zsh-설치&#34;&gt;(deprecated) zsh 설치&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ brew install zsh
 &lt;/code&gt;&lt;/pre&gt;&lt;h3 id=&#34;oh-my-zsh-설치&#34;&gt;oh-my-zsh 설치&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ sh -c &amp;#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&amp;#34;
@@ -959,8 +959,7 @@ plugins=(... zsh-syntax-highlighting ...)
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &amp;#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&amp;#34;
 &lt;/code&gt;&lt;/pre&gt;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;$ vi .zshrc
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.
-원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.&lt;/p&gt;</description>
     </item>
     <item>
       <title>ImageMagick crop</title>
@@ -1114,9 +1113,9 @@ theme = &amp;#39;PaperMod&amp;#39;
     </item>
     <item>
       <title>[Backup] Visual Studio Code Regex Replace</title>
-      <link>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</link>
+      <link>https://dont.kr/posts/2022/2022-04-30-backup-vscode-regex-replace/</link>
       <pubDate>Sat, 30 Apr 2022 14:02:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</guid>
+      <guid>https://dont.kr/posts/2022/2022-04-30-backup-vscode-regex-replace/</guid>
       <description>&lt;h3 id=&#34;-10개-마다-줄-바꿈-하기&#34;&gt;, 10개 마다 줄 바꿈 하기&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;((.+, ){10})
 $1\n

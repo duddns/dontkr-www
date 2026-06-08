@@ -10,9 +10,9 @@
     <atom:link href="https://dont.kr/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[Backup] Visual Studio Code Regex Replace</title>
-      <link>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</link>
+      <link>https://dont.kr/posts/2022/2022-04-30-backup-vscode-regex-replace/</link>
       <pubDate>Sat, 30 Apr 2022 14:02:00 +0900</pubDate>
-      <guid>https://dont.kr/posts/2022/2022-04-30-backup-vs-code-regex-replace/</guid>
+      <guid>https://dont.kr/posts/2022/2022-04-30-backup-vscode-regex-replace/</guid>
       <description>&lt;h3 id=&#34;-10개-마다-줄-바꿈-하기&#34;&gt;, 10개 마다 줄 바꿈 하기&lt;/h3&gt;
 &lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;((.+, ){10})
 $1\n

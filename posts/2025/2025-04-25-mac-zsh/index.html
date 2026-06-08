@@ -6,8 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
 <title>Mac zsh 설정 | DoNT - Do Not Think!!!</title>
-<meta name="keywords" content="zsh">
-<meta name="description" content="zsh 설치
+<meta name="keywords" content="zsh, vim">
+<meta name="description" content="(deprecated) zsh 설치
 $ brew install zsh
 oh-my-zsh 설치
 $ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34;
@@ -27,8 +27,7 @@ Powerlevel10k 설치
 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34;
 $ vi .zshrc
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.
-원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함">
+powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.">
 <meta name="author" content="">
 <link rel="canonical" href="https://dont.kr/posts/2025/2025-04-25-mac-zsh/">
 <link crossorigin="anonymous" href="/assets/css/stylesheet.16e0c7b9f3151eea935b08f185647c0f40f6d4dd566f8f09dd0b374566b03f5f.css" integrity="sha256-FuDHufMVHuqTWwjxhWR8D0D21N1Wb48J3Qs3RWawP18=" rel="preload stylesheet" as="style">
@@ -108,17 +107,18 @@ powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 �
       </script><meta property="og:url" content="https://dont.kr/posts/2025/2025-04-25-mac-zsh/">
   <meta property="og:site_name" content="DoNT - Do Not Think!!!">
   <meta property="og:title" content="Mac zsh 설정">
-  <meta property="og:description" content="zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함. 원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함">
+  <meta property="og:description" content="(deprecated) zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.">
   <meta property="og:locale" content="ko_kr">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
     <meta property="article:published_time" content="2025-04-25T00:00:00+09:00">
     <meta property="article:modified_time" content="2025-04-25T00:00:00+09:00">
     <meta property="article:tag" content="Zsh">
+    <meta property="article:tag" content="Vim">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Mac zsh 설정">
-  <meta name="twitter:description" content="zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함. 원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함">
+  <meta name="twitter:description" content="(deprecated) zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.">
 
 
 <script type="application/ld+json">
@@ -147,12 +147,12 @@ powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 �
   "@type": "BlogPosting",
   "headline": "Mac zsh 설정",
   "name": "Mac zsh 설정",
-  "description": "zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\u0026#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \u0026#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\u0026#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함. 원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함\n",
+  "description": "(deprecated) zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c \u0026#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\u0026#34; $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \u0026#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\u0026#34; $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.\n",
   "keywords": [
-    "zsh"
+    "zsh", "vim"
   ],
-  "articleBody": "zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\" $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함. 원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함\n$ cp ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh .p10k.zsh $ vi .p10k.zsh ",
-  "wordCount" : "94",
+  "articleBody": "(deprecated) zsh 설치 $ brew install zsh oh-my-zsh 설치 $ sh -c \"$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)\" $ vi .zshrc source $ZSH/oh-my-zsh.sh 플러그인 설치 zsh-autosuggestions 설치 $ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions $ vi .zshrc plugins=(... zsh-autosuggestions ...) zsh-syntax-highlighting 설치 $ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting $ vi .zshrc plugins=(... zsh-syntax-highlighting ...) 테마 설치 Powerlevel10k 설치 $ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \"${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k\" $ vi .zshrc [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.\n$ cp ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-lean.zsh .p10k.zsh $ vi .p10k.zsh vimrc $ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime $ vi ~/.vimrc set runtimepath+=~/.vim_runtime source ~/.vim_runtime/vimrcs/basic.vim source ~/.vim_runtime/vimrcs/filetypes.vim source ~/.vim_runtime/vimrcs/plugins_config.vim source ~/.vim_runtime/vimrcs/extended.vim try source ~/.vim_runtime/my_configs.vim catch endtry \" 커스텀 설정 set hlsearch \" 검색어 강조 set autoindent \" 자동 들여쓰기 set smartindent \" 문법에 맞게 자동으로 indent set ts=4 \" tabstop 탭 너비 set sts=4 \" softtabstop tab키 너비 set expandtab \" 탭 대신 스페이스 set shiftwidth=4 \" 자동 들여쓰기 너비 set laststatus=2 \" 상태바 표시 set statusline=\\ %\u003c%l:%v\\ [%P]%=%a\\ %h%m%r\\ %F\\ set mouse+=a ",
+  "wordCount" : "166",
   "inLanguage": "ko",
   "datePublished": "2025-04-25T00:00:00+09:00",
   "dateModified": "2025-04-25T00:00:00+09:00",
@@ -225,7 +225,7 @@ powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 �
 
 </div>
   </header> 
-  <div class="post-content"><h3 id="zsh-설치">zsh 설치<a hidden class="anchor" aria-hidden="true" href="#zsh-설치">#</a></h3>
+  <div class="post-content"><h3 id="deprecated-zsh-설치">(deprecated) zsh 설치<a hidden class="anchor" aria-hidden="true" href="#deprecated-zsh-설치">#</a></h3>
 <pre tabindex="0"><code>$ brew install zsh
 </code></pre><h3 id="oh-my-zsh-설치">oh-my-zsh 설치<a hidden class="anchor" aria-hidden="true" href="#oh-my-zsh-설치">#</a></h3>
 <pre tabindex="0"><code>$ sh -c &#34;$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)&#34;
@@ -245,10 +245,35 @@ plugins=(... zsh-syntax-highlighting ...)
 <pre tabindex="0"><code>$ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git &#34;${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k&#34;
 </code></pre><pre tabindex="0"><code>$ vi .zshrc
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-</code></pre><p>powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.
-원본 파일이 어떤건지 까먹었음. 원본파일이 어떤건지 찾아야 함. 최신버전 반영해야 함</p>
-<pre tabindex="0"><code>$ cp ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-classic.zsh .p10k.zsh
+</code></pre><p>powerlevel10k 설정 후, 커스텀하기 위해 설정파일을 복사하여 수정함.</p>
+<pre tabindex="0"><code>$ cp ~/.oh-my-zsh/custom/themes/powerlevel10k/config/p10k-lean.zsh .p10k.zsh
 $ vi .p10k.zsh
+</code></pre><h3 id="vimrc">vimrc<a hidden class="anchor" aria-hidden="true" href="#vimrc">#</a></h3>
+<pre tabindex="0"><code>$ git clone --depth=1 https://github.com/amix/vimrc.git ~/.vim_runtime
+$ vi ~/.vimrc
+set runtimepath+=~/.vim_runtime
+
+source ~/.vim_runtime/vimrcs/basic.vim
+source ~/.vim_runtime/vimrcs/filetypes.vim
+source ~/.vim_runtime/vimrcs/plugins_config.vim
+source ~/.vim_runtime/vimrcs/extended.vim
+
+try
+source ~/.vim_runtime/my_configs.vim
+catch
+endtry
+
+&#34; 커스텀 설정
+set hlsearch &#34; 검색어 강조
+set autoindent &#34; 자동 들여쓰기
+set smartindent &#34; 문법에 맞게 자동으로 indent
+set ts=4 &#34; tabstop 탭 너비
+set sts=4 &#34; softtabstop tab키 너비
+set expandtab &#34; 탭 대신 스페이스
+set shiftwidth=4 &#34; 자동 들여쓰기 너비
+set laststatus=2 &#34; 상태바 표시
+set statusline=\ %&lt;%l:%v\ [%P]%=%a\ %h%m%r\ %F\
+set mouse+=a
 </code></pre>
 
   </div>
@@ -256,6 +281,7 @@ $ vi .p10k.zsh
   <footer class="post-footer">
     <ul class="post-tags">
       <li><a href="https://dont.kr/tags/zsh/">Zsh</a></li>
+      <li><a href="https://dont.kr/tags/vim/">Vim</a></li>
     </ul>
   </footer><script src="https://giscus.app/client.js"
     data-repo="duddns/dontkr-www"
