@@ -10,7 +10,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="canonical" href="https://dont.kr/tags/hugo/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.16e0c7b9f3151eea935b08f185647c0f40f6d4dd566f8f09dd0b374566b03f5f.css" integrity="sha256-FuDHufMVHuqTWwjxhWR8D0D21N1Wb48J3Qs3RWawP18=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.54345c2e8a8e18a801a9b2676ef275abd967b07565669a037c2716c623f04033.css" integrity="sha256-VDRcLoqOGKgBqbJnbvJ1q9lnsHVlZpoDfCcWxiPwQDM=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dont.kr/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
@@ -49,12 +49,6 @@
 
             .toc {
                 background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
             }
         }
 
@@ -97,17 +91,17 @@
 </head>
 <body class="list" id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -123,7 +117,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://dont.kr/archives/" title="Archive">
                     <span>Archive</span>
@@ -153,7 +147,9 @@
     <p>Hugo 블로그에 GitHub Discussions 기반 댓글 시스템 giscus를 적용합니다.
 사전 준비 GitHub 공개 저장소 준비 해당 공개 저장소에 Discussions 활성화: Settings → General → Features → Discussions giscus 앱 설치 후 저장소 선택 giscus 설정 https://giscus.app 접속 저장소와 원하는 옵션 선택 생성된 스크립트 코드 복사 Hugo 적용 댓글 파일 생성 &lt;!-- layouts/partials/comment.html --&gt; // 스크립트 코드 설정 파일 수정 # hugo.toml [params] comments = true </p>
   </div>
-  <footer class="entry-footer"><span title='2025-12-03 00:00:00 +0900 KST'>2025년 12월 3일</span></footer>
+  <footer class="entry-footer">
+
+<span title='2025-12-03 00:00:00 +0900 KST'>2025년 12월 3일</span></footer>
   <a class="entry-link" aria-label="post link to Hugo 댓글 - giscus 적용" href="https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/"></a>
 </article>
 
@@ -165,7 +161,9 @@
   <div class="entry-content">
     <p>Hugo 기본 설정으로 tags 사용 PaperMod 테마 설정 hugo.yaml 파일 수정 menu: main: - identifier: tags name: tags url: /tags/ weight: 10 content 에 태그 추가 tags: - hugo 참고 링크 Hugo Taxonomies: https://gohugo.io/content-management/taxonomies/ PaperMod wiki: https://github.com/adityatelange/hugo-PaperMod/wiki/Installation#sample-configyml </p>
   </div>
-  <footer class="entry-footer"><span title='2024-01-12 19:10:00 +0900 KST'>2024년 1월 12일</span></footer>
+  <footer class="entry-footer">
+
+<span title='2024-01-12 19:10:00 +0900 KST'>2024년 1월 12일</span></footer>
   <a class="entry-link" aria-label="post link to Hugo 태그 설정" href="https://dont.kr/posts/2024/2024-01-12-hugo-tags/"></a>
 </article>
 
@@ -180,7 +178,9 @@ install golang $ brew install golang install Hugoo https://gohugo.io/installatio
 $ brew install hugo github 저장소 생성 duddns.github.io: GitHub Pages 저장소 dontkr-hugo: Hogo 소스 저장소 Create a site $ hugo new site dontkr-hugo $ cd dontkr-hugo $ git init $ git submodule add -b master https://github.com/adityatelange/hugo-PaperMod.git themes/PaperMod $ git submodule add -b main https://@github.com/duddns/duddns.github.io.git public $ echo &#34;theme = &#39;PaperMod&#39;&#34; &gt;&gt; hugo.toml $ hugo server configure baseURL = &#39;https://dont.kr&#39; languageCode = &#39;en-us&#39; title = &#39;DoNT - Do Not Think!!!&#39; theme = &#39;PaperMod&#39; publish GitHub Pages 저장소와 Hogo 소스 저장소 두 번 push 해야 함
 ...</p>
   </div>
-  <footer class="entry-footer"><span title='2023-07-10 19:10:00 +0900 KST'>2023년 7월 10일</span></footer>
+  <footer class="entry-footer">
+
+<span title='2023-07-10 19:10:00 +0900 KST'>2023년 7월 10일</span></footer>
   <a class="entry-link" aria-label="post link to [re] Hello World" href="https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/"></a>
 </article>
     </main>
@@ -188,15 +188,19 @@ $ brew install hugo github 저장소 생성 duddns.github.io: GitHub Pages 저�
 <footer class="footer">
         <span>&copy; 2026 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -235,14 +239,13 @@ $ brew install hugo github 저장소 생성 duddns.github.io: GitHub Pages 저�
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 

@@ -10,7 +10,7 @@
 <meta name="description" content="archives">
 <meta name="author" content="">
 <link rel="canonical" href="https://dont.kr/archives/">
-<link crossorigin="anonymous" href="/assets/css/stylesheet.16e0c7b9f3151eea935b08f185647c0f40f6d4dd566f8f09dd0b374566b03f5f.css" integrity="sha256-FuDHufMVHuqTWwjxhWR8D0D21N1Wb48J3Qs3RWawP18=" rel="preload stylesheet" as="style">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.54345c2e8a8e18a801a9b2676ef275abd967b07565669a037c2716c623f04033.css" integrity="sha256-VDRcLoqOGKgBqbJnbvJ1q9lnsHVlZpoDfCcWxiPwQDM=" rel="preload stylesheet" as="style">
 <link rel="icon" href="https://dont.kr/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
@@ -48,12 +48,6 @@
 
             .toc {
                 background: var(--entry);
-            }
-        }
-
-        @media (prefers-color-scheme: light) {
-            .list::-webkit-scrollbar-thumb {
-                border-color: var(--code-bg);
             }
         }
 
@@ -142,17 +136,17 @@
 </head>
 <body class="list" id="top">
     <header class="header">
-    <nav class="nav">
+    <nav class="header-nav">
         <div class="logo">
             <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
             <div class="logo-switches">
-                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
-                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                <button id="theme-toggle" class="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
                     </svg>
-                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                    <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                         stroke-linejoin="round">
                         <circle cx="12" cy="12" r="5"></circle>
@@ -168,7 +162,7 @@
                 </button>
             </div>
         </div>
-        <ul id="menu">
+        <ul id="menu" class="menu">
             <li>
                 <a href="https://dont.kr/archives/" title="Archive">
                     <span class="active">Archive</span>
@@ -203,7 +197,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리
         </h3>
-        <div class="archive-meta"><span title='2026-07-08 00:00:00 +0900 KST'>2026년 7월 8일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-07-08 00:00:00 +0900 KST'>2026년 7월 8일</span></div>
         <a class="entry-link" aria-label="post link to 프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리" href="https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/"></a>
       </div>
     </div>
@@ -217,13 +213,17 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">LLM 기반 작업 시 반복 리뷰로 작업 범위가 넓어지고 목표가 흐려지는 문제
         </h3>
-        <div class="archive-meta"><span title='2026-04-20 00:00:00 +0900 KST'>2026년 4월 20일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-04-20 00:00:00 +0900 KST'>2026년 4월 20일</span></div>
         <a class="entry-link" aria-label="post link to LLM 기반 작업 시 반복 리뷰로 작업 범위가 넓어지고 목표가 흐려지는 문제" href="https://dont.kr/posts/2026/2026-04-20-llm-review-loop-proble/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">CPU Bound와 스레드 컨텍스트 스위칭
         </h3>
-        <div class="archive-meta"><span title='2026-04-17 00:00:00 +0900 KST'>2026년 4월 17일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-04-17 00:00:00 +0900 KST'>2026년 4월 17일</span></div>
         <a class="entry-link" aria-label="post link to CPU Bound와 스레드 컨텍스트 스위칭" href="https://dont.kr/posts/2026/2026-04-17-cpu-bound-context-switching/"></a>
       </div>
     </div>
@@ -237,13 +237,17 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Java 멀티스레드 vs Kotlin 코루틴
         </h3>
-        <div class="archive-meta"><span title='2026-03-22 00:00:00 +0900 KST'>2026년 3월 22일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-03-22 00:00:00 +0900 KST'>2026년 3월 22일</span></div>
         <a class="entry-link" aria-label="post link to Java 멀티스레드 vs Kotlin 코루틴" href="https://dont.kr/posts/2026/2026-03-22-java-thread-vs-kotlin-coroutine/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Primary/Replica DB 분리와 Replication Lag
         </h3>
-        <div class="archive-meta"><span title='2026-03-10 00:00:00 +0900 KST'>2026년 3월 10일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-03-10 00:00:00 +0900 KST'>2026년 3월 10일</span></div>
         <a class="entry-link" aria-label="post link to Primary/Replica DB 분리와 Replication Lag" href="https://dont.kr/posts/2026/2026-03-10-db-replication-lag/"></a>
       </div>
     </div>
@@ -257,19 +261,25 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">AWS ECS에서 Java + Spring Boot 어플리케이션 메모리 설정
         </h3>
-        <div class="archive-meta"><span title='2026-02-11 00:00:00 +0900 KST'>2026년 2월 11일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-02-11 00:00:00 +0900 KST'>2026년 2월 11일</span></div>
         <a class="entry-link" aria-label="post link to AWS ECS에서 Java &#43; Spring Boot 어플리케이션 메모리 설정" href="https://dont.kr/posts/2026/2026-02-11-ecs-jvm-memory/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">AWS ECS Task 메모리 설정
         </h3>
-        <div class="archive-meta"><span title='2026-02-10 00:00:00 +0900 KST'>2026년 2월 10일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-02-10 00:00:00 +0900 KST'>2026년 2월 10일</span></div>
         <a class="entry-link" aria-label="post link to AWS ECS Task 메모리 설정" href="https://dont.kr/posts/2026/2026-02-10-ecs-task-memory-allocation/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">컨테이너 기초 용어 정리
         </h3>
-        <div class="archive-meta"><span title='2026-02-09 00:00:00 +0900 KST'>2026년 2월 9일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-02-09 00:00:00 +0900 KST'>2026년 2월 9일</span></div>
         <a class="entry-link" aria-label="post link to 컨테이너 기초 용어 정리" href="https://dont.kr/posts/2026/2026-02-09-container-basics/"></a>
       </div>
     </div>
@@ -283,13 +293,17 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">데이터 저장소 용어 정리
         </h3>
-        <div class="archive-meta"><span title='2026-01-21 00:00:00 +0900 KST'>2026년 1월 21일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-01-21 00:00:00 +0900 KST'>2026년 1월 21일</span></div>
         <a class="entry-link" aria-label="post link to 데이터 저장소 용어 정리" href="https://dont.kr/posts/2026/2026-01-21-data-storage-terms/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Kotlin의 접근 제어자 설계 철학
         </h3>
-        <div class="archive-meta"><span title='2026-01-13 00:00:00 +0900 KST'>2026년 1월 13일</span></div>
+        <div class="archive-meta">
+
+<span title='2026-01-13 00:00:00 +0900 KST'>2026년 1월 13일</span></div>
         <a class="entry-link" aria-label="post link to Kotlin의 접근 제어자 설계 철학" href="https://dont.kr/posts/2026/2026-01-13-kotlin-access-modifier/"></a>
       </div>
     </div>
@@ -309,7 +323,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Hugo 댓글 - giscus 적용
         </h3>
-        <div class="archive-meta"><span title='2025-12-03 00:00:00 +0900 KST'>2025년 12월 3일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-12-03 00:00:00 +0900 KST'>2025년 12월 3일</span></div>
         <a class="entry-link" aria-label="post link to Hugo 댓글 - giscus 적용" href="https://dont.kr/posts/2025/2025-12-03-hugo-comment-giscus/"></a>
       </div>
     </div>
@@ -323,49 +339,65 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">블록킹/논블록킹, 동기/비동기 개념 정리
         </h3>
-        <div class="archive-meta"><span title='2025-11-28 00:00:00 +0900 KST'>2025년 11월 28일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-28 00:00:00 +0900 KST'>2025년 11월 28일</span></div>
         <a class="entry-link" aria-label="post link to 블록킹/논블록킹, 동기/비동기 개념 정리" href="https://dont.kr/posts/2025/2025-11-28-blocking-nonblocking-synchronous-asynchronous/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Apache Kafka 기본 개념 정리
         </h3>
-        <div class="archive-meta"><span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-27 00:00:00 +0900 KST'>2025년 11월 27일</span></div>
         <a class="entry-link" aria-label="post link to Apache Kafka 기본 개념 정리" href="https://dont.kr/posts/2025/2025-11-27-apache-kafka/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Spring Boot 설정 파일 로딩
         </h3>
-        <div class="archive-meta"><span title='2025-11-26 00:00:00 +0900 KST'>2025년 11월 26일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-26 00:00:00 +0900 KST'>2025년 11월 26일</span></div>
         <a class="entry-link" aria-label="post link to Spring Boot 설정 파일 로딩" href="https://dont.kr/posts/2025/2025-11-26-spring-boot-config/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Spring Boot 애플리케이션 웜업
         </h3>
-        <div class="archive-meta"><span title='2025-11-25 00:00:00 +0900 KST'>2025년 11월 25일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-25 00:00:00 +0900 KST'>2025년 11월 25일</span></div>
         <a class="entry-link" aria-label="post link to Spring Boot 애플리케이션 웜업" href="https://dont.kr/posts/2025/2025-11-25-spring-boot-warmup/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">LLM 개념 정리
         </h3>
-        <div class="archive-meta"><span title='2025-11-13 00:00:00 +0900 KST'>2025년 11월 13일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-13 00:00:00 +0900 KST'>2025년 11월 13일</span></div>
         <a class="entry-link" aria-label="post link to LLM 개념 정리" href="https://dont.kr/posts/2025/2025-11-13-llm-fundamentals/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">머신러닝 개념 정리
         </h3>
-        <div class="archive-meta"><span title='2025-11-12 00:00:00 +0900 KST'>2025년 11월 12일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-12 00:00:00 +0900 KST'>2025년 11월 12일</span></div>
         <a class="entry-link" aria-label="post link to 머신러닝 개념 정리" href="https://dont.kr/posts/2025/2025-11-12-ml-fundamentals/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">AI 개념 정리
         </h3>
-        <div class="archive-meta"><span title='2025-11-11 00:00:00 +0900 KST'>2025년 11월 11일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-11 00:00:00 +0900 KST'>2025년 11월 11일</span></div>
         <a class="entry-link" aria-label="post link to AI 개념 정리" href="https://dont.kr/posts/2025/2025-11-11-ai-fundamentals/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">MySQL vs Oracle: 커서(Cursor) 동작 방식 비교
         </h3>
-        <div class="archive-meta"><span title='2025-11-04 00:00:00 +0900 KST'>2025년 11월 4일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-11-04 00:00:00 +0900 KST'>2025년 11월 4일</span></div>
         <a class="entry-link" aria-label="post link to MySQL vs Oracle: 커서(Cursor) 동작 방식 비교" href="https://dont.kr/posts/2025/2025-11-04-database-cursor-mysql-vs-oracle/"></a>
       </div>
     </div>
@@ -379,7 +411,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용
         </h3>
-        <div class="archive-meta"><span title='2025-10-02 00:00:00 +0900 KST'>2025년 10월 2일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-10-02 00:00:00 +0900 KST'>2025년 10월 2일</span></div>
         <a class="entry-link" aria-label="post link to 바이브 코딩을 넘어서 - 기획 영역에서의 AI 활용" href="https://dont.kr/posts/2025/2025-10-02-beyond-vibe-coding-planning/"></a>
       </div>
     </div>
@@ -393,13 +427,17 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">바이브 코딩 심화편 - 실무 적용과 한계
         </h3>
-        <div class="archive-meta"><span title='2025-09-24 00:00:00 +0900 KST'>2025년 9월 24일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-09-24 00:00:00 +0900 KST'>2025년 9월 24일</span></div>
         <a class="entry-link" aria-label="post link to 바이브 코딩 심화편 - 실무 적용과 한계" href="https://dont.kr/posts/2025/2025-09-24-vibe-coding-advanced/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임
         </h3>
-        <div class="archive-meta"><span title='2025-09-17 00:00:00 +0900 KST'>2025년 9월 17일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-09-17 00:00:00 +0900 KST'>2025년 9월 17일</span></div>
         <a class="entry-link" aria-label="post link to 바이브 코딩이란 무엇인가? - AI 시대의 새로운 프로그래밍 패러다임" href="https://dont.kr/posts/2025/2025-09-17-what-is-vibe-coding/"></a>
       </div>
     </div>
@@ -413,7 +451,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">springdoc-openapi @ApiResponse 어노테이션의 useReturnTypeSchema 속성
         </h3>
-        <div class="archive-meta"><span title='2025-06-26 00:00:00 +0900 KST'>2025년 6월 26일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-06-26 00:00:00 +0900 KST'>2025년 6월 26일</span></div>
         <a class="entry-link" aria-label="post link to springdoc-openapi @ApiResponse 어노테이션의 useReturnTypeSchema 속성" href="https://dont.kr/posts/2025/2025-06-26-springdoc-openapi-usereturntypeschema/"></a>
       </div>
     </div>
@@ -427,7 +467,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Mac zsh 설정
         </h3>
-        <div class="archive-meta"><span title='2025-04-25 00:00:00 +0900 KST'>2025년 4월 25일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-04-25 00:00:00 +0900 KST'>2025년 4월 25일</span></div>
         <a class="entry-link" aria-label="post link to Mac zsh 설정" href="https://dont.kr/posts/2025/2025-04-25-mac-zsh/"></a>
       </div>
     </div>
@@ -441,7 +483,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">ImageMagick crop
         </h3>
-        <div class="archive-meta"><span title='2025-03-26 00:00:00 +0900 KST'>2025년 3월 26일</span></div>
+        <div class="archive-meta">
+
+<span title='2025-03-26 00:00:00 +0900 KST'>2025년 3월 26일</span></div>
         <a class="entry-link" aria-label="post link to ImageMagick crop" href="https://dont.kr/posts/2025/2025-03-26-imagemagick-crop/"></a>
       </div>
     </div>
@@ -461,7 +505,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">IntelliJ debug variable json view
         </h3>
-        <div class="archive-meta"><span title='2024-11-07 00:00:00 +0900 KST'>2024년 11월 7일</span></div>
+        <div class="archive-meta">
+
+<span title='2024-11-07 00:00:00 +0900 KST'>2024년 11월 7일</span></div>
         <a class="entry-link" aria-label="post link to IntelliJ debug variable json view" href="https://dont.kr/posts/2024/2024-11-07-intellij-debug-variable-json-view/"></a>
       </div>
     </div>
@@ -475,19 +521,25 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Hugo 태그 설정
         </h3>
-        <div class="archive-meta"><span title='2024-01-12 19:10:00 +0900 KST'>2024년 1월 12일</span></div>
+        <div class="archive-meta">
+
+<span title='2024-01-12 19:10:00 +0900 KST'>2024년 1월 12일</span></div>
         <a class="entry-link" aria-label="post link to Hugo 태그 설정" href="https://dont.kr/posts/2024/2024-01-12-hugo-tags/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Synology NAS ssh 설정
         </h3>
-        <div class="archive-meta"><span title='2024-01-05 19:10:00 +0900 KST'>2024년 1월 5일</span></div>
+        <div class="archive-meta">
+
+<span title='2024-01-05 19:10:00 +0900 KST'>2024년 1월 5일</span></div>
         <a class="entry-link" aria-label="post link to Synology NAS ssh 설정" href="https://dont.kr/posts/2024/2024-01-05-synology-nas-ssh/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">IntelliJ SonarLint 한글 이름 사용
         </h3>
-        <div class="archive-meta"><span title='2024-01-02 19:10:00 +0900 KST'>2024년 1월 2일</span></div>
+        <div class="archive-meta">
+
+<span title='2024-01-02 19:10:00 +0900 KST'>2024년 1월 2일</span></div>
         <a class="entry-link" aria-label="post link to IntelliJ SonarLint 한글 이름 사용" href="https://dont.kr/posts/2024/2024-01-02-intellij-sonarlint-korean-naming/"></a>
       </div>
     </div>
@@ -507,13 +559,17 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Legacy 테스트 - Subclass and Override Method
         </h3>
-        <div class="archive-meta"><span title='2023-07-28 19:10:00 +0900 KST'>2023년 7월 28일</span></div>
+        <div class="archive-meta">
+
+<span title='2023-07-28 19:10:00 +0900 KST'>2023년 7월 28일</span></div>
         <a class="entry-link" aria-label="post link to Legacy 테스트 - Subclass and Override Method" href="https://dont.kr/posts/2023/2023-07-28-legacy-testing-subclass-and-override-method/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[re] Hello World
         </h3>
-        <div class="archive-meta"><span title='2023-07-10 19:10:00 +0900 KST'>2023년 7월 10일</span></div>
+        <div class="archive-meta">
+
+<span title='2023-07-10 19:10:00 +0900 KST'>2023년 7월 10일</span></div>
         <a class="entry-link" aria-label="post link to [re] Hello World" href="https://dont.kr/posts/2023/2023-07-10-hello-world-by-hugo/"></a>
       </div>
     </div>
@@ -533,7 +589,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] Visual Studio Code Regex Replace
         </h3>
-        <div class="archive-meta"><span title='2022-04-30 14:02:00 +0900 KST'>2022년 4월 30일</span></div>
+        <div class="archive-meta">
+
+<span title='2022-04-30 14:02:00 +0900 KST'>2022년 4월 30일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] Visual Studio Code Regex Replace" href="https://dont.kr/posts/2022/2022-04-30-backup-vscode-regex-replace/"></a>
       </div>
     </div>
@@ -553,7 +611,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] gradle 의존성 갱신
         </h3>
-        <div class="archive-meta"><span title='2021-10-28 09:49:00 +0900 KST'>2021년 10월 28일</span></div>
+        <div class="archive-meta">
+
+<span title='2021-10-28 09:49:00 +0900 KST'>2021년 10월 28일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] gradle 의존성 갱신" href="https://dont.kr/posts/2021/2021-10-28-backup-gradle-refresh-dependencies/"></a>
       </div>
     </div>
@@ -573,7 +633,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] aws ec2 인스턴스 생성후 하는 작업 v3
         </h3>
-        <div class="archive-meta"><span title='2020-03-09 16:24:00 +0900 KST'>2020년 3월 9일</span></div>
+        <div class="archive-meta">
+
+<span title='2020-03-09 16:24:00 +0900 KST'>2020년 3월 9일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] aws ec2 인스턴스 생성후 하는 작업 v3" href="https://dont.kr/posts/2020/2020-03-09-aws-ec2-initialize-v3/"></a>
       </div>
     </div>
@@ -593,7 +655,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] ngrok - secure introspectable tunnels to localhost
         </h3>
-        <div class="archive-meta"><span title='2019-07-09 10:29:00 +0900 KST'>2019년 7월 9일</span></div>
+        <div class="archive-meta">
+
+<span title='2019-07-09 10:29:00 +0900 KST'>2019년 7월 9일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] ngrok - secure introspectable tunnels to localhost" href="https://dont.kr/posts/2019/2019-07-09-ngrok/"></a>
       </div>
     </div>
@@ -607,7 +671,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] brew - mac package manage
         </h3>
-        <div class="archive-meta"><span title='2019-04-08 13:36:00 +0900 KST'>2019년 4월 8일</span></div>
+        <div class="archive-meta">
+
+<span title='2019-04-08 13:36:00 +0900 KST'>2019년 4월 8일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] brew - mac package manage" href="https://dont.kr/posts/2019/2019-04-08-brew-mac-package-manage/"></a>
       </div>
     </div>
@@ -621,7 +687,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] 로그로 남기면 좋은 것들
         </h3>
-        <div class="archive-meta"><span title='2019-01-28 11:14:00 +0900 KST'>2019년 1월 28일</span></div>
+        <div class="archive-meta">
+
+<span title='2019-01-28 11:14:00 +0900 KST'>2019년 1월 28일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] 로그로 남기면 좋은 것들" href="https://dont.kr/posts/2019/2019-01-28-%EB%A1%9C%EA%B7%B8%EB%A1%9C-%EB%82%A8%EA%B8%B0%EB%A9%B4-%EC%A2%8B%EC%9D%80-%EA%B2%83%EB%93%A4/"></a>
       </div>
     </div>
@@ -641,13 +709,17 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] MySQL 대용량 sql import 시 진행상황 확인하기
         </h3>
-        <div class="archive-meta"><span title='2018-11-29 15:53:00 +0900 KST'>2018년 11월 29일</span></div>
+        <div class="archive-meta">
+
+<span title='2018-11-29 15:53:00 +0900 KST'>2018년 11월 29일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] MySQL 대용량 sql import 시 진행상황 확인하기" href="https://dont.kr/posts/2018/2018-11-29-mysql-%EB%8C%80%EC%9A%A9%EB%9F%89-sql-import-%EC%8B%9C-%EC%A7%84%ED%96%89%EC%83%81%ED%99%A9-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0/"></a>
       </div>
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] swagger-diff swagger 문서 내용 비교
         </h3>
-        <div class="archive-meta"><span title='2018-11-29 15:49:00 +0900 KST'>2018년 11월 29일</span></div>
+        <div class="archive-meta">
+
+<span title='2018-11-29 15:49:00 +0900 KST'>2018년 11월 29일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] swagger-diff swagger 문서 내용 비교" href="https://dont.kr/posts/2018/2018-11-29-swagger-diff-swagger-%EB%AC%B8%EC%84%9C-%EB%82%B4%EC%9A%A9-%EB%B9%84%EA%B5%90/"></a>
       </div>
     </div>
@@ -661,7 +733,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">[Backup] Spirng Boot embedded tomcat 매우 늦게 실행되는 문제
         </h3>
-        <div class="archive-meta"><span title='2018-08-08 14:32:00 +0900 KST'>2018년 8월 8일</span></div>
+        <div class="archive-meta">
+
+<span title='2018-08-08 14:32:00 +0900 KST'>2018년 8월 8일</span></div>
         <a class="entry-link" aria-label="post link to [Backup] Spirng Boot embedded tomcat 매우 늦게 실행되는 문제" href="https://dont.kr/posts/2018/2018-08-08-spirng-boot-embedded-tomcat-%EB%A7%A4%EC%9A%B0-%EB%8A%A6%EA%B2%8C-%EC%8B%A4%ED%96%89%EB%90%98%EB%8A%94-%EB%AC%B8%EC%A0%9C/"></a>
       </div>
     </div>
@@ -681,7 +755,9 @@
       <div class="archive-entry">
         <h3 class="archive-entry-title entry-hint-parent">Hello World
         </h3>
-        <div class="archive-meta"><span title='1979-11-10 00:00:00 +0900 KST'>1979년 11월 10일</span></div>
+        <div class="archive-meta">
+
+<span title='1979-11-10 00:00:00 +0900 KST'>1979년 11월 10일</span></div>
         <a class="entry-link" aria-label="post link to Hello World" href="https://dont.kr/posts/1979/1979-11-10-hello-world/"></a>
       </div>
     </div>
@@ -692,15 +768,19 @@
 <footer class="footer">
         <span>&copy; 2026 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
 
+    
+    
     <span>
         Powered by
-        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://gohugo.io/?utm_source=papermod" rel="noopener" target="_blank">Hugo</a> &
         <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
     </span>
 </footer>
-<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
-        <path d="M12 6H0l6-6z" />
+<a href="#top" id="top-link" class="top-link hidden" aria-label="go to top" title="Go to Top (Alt + G)" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+        stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevrons-up">
+        <polyline points="17 11 12 6 7 11"></polyline>
+        <polyline points="17 18 12 13 7 18"></polyline>
     </svg>
 </a>
 
@@ -739,14 +819,13 @@
 
 </script>
 <script>
-    var mybutton = document.getElementById("top-link");
+    var toplink = document.getElementById("top-link");
     window.onscroll = function () {
-        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
-            mybutton.style.visibility = "visible";
-            mybutton.style.opacity = "1";
+        const scrollThreshold = window.innerHeight;
+        if (document.body.scrollTop > scrollThreshold || document.documentElement.scrollTop > scrollThreshold) {
+            toplink.classList.remove("hidden");
         } else {
-            mybutton.style.visibility = "hidden";
-            mybutton.style.opacity = "0";
+            toplink.classList.add("hidden");
         }
     };
 
