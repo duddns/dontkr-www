@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ko" dir="auto" data-theme="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리 | DoNT - Do Not Think!!!</title>
+<meta name="keywords" content="ai, prompt, context, harness, loop">
+<meta name="description" content="LLM(대규모 언어 모델, Large Language Model) 실무가 발전하면서 관심사가 프롬프트에서 컨텍스트로, 다시 하네스와 루프로 넓어졌습니다. 각 단계에서 새로운 용어가 생겼는데, 네 용어 모두 아직 ISO/IEEE 같은 공식 표준은 아니고 실무에서 굳어지는 중인 표현입니다. 무엇을 설계하는 기술인지, 어디에서 나와 어떻게 퍼졌는지 정리해 봅니다.
+프롬프트 엔지니어링 (Prompt Engineering)
+모델에 주는 지시문 하나를 잘 작성하는 기술입니다. 역할 부여, 예시 제공(few-shot), 단계적 사고 유도(chain-of-thought), 출력 형식 지정 등이 대표적입니다.
+
+설계 단위: 입력 지시문
+유래·확산: 특정 창시자가 없습니다. ChatGPT(2022) 이후 커뮤니티와 실무에서 자연스럽게 자리 잡은 표현입니다.
+
+컨텍스트 엔지니어링 (Context Engineering)
+프롬프트 한 줄이 아니라 컨텍스트 윈도우 전체를 무엇으로 채울지 다루는 기술입니다. 검색 문서, 대화 이력, 메모리, 도구 결과 등을 선별하고 압축해 배치합니다.">
+<meta name="author" content="">
+<link rel="canonical" href="https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.16e0c7b9f3151eea935b08f185647c0f40f6d4dd566f8f09dd0b374566b03f5f.css" integrity="sha256-FuDHufMVHuqTWwjxhWR8D0D21N1Wb48J3Qs3RWawP18=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://dont.kr/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="https://dont.kr/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://dont.kr/favicon-32x32.png">
+<link rel="apple-touch-icon" href="https://dont.kr/apple-touch-icon.png">
+<link rel="mask-icon" href="https://dont.kr/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="ko" href="https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+                color-scheme: dark;
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .toc {
+                background: var(--entry);
+            }
+        }
+
+        @media (prefers-color-scheme: light) {
+            .list::-webkit-scrollbar-thumb {
+                border-color: var(--code-bg);
+            }
+        }
+
+    </style>
+</noscript>
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else if (localStorage.getItem("pref-theme") === "light") {
+       document.querySelector("html").dataset.theme = 'light';
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.querySelector("html").dataset.theme = 'dark';
+    } else {
+        document.querySelector("html").dataset.theme = 'light';
+    }
+
+</script>
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZVEM176XM1"></script>
+      <script>
+        var doNotTrack = false;
+        if ( true ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZVEM176XM1');
+        }
+      </script><meta property="og:url" content="https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/">
+  <meta property="og:site_name" content="DoNT - Do Not Think!!!">
+  <meta property="og:title" content="프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리">
+  <meta property="og:description" content="LLM(대규모 언어 모델, Large Language Model) 실무가 발전하면서 관심사가 프롬프트에서 컨텍스트로, 다시 하네스와 루프로 넓어졌습니다. 각 단계에서 새로운 용어가 생겼는데, 네 용어 모두 아직 ISO/IEEE 같은 공식 표준은 아니고 실무에서 굳어지는 중인 표현입니다. 무엇을 설계하는 기술인지, 어디에서 나와 어떻게 퍼졌는지 정리해 봅니다.
+프롬프트 엔지니어링 (Prompt Engineering) 모델에 주는 지시문 하나를 잘 작성하는 기술입니다. 역할 부여, 예시 제공(few-shot), 단계적 사고 유도(chain-of-thought), 출력 형식 지정 등이 대표적입니다.
+설계 단위: 입력 지시문 유래·확산: 특정 창시자가 없습니다. ChatGPT(2022) 이후 커뮤니티와 실무에서 자연스럽게 자리 잡은 표현입니다. 컨텍스트 엔지니어링 (Context Engineering) 프롬프트 한 줄이 아니라 컨텍스트 윈도우 전체를 무엇으로 채울지 다루는 기술입니다. 검색 문서, 대화 이력, 메모리, 도구 결과 등을 선별하고 압축해 배치합니다.">
+  <meta property="og:locale" content="ko_kr">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-07-08T00:00:00+09:00">
+    <meta property="article:modified_time" content="2026-07-08T00:00:00+09:00">
+    <meta property="article:tag" content="Ai">
+    <meta property="article:tag" content="Prompt">
+    <meta property="article:tag" content="Context">
+    <meta property="article:tag" content="Harness">
+    <meta property="article:tag" content="Loop">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리">
+  <meta name="twitter:description" content="LLM(대규모 언어 모델, Large Language Model) 실무가 발전하면서 관심사가 프롬프트에서 컨텍스트로, 다시 하네스와 루프로 넓어졌습니다. 각 단계에서 새로운 용어가 생겼는데, 네 용어 모두 아직 ISO/IEEE 같은 공식 표준은 아니고 실무에서 굳어지는 중인 표현입니다. 무엇을 설계하는 기술인지, 어디에서 나와 어떻게 퍼졌는지 정리해 봅니다.
+프롬프트 엔지니어링 (Prompt Engineering) 모델에 주는 지시문 하나를 잘 작성하는 기술입니다. 역할 부여, 예시 제공(few-shot), 단계적 사고 유도(chain-of-thought), 출력 형식 지정 등이 대표적입니다.
+설계 단위: 입력 지시문 유래·확산: 특정 창시자가 없습니다. ChatGPT(2022) 이후 커뮤니티와 실무에서 자연스럽게 자리 잡은 표현입니다. 컨텍스트 엔지니어링 (Context Engineering) 프롬프트 한 줄이 아니라 컨텍스트 윈도우 전체를 무엇으로 채울지 다루는 기술입니다. 검색 문서, 대화 이력, 메모리, 도구 결과 등을 선별하고 압축해 배치합니다.">
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://dont.kr/posts/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리",
+      "item": "https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리",
+  "name": "프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리",
+  "description": "LLM(대규모 언어 모델, Large Language Model) 실무가 발전하면서 관심사가 프롬프트에서 컨텍스트로, 다시 하네스와 루프로 넓어졌습니다. 각 단계에서 새로운 용어가 생겼는데, 네 용어 모두 아직 ISO/IEEE 같은 공식 표준은 아니고 실무에서 굳어지는 중인 표현입니다. 무엇을 설계하는 기술인지, 어디에서 나와 어떻게 퍼졌는지 정리해 봅니다.\n프롬프트 엔지니어링 (Prompt Engineering) 모델에 주는 지시문 하나를 잘 작성하는 기술입니다. 역할 부여, 예시 제공(few-shot), 단계적 사고 유도(chain-of-thought), 출력 형식 지정 등이 대표적입니다.\n설계 단위: 입력 지시문 유래·확산: 특정 창시자가 없습니다. ChatGPT(2022) 이후 커뮤니티와 실무에서 자연스럽게 자리 잡은 표현입니다. 컨텍스트 엔지니어링 (Context Engineering) 프롬프트 한 줄이 아니라 컨텍스트 윈도우 전체를 무엇으로 채울지 다루는 기술입니다. 검색 문서, 대화 이력, 메모리, 도구 결과 등을 선별하고 압축해 배치합니다.\n",
+  "keywords": [
+    "ai", "prompt", "context", "harness", "loop"
+  ],
+  "articleBody": "LLM(대규모 언어 모델, Large Language Model) 실무가 발전하면서 관심사가 프롬프트에서 컨텍스트로, 다시 하네스와 루프로 넓어졌습니다. 각 단계에서 새로운 용어가 생겼는데, 네 용어 모두 아직 ISO/IEEE 같은 공식 표준은 아니고 실무에서 굳어지는 중인 표현입니다. 무엇을 설계하는 기술인지, 어디에서 나와 어떻게 퍼졌는지 정리해 봅니다.\n프롬프트 엔지니어링 (Prompt Engineering) 모델에 주는 지시문 하나를 잘 작성하는 기술입니다. 역할 부여, 예시 제공(few-shot), 단계적 사고 유도(chain-of-thought), 출력 형식 지정 등이 대표적입니다.\n설계 단위: 입력 지시문 유래·확산: 특정 창시자가 없습니다. ChatGPT(2022) 이후 커뮤니티와 실무에서 자연스럽게 자리 잡은 표현입니다. 컨텍스트 엔지니어링 (Context Engineering) 프롬프트 한 줄이 아니라 컨텍스트 윈도우 전체를 무엇으로 채울지 다루는 기술입니다. 검색 문서, 대화 이력, 메모리, 도구 결과 등을 선별하고 압축해 배치합니다.\n설계 단위: 컨텍스트 윈도우 유래·확산: RAG(Retrieval-Augmented Generation) 논의에서 산발적으로 쓰이다가 2025년 6월 Tobi Lütke와 Andrej Karpathy의 언급을 계기로 업계에서 더 널리 쓰이기 시작했습니다. 하네스 엔지니어링 (Harness Engineering) 모델을 감싸는 실행 프로그램(하네스)을 설계하는 기술입니다. 도구 구성, 권한과 샌드박스, 도구 결과를 컨텍스트에 반영하는 방식, 피드백 장치 등을 다룹니다. 같은 모델이라도 하네스에 따라 성능이 크게 달라진다는 인식에서 나왔습니다.\n설계 단위: 모델을 둘러싼 실행 시스템 유래·확산: 에이전트 시대(2024~)에 등장했으며, 유래가 여러 설로 갈려 창시자를 단정하기는 어렵습니다. 루프 엔지니어링 (Loop Engineering) 사람이 매번 프롬프트를 주는 대신, 에이전트가 스스로 빌드·테스트·수정을 반복하도록 실행 사이클을 설계하는 기술입니다. 종료 조건, 자기 검증, 재시도 전략 등을 다룹니다.\n설계 단위: 반복 실행 흐름 유래·확산: 2026년경 AI 코딩 에이전트 실무 담론에서 확산 중인 신흥 표현으로, 아직 표준으로 굳어지지는 않았습니다. 한눈에 비교 용어 한 줄 정의 설계 단위 프롬프트 엔지니어링 무엇을 어떻게 지시할 것인가 입력 지시문 컨텍스트 엔지니어링 어떤 정보를 함께 넣을 것인가 컨텍스트 윈도우 하네스 엔지니어링 어떻게 실행하고 검증할 것인가 실행 시스템 루프 엔지니어링 어떻게 반복 실행하고 개선할 것인가 반복 흐름 관심사가 프롬프트에서 시작해 컨텍스트, 하네스, 루프로 한 겹씩 넓어졌다고 보면 이해하기 쉽습니다.\n",
+  "wordCount" : "278",
+  "inLanguage": "ko",
+  "datePublished": "2026-07-08T00:00:00+09:00",
+  "dateModified": "2026-07-08T00:00:00+09:00",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "DoNT - Do Not Think!!!",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://dont.kr/favicon.ico"
+    }
+  }
+}
+</script>
+</head>
+<body id="top">
+    <header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://dont.kr/" accesskey="h" title="DoNT - Do Not Think!!! (Alt + H)">DoNT - Do Not Think!!!</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="https://dont.kr/archives/" title="Archive">
+                    <span>Archive</span>
+                </a>
+            </li>
+            <li>
+                <a href="https://dont.kr/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title entry-hint-parent">
+      프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리
+    </h1>
+    <div class="post-meta"><span title='2026-07-08 00:00:00 +0900 KST'>2026년 7월 8일</span>
+
+</div>
+  </header> 
+  <div class="post-content"><p>LLM(대규모 언어 모델, Large Language Model) 실무가 발전하면서 관심사가 프롬프트에서 컨텍스트로, 다시 하네스와 루프로 넓어졌습니다. 각 단계에서 새로운 용어가 생겼는데, 네 용어 모두 아직 ISO/IEEE 같은 공식 표준은 아니고 실무에서 굳어지는 중인 표현입니다. 무엇을 설계하는 기술인지, 어디에서 나와 어떻게 퍼졌는지 정리해 봅니다.</p>
+<h2 id="프롬프트-엔지니어링-prompt-engineering">프롬프트 엔지니어링 (Prompt Engineering)<a hidden class="anchor" aria-hidden="true" href="#프롬프트-엔지니어링-prompt-engineering">#</a></h2>
+<p>모델에 주는 지시문 하나를 잘 작성하는 기술입니다. 역할 부여, 예시 제공(few-shot), 단계적 사고 유도(chain-of-thought), 출력 형식 지정 등이 대표적입니다.</p>
+<ul>
+<li>설계 단위: 입력 지시문</li>
+<li>유래·확산: 특정 창시자가 없습니다. ChatGPT(2022) 이후 커뮤니티와 실무에서 자연스럽게 자리 잡은 표현입니다.</li>
+</ul>
+<h2 id="컨텍스트-엔지니어링-context-engineering">컨텍스트 엔지니어링 (Context Engineering)<a hidden class="anchor" aria-hidden="true" href="#컨텍스트-엔지니어링-context-engineering">#</a></h2>
+<p>프롬프트 한 줄이 아니라 컨텍스트 윈도우 전체를 무엇으로 채울지 다루는 기술입니다. 검색 문서, 대화 이력, 메모리, 도구 결과 등을 선별하고 압축해 배치합니다.</p>
+<ul>
+<li>설계 단위: 컨텍스트 윈도우</li>
+<li>유래·확산: RAG(Retrieval-Augmented Generation) 논의에서 산발적으로 쓰이다가 2025년 6월 Tobi Lütke와 Andrej Karpathy의 언급을 계기로 업계에서 더 널리 쓰이기 시작했습니다.</li>
+</ul>
+<h2 id="하네스-엔지니어링-harness-engineering">하네스 엔지니어링 (Harness Engineering)<a hidden class="anchor" aria-hidden="true" href="#하네스-엔지니어링-harness-engineering">#</a></h2>
+<p>모델을 감싸는 실행 프로그램(하네스)을 설계하는 기술입니다. 도구 구성, 권한과 샌드박스, 도구 결과를 컨텍스트에 반영하는 방식, 피드백 장치 등을 다룹니다. 같은 모델이라도 하네스에 따라 성능이 크게 달라진다는 인식에서 나왔습니다.</p>
+<ul>
+<li>설계 단위: 모델을 둘러싼 실행 시스템</li>
+<li>유래·확산: 에이전트 시대(2024~)에 등장했으며, 유래가 여러 설로 갈려 창시자를 단정하기는 어렵습니다.</li>
+</ul>
+<h2 id="루프-엔지니어링-loop-engineering">루프 엔지니어링 (Loop Engineering)<a hidden class="anchor" aria-hidden="true" href="#루프-엔지니어링-loop-engineering">#</a></h2>
+<p>사람이 매번 프롬프트를 주는 대신, 에이전트가 스스로 빌드·테스트·수정을 반복하도록 실행 사이클을 설계하는 기술입니다. 종료 조건, 자기 검증, 재시도 전략 등을 다룹니다.</p>
+<ul>
+<li>설계 단위: 반복 실행 흐름</li>
+<li>유래·확산: 2026년경 AI 코딩 에이전트 실무 담론에서 확산 중인 신흥 표현으로, 아직 표준으로 굳어지지는 않았습니다.</li>
+</ul>
+<h2 id="한눈에-비교">한눈에 비교<a hidden class="anchor" aria-hidden="true" href="#한눈에-비교">#</a></h2>
+<table>
+	<thead>
+			<tr>
+					<th>용어</th>
+					<th>한 줄 정의</th>
+					<th>설계 단위</th>
+			</tr>
+	</thead>
+	<tbody>
+			<tr>
+					<td>프롬프트 엔지니어링</td>
+					<td>무엇을 어떻게 지시할 것인가</td>
+					<td>입력 지시문</td>
+			</tr>
+			<tr>
+					<td>컨텍스트 엔지니어링</td>
+					<td>어떤 정보를 함께 넣을 것인가</td>
+					<td>컨텍스트 윈도우</td>
+			</tr>
+			<tr>
+					<td>하네스 엔지니어링</td>
+					<td>어떻게 실행하고 검증할 것인가</td>
+					<td>실행 시스템</td>
+			</tr>
+			<tr>
+					<td>루프 엔지니어링</td>
+					<td>어떻게 반복 실행하고 개선할 것인가</td>
+					<td>반복 흐름</td>
+			</tr>
+	</tbody>
+</table>
+<p>관심사가 프롬프트에서 시작해 컨텍스트, 하네스, 루프로 한 겹씩 넓어졌다고 보면 이해하기 쉽습니다.</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="https://dont.kr/tags/ai/">Ai</a></li>
+      <li><a href="https://dont.kr/tags/prompt/">Prompt</a></li>
+      <li><a href="https://dont.kr/tags/context/">Context</a></li>
+      <li><a href="https://dont.kr/tags/harness/">Harness</a></li>
+      <li><a href="https://dont.kr/tags/loop/">Loop</a></li>
+    </ul>
+  </footer><script src="https://giscus.app/client.js"
+    data-repo="duddns/dontkr-www"
+    data-repo-id="R_kgDOJ5uOLg"
+    data-category="General"
+    data-category-id="DIC_kwDOJ5uOLs4CzVRe"
+    data-mapping="pathname"
+    data-strict="0"
+    data-reactions-enabled="1"
+    data-emit-metadata="0"
+    data-input-position="bottom"
+    data-theme="preferred_color_scheme"
+    data-lang="ko"
+    crossorigin="anonymous"
+    async>
+</script>
+
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2026 <a href="https://dont.kr/">DoNT - Do Not Think!!!</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu');
+    if (menu) {
+        
+        const scrollPosition = localStorage.getItem("menu-scroll-position");
+        if (scrollPosition) {
+            menu.scrollLeft = parseInt(scrollPosition, 10);
+        }
+        
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        const html = document.querySelector("html");
+        if (html.dataset.theme === "dark") {
+            html.dataset.theme = 'light';
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            html.dataset.theme = 'dark';
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

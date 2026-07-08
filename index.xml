@@ -6,8 +6,23 @@
     <description>Recent content on DoNT - Do Not Think!!!</description>
     <generator>Hugo</generator>
     <language>ko-kr</language>
-    <lastBuildDate>Mon, 20 Apr 2026 00:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 08 Jul 2026 00:00:00 +0900</lastBuildDate>
     <atom:link href="https://dont.kr/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>프롬프트에서 루프까지: AI 에이전트 엔지니어링 용어 정리</title>
+      <link>https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/</link>
+      <pubDate>Wed, 08 Jul 2026 00:00:00 +0900</pubDate>
+      <guid>https://dont.kr/posts/2026/2026-07-08-ai-agent-engineering/</guid>
+      <description>&lt;p&gt;LLM(대규모 언어 모델, Large Language Model) 실무가 발전하면서 관심사가 프롬프트에서 컨텍스트로, 다시 하네스와 루프로 넓어졌습니다. 각 단계에서 새로운 용어가 생겼는데, 네 용어 모두 아직 ISO/IEEE 같은 공식 표준은 아니고 실무에서 굳어지는 중인 표현입니다. 무엇을 설계하는 기술인지, 어디에서 나와 어떻게 퍼졌는지 정리해 봅니다.&lt;/p&gt;
+&lt;h2 id=&#34;프롬프트-엔지니어링-prompt-engineering&#34;&gt;프롬프트 엔지니어링 (Prompt Engineering)&lt;/h2&gt;
+&lt;p&gt;모델에 주는 지시문 하나를 잘 작성하는 기술입니다. 역할 부여, 예시 제공(few-shot), 단계적 사고 유도(chain-of-thought), 출력 형식 지정 등이 대표적입니다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;설계 단위: 입력 지시문&lt;/li&gt;
+&lt;li&gt;유래·확산: 특정 창시자가 없습니다. ChatGPT(2022) 이후 커뮤니티와 실무에서 자연스럽게 자리 잡은 표현입니다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;컨텍스트-엔지니어링-context-engineering&#34;&gt;컨텍스트 엔지니어링 (Context Engineering)&lt;/h2&gt;
+&lt;p&gt;프롬프트 한 줄이 아니라 컨텍스트 윈도우 전체를 무엇으로 채울지 다루는 기술입니다. 검색 문서, 대화 이력, 메모리, 도구 결과 등을 선별하고 압축해 배치합니다.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>LLM 기반 작업 시 반복 리뷰로 작업 범위가 넓어지고 목표가 흐려지는 문제</title>
       <link>https://dont.kr/posts/2026/2026-04-20-llm-review-loop-proble/</link>
